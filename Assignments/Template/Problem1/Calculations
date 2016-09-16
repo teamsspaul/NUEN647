@@ -1,0 +1,154 @@
+#!/usr/bin/env python3
+
+"""
+Chem Calculations
+"""
+
+__author__     =  "Paul Mendoza"
+__copyright__  =  "Copyright 2016, Planet Earth"
+__credits__    = ["Sunil Chirayath",
+                  "Charles Folden",
+                  "Jeremy Conlin"]
+__license__    =  "GPL"
+__version__    =  "1.0.1"
+__maintainer__ =  "Paul Mendoza"
+__email__      =  "paul.m.mendoza@gmail.com"
+__status__     =  "Production"
+
+################################################################
+##################### Import packages ##########################
+################################################################
+
+import os.path
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import datetime
+from uncertainties import ufloat
+from uncertainties.umath import *
+from uncertainties import unumpy as unp
+import re
+import time
+start_time = time.time()
+
+import Functions as fun
+
+
+################################################################
+################## Examples of Calculations ####################
+################################################################
+
+#######################################################
+############ Atom Fraction to Mass Fraction ###########
+############          and vice versa        ###########
+#######################################################
+
+string='92235 0.285714286 0 92238 0.714285714 0'
+MasstoAtom=True
+Mass,Zaid=fun.StringToMass(string)
+stringCalculated=fun.ConvertFractions(string,Mass,MasstoAtom,Zaid)
+
+# if MasstoAtom:
+#     print("Mass Fractions:")
+#     print(string)
+#     print("Atom Fractions:")
+#     print(stringCalculated)
+# else:
+#     print("Mass Fractions:")
+#     print(stringCalculated)
+#     print("Atom Fractions:")
+#     print(string)
+
+#######################################################
+############ Calculate grams per mol of ###############
+############    a chemical formula      ###############
+#######################################################
+
+#Make sure your chemical form has no repeats
+#And no parentheses
+ChemicalFormula='HNO_3'
+ChemicalFormulaError=[0,0,0,0,0,0,0] #+/- error in integers of
+                                     #chemical formula
+ChemicalFormula=ChemicalFormula+"    "
+List=fun.ChemList(ChemicalFormula)
+
+#Enter Modifications:
+#1. Each element should be a single item in the list
+#2. Format: zaid atomfraction+/-error zaid atomfraction+/-error
+#   or    : zaid atomfraction error zaid atomfraction
+Modifications=['92235 0.2883155436+/-0.0000000024 92238 0.7116844564+/-0.0000000024',stringCalculated]
+
+df = pd.read_csv('../Data/AtomicWeights.csv')
+
+
+ModMass,ModSymbols,AtomFractions=fun.FormatMods(Modifications,df)
+MolarMass=fun.DetermineMolarMass(List,df,
+                                 ModSymbols,ModMass,
+                                 AtomFractions,ChemicalFormulaError)
+
+# print(MolarMass)
+
+#######################################################
+############### Calculate Molality from ###############
+###############          Wt %           ###############
+#######################################################
+
+gramsOmol=MolarMass
+WtConcentration=ufloat(69,0.1) 
+Molality=1000/(gramsOmol*(100/WtConcentration-1))
+
+#######################################################
+############# Convert molality/molarity ###############
+#######################################################
+
+MolarityToMolality=True
+
+gramsOmol=MolarMass
+
+#Density in grams per cc or grams per ml
+dfDen=pd.read_csv('../Data/Nitric_Acid.csv')
+
+Temperature=ufloat(20,3) #Same degrees as dfDen!!!
+
+Molality=Molality
+Molarity=ufloat(15.43,0.06)
+
+if MolarityToMolality:
+    Molality=fun.ConvertMol(MolarityToMolality,Molarity,
+                            gramsOmol,dfDen,Temperature)
+else:
+    Molarity=fun.ConvertMol(MolarityToMolality,Molality,
+                            gramsOmol,dfDen,Temperature)
+    
+
+#print("Molarity = "+str(Molarity))
+#print("Molality = "+str(Molality))
+
+
+#######################################################
+############# Calculate New Concentration #############
+#######################################################
+
+Vol1=1
+Vol2=1
+
+gramsOmol=gramsOmol
+
+m1=Molality
+m2=Molality*.25
+
+Temperature=ufloat(20,3)
+
+dfDen=pd.read_csv('../Data/Nitric_Acid.csv')
+
+m3,p3,Vol3,Wt,M3=fun.NewConcentration(m1,m2,gramsOmol,
+                                Temperature,dfDen,
+                                Vol1,Vol2)
+
+M1=fun.ConvertMol(False,m1,gramsOmol,dfDen,Temperature)
+M2=fun.ConvertMol(False,m2,gramsOmol,dfDen,Temperature)
+
+
+###################### Time To execute #################
+
+print("--- %s seconds ---" % (time.time() - start_time))
