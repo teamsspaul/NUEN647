@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  16 SEP 2016 16:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  16 SEP 2016 17:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -123,21 +123,21 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (./assignment.aux)
 \openout1 = `assignment.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 172.
-LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 209.
+LaTeX Font Info:    ... okay on input line 209.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 209.
+LaTeX Font Info:    ... okay on input line 209.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 209.
+LaTeX Font Info:    ... okay on input line 209.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 209.
+LaTeX Font Info:    ... okay on input line 209.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 209.
+LaTeX Font Info:    ... okay on input line 209.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 209.
+LaTeX Font Info:    ... okay on input line 209.
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 172.
+(lastpage)             ! on input line 209.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -202,11 +202,11 @@ e
 ))
 \c@lstlisting=\count104
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 174.
+(Font)              <12> on input line 211.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 174.
+(Font)              <8> on input line 211.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 174.
+(Font)              <6> on input line 211.
 
 [1
 
@@ -216,55 +216,113 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 
 [2]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 195.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 235.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-(./homework_example.pl
+(./Problem1/homework_example.pl
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 1.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 18.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 18.
-) <example_figure.png, id=14, 150.5625pt x 90.3375pt>
-File: example_figure.png Graphic file (type png)
+)
+(./Problem1/Calculations [3] [4]
+Overfull \hbox (106.05064pt too wide) in paragraph at lines 79--81
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
 
-<use example_figure.png>
-Package pdftex.def Info: example_figure.png used on input line 213.
+[5]) (./Problem1/Functions.py [6] [7] [8]
+Overfull \hbox (25.04982pt too wide) in paragraph at lines 157--158
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (35.84993pt too wide) in paragraph at lines 158--159
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (89.85048pt too wide) in paragraph at lines 167--168
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (52.0501pt too wide) in paragraph at lines 171--172
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (143.85103pt too wide) in paragraph at lines 175--176
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][] 
+ []
+
+[9] [10] [11]
+Overfull \hbox (8.84966pt too wide) in paragraph at lines 314--315
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][] 
+ []
+
+[12] [13] [14]
+Missing character: There is no Â in font pcrr7t!
+Missing character: There is no ° in font pcrr7t!
+ [15]
+Missing character: There is no Â in font pcrr7t!
+Missing character: There is no ° in font pcrr7t!
+Missing character: There is no Â in font pcrr7t!
+Missing character: There is no ° in font pcrr7t!
+ [16] [17]) [18] [19]
+<Problem2/example_figure.png, id=72, 150.5625pt x 90.3375pt>
+File: Problem2/example_figure.png Graphic file (type png)
+
+<use Problem2/example_figure.png>
+Package pdftex.def Info: Problem2/example_figure.png used on input line 259.
 (pdftex.def)             Requested size: 345.2684pt x 207.20255pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 213.
- [3] (./assignment.bbl [4 <./example_figure.png>])
+(Font)              <7> on input line 259.
+ [20
 
+ <./Problem2/example_figure.png>]
+(./assignment.bbl) 
 AED: lastpage setting LastPage
-[5] (./assignment.aux) ) 
+[21
+
+] (./assignment.aux) ) 
 Here is how much of TeX's memory you used:
- 3722 strings out of 494953
- 52771 string characters out of 6180977
- 239065 words of memory out of 5000000
- 6947 multiletter control sequences out of 15000+600000
+ 3837 strings out of 494953
+ 54359 string characters out of 6180977
+ 272079 words of memory out of 5000000
+ 7053 multiletter control sequences out of 15000+600000
  11367 words of font info for 39 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,11n,43p,293b,1497s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.
-enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/cou
-rier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.
-pfb>
-Output written on assignment.pdf (5 pages, 128217 bytes).
+ 38i,12n,43p,300b,1740s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.en
+c}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/couri
+er/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pf
+b>
+Output written on assignment.pdf (21 pages, 183340 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 43 compressed objects within 1 object stream
+ 114 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
