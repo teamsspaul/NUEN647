@@ -1,0 +1,8 @@
+#!/bin/bash
+
+git status | sed -n 's/modified://p' | sed -n 's/#//p' | xargs -I % git add % 
+git status | sed -n 's/deleted://p' | sed -n 's/#//p' | xargs -I % git add %
+
+git commit -m "Updated repository"
+git push origin master 
+
