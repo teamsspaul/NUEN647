@@ -33,7 +33,7 @@
 \usepackage{listings} % Required for insertion of code
 \usepackage{courier} % Required for the courier font
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
-
+\usepackage{amsmath}
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -230,15 +230,66 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
 % To have just one problem per page, simply put a \clearpage after each problem
 
 \begin{homeworkProblem}
-Listing \ref{Problem1/homework_example} shows a Perl script.
+  Show that the transformation in equation \ref{eq:1} results
+  in a standard normal
+  random variable by computing the mean and variance of z.
 
-\perlscript{Problem1/homework_example}{Sample Perl Script With Highlighting}
+  \begin{equation} \label{eq:1}
+    z = \frac{x-\mu}{\sigma}
+  \end{equation}
 
-\pythonscript{Problem1/Calculations}{Sample python script no .py}
+  An important special case of the expectation value is the mean which
+  is the expected value of $x$. It is often denoted as $\mu$,
 
-\pythonscript{Problem1/Functions.py}{Sample python script no .py}
+  \begin{equation*}
+    \mu=E[x]=\int_{-\infty}^\infty xf(x)dx
+  \end{equation*}
 
-\lipsum[1]
+  where $x$ is a realization of a random sample and $f(x)$ is
+  the probability density function (PDF) for the random variable.
+  For a normal distribution,
+
+  \begin{equation*}
+    f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}
+  \end{equation*}
+  
+  For the sake of the transformation, the value of z substitutes for
+  $x$, the realization of a random sample (not the PDF because we are
+  transforming that distribution). Therefore, the mean for
+  z is:
+
+  \begin{equation*}
+    \mu_z=\int_{-\infty}^\infty \frac{x-\mu}{\sigma}
+           \frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}dx
+  \end{equation*}
+
+  If $u=(x-\mu)^2$ and $\frac{du}{2}=(x-\mu)dx$ (note that the limits
+  change from $(-\infty,\infty)$ to $(\infty,\infty)$ - but that seems
+  fishy to me so I will change it back after integration).
+
+  \begin{equation*}
+    \mu_z=\int_{\infty}^\infty
+    \frac{1}{2\sigma^2\sqrt{2\pi}}e^{\frac{-u}{2\sigma^2}}du
+    =\left|\frac{-1}{\sqrt{2\pi}}e^{\frac{-u}{2\sigma^2}}
+      \right|_\infty^\infty
+  \end{equation*}
+  \begin{equation*}
+    \mu_z
+    =\left|\frac{-1}{\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}
+    \right|_{-\infty}^\infty=\frac{-1}{\sqrt{2\pi}}(e^{-\infty}-
+    e^{-\infty})=0
+  \end{equation*}
+
+The variance 
+  
+%Listing \ref{Problem1/homework_example} shows a Perl script.
+
+%\perlscript{Problem1/homework_example}{Sample Perl Script With Highlighting}
+
+%\pythonscript{Problem1/Calculations}{Sample python script no .py}
+
+%\pythonscript{Problem1/Functions.py}{Sample python script no .py}
+
 \end{homeworkProblem}
 
 \clearpage
