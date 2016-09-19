@@ -12,19 +12,20 @@ for item in out:
         item=item.replace("modified:","")
         item=item.replace(" ","")
         item=item.replace("\t","")
-        #os.system('git add '+item)
-        print(item)
+        os.system('git add '+item)
+        #print(item)
     elif "deleted:" in item:
         item=item.replace("deleted:","")
         item=item.replace(" ","")
         item=item.replace("\t","")
-        #os.system('git add '+item)
-        print(item)
+        os.system('git add '+item)
+        #print(item)
     elif "\t" in item:
         item=item.replace(" ","")
         item=item.replace("\t","")
-        #os.system('git add '+item)
-        print(item)
+        os.system('git add '+item)
+        #print(item)
 
-#os.system('git commit -m \"Update Files\"')
-#os.system('git push origin master')
+os.system('git commit -m \"Update Files\"')
+os.system('git push origin master')
+

@@ -6,8 +6,12 @@ git status | sed -n 's/deleted://p' | xargs -I % git add %
 git status | sed -n 's/modified://p' | xargs -I % git add %
 
 echo "print \"Hello\"" >> py.py
+
 python py.py
+
+
 
 git commit -m "Updated repository"
 git push origin master 
 
+rm py.py
