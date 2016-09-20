@@ -373,7 +373,7 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   \begin{itemize}
     \item{$P(X|Y)=P(X)$, for all values of $X$ and $Y$.}
   \end{itemize}
-
+  \problemAnswer{
   The PDF for X is:
 
   \begin{equation*}
@@ -387,8 +387,46 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   \end{equation*}
 
   I am confused, because at this point the PDF for Y does not integrate
-  to one, but to 0.5...I probably did something wrong. 
+  to one, but to 0.5...I probably did something wrong (anyway continue)
+  \\~\\
+  There is a special case for a collection of random variables where
+  the joint PDF can be factored into the product of individual PDFs as:
+
+  \begin{equation*}
+    f(\vec{x})=f(x,y)={\displaystyle \prod_{i=1}^{p} f(x_i)}=f_X(x)*f_Y(x)=
+    0.5*0.25=0.125\ \ \ x,y \in [-1,1]
+  \end{equation*}
   
+  We can define the probability distribution of Y provided X=x as
+
+  \begin{equation*}
+    f(y|X=x)=\frac{f(x,y)}{\int_{-\infty}^{\infty}f(x,y)dy}=
+             \frac{0.125}{\int_{-1}^{1}0.125dy}=0.5
+  \end{equation*}
+
+  Are X and Y independant?
+
+  \begin{align*}
+    P(Y|X) &\stackrel{?}{=}P(Y)\\
+     0.5 &\neq 0.25
+  \end{align*}
+  If what I did was correct...then X and Y shown to be dependant.
+  }
+  \\
+  \problemAnswer{
+  The measure for how random variables change together is called
+  the covariance and the covariance between $X$ and $Y$ is written
+  as $\sigma_{XY}$.
+   
+  \begin{align*}
+    \sigma_{XY} &=E[(X-\mu_X)(Y-\mu_Y)]\\
+                &=\int_{-1}^{1}dx\int_{-1}^{1}dy (x-\mu_x)(y-\mu_y)f(x,y)\\
+                &=\int_{-1}^{1}dx\int_{-1}^{1}dy (xy-0.125x-0.5y+0.0625)
+                 0.125\\
+                &=0.125\int_{-1}^{1}dx\left| (\frac{xy^2}{2}-
+                 0.125xy-0.25y^2+0.0625y)\right|_{-1}^1  
+  \end{align*}
+  }
 %% \problemAnswer{
 %% \begin{center}
 %% \includegraphics[width=0.75\columnwidth]{Problem2/example_figure} % Example image
