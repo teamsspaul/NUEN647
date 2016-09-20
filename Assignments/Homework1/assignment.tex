@@ -33,6 +33,7 @@
 \usepackage{listings} % Required for insertion of code
 \usepackage{courier} % Required for the courier font
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{hyperref}
 \usepackage{amsmath}
 % Margins
 \topmargin=-0.45in
@@ -252,7 +253,7 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   \begin{equation*}
     f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}
   \end{equation*}
-  
+  \problemAnswer{
   For the sake of the transformation, the value of z substitutes for
   $x$, the realization of a random sample (not the PDF because we are
   transforming that distribution). Therefore, the mean for
@@ -277,11 +278,72 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
     \mu_z
     =\left|\frac{-1}{\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}
     \right|_{-\infty}^\infty=\frac{-1}{\sqrt{2\pi}}(e^{-\infty}-
-    e^{-\infty})=0
+    e^{-\infty}) =\boxed{0}
+  \end{equation*}
+  }
+  \problemAnswer{
+  The variance is defined as:
+
+  \begin{equation*}
+    Var(X)=E[(X-\mu)^2]
   \end{equation*}
 
-The variance 
+  Substituting Eq. \ref{eq:1} for $X$, (but not for the pdf - I could
+  be wrong about that)
+
+  \begin{equation*}
+    Var(X)=E[(\frac{x-\mu}{\sigma}-\mu)^2]=
+    E\left[\left(\frac{x-\mu-\mu\sigma}{\sigma}\right)^2\right]=
+    \frac{1}{\sigma^2}(E[x^2]-2\mu E[x]-2\mu\sigma E[x]+
+    \mu^2E[1]+\mu^2\sigma^2+2\mu^2\sigma)
+  \end{equation*}
+
+  Noting that above it was proven that $E[x]=\mu$ and given that
+  the definition of $E[1]=1$ and assuming that
+  $E[x^2]=\sigma^2+\mu^2$ (will solve on next page)
+
+  \begin{equation*}
+    \frac{1}{\sigma^2}(\sigma^2+\mu^2-2\mu^2-2\mu^2\sigma+\mu^2
+    +\mu^2\sigma^2+2\mu^2\sigma)=\frac{1}{\sigma^2}(\sigma^2+\mu^2\sigma^2)
+    =\boxed{1+\mu^2=1}
+  \end{equation*}
+ 
+  This is assuming that $\mu=0$. Which was shown above.
+  }
+  \clearpage
+
+  \begin{equation*}
+    E[x^2]=\int_{-\infty}^{\infty} \frac{x^2}{\sigma\sqrt{2\pi}}
+           e^{\frac{-(x-\mu)^2}{2\sigma^2}}
+  \end{equation*}
+
+  If $t=\frac{(x-\mu)}{\sqrt{2}\sigma}$ and $\sqrt{2}\sigma dt=dx$ and
+  $x=t\sqrt{2}\sigma+\mu$
+  then (limits of integration don't change)
   
+  \begin{equation*}
+    E[x^2]=\int_{-\infty}^{\infty} \frac{\left(t\sqrt{2}\sigma+\mu
+      \right)^2}{\sqrt{\pi}}e^{-t^2}dt=
+    \frac{1}{\sqrt{\pi}}\int_{-\infty}^{\infty}\left(2\sigma^
+    2\left(t^2e^{-t^2}\right)+
+    2\sqrt{2}\sigma\mu\left(te^{-t^2}\right)+\mu^2\left(e^{-t^2}\right)\right)
+  \end{equation*}
+
+  According to wolfram alpha
+
+  \begin{equation*}
+    \int_{-\infty}^\infty t^2e^{-t^2}=\frac{\sqrt{\pi}}{2}
+  \end{equation*}
+
+  \begin{equation*}
+    \int_{-\infty}^\infty te^{-t^2}=0
+  \end{equation*}
+
+  \begin{equation*}
+    \int_{-\infty}^\infty e^{-t^2}=\sqrt{\pi}
+  \end{equation*}
+
+  Which simplifies the above to $\sigma^2+\mu^2$.
 %Listing \ref{Problem1/homework_example} shows a Perl script.
 
 %\perlscript{Problem1/homework_example}{Sample Perl Script With Highlighting}
@@ -299,15 +361,41 @@ The variance
 %----------------------------------------------------------------------------------------
 
 \begin{homeworkProblem}
-\lipsum[2]
+%\lipsum[2]
+  Consider the random variables $X\sim U(-1,1)$ and $Y\sim X^2$.
+  Are these independent random variables? What is their covariance?
+  \\~\\
+  If two random variables, X and Y, are independent, they satisfy the
+  following condition:
+  \href{http://stattrek.com/random-variable/independence.aspx?Tutorial=AP}
+       {$^{link}$}
 
-\problemAnswer{
-\begin{center}
-\includegraphics[width=0.75\columnwidth]{Problem2/example_figure} % Example image
-\end{center}
+  \begin{itemize}
+    \item{$P(X|Y)=P(X)$, for all values of $X$ and $Y$.}
+  \end{itemize}
 
-\lipsum[3-5]
-}
+  The PDF for X is:
+
+  \begin{equation*}
+    f_X(x)=\frac{1}{(1-(-1))}=0.5\ \ \ x \in [-1,1] 
+  \end{equation*}
+
+  The PDF for Y is:
+
+  \begin{equation*}
+    f_Y(x)=f_X(x)^2=0.25\ \ \ x \in [-1,1] 
+  \end{equation*}
+
+  I am confused, because at this point the PDF for Y does not integrate
+  to one, but to 0.5...I probably did something wrong. 
+  
+%% \problemAnswer{
+%% \begin{center}
+%% \includegraphics[width=0.75\columnwidth]{Problem2/example_figure} % Example image
+%% \end{center}
+
+%% \lipsum[3-5]
+%% }
 \end{homeworkProblem}
 
 \clearpage
