@@ -33,6 +33,7 @@
 \usepackage{courier} % Required for the courier font
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{mathrsfs}
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -371,7 +372,14 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
 %\pythonscript{Problem1/Calculations}{Sample python script no .py}
 
 %\pythonscript{Problem1/Functions.py}{Sample python script no .py}
+%% \problemAnswer{
+%% \begin{center}
+%% \includegraphics[width=0.75\columnwidth]{Problem2/example_figure} % Example image
+%% \end{center}
 
+%% \lipsum[3-5]
+%% }
+  
 \end{homeworkProblem}
 
 \clearpage
@@ -494,7 +502,19 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
     \end{equation*}
     Where $f(y)$ is the multivariate PDF for the random variables
     of $\vec{Y}$.
-    To prove that the integral 
+    To prove that the covariance matrix is positive definite
+    the above integral must be proved to be positive 
+    with
+    $g(x)=(\vec{x}^T(\vec{Y}-\vec{\mu}_Y))^2$. Explicitly, 
+    \begin{align*}
+      E[g(Y)]&=\int_{-\infty}^\infty dy_1
+              \int_{-\infty}^\infty dy_2\ ...\int_{-\infty}^\infty dy_p
+              \ (\vec{x}^T(\vec{Y}-\vec{\mu}_Y))^2f(y)\\
+             &=\int_{-\infty}^\infty dy_1
+              \int_{-\infty}^\infty dy_2\ ...\int_{-\infty}^\infty dy_p
+              \ ((y_1-\mu_1)x_1+(y_2-\mu_2)x_2+\ ...\ +(y_p-\mu_p)x_p)^2f(y)\\
+    \end{align*}
+    
   }
 \end{homeworkProblem}
 
@@ -506,38 +526,27 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
 
 \begin{homeworkProblem}
   Use rejection sampling to sample from a Gamma random variable
-  $X~$
+  $X\sim \mathscr{G}(\alpha,\beta)$ where
+  \begin{equation*}
+    f(x)=\frac{\theta^{\alpha-1}e^{-\theta/\beta}}
+         {\Gamma(\alpha)\beta^{-\alpha}}\ \ \ \alpha,\beta>0
+  \end{equation*}
+
+  Let $\alpha =1$ and $\beta=0.5$. From rejection sampling with a
+  $N=10^4$, compute a rejection rate for the sampling procedure.
+  Now draw a triangle around the function and do rejection sampling.
+  Compare the rejection rate from the triangle versus the rectangle.
+  You may consider that the PDF is zero if $f(x)<10^{-6}$.
   \\~\\
-  \problemAnswer{
-    Given that $\vec{Y}$ is a vector of random variables and
-    $\vec{\mu}_Y$ is a vector of the mean values for the random
-    variables found in $\vec{Y}$.
-    
-    \begin{align*}
-      \vec{x}^T\Sigma\vec{x}&=
-      \vec{x}^TE[(\vec{Y}-\vec{\mu}_Y)(\vec{Y}-\vec{\mu}_Y)^T]\vec{x}\\
-      &=E[\vec{x}^T(\vec{Y}-\vec{\mu}_Y)(\vec{Y}-\vec{\mu}_Y)^T\vec{x}]
-    \end{align*}
-    The last step above puts a constant inside the expectation value
-    integral. Notice
-    \begin{equation*}
-      \vec{x}^T(\vec{Y}-\vec{\mu}_Y)=(\vec{Y}-\vec{\mu}_Y)^T\vec{x}
-    \end{equation*}
-    and that both are scaler functions of the random variables. Therefore,
-    \begin{align*}
-      \vec{x}^T\Sigma\vec{x}&=E[(\vec{x}^T(\vec{Y}-\vec{\mu}_Y))^2]\\
-      &=E[g(Y)^2]=\sigma_f^2
-    \end{align*}
-    The expectation value for a multivariate distribution is defined as
-    \begin{equation*}
-      E[g(Y)]=\int_{-\infty}^\infty dy_1
-              \int_{-\infty}^\infty dy_2\ ...\int_{-\infty}^\infty dy_p
-              \ g(y)f(y)
-    \end{equation*}
-    Where $f(y)$ is the multivariate PDF for the random variables
-    of $\vec{Y}$.
-    To prove that the integral 
-  }
+  Python script for rejection sampling.
+  \pythonscript{Problem1/Calculations}{Python Script for problem}
+%% \problemAnswer{
+%% \begin{center}
+%% \includegraphics[width=0.75\columnwidth]{Problem2/example_figure} % Example image
+%% \end{center}
+
+%% \lipsum[3-5]
+%% }
 \end{homeworkProblem}
 
 \clearpage

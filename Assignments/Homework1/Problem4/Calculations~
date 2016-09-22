@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+
+################################################################
+##################### Import packages ##########################
+################################################################
+
+import os.path
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import datetime
+from uncertainties import ufloat
+from uncertainties.umath import *
+from uncertainties import unumpy as unp
+import re
+import time
+start_time = time.time()
+
+import Functions as fun
+
+################################################################
+######################## Calculations ##########################
+################################################################
+
+alpha=1
+beta=0.5
+
+#######################################################
+############ Atom Fraction to Mass Fraction ###########
+############          and vice versa        ###########
+#######################################################
+
+
+###################### Time To execute #################
+
+print("--- %s seconds ---" % (time.time() - start_time))
