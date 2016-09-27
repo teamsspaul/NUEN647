@@ -34,6 +34,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{mathrsfs}
+\usepackage{float}
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -306,30 +307,27 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   The variance is defined as:
 
   \begin{equation*}
-    Var(X)=E[(X-\mu)^2]
+    Var(X)=E[(X-\mu_X)^2]
   \end{equation*}
 
-  Substituting Eq. \ref{eq:1} for $X$, (but not for the pdf - I could
-  be wrong about that)
+  Substituting Eq. \ref{eq:1} for $X$, (but not for the pdf)
 
   \begin{equation*}
-    Var(X)=E[(\frac{x-\mu}{\sigma}-\mu)^2]=
-    E\left[\left(\frac{x-\mu-\mu\sigma}{\sigma}\right)^2\right]=
-    \frac{1}{\sigma^2}(E[x^2]-2\mu E[x]-2\mu\sigma E[x]+
-    \mu^2E[1]+\mu^2\sigma^2+2\mu^2\sigma)
+    Var(Z)=E[(\frac{x-\mu_X}{\sigma_X}-\mu_Z)^2]=
+    E\left[\left(\frac{x-\mu_X}{\sigma_X}\right)^2\right]=
+    \frac{1}{\sigma_X^2}(E[x^2]-2\mu_XE[x]+
+    \mu^2E[1])
   \end{equation*}
 
-  Noting that above it was proven that $E[x]=\mu$ and given that
+  Noting that above it was proven that $E[x]=\mu_X$ and given that
   the definition of $E[1]=1$ and assuming that
-  $E[x^2]=\sigma^2+\mu^2$ (will solve on next page)
+  $E[x^2]=\sigma_X^2+\mu_X^2$ (will solve on next page)
 
   \begin{equation*}
-    \frac{1}{\sigma^2}(\sigma^2+\mu^2-2\mu^2-2\mu^2\sigma+\mu^2
-    +\mu^2\sigma^2+2\mu^2\sigma)=\frac{1}{\sigma^2}(\sigma^2+\mu^2\sigma^2)
-    =\boxed{1+\mu^2=1}
+    \frac{1}{\sigma_X^2}(\sigma_X^2+\mu_X^2-2\mu_X^2+\mu_X^2
+    )=\boxed{1}
   \end{equation*}
  
-  This is assuming that $\mu=0$. Which was shown above.
   }
   \clearpage
 
@@ -393,15 +391,8 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   Consider the random variables $X\sim U(-1,1)$ and $Y\sim X^2$.
   Are these independent random variables? What is their covariance?
   \\~\\
-  If two random variables, X and Y, are independent, they satisfy the
-  following condition:
-  \href{http://stattrek.com/random-variable/independence.aspx?Tutorial=AP}
-       {$^{link}$}
-
-  \begin{itemize}
-    \item{$P(X|Y)=P(X)$, for all values of $X$ and $Y$.}
-  \end{itemize}
   \problemAnswer{
+  \textbf{Marginal and Joint PDFS}\\~\\
   The PDF for X is:
 
   \begin{equation*}
@@ -410,29 +401,13 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
 
   The PDF for Y is:
   \href{http://math.stackexchange.com/questions/305997/does-the-square-of-uniform-distribution-have-density-function}{$^{link}$}
-
+  
   \begin{equation*}
     f_Y(y)=\frac{1}{2\sqrt{y}}\ \ \ y \in [0,1] 
   \end{equation*}
 
-  If the covariance is non zero, then these two variables are
-  independant. The covariance of two random variables can be given
-  by:
-  \href{https://onlinecourses.science.psu.edu/stat414/node/111}{$^{link}$}
-  
-  \begin{equation*}
-    \sigma_{XY}=E(XY)-\mu_X\mu_Y=\int_{-1}^{1}dx\int_{0}^{1}dy\ \
-                xyf(x,y)-\mu_X\mu_Y
-  \end{equation*}
-
-  Because $\mu_X=0$ this reduces to
-
-  \begin{equation*}
-    \sigma_{XY}=E(XY)=\int_{-1}^{1}dx\int_{0}^{1}dy\ \
-                xyf(x,y)
-  \end{equation*}
-
-  Where $f(x,y)$ is:
+  Without using the handy reference, this may be derived from the
+  joint PDF, $f(x,y)$, defined as (between McClarrens Eq. 2.30 and 2.31):
   
   \begin{equation*}
     f(x,y)=f(y|x)f_X(x)
@@ -450,9 +425,64 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   \begin{equation*}
     f(x,y)=0.5\delta(y-x^2)
   \end{equation*}
+
+  To calculate the PDF for Y (f(y)), we need to integrate
+  over all other variables (in this case, X).
+
+  \begin{equation*}
+    f(y)=\int_{-1}^{1} f(x,y) dx=\int_{-1}^{1} 0.5\delta(y-x^2) dx
+  \end{equation*}
+
+  Wolfram alpha tells me the answer is,
+
+  \begin{equation*}
+    f_Y(y)=\frac{1}{2\sqrt{y}}\ \ \ y \in [0,1] 
+  \end{equation*}
+
+  The same as above. 
+  }
+  \problemAnswer{
+    \textbf{Independance}\\~\\
+    If two random variables, X and Y, are independent, they satisfy the
+    following condition:
+   \href{http://stattrek.com/random-variable/independence.aspx?Tutorial=AP}
+       {$^{link}$}
+
+    \begin{itemize}
+      \item{$P(Y|X)=P(Y)$, for all values of $X$ and $Y$.}
+    \end{itemize}
+    Because $P(Y|X)=\delta(y-xY2)\neq P(Y)=\frac{1}{2\sqrt{y}}$
+    (at least not for ALL values of x and y),
+    these two variables are $\boxed{dependent}$.
+  }
+  \problemAnswer{
+    \textbf{Covariance}\\~\\
+    The covariance for two random variables is defined as:
+    \begin{equation*}
+      \sigma_{XY}=E[(x-\mu_X)(y-\mu_Y)]
+    \end{equation*}
+  This simplifies down to:
+  %\href{https://onlinecourses.science.psu.edu/stat414/node/111}{$^{link}$}
   
-  I am not 100\% sure to do here, but after using wolfram,
-  I think its 0.25.
+  \begin{equation*}
+    \sigma_{XY}=E(XY)-\mu_X\mu_Y=\int_{-1}^{1}dx\int_{0}^{1}dy\ \
+                xyf(x,y)-\mu_X\mu_Y
+  \end{equation*}
+
+  Because $\mu_X=0$ this reduces to
+
+  \begin{align*}
+    \sigma_{XY}=E(XY)&=\int_{-1}^{1}dx\int_{0}^{1}dy\ \
+    xyf(x,y)\\
+    &=\int_{-1}^{1}dx\int_{0}^{1}dy\ \
+    xy0.5\delta(y-x^2)\\
+    &=\int_{-1}^{1}dx\ \ 0.5x^3dx\\
+    &=\boxed{0}
+  \end{align*}
+  
+  Wolfram alpha gave the step between the second and third line.
+  Which means
+  that these variables are dependant, but have a zero covariance. 
   }
 %% \problemAnswer{
 %% \begin{center}
@@ -492,16 +522,21 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
     and that both are scaler functions of the random variables. Therefore,
     \begin{align*}
       \vec{x}^T\Sigma\vec{x}&=E[(\vec{x}^T(\vec{Y}-\vec{\mu}_Y))^2]\\
-      &=E[g(Y)^2]=\sigma_f^2
+      &=E[g(\vec{Y})^2]=\sigma_f^2
     \end{align*}
     The expectation value for a multivariate distribution is defined as
     \begin{equation*}
-      E[g(Y)]=\int_{-\infty}^\infty dy_1
+      E[g(\vec{Y})]=\int_{-\infty}^\infty dy_1
               \int_{-\infty}^\infty dy_2\ ...\int_{-\infty}^\infty dy_p
-              \ g(y)f(y)
+              \ g(\vec{y})f(\vec{y})
     \end{equation*}
-    Where $f(y)$ is the multivariate PDF for the random variables
-    of $\vec{Y}$.
+    Where $f(\vec{y})$ is the multivariate PDF for the random variables
+    of $\vec{Y}$. If a number of samples is given, rather than functions
+    that can be integrated, the expectation value for a multivariate
+    distribution is defined as:
+    \begin{equation*}
+      E[g(\vec{Y})]=SC
+    \end{equation*}
     To prove that the covariance matrix is positive definite
     the above integral must be proved to be positive 
     with
@@ -528,7 +563,7 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   Use rejection sampling to sample from a Gamma random variable
   $X\sim \mathscr{G}(\alpha,\beta)$ where
   \begin{equation*}
-    f(x)=\frac{\theta^{\alpha-1}e^{-\theta/\beta}}
+    f(x)=\frac{\theta^{\alpha-1}e^{-\theta\beta}}
          {\Gamma(\alpha)\beta^{-\alpha}}\ \ \ \alpha,\beta>0
   \end{equation*}
 
@@ -539,7 +574,28 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   You may consider that the PDF is zero if $f(x)<10^{-6}$.
   \\~\\
   Python script for rejection sampling.
-  \pythonscript{Problem1/Calculations}{Python Script for problem}
+  \pythonscript{Problem4/Calculations}{Python Script for problem}
+
+  \begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.7\columnwidth]{Problem4/P4F1.pdf}
+    \vspace{-5mm}
+    \caption{Square rejection sampling for first $10^3$ points (top).
+             Triangular rejection sampling for first $10^3/2$ points
+             (bottom).}
+    \label{fig:P4F1}
+  \end{center}
+  \end{figure}
+
+  \problemAnswer{
+    The rejection rate for the square is $\boxed{92.65\%}$.\\
+    The rejection rate for the triangle is $\boxed{85.04\%}$.\\~\\
+    The acceptance rate about doubled from the square to the triangle
+    ($(1-0.9265)*2=0.147\approx0.1496=(1-0.8504)$). This is what
+    is expected because we cut the sampling area in half.
+    This could also be used to verify the PDF is properly normalized.
+    $0.1496*0.5*26.245*1/2=0.98$.
+  }
 %% \problemAnswer{
 %% \begin{center}
 %% \includegraphics[width=0.75\columnwidth]{Problem2/example_figure} % Example image
@@ -547,6 +603,41 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
 
 %% \lipsum[3-5]
 %% }
+\end{homeworkProblem}
+
+\clearpage
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 5
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Consider a random variable, $X>0$, that has it's logarithm distributed
+  by a normal distribution with mean $\mu=0$ and variance $\sigma^2=1$.
+  Such a distribution is called a log-normal distribution. Compute this
+  distribution's a) mean, b) variance, c) median, d) mode, e) skew,
+  and d) kurtosis.
+  \\~\\
+  The PDF for the log-normal distribution, found on wikipedia, is:
+  \begin{equation*}
+    f(X)=\frac{1}{x\sigma\sqrt{2\pi}}e^{-\frac{((ln(x)-\mu)^2}{2\sigma^2}}
+  \end{equation*}
+  \\~\\
+  \problemAnswer{
+    \textbf{a) mean}\\~\\
+    The mean, $\mu$, is defined as:
+    
+    \begin{equation*}
+      \mu=E[x]=\int_{-\infty}^\infty xf(x)dx
+    \end{equation*}
+    Solving for the log-normal distribution mean:
+    \begin{equation*}
+      \mu=E[x]=\int_{-\infty}^\infty
+               \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{((ln(x)-\mu)^2}{2\sigma^2}}dx
+    \end{equation*}
+    
+  }
 \end{homeworkProblem}
 
 \clearpage

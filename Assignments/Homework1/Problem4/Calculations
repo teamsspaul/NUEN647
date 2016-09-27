@@ -4,43 +4,57 @@
 ##################### Import packages ##########################
 ################################################################
 
-import os.path
-import pandas as pd
-import datetime
-from uncertainties import ufloat
-from uncertainties.umath import *
-from uncertainties import unumpy as unp
-import re
 import time
 start_time = time.time()
-
+import scipy.special as sps
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib
+import random as rn
 import Functions as fun
+import copy
 
 ################################################################
 ######################## Calculations ##########################
 ################################################################
-import scipy.special as sps
-import numpy as np
-import matplotlib.pyplot as plt
 
-N=100
-alpha=1
-beta=0.5
+#Values go to 10^-6 around 26.245
+N=100;alpha=1;beta=0.5;a=0;b=26.245;h=0.5;Nsamples=10**4
 
-theta=np.linspace(0,20,N)
-f_x=((theta**(alpha-1))*np.exp(-theta/beta))\
-               /\
-    (sps.gamma(alpha)*beta**(-alpha))
+theta=np.linspace(a,b,N) 
+f_x=fun.GamrandPDF(alpha,beta,theta)
+        
+(fig,ax)=fun.Plot(theta,f_x)
 
-plt.plot(theta,f_x,'r')
-plt.show()
+OutsideSquare=0;OutsideTri=0
+for i in range(0,Nsamples):
+    X=rn.uniform(a,b);Xt=copy.copy(X)
+    Y=rn.uniform(0,h);Yt=copy.copy(Y)
+    if Y>(-h/b)*X+h: #Triangular
+        Xt=b-Xt
+        Yt=h-Yt
+        
+    H=fun.GamrandPDF(alpha,beta,X) #Square
+    Ht=fun.GamrandPDF(alpha,beta,Xt) #Triangle
+    
+    if(Y<H) and i<10**3: #Square
+        ax[1].plot(X,Y,'kx',markersize=8,markeredgewidth=3)
+    elif(Y>H):
+        OutsideSquare=OutsideSquare+1
+        if i<10**3:
+            ax[1].plot(X,Y,'ko')
+            
+    if(Yt<Ht) and i<(10**3)/2: #Triangular
+        ax[2].plot(Xt,Yt,'kx',markersize=8,markeredgewidth=3)
+    elif(Yt>Ht):
+        OutsideTri=OutsideTri+1
+        if i<(10**3)/2:
+            ax[2].plot(Xt,Yt,'ko')
 
-#######################################################
-############ Atom Fraction to Mass Fraction ###########
-############          and vice versa        ###########
-#######################################################
+RejectionSq=OutsideSquare/Nsamples;RejectionTri=OutsideTri/Nsamples
 
+print("Square = "+str(RejectionSq)+" Triangle = "+str(RejectionTri))
+plt.savefig('P4F1.pdf')
 
 ###################### Time To execute #################
-
 print("--- %s seconds ---" % (time.time() - start_time))
