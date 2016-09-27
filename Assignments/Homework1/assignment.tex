@@ -619,8 +619,20 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   \\~\\
   The PDF for the log-normal distribution, found on wikipedia, is:
   \begin{equation*}
-    f(X)=\frac{1}{x\sigma\sqrt{2\pi}}e^{-\frac{((ln(x)-\mu)^2}{2\sigma^2}}
+    f(X)=\frac{1}{x\sigma\sqrt{2\pi}}e^{-\frac{\left(ln(x)-\mu\right)^2}{2\sigma^2}}
   \end{equation*}
+  For a standard log-normal distribution this is
+  \begin{equation*}
+    f(X)=\frac{1}{x\sqrt{2\pi}}
+    e^{-\frac{ln(x)^2}{2}}
+  \end{equation*}
+  Which simplifies to:
+  \begin{align*}
+    f(X)&=\frac{1}{x\sqrt{2\pi}}
+    \left(e^{-ln(x)}\right)^{\frac{ln(x)}{2}}\\
+    &=\frac{1}{x\sqrt{2\pi}}
+    \left(\frac{1}{x}\right)^{\frac{ln(x)}{2}}
+  \end{align*}
   \\~\\
   \problemAnswer{
     \textbf{a) mean}\\~\\
@@ -630,11 +642,21 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
       \mu=E[x]=\int_{-\infty}^\infty xf(x)dx
     \end{equation*}
     Solving for the log-normal distribution mean:
+    \begin{align*}
+      \mu=E[x]&=\int_{0}^\infty
+      \frac{1}{\sqrt{2\pi}}\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx\\
+      &=\frac{1}{\sqrt{2\pi}}\int_{0}^\infty
+      \left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx\\
+    \end{align*}
+    Wolfram alpha says
     \begin{equation*}
-      \mu=E[x]=\int_{-\infty}^\infty
-               \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{((ln(x)-\mu)^2}{2\sigma^2}}dx
+      \int_{0}^\infty
+      \left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx=\sqrt{2e\pi}
     \end{equation*}
-    
+    Therefore the answer is $\boxed{\sqrt{e}}$
   }
 \end{homeworkProblem}
 
