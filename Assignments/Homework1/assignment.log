@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  26 SEP 2016 23:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  27 SEP 2016 07:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -405,35 +405,35 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 457.
 
-Underfull \hbox (badness 10000) in paragraph at lines 486--486
+Underfull \hbox (badness 10000) in paragraph at lines 485--485
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 391--491
+Underfull \hbox (badness 10000) in paragraph at lines 391--490
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 391--491
+Underfull \hbox (badness 10000) in paragraph at lines 391--490
 
  []
 
 [5
 
 ] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 503--555
+Underfull \hbox (badness 10000) in paragraph at lines 502--554
 
  []
 
 [7
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 570--577
+Underfull \hbox (badness 10000) in paragraph at lines 569--576
 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 577.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 576.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -449,15 +449,15 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 <Problem4/P4F1.pdf, id=136, 578.16pt x 433.62pt>
 File: Problem4/P4F1.pdf Graphic file (type pdf)
  <use Problem4/P4F1.pdf>
-Package pdftex.def Info: Problem4/P4F1.pdf used on input line 581.
-(pdftex.def)             Requested size: 328.82706pt x 246.61679pt.
+Package pdftex.def Info: Problem4/P4F1.pdf used on input line 580.
+(pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--598
+Underfull \hbox (badness 10000) in paragraph at lines 596--596
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--603
+Underfull \hbox (badness 10000) in paragraph at lines 596--601
 
  []
 
@@ -466,46 +466,46 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.608 \clearpage
-                 <./Problem4/P4F1.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 616--623
+l.606 \clearpage
+                 <./Problem4/P4F1.pdf>] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 614--621
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 640--640
+Underfull \hbox (badness 10000) in paragraph at lines 638--638
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 625--642
+Underfull \hbox (badness 10000) in paragraph at lines 623--640
 
  []
 
-[10
+[11
 
 ] (./assignment.bbl) 
 AED: lastpage setting LastPage
-[11
+[12
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 650.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 650.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 648.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 648.
  (./assignment.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 650.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 650.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 648.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 648.
 Package rerunfilecheck Info: File `assignment.out' has not changed.
 (rerunfilecheck)             Checksum: B0A91638CECC0FF089CDE10F9A72DF4C;225.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 650.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 648.
  ) 
 Here is how much of TeX's memory you used:
- 7796 strings out of 494953
- 112676 string characters out of 6180977
- 246791 words of memory out of 5000000
+ 7798 strings out of 494953
+ 112693 string characters out of 6180977
+ 245791 words of memory out of 5000000
  10886 multiletter control sequences out of 15000+600000
  12871 words of font info for 48 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 33i,15n,43p,250b,1954s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,15n,43p,250b,1952s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist
@@ -528,10 +528,10 @@ cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on assignment.pdf (11 pages, 609791 bytes).
+Output written on assignment.pdf (12 pages, 667732 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
- 245 compressed objects within 3 object streams
- 83 named destinations out of 1000 (max. 500000)
+ 301 PDF objects out of 1000 (max. 8388607)
+ 259 compressed objects within 3 object streams
+ 85 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

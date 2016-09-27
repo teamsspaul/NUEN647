@@ -392,7 +392,7 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   Are these independent random variables? What is their covariance?
   \\~\\
   \problemAnswer{
-  \textbf{Marginal and Joint PDFS}\\~\\
+  \textbf{Marginal and Joint PDFs}\\~\\
   The PDF for X is:
 
   \begin{equation*}
@@ -481,8 +481,7 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   \end{align*}
   
   Wolfram alpha gave the step between the second and third line.
-  Which means
-  that these variables are dependant, but have a zero covariance. 
+  These variables are dependant, but have a zero covariance. 
   }
 %% \problemAnswer{
 %% \begin{center}
@@ -575,14 +574,13 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   \\~\\
   Python script for rejection sampling.
   \pythonscript{Problem4/Calculations}{Python Script for problem}
-
+  \vspace{-7mm}
   \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=0.7\columnwidth]{Problem4/P4F1.pdf}
+    \includegraphics[width=0.77\columnwidth]{Problem4/P4F1.pdf}
     \vspace{-5mm}
-    \caption{Square rejection sampling for first $10^3$ points (top).
-             Triangular rejection sampling for first $10^3/2$ points
-             (bottom).}
+    \caption{Square (top) and triangular (bottom) rejection sampling
+             for the Gamma random variable.}
     \label{fig:P4F1}
   \end{center}
   \end{figure}

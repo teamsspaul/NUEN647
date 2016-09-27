@@ -22,7 +22,7 @@ import copy
 N=100;alpha=1;beta=0.5;a=0;b=26.245;h=0.5;Nsamples=10**4
 
 theta=np.linspace(a,b,N) 
-f_x=fun.GamrandPDF(alpha,beta,theta)
+f_x=fun.GammaPDF(alpha,beta,theta)
         
 (fig,ax)=fun.Plot(theta,f_x)
 
@@ -30,26 +30,27 @@ OutsideSquare=0;OutsideTri=0
 for i in range(0,Nsamples):
     X=rn.uniform(a,b);Xt=copy.copy(X)
     Y=rn.uniform(0,h);Yt=copy.copy(Y)
+    
     if Y>(-h/b)*X+h: #Triangular
         Xt=b-Xt
         Yt=h-Yt
         
-    H=fun.GamrandPDF(alpha,beta,X) #Square
-    Ht=fun.GamrandPDF(alpha,beta,Xt) #Triangle
+    H=fun.GammaPDF(alpha,beta,X) #Square
+    Ht=fun.GammaPDF(alpha,beta,Xt) #Triangle
     
-    if(Y<H) and i<10**3: #Square
-        ax[1].plot(X,Y,'kx',markersize=8,markeredgewidth=3)
-    elif(Y>H):
+    if(Y<H): #Square
+        ax=fun.PlotaxIn(X,Y,i,ax,1)
+    else:
         OutsideSquare=OutsideSquare+1
-        if i<10**3:
-            ax[1].plot(X,Y,'ko')
-            
-    if(Yt<Ht) and i<(10**3)/2: #Triangular
-        ax[2].plot(Xt,Yt,'kx',markersize=8,markeredgewidth=3)
-    elif(Yt>Ht):
+        ax=fun.PlotaxOut(X,Y,i,ax,1)
+        
+    if(Yt<Ht): #Triangular
+        ax=fun.PlotaxIn(Xt,Yt,i,ax,2)
+    else:
         OutsideTri=OutsideTri+1
-        if i<(10**3)/2:
-            ax[2].plot(Xt,Yt,'ko')
+        ax=fun.PlotaxOut(Xt,Yt,i,ax,2)
+
+ax=fun.Plotlegend(ax,theta,f_x)
 
 RejectionSq=OutsideSquare/Nsamples;RejectionTri=OutsideTri/Nsamples
 
