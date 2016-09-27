@@ -84,14 +84,14 @@ def PlotaxIn(X,Y,i,ax,j):
                    color='gray')
     elif i<(10**3)/2 and j==2:
         ax[j].plot(X,Y,'x',markersize=7,markeredgewidth=2.5,
-                   color='gray',label="Inside")
+                   color='gray',label="Accepted")
     return(ax)
 
 def PlotaxOut(X,Y,i,ax,j):
     if i<10**3 and j==1:
         ax[j].plot(X,Y,'ko',markersize=5)
     elif i<(10**3)/2 and j==2:
-        ax[j].plot(X,Y,'ko',markersize=5,label="Outside")
+        ax[j].plot(X,Y,'ko',markersize=5,label="Rejected")
     return(ax)
 
 def Plotlegend(ax,theta,f_x):
@@ -102,10 +102,10 @@ def Plotlegend(ax,theta,f_x):
     for i in range(0,len(handles)):
         if Outside and Inside:
             break
-        if not Outside and "Outside" in labels[i]:
+        if not Outside and "Rejected" in labels[i]:
             Outside=True
             OutsideIndex=i
-        if not Inside and "Inside" in labels[i]:
+        if not Inside and "Accepted" in labels[i]:
             Inside=True
             InsideIndex=i
 
