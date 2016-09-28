@@ -710,7 +710,85 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
       e^{erf^{-1}[0]\sqrt{2}}&=x
     \end{align*}
     $erf^{-1}[0]=0$, because wolfram says so...\\~\\
-    Therefore the answer is $\boxed{Median=0}$
+    Therefore the answer is $\boxed{Median=1}$
+  }
+  \problemAnswer{
+    \textbf{d) Mode}\\~\\
+    The mode is the point where the PDF takes its maximum value,
+    the most likely value of the distribution. This could also
+    be the point where its derivative goes to 0.
+    \begin{equation*}
+      f(X)=\frac{1}{x\sqrt{2\pi}}
+      e^{-\frac{ln(x)^2}{2}}
+    \end{equation*}
+    Derivatives:
+    \begin{equation*}
+      e^{-\frac{ln(x)^2}{2}}\frac{d}{dx}=
+      \frac{-ln(x)}{x}e^{-\frac{ln(x)^2}{2}}
+    \end{equation*}
+    \begin{equation*}
+      \frac{1}{x\sqrt{2\pi}}\frac{d}{dx}=
+      -\frac{1}{x^2\sqrt{2\pi}}
+    \end{equation*}
+    Combining:
+    \begin{equation*}
+      f'(X)=\left(\frac{-ln(x)-1}{x^2\sqrt{2\pi}}\right)
+      e^{-\frac{ln(x)^2}{2}}
+    \end{equation*}
+    Setting Equal to Zero
+    \begin{align*}
+      0&=\left(\frac{-ln(x)-1}{x^2\sqrt{2\pi}}\right)
+      e^{-\frac{ln(x)^2}{2}}\\
+      0&=(-ln(x)-1)
+      e^{-\frac{ln(x)^2}{2}}\\
+      0&=(-ln(x)-1)\\
+      -1&=ln(x)\\
+      x&\boxed{=e^{-1}}
+    \end{align*}
+  }
+  \problemAnswer{
+    \textbf{e) Skew}\\~\\
+    The skewness, $\gamma_1$, is related to the third moment of
+    $f(x)$, that is the expected value of $X^3$.
+    \begin{equation*}
+      \gamma_1=\frac{E[(X-\mu)^3]}{Var(X)^{3/2}}
+    \end{equation*}
+    Earlier it was proven that $Var(X)=e^2-e$. Expanding the
+    numerator...
+    \begin{align*}
+      (X-\mu)^3&=(X-\mu)(X-\mu)(X-\mu)\\
+      &=X^3-3X^2\mu-X\mu^2+\mu^3\\
+      &=X^3-3X^2\mu
+    \end{align*}
+    The last two terms cancel because $E[X]=\mu$.
+    Recall, that earlier, we discovered $E[X^2]=e^2$. Plugging in
+    what we know,
+    \begin{equation*}
+      \gamma_1=\frac{E[X^3]-3e^2\sqrt{e}}{(e^2-e)^{3/2}}
+    \end{equation*}
+    To determine $E[X^3]$,
+    \begin{align*}
+      E[X^3]&=\int_{0}^\infty
+      \frac{x^2}{\sqrt{2\pi}}\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx\\
+            &=\frac{1}{\sqrt{2\pi}}\int_{0}^\infty
+      x^2\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx
+    \end{align*}
+    Wolfram alpha says
+    \begin{equation*}
+      \int_{0}^\infty
+      x^2\left(\frac{1}{x}\right)^
+      {\frac{ln(x)}{2}}dx=e^{9/2}\sqrt{2\pi}
+    \end{equation*}
+    Which Means:
+    \begin{equation*}
+      E[X^3]=e^{9/2}
+    \end{equation*}
+    Plugging this in,
+    \begin{equation*}
+      \gamma_1=\frac{e^{9/2}-3e^{5/2}}{(e^2-e)^{3/2}}
+    \end{equation*}
   }
 \end{homeworkProblem}
 
