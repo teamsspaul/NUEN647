@@ -641,7 +641,7 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
     \begin{equation*}
       \mu=E[x]=\int_{-\infty}^\infty xf(x)dx
     \end{equation*}
-    Solving for the log-normal distribution mean:
+    Using the log-normal distribution the mean is:
     \begin{align*}
       \mu=E[x]&=\int_{0}^\infty
       \frac{1}{\sqrt{2\pi}}\left(\frac{1}{x}\right)
@@ -656,7 +656,61 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
       \left(\frac{1}{x}\right)
       ^{\frac{ln(x)}{2}}dx=\sqrt{2e\pi}
     \end{equation*}
-    Therefore the answer is $\boxed{\sqrt{e}}$
+    Therefore the answer is $\boxed{\mu=\sqrt{e}}$
+  }
+  \problemAnswer{
+    \textbf{b) Variance}\\~\\
+    Variance, $\sigma^2$, is defined as:
+    
+    \begin{align*}
+      \sigma^2&=E[(X-\mu)^2]\\
+         &=E[X^2]-2E[\mu X]+E[\mu^2]\\
+         &=E[X^2]-\mu^2\\
+         &=\int_{-\infty}^\infty x^2f(x)dx-\mu^2
+    \end{align*}
+    Using the log-normal distribution the variance is:
+    \begin{align*}
+      \sigma^2=E[x^2]-\mu^2&=\int_{0}^\infty
+      \frac{x}{\sqrt{2\pi}}\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx-\mu^2\\
+            &=\frac{1}{\sqrt{2\pi}}\int_{0}^\infty
+      x\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx-\mu^2
+    \end{align*}
+    Wolfram alpha says
+    \begin{equation*}
+      \int_{0}^\infty
+      x\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx=e^2\sqrt{2\pi}
+    \end{equation*}
+    Therefore the answer is $\boxed{\sigma^2=e(e-1)}$
+  }
+  \problemAnswer{
+    \textbf{c) Median}\\~\\
+    The median is defined as the point where the CDF
+    is equal to one-half. The CDF, in terms of the PDF is:
+    \begin{equation*}
+      F_X(x)=\int_{-\infty}^{x}f(x')dx'
+    \end{equation*}
+    For the log-normal distribution
+    \begin{align*}
+      F_X(x)&=\int_{0}^{x}\frac{1}{x'\sigma\sqrt{2\pi}}
+      e^{-\frac{(ln(x')-\mu)^2}{2\sigma^2}}dx'\\
+      &=\frac{1}{2}+\frac{1}{2}erf\left[\frac{ln(x)-\mu}{\sqrt{2}\sigma}
+      \right]
+    \end{align*}
+    If $\sigma=1$ and $\mu=0$,
+    \begin{equation*}
+      F_X(x)=\frac{1}{2}+
+      \frac{1}{2}erf\left[\frac{ln(x)}{\sqrt{2}}\right]
+    \end{equation*}
+    If $F_X(x)=\frac{1}{2}$ then
+    \begin{align*}
+      erf^{-1}[0]\sqrt{2}&=ln(x)\\
+      e^{erf^{-1}[0]\sqrt{2}}&=x
+    \end{align*}
+    $erf^{-1}[0]=0$, because wolfram says so...\\~\\
+    Therefore the answer is $\boxed{Median=0}$
   }
 \end{homeworkProblem}
 
