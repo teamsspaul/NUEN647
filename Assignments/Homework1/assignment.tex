@@ -35,6 +35,7 @@
 \usepackage{amsmath}
 \usepackage{mathrsfs}
 \usepackage{float}
+\usepackage{enumitem}
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -757,14 +758,15 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
     numerator...
     \begin{align*}
       (X-\mu)^3&=(X-\mu)(X-\mu)(X-\mu)\\
-      &=X^3-3X^2\mu-X\mu^2+\mu^3\\
-      &=X^3-3X^2\mu
+      &=X^3-3X^2\mu+3X\mu^2-\mu^3\\
+      E[(X-\mu)^3]&=E[X^3]-3E[X^2]\mu+2\mu^3
     \end{align*}
-    The last two terms cancel because $E[X]=\mu$.
-    Recall, that earlier, we discovered $E[X^2]=e^2$. Plugging in
+    The last two terms have $\mu^3$ in them because $E[X]=\mu$.
+    Recall, that earlier, we discovered $E[X^2]=e^2$ and that
+    $\mu=\sqrt{e}$. Plugging in
     what we know,
     \begin{equation*}
-      \gamma_1=\frac{E[X^3]-3e^2\sqrt{e}}{(e^2-e)^{3/2}}
+      \gamma_1=\frac{E[X^3]-3e^2\sqrt{e}+2e^{3/2}}{(e^2-e)^{3/2}}
     \end{equation*}
     To determine $E[X^3]$,
     \begin{align*}
@@ -787,9 +789,95 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
     \end{equation*}
     Plugging this in,
     \begin{equation*}
-      \gamma_1=\frac{e^{9/2}-3e^{5/2}}{(e^2-e)^{3/2}}
+      \gamma_1=\boxed{\frac{e^{9/2}-3e^{5/2}+2e^{3/2}}{(e^2-e)^{3/2}}
+        =(e+2)\sqrt{e-1}=6.1849}
     \end{equation*}
+    The standard log-normal distribution has a positive skew,
+    which means that the distribution goes to zero more slowly
+    to the right of the mean (look up log-normal distribution
+    on wikipedia, and you'll be able to see that is the case).
   }
+
+  \problemAnswer{
+    \textbf{f) Kurtosis}\\~\\
+    The excess kurtosis is a measure of ``tail fatness'' for
+    a distribution, related to the fourth moment of a
+    random variable's PDF:
+    \begin{equation*}
+      \gamma_1=\frac{E[(X-\mu)^4]}{Var(X)^{2}}-3=
+               \frac{E[(X-\mu)^4]}{\sigma^{4}}-3
+    \end{equation*}
+    It should be noted that these $\mu$'s and $\sigma$'s are the
+    $\mu$'s and $\sigma$'s from the log-normal distribution,
+    not the $\mu$'s and $\sigma$'s from the normal distribution
+    with $\mu=0$ and $\sigma=1$ by which the logarithm was distributed.
+    Earlier it was proven that $\sigma^2=e^2-e$, $E[X]=\mu=\sqrt{e}$,
+    $E[X^2]=e^2$, and that $E[X^3]=e^{9/2}$. Expanding the
+    numerator...
+    \begin{align*}
+      (X-\mu)^4&=(X-\mu)(X-\mu)(X-\mu)(X-\mu)\\
+      &=X^4-4X^3\mu+6X^2\mu^2-4X\mu^3+\mu^4
+    \end{align*}
+    To determine $E[X^4]$,
+    \begin{align*}
+      E[X^4]&=\int_{0}^\infty
+      \frac{x^3}{\sqrt{2\pi}}\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx\\
+            &=\frac{1}{\sqrt{2\pi}}\int_{0}^\infty
+      x^3\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx
+    \end{align*}
+    Wolfram alpha says
+    \begin{equation*}
+      \int_{0}^\infty
+      x^3\left(\frac{1}{x}\right)^
+      {\frac{ln(x)}{2}}dx=e^{8}\sqrt{2\pi}
+    \end{equation*}
+    Which Means:
+    \begin{equation*}
+      E[X^4]=e^{8}
+    \end{equation*}
+    Plugging everything in:
+    \begin{align*}
+      \gamma_1&=\frac{E[(X-\mu)^4]}{\sigma^{4}}-3\\
+      &=\frac{E[X^4]-4E[X^3]\mu+6E[X^2]\mu^2-4E[X]\mu^3+
+        \mu^4]}{\sigma^{4}}-3\\
+      &=\boxed{\frac{e^{8}-4e^{9/2}\sqrt{e}+6e^2e-4\sqrt{e}e^{3/2}+
+        e^{2}]}{(e^2-e)^2}-3}\\
+      &=\boxed{e^4+2e^3+3e^2-6=110.94}
+    \end{align*}
+    Because the kurtosis is positive, we can deduce that
+    the standard log-normal distribution has heavier tails than
+    a normal distribution. Meaning that the PDF doesn't approach
+    zero as quickly as for a normal distribution.
+  }  
+\end{homeworkProblem}
+
+\clearpage
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 6
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  (Monte Hall Problem) You are on a game show and are presented with
+  three doors from which to choose. One of the doors contains a prize
+  and the other two have nothing. You pick a door (say door 1), and
+  then the host opens another door (say door 3), and asks you if you
+  want to switch to door number 2. What should you do?
+
+  \begin{enumerate}[label=\alph*]
+  \item{Using Bayes' theorem give the probability of
+    winning if you switch.}
+  \item{Write a simulation code to show that by randomly
+    assigning a prize to a door, then opening either
+    door 2 or 3 depending on which has the prize, and then
+    either switching or not. Compute the likelihood of winning
+    if you stick, versus the likelihood of winning if you switch.}
+
+    I always win...
+  \end{enumerate}
 \end{homeworkProblem}
 
 \clearpage
