@@ -4,3 +4,7 @@
 \contentsline {section}{Problem 4}{8}{section*.5}
 \contentsline {section}{Problem 5}{10}{section*.6}
 \contentsline {section}{Problem 6}{15}{section*.7}
+\contentsline {section}{Problem 7}{17}{section*.8}
+\contentsline {section}{Problem 8}{18}{section*.9}
+\contentsline {section}{Problem 9}{19}{section*.10}
+\contentsline {section}{Problem 10}{20}{section*.11}

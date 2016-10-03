@@ -875,12 +875,123 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
     door 2 or 3 depending on which has the prize, and then
     either switching or not. Compute the likelihood of winning
     if you stick, versus the likelihood of winning if you switch.}
-
-    I always win...
   \end{enumerate}
+
+  \problemAnswer{
+    \textbf{Bayes' theorem}
+    \begin{equation*}
+      f(x|y)=\frac{f(y|x)f_X(x)}{f_Y(y)}
+    \end{equation*}
+    \begin{itemize}
+    \item{Define $f(x|y)$ as $f(P2|D3)$, the probability of
+    the prize being behind door 2, given that door 3 was opened
+    to show nothing.}
+    \item{Define $f(y|x)$ as $f(D3|P2)$, the probability of
+      opening door 3 to reveal nothing, given that the prize
+      is behind door 2. This probability is 1, because the host will
+      either open door 2 or door 3 (we picked door 1). Since
+      good ol host will not open the door with the prize, he
+      will open door 3.}
+    \item{Define $f_X(x)$ as $f(P2)$, the probability of finding
+      the prize behind door 2. This probability is 1/3 because,
+      all things being equal, the prize is equally likely to be
+      found behind any of the three doors}
+    \item{Define $f_Y(y)$ as $f(D3)$, the probabilty the host
+      openings  door 3 to show nothing. There are three options for this.
+      First, if the prize is behind door 1, the host will open
+      door 3 half the time. Second, if the prize is behind door
+      2, the host will open door 3 every time. Third, if the prize
+      is behind door 3, the host will never open door 3. This equates
+      to:
+      \begin{equation*}
+        f(D3)=\frac{1}{3}\cdot\frac{1}{2}+\frac{1}{3}\cdot1+\frac{1}{3}
+        \cdot0=\frac{1}{2}
+      \end{equation*}
+      }
+    \begin{equation*}
+      f(P2|D3)=\frac{f(D3|P2)f(P2)}{f(D3)}=
+      \frac{1\cdot\frac{1}{3}}{\frac{1}{2}}=\boxed{\frac{2}{3}}
+    \end{equation*}
+    \end{itemize}  
+  }
+  \\
+  
+  Python script computing the likelihood of winning.
+  \pythonscript{Problem6/Calculations}{Python Script for problem}
+
+  \problemAnswer{
+    Output of code:\\~\\
+    You win 33\% of the time if you stay.\\
+    You win 67\% of the time if you switch.
+  }
 \end{homeworkProblem}
 
 \clearpage
+
+%--------------------------------------------------------------------------
+%	PROBLEM 7
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Consider a variable $Y$ distributed by a normal distribution
+  with mean given by $\theta$:
+  \begin{equation*}
+    f(f|\theta)=\frac{1}{\sigma\sqrt{2\pi}}
+    e^{\left(-\frac{(y-\theta)^2}{2\sigma^2}\right)}
+  \end{equation*}
+  Now consider $\theta$ to be a random variable as well, and $\sigma$
+  to be a known constant. Then say $\theta$ is normally distributed,
+  with mean $\mu$ and variance $\tau^2$ to give
+  \begin{equation*}
+    \pi(\theta)=\frac{1}{\tau\sqrt{2\pi}}
+        e^{\left(-\frac{(\theta-\mu)^2}{2\tau^2}\right)}
+  \end{equation*}
+  The parameters $\mu$ and $tau$ are called hyperparameters. Using
+  Bayes' theorem find $p(\theta|y)$, and show that it is a normal
+  distribution.
+\end{homeworkProblem}
+
+
+\clearpage
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 8
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Blah blah blah
+\end{homeworkProblem}
+
+
+\clearpage
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 9
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Generate $N$ samples from a standard normal random variable and
+  estimate the mean, variance, skewness, and kurtosis from the
+  samples. Use $N=10,10^2,\cdot\cdot\cdot,10^4$, and discuss how
+  the errors in the approximations behave as a function of N.
+\end{homeworkProblem}
+
+
+\clearpage
+
+%--------------------------------------------------------------------------
+%	PROBLEM 10
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Blah blah blah
+\end{homeworkProblem}
+
+
+\clearpage
+
 
 %--------------------------------------------------------------------------
 This is an example citation \cite{Tatro2013}.

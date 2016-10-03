@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+
+################################################################
+##################### Import packages ##########################
+################################################################
+
+import time
+start_time = time.time()
+import scipy.special as sps
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib
+import random as rn
+import Functions as fun
+import copy
+import os
+
+################################################################
+######################## Calculations ##########################
+################################################################
+
+x=rn.uniform(0,1)
+DoorPrize=fun.AssignDoor(x)
+y=rn.uniform(0,1)
+MyPick=fun.AssignDoor(y)
+
+#Choice=input('Enter Something')
+
+#print("Hello I am Monte Paul")
+#print("You have been randomly assigned door "+str(MyPick))
+
+#if(DoorPrize==MyPick):
+#    RemoveDoor
+Picked1=0
+Picked2=0
+Picked3=0
+
+for i in range(0,100):
+    pick=fun.SelectOneRandomly([1,2,3])
+    if(pick==1):
+        Picked1=Picked1+1
+    if(pick==2):
+        Picked2=Picked2+1
+    if(pick==3):
+        Picked3=Picked3+1
+
+print(Picked1/100)
+print(Picked2/100)
+print(Picked3/100)
+
+
+#print(DoorPrize)
+
+###################### Time To execute #################
+print("--- %s seconds ---" % (time.time() - start_time))

@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+
+################################################################
+##################### Import packages ##########################
+################################################################
+
+import time
+start_time = time.time()
+import random as rn
+import copy
+
+################################################################
+######################### Functions ############################
+################################################################
+
+def Remove(Not,List):
+    List2=copy.copy(List)
+    List2.remove(Not)
+    return(List2)
+
+def SelectOneRandomly(list):
+    sum=len(list)
+    rand=rn.uniform(0,1)
+    for i in range(0,len(list)):
+        if(rand> i/sum and rand <= (i+1)/sum):
+            Selection=list[i]
+    return(Selection)
+
+################################################################
+######################## Calculations ##########################
+################################################################
+
+N=100000;Stay=0;Switch=0
+for i in range(0,N):
+    MyPick=SelectOneRandomly([1,2,3])
+    DoorPrize=SelectOneRandomly([1,2,3])
+    AvaDoors=[1,2,3]
+
+    # Don't need this, but to remove one door randomly
+    if(DoorPrize==MyPick):
+        CanRemove=Remove(MyPick,AvaDoors)
+        ToRemove=SelectOneRandomly(CanRemove)
+        AvaDoors.remove(ToRemove)
+    else:
+        CanRemove=Remove(DoorPrize,AvaDoors)
+        CanRemove=Remove(MyPick,CanRemove)
+        AvaDoors.remove(CanRemove[0])
+
+    # All we really need, I think
+    if(DoorPrize==MyPick):
+        Stay=Stay+1
+    else:
+        Switch=Switch+1
+
+print("You win "+str(round(100*(Stay/N)))+"% of the time if you stay")
+print("You win "+str(round(100*(Switch/N)))+"% of the time if you switch")
+
+###################### Time To execute #################
+print("--- %s seconds ---" % (time.time() - start_time))
