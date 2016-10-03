@@ -6,20 +6,17 @@
 
 import time
 start_time = time.time()
-import scipy.special as sps
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
-import random as rn
 import Functions as fun
-import copy
 
 ################################################################
 ######################## Calculations ##########################
 ################################################################
 
 N=np.array([10,100,1000,10000])
-
+fig,ax=fun.PlotSetup()
 
 for i in range(0,len(N)):
     s=np.random.normal(0,1,N[i])
@@ -27,9 +24,13 @@ for i in range(0,len(N)):
     variance=(1/N[i])*sum((s-mean)**2)
     skew=(1/N[i])*sum((s-mean)**3)/((variance)**(3/2))
     kurtosis=(1/N[i])*sum((s-mean)**4)/(variance**2)-3
-    #variance=sum(variance)
-    #print("N = "+str(N[i])+" variance = "+str(variance))
-    print(kurtosis)
+    print("N = "+str(N[i])+" mean = "+str(mean)+\
+          " variance = "+str(variance)+\
+          " skew = "+str(skew)+\
+          " kurtosis = "+str(kurtosis))
+    ax=fun.Plot(N,mean,variance,skew,kurtosis,ax)
+
+plt.savefig('P9F1.pdf')
 
     
 ###################### Time To execute #################

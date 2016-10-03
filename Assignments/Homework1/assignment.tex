@@ -946,7 +946,7 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
     \pi(\theta)=\frac{1}{\tau\sqrt{2\pi}}
         e^{\left(-\frac{(\theta-\mu)^2}{2\tau^2}\right)}
   \end{equation*}
-  The parameters $\mu$ and $tau$ are called hyperparameters. Using
+  The parameters $\mu$ and $\tau$ are called hyperparameters. Using
   Bayes' theorem find $p(\theta|y)$, and show that it is a normal
   distribution.
 \end{homeworkProblem}
@@ -960,7 +960,28 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
 %--------------------------------------------------------------------------
 
 \begin{homeworkProblem}
-  Blah blah blah
+  Suppose that X is the number of people arriving at a particular
+  tavern during a given hour. This type of arrival process is naturally
+  described by a Poisson process:
+  \begin{equation*}
+    f(x|\theta)=\frac{e^{-\theta}\theta^{x}}{x!},\ \ \ \ x\in\{0,1,2,...\},
+    \ \ \theta>0.
+  \end{equation*}
+  We then say that our prior distribution of $\theta$ is a Gamma
+  distribution.
+  \begin{equation*}
+    \pi(\theta)=\frac{\theta^{\alpha-1}e^{-\theta\beta}}{\Gamma(\alpha)
+    \beta^{-\alpha}},\ \ \ \ \ \theta,\alpha,\beta>0.
+  \end{equation*}
+  Therefore, we say that $\theta\sim G(\alpha,\beta)$.
+  \begin{itemize}
+  \item{Show using Bayes' theorem that the posterior distribution for
+    $\theta$ given $x$ is proportional to a Gamma distribution.}
+  \item{Suppose you observe 42 people arriving in one hour, and the
+    prior distribution has $\alpha=5$ and $\beta=6$. Generate samples
+    from the posterior distribution and show graphically how the prior
+    has changed given the observation.}
+  \end{itemize}
 \end{homeworkProblem}
 
 
@@ -975,7 +996,20 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   Generate $N$ samples from a standard normal random variable and
   estimate the mean, variance, skewness, and kurtosis from the
   samples. Use $N=10,10^2,\cdot\cdot\cdot,10^4$, and discuss how
-  the errors in the approximations behave as a function of N.
+  the errors in the approximations behave as a function of N.\\
+
+  Python script computing the likelihood of winning.
+  \pythonscript{Problem9/Calculations}{Python Script for problem}
+
+  \problemAnswer{
+    Output of code:\\~\\
+    You win 33\% of the time if you stay.\\
+    You win 67\% of the time if you switch.
+  }
+
+
+
+  
 \end{homeworkProblem}
 
 
@@ -986,7 +1020,13 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
 %--------------------------------------------------------------------------
 
 \begin{homeworkProblem}
-  Blah blah blah
+  Consider the joint PDF
+  \begin{equation*}
+    f(x,y)=e^{-x/y},\ \ \ \ x\in[0,\infty)\ \ y\in[0,\sqrt{2}].
+  \end{equation*}
+  Compute and plot the marginal PDFs for X and Y. Additionally,
+  compute the conditional probability distributions, and make
+  plots for $f(y|X=\mu_x)$ and $f(x|y=\mu_y)$.
 \end{homeworkProblem}
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  3 OCT 2016 10:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  3 OCT 2016 12:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -548,7 +548,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 926--926
 
 ] [18
 
-] [19
+] (./Problem9/Calculations)
+Underfull \hbox (badness 10000) in paragraph at lines 1008--1008
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1008--1009
+
+ []
+
+[19
 
 ] [20
 
@@ -557,21 +567,21 @@ AED: lastpage setting LastPage
 [21
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1001.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1001.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1041.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1041.
  (./assignment.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1001.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1001.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1041.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1041.
 
 Package rerunfilecheck Info: File `assignment.out' has not changed.
 (rerunfilecheck)             Checksum: B27C5544FC74E11F934D3DB10D3D00D2;454.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1001.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1041.
  ) 
 Here is how much of TeX's memory you used:
- 8179 strings out of 494953
- 118692 string characters out of 6180977
+ 8224 strings out of 494953
+ 119304 string characters out of 6180977
  258206 words of memory out of 5000000
- 11184 multiletter control sequences out of 15000+600000
+ 11192 multiletter control sequences out of 15000+600000
  12871 words of font info for 48 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  35i,15n,43p,250b,1989s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -598,10 +608,10 @@ nts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on assignment.pdf (21 pages, 704931 bytes).
+Output written on assignment.pdf (21 pages, 709770 bytes).
 PDF statistics:
- 455 PDF objects out of 1000 (max. 8388607)
- 401 compressed objects within 5 object streams
- 161 named destinations out of 1000 (max. 500000)
+ 496 PDF objects out of 1000 (max. 8388607)
+ 442 compressed objects within 5 object streams
+ 195 named destinations out of 1000 (max. 500000)
  86 words of extra memory for PDF output out of 10000 (max. 10000000)
 
