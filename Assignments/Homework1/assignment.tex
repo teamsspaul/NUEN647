@@ -620,19 +620,19 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   \\~\\
   The PDF for the log-normal distribution, found on wikipedia, is:
   \begin{equation*}
-    f(X)=\frac{1}{x\sigma\sqrt{2\pi}}e^{-\frac{\left(ln(x)-\mu\right)^2}{2\sigma^2}}
+    f(X)=\frac{1}{x\sigma\sqrt{2\pi}}e^{-\frac{\left(ln(x)-\mu\right)^2}{2\sigma^2}} \ \ x\in[0,\infty)
   \end{equation*}
   For a standard log-normal distribution this is
   \begin{equation*}
     f(X)=\frac{1}{x\sqrt{2\pi}}
-    e^{-\frac{ln(x)^2}{2}}
+    e^{-\frac{ln(x)^2}{2}}\ \ x\in[0,\infty)
   \end{equation*}
   Which simplifies to:
   \begin{align*}
     f(X)&=\frac{1}{x\sqrt{2\pi}}
     \left(e^{-ln(x)}\right)^{\frac{ln(x)}{2}}\\
     &=\frac{1}{x\sqrt{2\pi}}
-    \left(\frac{1}{x}\right)^{\frac{ln(x)}{2}}
+    \left(\frac{1}{x}\right)^{\frac{ln(x)}{2}}\ \ x\in[0,\infty)
   \end{align*}
   \\~\\
   \problemAnswer{
@@ -804,7 +804,7 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
     a distribution, related to the fourth moment of a
     random variable's PDF:
     \begin{equation*}
-      \gamma_1=\frac{E[(X-\mu)^4]}{Var(X)^{2}}-3=
+      Kurt(x)=\frac{E[(X-\mu)^4]}{Var(X)^{2}}-3=
                \frac{E[(X-\mu)^4]}{\sigma^{4}}-3
     \end{equation*}
     It should be noted that these $\mu$'s and $\sigma$'s are the
@@ -839,7 +839,7 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
     \end{equation*}
     Plugging everything in:
     \begin{align*}
-      \gamma_1&=\frac{E[(X-\mu)^4]}{\sigma^{4}}-3\\
+      Kurt(x)&=\frac{E[(X-\mu)^4]}{\sigma^{4}}-3\\
       &=\frac{E[X^4]-4E[X^3]\mu+6E[X^2]\mu^2-4E[X]\mu^3+
         \mu^4]}{\sigma^{4}}-3\\
       &=\boxed{\frac{e^{8}-4e^{9/2}\sqrt{e}+6e^2e-4\sqrt{e}e^{3/2}+
@@ -936,7 +936,7 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   Consider a variable $Y$ distributed by a normal distribution
   with mean given by $\theta$:
   \begin{equation*}
-    f(f|\theta)=\frac{1}{\sigma\sqrt{2\pi}}
+    f(y|\theta)=\frac{1}{\sigma\sqrt{2\pi}}
     e^{\left(-\frac{(y-\theta)^2}{2\sigma^2}\right)}
   \end{equation*}
   Now consider $\theta$ to be a random variable as well, and $\sigma$
@@ -998,13 +998,22 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   samples. Use $N=10,10^2,\cdot\cdot\cdot,10^4$, and discuss how
   the errors in the approximations behave as a function of N.\\
 
-  Python script computing the likelihood of winning.
+  Python script for sampling, calculaiton and plotting.
   \pythonscript{Problem9/Calculations}{Python Script for problem}
 
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.9\columnwidth]{Problem9/P9F1.pdf}
+      \vspace{-5mm}
+      \caption{Sample parameter differences from expected values.}
+    \label{fig:P4F1}
+  \end{center}
+  \end{figure}
+
+  
   \problemAnswer{
-    Output of code:\\~\\
-    You win 33\% of the time if you stay.\\
-    You win 67\% of the time if you switch.
+    The plot shows that the error is decreasing as the sample size
+    increases. The mean and variance decrease as a function of 1/N.
   }
 
 
@@ -1027,6 +1036,169 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   Compute and plot the marginal PDFs for X and Y. Additionally,
   compute the conditional probability distributions, and make
   plots for $f(y|X=\mu_x)$ and $f(x|y=\mu_y)$.
+  \vspace{5mm}
+  
+  \problemAnswer{
+    \textbf{Marginal PDFs}\\~\\
+    For y:
+    \begin{align*}
+      f(y)&=\int_{0}^{\infty} e^{-x/y} dx\\
+      &=-y\left|e^{-x/y}\right|_0^{\infty}\\
+      &=-y(e^{-\infty}-e^{-0})\\
+      &=y,\ \ \ \ y\in[0,\sqrt{2}]
+    \end{align*}
+    For x (use transform $1/y=t$ and $\frac{-dt}{t^2}=dy$):
+    \begin{align*}
+      f(x)&=\int_{0}^{\sqrt{2}} e^{-x/y} dy\\
+      &=\int_{\infty}^{1/\sqrt{2}}\frac{-e^{-xt}}{t^2}dt\\
+      &=\int_{1/\sqrt{2}}^{\infty}\frac{e^{-xt}}{t^2}dt
+    \end{align*}
+    Use $u=e^{-xt}$, $du=-xe^{-xt}$, $v=-1/t$, $dv=\frac{1}{t^2}dt$,
+    \begin{align*}
+      f(x)&=\left|\frac{-e^{-xt}}{t}\right|_{\frac{1}{\sqrt{2}}}^{\infty}
+      -x\int_{\frac{1}{\sqrt{2}}}^{\infty}\frac{e^{-xt}}{t}dt\\
+      &=\left(\frac{-1}{e^{\infty}\infty}+\sqrt{2}
+      e^{\frac{-x}{\sqrt{2}}}\right)
+      -x\int_{\frac{1}{\sqrt{2}}}^{\infty}\frac{e^{-xt}}{t}dt\\
+      &=\sqrt{2}e^{\frac{-x}{\sqrt{2}}}
+      -x\int_{\frac{1}{\sqrt{2}}}^{\infty}\frac{e^{-xt}}{t}dt
+    \end{align*}
+    Wolfram alpha says that:
+    \begin{equation*}
+      \int_{\frac{1}{\sqrt{2}}}^{\infty}\frac{e^{-xt}}{t}dt=\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right)
+    \end{equation*}
+    Where $\Gamma(a,x)$ is the incomplete gamma function...Python has
+    a function for that, lets hope it works and we will leave it at that.
+    \\~\\
+    Therefore $f(x)$ is:
+
+    \begin{equation*}
+      f(x)=\sqrt{2}e^{\frac{-x}{\sqrt{2}}}-x\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right),\ \ \ \ x\in[0,\infty)
+    \end{equation*}
+  }
+  \problemAnswer{
+    \textbf{Conditional Probability Distributions}\\~\\
+    The conditional probability distribution is defined as:
+    \begin{equation*}
+      f(y|X=x)=\frac{f(x,y)}{f_X(x)}
+    \end{equation*}
+    Plugging in the above for f(y|X=x):
+    \begin{equation*}
+      f(y|X=x)=\frac{e^{-x/y}}{\sqrt{2}e^{\frac{-x}
+          {\sqrt{2}}}-x\Gamma\left(0,\frac{x}{\sqrt{2}}\right)},\ \ \ \
+      x\in[0,\infty)\ \ y\in[0,\sqrt{2}]
+    \end{equation*}
+    Plugging in for f(x|Y=y):
+    \begin{equation*}
+      f(x|Y=y)=\frac{e^{-x/y}}{y},\ \ \ \
+      x\in[0,\infty)\ \ y\in[0,\sqrt{2}]
+    \end{equation*}
+   }
+
+   \problemAnswer{
+     \textbf{Mean Values}\\~\\
+     The mean, $\mu$, is defined as:
+    \begin{equation*}
+      \mu=E[x]=\int_{-\infty}^\infty xf(x)dx
+    \end{equation*}
+    For $f(y)$
+    \begin{align*}
+      \mu_Y=E[y]&=\int_{0}^{\sqrt{2}} yf(y)dy\\
+      &=\int_{0}^{\sqrt{2}} yydy\\
+      &=\left|\frac{y^3}{3}\right|_{0}^{\sqrt{2}}\\
+      &=\frac{2^{3/2}}{3}\\
+      &=\boxed{0.9428}
+    \end{align*}
+    For $f(x)$
+    \begin{align*}
+      \mu_X=E[x]&=\int_{0}^{\infty} xf(x)dx\\
+      &=\int_{0}^{\infty} x\left(\sqrt{2}e^{\frac{-x}{\sqrt{2}}}-
+      x\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right)\right)dx\\
+      &=\int_{0}^{\infty} x\sqrt{2}e^{\frac{-x}{\sqrt{2}}}-
+      x^2\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right)dx\\
+    \end{align*}
+    Wolfram alpha says:
+    \begin{equation*}
+      \int_{0}^{\infty}xe^{-\frac{x}{\sqrt{2}}}dx=2
+    \end{equation*}
+    This means:
+    \begin{align*}
+      \mu_X=2\sqrt{2}-\int_{0}^{\infty}
+      x^2\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right)dx
+    \end{align*}
+   }
+   \problemAnswer{
+     Let us work on that incomplete Gamma:
+     \begin{align*}
+       -\int_{0}^{\infty}x^2\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right)dx
+     \end{align*}
+     Before it was an incomplete Gamma, it was this:
+     \begin{align*}
+       -\int_{0}^{\infty}x^2\ \
+       \int_{\frac{1}{\sqrt{2}}}^{\infty}\frac{e^{-xt}}{t}dtdx
+     \end{align*}
+     This looks more doable (McClarren is a mean old man).
+     \begin{align*}
+       &-\int_{0}^{\infty}dx
+       \int_{\frac{1}{\sqrt{2}}}^{\infty} dt\ \ 
+       \frac{x^2e^{-xt}}{t}\\
+       =&-\int_{\frac{1}{\sqrt{2}}}^{\infty} dt
+       \int_{0}^{\infty}dx\ \ 
+       \frac{x^2e^{-xt}}{t}\\
+       =&-\int_{\frac{1}{\sqrt{2}}}^{\infty} dt
+       \int_{0}^{\infty} 
+       \frac{x^2e^{-xt}}{t}dx
+     \end{align*}
+     Wolfram Alpha says:
+     \begin{equation*}
+       \int_{0}^{\infty} 
+       \frac{x^2e^{-xt}}{t}dx=\frac{2}{t^4}
+     \end{equation*}
+     Plugging this in:
+     \begin{align*}
+       &-\int_{\frac{1}{\sqrt{2}}}^{\infty}
+       \frac{2}{t^4}dt\\
+       =&\frac{2}{3}\left|\frac{1}{t^3}
+       \right|_{\frac{1}{\sqrt{2}}}^\infty\\
+       =&\frac{-4\sqrt{2}}{3}=-1.8856
+     \end{align*}
+     Therefore:
+     \begin{equation*}
+       \boxed{\mu_X=0.942809}
+     \end{equation*}
+   }
+   \problemAnswer{
+     \textbf{To Plot}\\~\\
+     \begin{equation*}
+       f(y|X=\mu_X)=\frac{e^{-\mu_X/y}}{\sqrt{2}e^{\frac{-\mu_X}
+           {\sqrt{2}}}-\mu_X\Gamma\left(0,\frac{\mu_X}{\sqrt{2}}\right)},
+       \ \ \ \ y\in[0,\sqrt{2}]
+    \end{equation*}
+    \begin{equation*}
+      f(x|Y=\mu_Y)=\frac{e^{-x/\mu_Y}}{\mu_Y},\ \ \ \
+      x\in[0,\infty)
+    \end{equation*}
+    Where $\mu_X=0.942809$ and $\mu_Y=0.9428$
+   }
+  \\   
+  Python script for plotting
+  \pythonscript{Problem10/Calculations}{Python Script for problem}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.9\columnwidth]{Problem10/P10F1.pdf}
+      \vspace{-5mm}
+      \caption{Conditional probability plots.}
+    \label{fig:P4F1}
+  \end{center}
+  \end{figure}
+      
 \end{homeworkProblem}
 
 

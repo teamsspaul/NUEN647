@@ -15,7 +15,7 @@ import Functions as fun
 ######################## Calculations ##########################
 ################################################################
 
-N=np.array([10,100,1000,10000])
+N=np.array([10,100,1000,10000]);N=np.logspace(1,4,100)
 fig,ax=fun.PlotSetup()
 
 for i in range(0,len(N)):
@@ -24,14 +24,19 @@ for i in range(0,len(N)):
     variance=(1/N[i])*sum((s-mean)**2)
     skew=(1/N[i])*sum((s-mean)**3)/((variance)**(3/2))
     kurtosis=(1/N[i])*sum((s-mean)**4)/(variance**2)-3
-    print("N = "+str(N[i])+" mean = "+str(mean)+\
-          " variance = "+str(variance)+\
-          " skew = "+str(skew)+\
-          " kurtosis = "+str(kurtosis))
-    ax=fun.Plot(N,mean,variance,skew,kurtosis,ax)
+    #Print if you want to
+    if N[i]==10 or N[i]==100 or N[i]==1000 or N[i]==10000:
+        print("N = "+str(N[i])+" mean = "+str(mean)+\
+              " variance = "+str(variance)+\
+              " skew = "+str(skew)+\
+              " kurtosis = "+str(kurtosis))
+    Emean=abs(mean-0)
+    Evariance=abs(variance-1)
+    Eskew=abs(skew-0)
+    Ekurtosis=abs(kurtosis-0)
+    ax=fun.Plot(N[i],Emean,Evariance,Eskew,Ekurtosis,ax)
 
 plt.savefig('P9F1.pdf')
 
-    
 ###################### Time To execute #################
 print("--- %s seconds ---" % (time.time() - start_time))

@@ -30,14 +30,12 @@ plt.rcParams["font.family"] = "monospace"
 import matplotlib
 matplotlib.rc('text',usetex=True)
 matplotlib.rcParams['text.latex.preamble']=[r"\usepackage{amsmath}"]
-import random as rn
-import Functions as fun
 
 ################################################################
 ######################### Functions ############################
 ################################################################
 
-def PlotSetup():
+def Plot():
     
     fig = plt.figure()
     ax = [fig.add_subplot(111)]
@@ -49,45 +47,27 @@ def PlotSetup():
                       labelleft='off',labelright='off',labeltop='off',
                       labelbottom='off',right='off')
                     
-    ax = np.append(ax,fig.add_subplot(221)) #1
-    ax = np.append(ax,fig.add_subplot(222)) #2
-    ax = np.append(ax,fig.add_subplot(223)) #3
-    ax = np.append(ax,fig.add_subplot(224)) #4
+    ax = np.append(ax,fig.add_subplot(211))
+    ax = np.append(ax,fig.add_subplot(212))
     
-    ax[0].set_xlabel(r'Number of Samples',fontsize=18)
-    ax[0].xaxis.labelpad=20
+    ax[2].set_xlabel(r'\textbf{X or Y}',fontsize=18)
+    ax[0].set_ylabel(r'\textbf{Probability}',fontsize=18)
+    ax[0].yaxis.labelpad=55
 
-    ax[1].set_ylabel(r'abs(Mean - 0)',fontsize=14)
-    ax[2].set_ylabel(r'abs(Variance-1)',fontsize=14)
-    ax[3].set_ylabel(r'abs(Skew-0)',fontsize=14)
-    ax[4].set_ylabel(r'abs(Kurtosis-0)',fontsize=14)
-
-    ax[1].set_xscale('log')
-    ax[2].set_xscale('log')
-    ax[3].set_xscale('log')
-    ax[4].set_xscale('log')
+    ax[1].set_ylabel(r'$f(y|X=\mu_X)$',fontsize=14)
+    ax[2].set_ylabel(r'$f(x|Y=\mu_Y)$',fontsize=14)
     
-    ax[1].xaxis.set_tick_params(labelsize=10)
-    ax[1].yaxis.set_tick_params(labelsize=10)
-    ax[2].xaxis.set_tick_params(labelsize=10)
-    ax[2].yaxis.set_tick_params(labelsize=10)
-    ax[3].xaxis.set_tick_params(labelsize=10)
-    ax[3].yaxis.set_tick_params(labelsize=10)
-    ax[4].xaxis.set_tick_params(labelsize=10)
-    ax[4].yaxis.set_tick_params(labelsize=10)
+    ax[1].xaxis.set_tick_params(labelsize=14)
+    ax[1].yaxis.set_tick_params(labelsize=14)
+    ax[2].xaxis.set_tick_params(labelsize=14)
+    ax[2].yaxis.set_tick_params(labelsize=14)
     
     ax[1].grid(alpha=0.8,color='black',linestyle='dotted')
     ax[2].grid(alpha=0.8,color='black',linestyle='dotted')
-    ax[3].grid(alpha=0.8,color='black',linestyle='dotted')
-    ax[4].grid(alpha=0.8,color='black',linestyle='dotted')
     return(fig,ax)
 
-def Plot(N,mean,variance,skew,kurtosis,ax):
-        
-    ax[1].plot(N,mean,'.k')
-    ax[2].plot(N,variance,'.k')
-    ax[3].plot(N,skew,'.k')
-    ax[4].plot(N,kurtosis,'.k')
-
+def Plotax(X,Y,ax,j):
+    ax[j].plot(X,Y,'-k',linewidth=3)
     return(ax)
 
+plt.savefig('P4F1.pdf')
