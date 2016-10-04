@@ -949,6 +949,26 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   The parameters $\mu$ and $\tau$ are called hyperparameters. Using
   Bayes' theorem find $p(\theta|y)$, and show that it is a normal
   distribution.
+
+  \problemAnswer{
+    \begin{equation*}
+      p(\theta|y)=\frac{f(y|\theta)\cdot\pi(\theta)}{f(y)}
+    \end{equation*}
+    $f(y)$ will be a function of y, but is a constant for a given
+    y, which is the case for $p(\theta|y)$.
+    \begin{align*}
+      p(\theta|y)&=cf(y|\theta)\cdot\pi(\theta)\\
+      &=ce^{\left(-\frac{(y-\theta)^2}{2\sigma^2}\right)}
+      e^{\left(-\frac{(\theta-\mu)^2}{2\tau^2}\right)}\\
+      &=ce^{\left(-\frac{(y-\theta)^2}{2\sigma^2}\right)
+        +\left(-\frac{(\theta-\mu)^2}{2\tau^2}\right)}\\
+      &=ce^ce^{\frac{(\theta'-\mu')^2}{2\sigma'^2}}\\
+      &=ce^{\frac{(\theta'-\mu')^2}{2\sigma'^2}}\\
+    \end{align*}
+    This looks like a normal. In order to combine the two
+    fractions in the exponent completion of squares needs to
+    be done.
+  }
 \end{homeworkProblem}
 
 
@@ -970,8 +990,8 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
   We then say that our prior distribution of $\theta$ is a Gamma
   distribution.
   \begin{equation*}
-    \pi(\theta)=\frac{\theta^{\alpha-1}e^{-\theta\beta}}{\Gamma(\alpha)
-    \beta^{-\alpha}},\ \ \ \ \ \theta,\alpha,\beta>0.
+    \pi(\theta)=\frac{\theta^{\alpha-1}e^{-\theta/\beta}}{\Gamma(\alpha)
+    \beta^{\alpha}},\ \ \ \ \ \theta,\alpha,\beta>0.
   \end{equation*}
   Therefore, we say that $\theta\sim G(\alpha,\beta)$.
   \begin{itemize}
@@ -982,6 +1002,84 @@ where appropriate. You may use any tools that are approrpriate to solving the pr
     from the posterior distribution and show graphically how the prior
     has changed given the observation.}
   \end{itemize}
+  \vspace{2mm}
+  \problemAnswer{
+    \textbf{Bayes' Theorem for posterior}
+    \\~\\
+    \begin{equation*}
+      f(\theta|x)=\frac{f(x|\theta)\pi(\theta)}{f(x)}
+    \end{equation*}
+    Where $f(x)$:
+    \begin{align*}
+      f(x)&=\int_{-\infty}^{\infty}d\theta f(x,\theta)\\
+      &=\int_{-\infty}^{\infty}d\theta f(x|\theta)\pi(\theta)\\
+      &=\int_{0}^{\infty}d\theta
+      \frac{e^{-\theta}\theta^x}{x!}\cdot\frac{\theta^{\alpha-1}
+        e^{-\theta/\beta}}{\Gamma(\alpha)\beta^{\alpha}}\\
+      &=\frac{\int_{0}^{\infty}d\theta
+        e^{\theta(-1-1/\beta)}\theta^{\alpha+x-1}}
+           {x!\Gamma(\alpha)\beta^{\alpha}}
+    \end{align*}
+    The deonminator will cancel when the Posterior is solved for.
+    And the numerator, without the integral, will be the numerator
+    for the posterior derivation.
+  }
+  \problemAnswer{
+    If:
+    \begin{align*}
+      y=&\theta(1+1/\beta) \rightarrow \theta=\frac{y}{1+1/\beta}\\
+      dy=&(1+1/\beta)d\theta\\
+      \frac{dy}{1+1/\beta}=&d\theta
+    \end{align*}
+    then:
+    \begin{align*}
+      &\int_0^{\infty}d\theta e^{\theta(-1-1/\beta)}\theta^{\alpha+x-1}\\
+      =&\int_0^{\infty}\frac{dy}{1+1/\beta} e^{-y}
+      \frac{y^{\alpha+x-1}(1+1/\beta)}{(1+1/\beta)^{\alpha+x}}\\
+      =&\frac{1}{(1+1/\beta)^{\alpha+x}}\int_0^\infty
+      e^{-y}y^{\alpha+x-1}dy\\
+      =&\frac{1}{(1+1/\beta)^{\alpha+x}}\Gamma(\alpha+x)
+    \end{align*}
+  }
+  \problemAnswer{
+    Therefore the posterior is:
+    \begin{align*}
+      f(\theta|x)=&\frac{f(x|\theta)\pi(\theta)}{f(x)}\\
+      =&\frac{\frac{e^{-\theta}\theta^{x}}{x!}
+        \frac{\theta^{\alpha-1}e^{-\theta/\beta}}{\Gamma(\alpha)
+          \beta^{\alpha}}}{\frac{
+          \frac{1}{(1+1/\beta)^{\alpha+x}}\Gamma(\alpha+x)}
+        {x!\Gamma(\alpha)\beta^{\alpha}}}\\
+      =&\frac{e^{-\theta(1+1/\beta)}\theta^{\alpha+x-1}}
+      {\frac{1}{(1+1/\beta)^{\alpha+x}}\Gamma(\alpha+x)}\\
+      =&(1+1/\beta)^{\alpha+x}\frac{e^{-\theta(1+1/\beta)}\theta^{\alpha+x-1}}
+      {\Gamma(\alpha+x)}
+    \end{align*}
+    If we write a gamma distribution as:
+    \begin{equation*}
+      GammaDist(z)=\frac{1}{\Gamma(a)b^a}z^{a-1}e^{-z/b}
+    \end{equation*}
+    Then if: $a=\alpha+x$ and $b=(1+1/\beta)^{-1}$:
+    \begin{equation*}
+      GammaDist(z)=(1+1/\beta)^{\alpha+x}
+      \frac{e^{-z(1+1/\beta)}z^{\alpha+x-1}}
+      {\Gamma(\alpha+x)}
+    \end{equation*}
+    The same as the posterior where $\theta=z$.
+  }
+
+  Python script for plotting.
+  \pythonscript{Problem8/Calculations}{Python Script for problem}
+  \vspace{-7mm}
+  \begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.77\columnwidth]{Problem8/P8F1.pdf}
+    \vspace{-5mm}
+    \caption{Plots of prior and posterior.}
+    \label{fig:P8F1}
+  \end{center}
+  \end{figure}
+  The plot shifts over closer to 42.
 \end{homeworkProblem}
 
 
