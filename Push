@@ -3,29 +3,35 @@
 import subprocess
 import os
 
-proc = subprocess.Popen(["git status"], stdout=subprocess.PIPE, shell=True)
-(out, err) = proc.communicate()
+out=subprocess.check_output(["git", "status"])
+
 out=out.decode("utf-8")
 out=out.split("\n")
+
 for item in out:
     if "modified:" in item:
         item=item.replace("modified:","")
         item=item.replace(" ","")
         item=item.replace("\t","")
-        os.system('git add '+item)
-        #print(item)
+        #os.system('C:/Program\ Files/Git/git add '+item)
+        subprocess.call(["git","add",item])
+        print(item)
     elif "deleted:" in item:
         item=item.replace("deleted:","")
         item=item.replace(" ","")
         item=item.replace("\t","")
-        os.system('git add '+item)
-        #print(item)
+        #os.system('C:/Program\ Files/Git/git add '+item)
+        subprocess.call(["git","add",item])
+        print(item)
     elif "\t" in item:
         item=item.replace(" ","")
         item=item.replace("\t","")
-        os.system('git add '+item)
-        #print(item)
+        #os.system('C:/Program\ Files/Git/git add '+item)
+        subprocess.call(["git","add",item])
+        print(item)
 
-os.system('git commit -m \"Update Files\"')
-os.system('git push origin master')
+subprocess.call(["git","commit","-m","\"Update Files\""])
+#os.system('C:/Program\ Files/Git/git commit -m \"Update Files\"')
+subprocess.call(["git","push","origin","master"])
+#os.system('C:/Program\ Files/Git/git push origin master')
 

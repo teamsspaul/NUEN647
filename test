@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+import subprocess
+import os
+
+
+#print("hello")
+
+#out=subprocess.check_output(["git", "status"])
+
+#print(out)
+
+item="Push"
+t=["git","add",item]
+print(t)
