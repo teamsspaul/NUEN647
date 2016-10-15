@@ -11,6 +11,7 @@ out=out.split("\n")
 for item in out:
     if "modified:" in item:
         item=item.replace("modified:","")
+        item=item.replace("#","")
         item=item.replace(" ","")
         item=item.replace("\t","")
         #os.system('C:/Program\ Files/Git/git add '+item)
@@ -18,6 +19,7 @@ for item in out:
         print(item)
     elif "deleted:" in item:
         item=item.replace("deleted:","")
+        item=item.replace("#","")
         item=item.replace(" ","")
         item=item.replace("\t","")
         #os.system('C:/Program\ Files/Git/git add '+item)
@@ -25,6 +27,7 @@ for item in out:
         print(item)
     elif "\t" in item:
         item=item.replace(" ","")
+        item=item.replace("#","")
         item=item.replace("\t","")
         #os.system('C:/Program\ Files/Git/git add '+item)
         subprocess.call(["git","add",item])
