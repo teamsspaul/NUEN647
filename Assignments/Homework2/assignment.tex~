@@ -1,0 +1,1311 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code,
+% most other languages are also usable. Configure them in the
+% "CODE INCLUSION CONFIGURATION" section.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%-------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage{enumitem}
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClassShort\ (\hmwkClassInstructor)} % Top center head
+%\rhead{\firstxmark} % Top right header
+\rhead{\hmwkTitle}
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+% Bottom right footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} 
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%--------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%--------------------------------------------------------------------------
+% This is the color used for comments
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} 
+\lstloadlanguages{Perl,Python} % Load Perl syntax for listings,
+% for a list of other languages supported see:
+%ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=Perl, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        % Custom functions underlined and blue
+        keywordstyle=[3]\color{Blue}\underbar, 
+        identifierstyle=, % Nothing special about identifiers
+        % Comments small dark green courier font
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, 
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included
+        % in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        % Line continuation (...) like blue comment
+        morecomment=[l][\color{Blue}]{...}, 
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+
+\lstset{language=Python, % Use Python in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Python functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Python function arguments purple
+        % Custom functions underlined and blue
+        keywordstyle=[3]\color{Blue}\underbar, 
+        identifierstyle=, % Nothing special about identifiers
+        % Comments small dark green courier font
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, 
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=3, % 5 spaces per tab
+        %
+        % Put standard Python functions not included in the
+        % default language here
+        morekeywords={rand},
+        %
+        % Put Python function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        % Line continuation (...) like blue comment
+        morecomment=[l][\color{Blue}]{...}, 
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+
+% Creates a new command to include a perl script, the first
+% parameter is the filename of the script (without .pl), the
+% second parameter is the caption
+\newcommand{\perlscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.pl}
+\end{itemize}
+}
+\newcommand{\pythonscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1}
+\end{itemize}
+}
+
+
+%--------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%--------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a
+% problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem
+% environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+% Creates a counter to keep track of the number of problems
+\newcounter{homeworkProblemCounter} 
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes
+   % 1 argument (custom name) but the default is "Problem #"
+  % Increase counter for number of problems
+  \stepcounter{homeworkProblemCounter}
+  % Assign \homeworkProblemName the name of the problem
+  \renewcommand{\homeworkProblemName}{#1}
+  % Make a section in the document with the custom problem count
+  \section{\homeworkProblemName}
+  % Header and footer within the environment  
+  \enterProblemHeader{\homeworkProblemName} 
+}{
+  % Header and footer after the environment
+  \exitProblemHeader{\homeworkProblemName}
+}
+% Defines the problem answer command with the content as the only argument
+ % Makes the box around the problem answer and puts the content inside
+\newcommand{\problemAnswer}[1]{ 
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}}
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+%--------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%--------------------------------------------------------------------------
+\newcommand{\hmwkTitle}{Assignment\ 1} % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ October\ 4,\ 2016} % Due date
+\newcommand{\hmwkClass}{NUEN 647\\ Uncertainty Quantification for Nuclear Engineering} % Course/class
+\newcommand{\hmwkClassTime}{Tu/Th 11:10am} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{Dr. McClarren} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Paul Mendoza} % Your name
+\newcommand{\hmwkClassShort}{NUEN 647 UQ for Nuclear Engineering}
+%--------------------------------------------------------------------------
+%	TITLE PAGE
+%--------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{} % Insert date here if you want it to appear below your name
+
+%--------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%--------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%--------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+Complete the exercises in the Chapter 2 notes. Be sure to include discussion of results
+where appropriate. You may use any tools that are approrpriate to solving the problem.
+
+%--------------------------------------------------------------------------
+%	PROBLEM 1
+%--------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+\begin{homeworkProblem}
+  Show that the transformation in equation \ref{eq:1} results
+  in a standard normal
+  random variable by computing the mean and variance of z.
+
+  \begin{equation} \label{eq:1}
+    z = \frac{x-\mu}{\sigma}
+  \end{equation}
+
+  An important special case of the expectation value is the mean which
+  is the expected value of $x$. It is often denoted as $\mu$,
+
+  \begin{equation*}
+    \mu=E[x]=\int_{-\infty}^\infty xf(x)dx
+  \end{equation*}
+
+  where $x$ is a realization of a random sample and $f(x)$ is
+  the probability density function (PDF) for the random variable.
+  For a normal distribution,
+
+  \begin{equation*}
+    f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}
+  \end{equation*}
+  \problemAnswer{
+  For the sake of the transformation, the value of z substitutes for
+  $x$, the realization of a random sample (not the PDF because we are
+  transforming that distribution). Therefore, the mean for
+  z is:
+
+  \begin{equation*}
+    \mu_z=\int_{-\infty}^\infty \frac{x-\mu}{\sigma}
+           \frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}dx
+  \end{equation*}
+
+  If $u=(x-\mu)^2$ and $\frac{du}{2}=(x-\mu)dx$ (note that the limits
+  change from $(-\infty,\infty)$ to $(\infty,\infty)$ - but that seems
+  fishy to me so I will change it back after integration).
+
+  \begin{equation*}
+    \mu_z=\int_{\infty}^\infty
+    \frac{1}{2\sigma^2\sqrt{2\pi}}e^{\frac{-u}{2\sigma^2}}du
+    =\left|\frac{-1}{\sqrt{2\pi}}e^{\frac{-u}{2\sigma^2}}
+      \right|_\infty^\infty
+  \end{equation*}
+  \begin{equation*}
+    \mu_z
+    =\left|\frac{-1}{\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}
+    \right|_{-\infty}^\infty=\frac{-1}{\sqrt{2\pi}}(e^{-\infty}-
+    e^{-\infty}) =\boxed{0}
+  \end{equation*}
+  }
+  \problemAnswer{
+  The variance is defined as:
+
+  \begin{equation*}
+    Var(X)=E[(X-\mu_X)^2]
+  \end{equation*}
+
+  Substituting Eq. \ref{eq:1} for $X$, (but not for the pdf)
+
+  \begin{equation*}
+    Var(Z)=E[(\frac{x-\mu_X}{\sigma_X}-\mu_Z)^2]=
+    E\left[\left(\frac{x-\mu_X}{\sigma_X}\right)^2\right]=
+    \frac{1}{\sigma_X^2}(E[x^2]-2\mu_XE[x]+
+    \mu^2E[1])
+  \end{equation*}
+
+  Noting that above it was proven that $E[x]=\mu_X$ and given that
+  the definition of $E[1]=1$ and assuming that
+  $E[x^2]=\sigma_X^2+\mu_X^2$ (will solve on next page)
+
+  \begin{equation*}
+    \frac{1}{\sigma_X^2}(\sigma_X^2+\mu_X^2-2\mu_X^2+\mu_X^2
+    )=\boxed{1}
+  \end{equation*}
+ 
+  }
+  \clearpage
+
+  \begin{equation*}
+    E[x^2]=\int_{-\infty}^{\infty} \frac{x^2}{\sigma\sqrt{2\pi}}
+           e^{\frac{-(x-\mu)^2}{2\sigma^2}}
+  \end{equation*}
+
+  If $t=\frac{(x-\mu)}{\sqrt{2}\sigma}$ and $\sqrt{2}\sigma dt=dx$ and
+  $x=t\sqrt{2}\sigma+\mu$
+  then (limits of integration don't change)
+  
+  \begin{equation*}
+    E[x^2]=\int_{-\infty}^{\infty} \frac{\left(t\sqrt{2}\sigma+\mu
+      \right)^2}{\sqrt{\pi}}e^{-t^2}dt=
+    \frac{1}{\sqrt{\pi}}\int_{-\infty}^{\infty}\left(2\sigma^
+    2\left(t^2e^{-t^2}\right)+
+    2\sqrt{2}\sigma\mu\left(te^{-t^2}\right)+\mu^2\left(e^{-t^2}\right)\right)
+  \end{equation*}
+
+  According to wolfram alpha
+
+  \begin{equation*}
+    \int_{-\infty}^\infty t^2e^{-t^2}=\frac{\sqrt{\pi}}{2}
+  \end{equation*}
+
+  \begin{equation*}
+    \int_{-\infty}^\infty te^{-t^2}=0
+  \end{equation*}
+
+  \begin{equation*}
+    \int_{-\infty}^\infty e^{-t^2}=\sqrt{\pi}
+  \end{equation*}
+
+  Which simplifies the above to $\sigma^2+\mu^2$.
+%Listing \ref{Problem1/homework_example} shows a Perl script.
+
+%\perlscript{Problem1/homework_example}{Sample Perl Script With Highlighting}
+
+%\pythonscript{Problem1/Calculations}{Sample python script no .py}
+
+%\pythonscript{Problem1/Functions.py}{Sample python script no .py}
+%% \problemAnswer{
+%% \begin{center}
+%% \includegraphics[width=0.75\columnwidth]{Problem2/example_figure} % Example image
+%% \end{center}
+
+%% \lipsum[3-5]
+%% }
+  
+\end{homeworkProblem}
+
+\clearpage
+
+%--------------------------------------------------------------------------
+%	PROBLEM 2
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+%\lipsum[2]
+  Consider the random variables $X\sim U(-1,1)$ and $Y\sim X^2$.
+  Are these independent random variables? What is their covariance?
+  \\~\\
+  \problemAnswer{
+  \textbf{Marginal and Joint PDFs}\\~\\
+  The PDF for X is:
+
+  \begin{equation*}
+    f_X(x)=\frac{1}{(1-(-1))}=0.5\ \ \ x \in [-1,1] 
+  \end{equation*}
+
+  The PDF for Y is:
+  \href{http://math.stackexchange.com/questions/305997/does-the-square-of-uniform-distribution-have-density-function}{$^{link}$}
+  
+  \begin{equation*}
+    f_Y(y)=\frac{1}{2\sqrt{y}}\ \ \ y \in [0,1] 
+  \end{equation*}
+
+  Without using the handy reference, this may be derived from the
+  joint PDF, $f(x,y)$, defined as (between McClarrens Eq. 2.30 and 2.31):
+  
+  \begin{equation*}
+    f(x,y)=f(y|x)f_X(x)
+  \end{equation*}
+
+  From the definition of Y, $f(y|x)$ is 0 except when $y=x^2$.
+  I think this would be.
+
+  \begin{equation*}
+    f(y|x)=\delta(y-x^2)
+  \end{equation*}
+
+  Which means,
+
+  \begin{equation*}
+    f(x,y)=0.5\delta(y-x^2)
+  \end{equation*}
+
+  To calculate the PDF for Y (f(y)), we need to integrate
+  over all other variables (in this case, X).
+
+  \begin{equation*}
+    f(y)=\int_{-1}^{1} f(x,y) dx=\int_{-1}^{1} 0.5\delta(y-x^2) dx
+  \end{equation*}
+
+  Wolfram alpha tells me the answer is,
+
+  \begin{equation*}
+    f_Y(y)=\frac{1}{2\sqrt{y}}\ \ \ y \in [0,1] 
+  \end{equation*}
+
+  The same as above. 
+  }
+  \problemAnswer{
+    \textbf{Independance}\\~\\
+    If two random variables, X and Y, are independent, they satisfy the
+    following condition:
+   \href{http://stattrek.com/random-variable/independence.aspx?Tutorial=AP}
+       {$^{link}$}
+
+    \begin{itemize}
+      \item{$P(Y|X)=P(Y)$, for all values of $X$ and $Y$.}
+    \end{itemize}
+    Because $P(Y|X)=\delta(y-xY2)\neq P(Y)=\frac{1}{2\sqrt{y}}$
+    (at least not for ALL values of x and y),
+    these two variables are $\boxed{dependent}$.
+  }
+  \problemAnswer{
+    \textbf{Covariance}\\~\\
+    The covariance for two random variables is defined as:
+    \begin{equation*}
+      \sigma_{XY}=E[(x-\mu_X)(y-\mu_Y)]
+    \end{equation*}
+  This simplifies down to:
+  %\href{https://onlinecourses.science.psu.edu/stat414/node/111}{$^{link}$}
+  
+  \begin{equation*}
+    \sigma_{XY}=E(XY)-\mu_X\mu_Y=\int_{-1}^{1}dx\int_{0}^{1}dy\ \
+                xyf(x,y)-\mu_X\mu_Y
+  \end{equation*}
+
+  Because $\mu_X=0$ this reduces to
+
+  \begin{align*}
+    \sigma_{XY}=E(XY)&=\int_{-1}^{1}dx\int_{0}^{1}dy\ \
+    xyf(x,y)\\
+    &=\int_{-1}^{1}dx\int_{0}^{1}dy\ \
+    xy0.5\delta(y-x^2)\\
+    &=\int_{-1}^{1}dx\ \ 0.5x^3dx\\
+    &=\boxed{0}
+  \end{align*}
+  
+  Wolfram alpha gave the step between the second and third line.
+  These variables are dependant, but have a zero covariance. 
+  }
+%% \problemAnswer{
+%% \begin{center}
+%% \includegraphics[width=0.75\columnwidth]{Problem2/example_figure} % Example image
+%% \end{center}
+
+%% \lipsum[3-5]
+%% }
+\end{homeworkProblem}
+
+\clearpage
+
+%--------------------------------------------------------------------------
+%	PROBLEM 3
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Show that a general covariance matrix must be positive definite, i.e.
+  $\vec{x}^T\Sigma\vec{x}>0$ for any vector $\vec{x}$ that is not
+  all zeros.
+  \\~\\
+  \problemAnswer{
+    Given that $\vec{Y}$ is a vector of random variables and
+    $\vec{\mu}_Y$ is a vector of the mean values for the random
+    variables found in $\vec{Y}$.
+    
+    \begin{align*}
+      \vec{x}^T\Sigma\vec{x}&=
+      \vec{x}^TE[(\vec{Y}-\vec{\mu}_Y)(\vec{Y}-\vec{\mu}_Y)^T]\vec{x}\\
+      &=E[\vec{x}^T(\vec{Y}-\vec{\mu}_Y)(\vec{Y}-\vec{\mu}_Y)^T\vec{x}]
+    \end{align*}
+    The last step above puts a constant inside the expectation value
+    integral. Notice
+    \begin{equation*}
+      \vec{x}^T(\vec{Y}-\vec{\mu}_Y)=(\vec{Y}-\vec{\mu}_Y)^T\vec{x}
+    \end{equation*}
+    and that both are scaler functions of the random variables. Therefore,
+    \begin{align*}
+      \vec{x}^T\Sigma\vec{x}&=E[(\vec{x}^T(\vec{Y}-\vec{\mu}_Y))^2]\\
+      &=E[g(\vec{Y})^2]=\sigma_f^2
+    \end{align*}
+    The expectation value for a multivariate distribution is defined as
+    \begin{equation*}
+      E[g(\vec{Y})]=\int_{-\infty}^\infty dy_1
+              \int_{-\infty}^\infty dy_2\ ...\int_{-\infty}^\infty dy_p
+              \ g(\vec{y})f(\vec{y})
+    \end{equation*}
+    Where $f(\vec{y})$ is the multivariate PDF for the random variables
+    of $\vec{Y}$. If a number of samples is given, rather than functions
+    that can be integrated, the expectation value for a multivariate
+    distribution is defined as:
+    \begin{equation*}
+      E[g(\vec{Y})]=SC
+    \end{equation*}
+    To prove that the covariance matrix is positive definite
+    the above integral must be proved to be positive 
+    with
+    $g(x)=(\vec{x}^T(\vec{Y}-\vec{\mu}_Y))^2$. Explicitly, 
+    \begin{align*}
+      E[g(Y)]&=\int_{-\infty}^\infty dy_1
+              \int_{-\infty}^\infty dy_2\ ...\int_{-\infty}^\infty dy_p
+              \ (\vec{x}^T(\vec{Y}-\vec{\mu}_Y))^2f(y)\\
+             &=\int_{-\infty}^\infty dy_1
+              \int_{-\infty}^\infty dy_2\ ...\int_{-\infty}^\infty dy_p
+              \ ((y_1-\mu_1)x_1+(y_2-\mu_2)x_2+\ ...\ +(y_p-\mu_p)x_p)^2f(y)\\
+    \end{align*}
+    
+  }
+\end{homeworkProblem}
+
+\clearpage
+
+%--------------------------------------------------------------------------
+%	PROBLEM 4
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Use rejection sampling to sample from a Gamma random variable
+  $X\sim \mathscr{G}(\alpha,\beta)$ where
+  \begin{equation*}
+    f(x)=\frac{\theta^{\alpha-1}e^{-\theta\beta}}
+         {\Gamma(\alpha)\beta^{-\alpha}}\ \ \ \alpha,\beta>0
+  \end{equation*}
+
+  Let $\alpha =1$ and $\beta=0.5$. From rejection sampling with a
+  $N=10^4$, compute a rejection rate for the sampling procedure.
+  Now draw a triangle around the function and do rejection sampling.
+  Compare the rejection rate from the triangle versus the rectangle.
+  You may consider that the PDF is zero if $f(x)<10^{-6}$.
+  \\~\\
+  Python script for rejection sampling.
+  \pythonscript{Problem4/Calculations}{Python Script for problem}
+  \vspace{-7mm}
+  \begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.77\columnwidth]{Problem4/P4F1.pdf}
+    \vspace{-5mm}
+    \caption{Square (top) and triangular (bottom) rejection sampling
+             for the Gamma random variable.}
+    \label{fig:P4F1}
+  \end{center}
+  \end{figure}
+  \vspace{-2mm}
+  \problemAnswer{
+    The rejection rate for the square is $\boxed{92.65\%}$.\\
+    The rejection rate for the triangle is $\boxed{85.04\%}$.\\~\\
+    The acceptance rate about doubled from the square to the triangle
+    ($(1-0.9265)*2=0.147\approx0.1496=(1-0.8504)$). This is what
+    is expected because we cut the sampling area in half.
+    This could also be used to verify the PDF is properly normalized.
+    $0.1496*0.5*26.245*1/2=0.98$.
+  }
+%% \problemAnswer{
+%% \begin{center}
+%% \includegraphics[width=0.75\columnwidth]{Problem2/example_figure} % Example image
+%% \end{center}
+
+%% \lipsum[3-5]
+%% }
+\end{homeworkProblem}
+
+\clearpage
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 5
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Consider a random variable, $X>0$, that has it's logarithm distributed
+  by a normal distribution with mean $\mu=0$ and variance $\sigma^2=1$.
+  Such a distribution is called a log-normal distribution. Compute this
+  distribution's a) mean, b) variance, c) median, d) mode, e) skew,
+  and d) kurtosis.
+  \\~\\
+  The PDF for the log-normal distribution, found on wikipedia, is:
+  \begin{equation*}
+    f(X)=\frac{1}{x\sigma\sqrt{2\pi}}e^{-\frac{\left(ln(x)-\mu\right)^2}{2\sigma^2}} \ \ x\in[0,\infty)
+  \end{equation*}
+  For a standard log-normal distribution this is
+  \begin{equation*}
+    f(X)=\frac{1}{x\sqrt{2\pi}}
+    e^{-\frac{ln(x)^2}{2}}\ \ x\in[0,\infty)
+  \end{equation*}
+  Which simplifies to:
+  \begin{align*}
+    f(X)&=\frac{1}{x\sqrt{2\pi}}
+    \left(e^{-ln(x)}\right)^{\frac{ln(x)}{2}}\\
+    &=\frac{1}{x\sqrt{2\pi}}
+    \left(\frac{1}{x}\right)^{\frac{ln(x)}{2}}\ \ x\in[0,\infty)
+  \end{align*}
+  \\~\\
+  \problemAnswer{
+    \textbf{a) mean}\\~\\
+    The mean, $\mu$, is defined as:
+    
+    \begin{equation*}
+      \mu=E[x]=\int_{-\infty}^\infty xf(x)dx
+    \end{equation*}
+    Using the log-normal distribution the mean is:
+    \begin{align*}
+      \mu=E[x]&=\int_{0}^\infty
+      \frac{1}{\sqrt{2\pi}}\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx\\
+      &=\frac{1}{\sqrt{2\pi}}\int_{0}^\infty
+      \left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx\\
+    \end{align*}
+    Wolfram alpha says
+    \begin{equation*}
+      \int_{0}^\infty
+      \left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx=\sqrt{2e\pi}
+    \end{equation*}
+    Therefore the answer is $\boxed{\mu=\sqrt{e}}$
+  }
+  \problemAnswer{
+    \textbf{b) Variance}\\~\\
+    Variance, $\sigma^2$, is defined as:
+    
+    \begin{align*}
+      \sigma^2&=E[(X-\mu)^2]\\
+         &=E[X^2]-2E[\mu X]+E[\mu^2]\\
+         &=E[X^2]-\mu^2\\
+         &=\int_{-\infty}^\infty x^2f(x)dx-\mu^2
+    \end{align*}
+    Using the log-normal distribution the variance is:
+    \begin{align*}
+      \sigma^2=E[x^2]-\mu^2&=\int_{0}^\infty
+      \frac{x}{\sqrt{2\pi}}\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx-\mu^2\\
+            &=\frac{1}{\sqrt{2\pi}}\int_{0}^\infty
+      x\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx-\mu^2
+    \end{align*}
+    Wolfram alpha says
+    \begin{equation*}
+      \int_{0}^\infty
+      x\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx=e^2\sqrt{2\pi}
+    \end{equation*}
+    Therefore the answer is $\boxed{\sigma^2=e(e-1)}$
+  }
+  \problemAnswer{
+    \textbf{c) Median}\\~\\
+    The median is defined as the point where the CDF
+    is equal to one-half. The CDF, in terms of the PDF is:
+    \begin{equation*}
+      F_X(x)=\int_{-\infty}^{x}f(x')dx'
+    \end{equation*}
+    For the log-normal distribution
+    \begin{align*}
+      F_X(x)&=\int_{0}^{x}\frac{1}{x'\sigma\sqrt{2\pi}}
+      e^{-\frac{(ln(x')-\mu)^2}{2\sigma^2}}dx'\\
+      &=\frac{1}{2}+\frac{1}{2}erf\left[\frac{ln(x)-\mu}{\sqrt{2}\sigma}
+      \right]
+    \end{align*}
+    If $\sigma=1$ and $\mu=0$,
+    \begin{equation*}
+      F_X(x)=\frac{1}{2}+
+      \frac{1}{2}erf\left[\frac{ln(x)}{\sqrt{2}}\right]
+    \end{equation*}
+    If $F_X(x)=\frac{1}{2}$ then
+    \begin{align*}
+      erf^{-1}[0]\sqrt{2}&=ln(x)\\
+      e^{erf^{-1}[0]\sqrt{2}}&=x
+    \end{align*}
+    $erf^{-1}[0]=0$, because wolfram says so...\\~\\
+    Therefore the answer is $\boxed{Median=1}$
+  }
+  \problemAnswer{
+    \textbf{d) Mode}\\~\\
+    The mode is the point where the PDF takes its maximum value,
+    the most likely value of the distribution. This could also
+    be the point where its derivative goes to 0.
+    \begin{equation*}
+      f(X)=\frac{1}{x\sqrt{2\pi}}
+      e^{-\frac{ln(x)^2}{2}}
+    \end{equation*}
+    Derivatives:
+    \begin{equation*}
+      e^{-\frac{ln(x)^2}{2}}\frac{d}{dx}=
+      \frac{-ln(x)}{x}e^{-\frac{ln(x)^2}{2}}
+    \end{equation*}
+    \begin{equation*}
+      \frac{1}{x\sqrt{2\pi}}\frac{d}{dx}=
+      -\frac{1}{x^2\sqrt{2\pi}}
+    \end{equation*}
+    Combining:
+    \begin{equation*}
+      f'(X)=\left(\frac{-ln(x)-1}{x^2\sqrt{2\pi}}\right)
+      e^{-\frac{ln(x)^2}{2}}
+    \end{equation*}
+    Setting Equal to Zero
+    \begin{align*}
+      0&=\left(\frac{-ln(x)-1}{x^2\sqrt{2\pi}}\right)
+      e^{-\frac{ln(x)^2}{2}}\\
+      0&=(-ln(x)-1)
+      e^{-\frac{ln(x)^2}{2}}\\
+      0&=(-ln(x)-1)\\
+      -1&=ln(x)\\
+      x&\boxed{=e^{-1}}
+    \end{align*}
+  }
+  \problemAnswer{
+    \textbf{e) Skew}\\~\\
+    The skewness, $\gamma_1$, is related to the third moment of
+    $f(x)$, that is the expected value of $X^3$.
+    \begin{equation*}
+      \gamma_1=\frac{E[(X-\mu)^3]}{Var(X)^{3/2}}
+    \end{equation*}
+    Earlier it was proven that $Var(X)=e^2-e$. Expanding the
+    numerator...
+    \begin{align*}
+      (X-\mu)^3&=(X-\mu)(X-\mu)(X-\mu)\\
+      &=X^3-3X^2\mu+3X\mu^2-\mu^3\\
+      E[(X-\mu)^3]&=E[X^3]-3E[X^2]\mu+2\mu^3
+    \end{align*}
+    The last two terms have $\mu^3$ in them because $E[X]=\mu$.
+    Recall, that earlier, we discovered $E[X^2]=e^2$ and that
+    $\mu=\sqrt{e}$. Plugging in
+    what we know,
+    \begin{equation*}
+      \gamma_1=\frac{E[X^3]-3e^2\sqrt{e}+2e^{3/2}}{(e^2-e)^{3/2}}
+    \end{equation*}
+    To determine $E[X^3]$,
+    \begin{align*}
+      E[X^3]&=\int_{0}^\infty
+      \frac{x^2}{\sqrt{2\pi}}\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx\\
+            &=\frac{1}{\sqrt{2\pi}}\int_{0}^\infty
+      x^2\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx
+    \end{align*}
+    Wolfram alpha says
+    \begin{equation*}
+      \int_{0}^\infty
+      x^2\left(\frac{1}{x}\right)^
+      {\frac{ln(x)}{2}}dx=e^{9/2}\sqrt{2\pi}
+    \end{equation*}
+    Which Means:
+    \begin{equation*}
+      E[X^3]=e^{9/2}
+    \end{equation*}
+    Plugging this in,
+    \begin{equation*}
+      \gamma_1=\boxed{\frac{e^{9/2}-3e^{5/2}+2e^{3/2}}{(e^2-e)^{3/2}}
+        =(e+2)\sqrt{e-1}=6.1849}
+    \end{equation*}
+    The standard log-normal distribution has a positive skew,
+    which means that the distribution goes to zero more slowly
+    to the right of the mean (look up log-normal distribution
+    on wikipedia, and you'll be able to see that is the case).
+  }
+
+  \problemAnswer{
+    \textbf{f) Kurtosis}\\~\\
+    The excess kurtosis is a measure of ``tail fatness'' for
+    a distribution, related to the fourth moment of a
+    random variable's PDF:
+    \begin{equation*}
+      Kurt(x)=\frac{E[(X-\mu)^4]}{Var(X)^{2}}-3=
+               \frac{E[(X-\mu)^4]}{\sigma^{4}}-3
+    \end{equation*}
+    It should be noted that these $\mu$'s and $\sigma$'s are the
+    $\mu$'s and $\sigma$'s from the log-normal distribution,
+    not the $\mu$'s and $\sigma$'s from the normal distribution
+    with $\mu=0$ and $\sigma=1$ by which the logarithm was distributed.
+    Earlier it was proven that $\sigma^2=e^2-e$, $E[X]=\mu=\sqrt{e}$,
+    $E[X^2]=e^2$, and that $E[X^3]=e^{9/2}$. Expanding the
+    numerator...
+    \begin{align*}
+      (X-\mu)^4&=(X-\mu)(X-\mu)(X-\mu)(X-\mu)\\
+      &=X^4-4X^3\mu+6X^2\mu^2-4X\mu^3+\mu^4
+    \end{align*}
+    To determine $E[X^4]$,
+    \begin{align*}
+      E[X^4]&=\int_{0}^\infty
+      \frac{x^3}{\sqrt{2\pi}}\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx\\
+            &=\frac{1}{\sqrt{2\pi}}\int_{0}^\infty
+      x^3\left(\frac{1}{x}\right)
+      ^{\frac{ln(x)}{2}}dx
+    \end{align*}
+    Wolfram alpha says
+    \begin{equation*}
+      \int_{0}^\infty
+      x^3\left(\frac{1}{x}\right)^
+      {\frac{ln(x)}{2}}dx=e^{8}\sqrt{2\pi}
+    \end{equation*}
+    Which Means:
+    \begin{equation*}
+      E[X^4]=e^{8}
+    \end{equation*}
+    Plugging everything in:
+    \begin{align*}
+      Kurt(x)&=\frac{E[(X-\mu)^4]}{\sigma^{4}}-3\\
+      &=\frac{E[X^4]-4E[X^3]\mu+6E[X^2]\mu^2-4E[X]\mu^3+
+        \mu^4]}{\sigma^{4}}-3\\
+      &=\boxed{\frac{e^{8}-4e^{9/2}\sqrt{e}+6e^2e-4\sqrt{e}e^{3/2}+
+        e^{2}]}{(e^2-e)^2}-3}\\
+      &=\boxed{e^4+2e^3+3e^2-6=110.94}
+    \end{align*}
+    Because the kurtosis is positive, we can deduce that
+    the standard log-normal distribution has heavier tails than
+    a normal distribution. Meaning that the PDF doesn't approach
+    zero as quickly as for a normal distribution.
+  }  
+\end{homeworkProblem}
+
+\clearpage
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 6
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  (Monte Hall Problem) You are on a game show and are presented with
+  three doors from which to choose. One of the doors contains a prize
+  and the other two have nothing. You pick a door (say door 1), and
+  then the host opens another door (say door 3), and asks you if you
+  want to switch to door number 2. What should you do?
+
+  \begin{enumerate}[label=\alph*]
+  \item{Using Bayes' theorem give the probability of
+    winning if you switch.}
+  \item{Write a simulation code to show that by randomly
+    assigning a prize to a door, then opening either
+    door 2 or 3 depending on which has the prize, and then
+    either switching or not. Compute the likelihood of winning
+    if you stick, versus the likelihood of winning if you switch.}
+  \end{enumerate}
+
+  \problemAnswer{
+    \textbf{Bayes' theorem}
+    \begin{equation*}
+      f(x|y)=\frac{f(y|x)f_X(x)}{f_Y(y)}
+    \end{equation*}
+    \begin{itemize}
+    \item{Define $f(x|y)$ as $f(P2|D3)$, the probability of
+    the prize being behind door 2, given that door 3 was opened
+    to show nothing.}
+    \item{Define $f(y|x)$ as $f(D3|P2)$, the probability of
+      opening door 3 to reveal nothing, given that the prize
+      is behind door 2. This probability is 1, because the host will
+      either open door 2 or door 3 (we picked door 1). Since
+      good ol host will not open the door with the prize, he
+      will open door 3.}
+    \item{Define $f_X(x)$ as $f(P2)$, the probability of finding
+      the prize behind door 2. This probability is 1/3 because,
+      all things being equal, the prize is equally likely to be
+      found behind any of the three doors}
+    \item{Define $f_Y(y)$ as $f(D3)$, the probabilty the host
+      openings  door 3 to show nothing. There are three options for this.
+      First, if the prize is behind door 1, the host will open
+      door 3 half the time. Second, if the prize is behind door
+      2, the host will open door 3 every time. Third, if the prize
+      is behind door 3, the host will never open door 3. This equates
+      to:
+      \begin{equation*}
+        f(D3)=\frac{1}{3}\cdot\frac{1}{2}+\frac{1}{3}\cdot1+\frac{1}{3}
+        \cdot0=\frac{1}{2}
+      \end{equation*}
+      }
+    \begin{equation*}
+      f(P2|D3)=\frac{f(D3|P2)f(P2)}{f(D3)}=
+      \frac{1\cdot\frac{1}{3}}{\frac{1}{2}}=\boxed{\frac{2}{3}}
+    \end{equation*}
+    \end{itemize}  
+  }
+  \\
+  
+  Python script computing the likelihood of winning.
+  \pythonscript{Problem6/Calculations}{Python Script for problem}
+
+  \problemAnswer{
+    Output of code:\\~\\
+    You win 33\% of the time if you stay.\\
+    You win 67\% of the time if you switch.
+  }
+\end{homeworkProblem}
+
+\clearpage
+
+%--------------------------------------------------------------------------
+%	PROBLEM 7
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Consider a variable $Y$ distributed by a normal distribution
+  with mean given by $\theta$:
+  \begin{equation*}
+    f(y|\theta)=\frac{1}{\sigma\sqrt{2\pi}}
+    e^{\left(-\frac{(y-\theta)^2}{2\sigma^2}\right)}
+  \end{equation*}
+  Now consider $\theta$ to be a random variable as well, and $\sigma$
+  to be a known constant. Then say $\theta$ is normally distributed,
+  with mean $\mu$ and variance $\tau^2$ to give
+  \begin{equation*}
+    \pi(\theta)=\frac{1}{\tau\sqrt{2\pi}}
+        e^{\left(-\frac{(\theta-\mu)^2}{2\tau^2}\right)}
+  \end{equation*}
+  The parameters $\mu$ and $\tau$ are called hyperparameters. Using
+  Bayes' theorem find $p(\theta|y)$, and show that it is a normal
+  distribution.
+
+  \problemAnswer{
+    \begin{equation*}
+      p(\theta|y)=\frac{f(y|\theta)\cdot\pi(\theta)}{f(y)}
+    \end{equation*}
+    $f(y)$ will be a function of y, but is a constant for a given
+    y, which is the case for $p(\theta|y)$.
+    \begin{align*}
+      p(\theta|y)&=cf(y|\theta)\cdot\pi(\theta)\\
+      &=ce^{\left(-\frac{(y-\theta)^2}{2\sigma^2}\right)}
+      e^{\left(-\frac{(\theta-\mu)^2}{2\tau^2}\right)}\\
+      &=ce^{\left(-\frac{(y-\theta)^2}{2\sigma^2}\right)
+        +\left(-\frac{(\theta-\mu)^2}{2\tau^2}\right)}\\
+      &=ce^ce^{\frac{(\theta'-\mu')^2}{2\sigma'^2}}\\
+      &=ce^{\frac{(\theta'-\mu')^2}{2\sigma'^2}}\\
+    \end{align*}
+    This looks like a normal. In order to combine the two
+    fractions in the exponent completion of squares needs to
+    be done.
+  }
+\end{homeworkProblem}
+
+
+\clearpage
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 8
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Suppose that X is the number of people arriving at a particular
+  tavern during a given hour. This type of arrival process is naturally
+  described by a Poisson process:
+  \begin{equation*}
+    f(x|\theta)=\frac{e^{-\theta}\theta^{x}}{x!},\ \ \ \ x\in\{0,1,2,...\},
+    \ \ \theta>0.
+  \end{equation*}
+  We then say that our prior distribution of $\theta$ is a Gamma
+  distribution.
+  \begin{equation*}
+    \pi(\theta)=\frac{\theta^{\alpha-1}e^{-\theta/\beta}}{\Gamma(\alpha)
+    \beta^{\alpha}},\ \ \ \ \ \theta,\alpha,\beta>0.
+  \end{equation*}
+  Therefore, we say that $\theta\sim G(\alpha,\beta)$.
+  \begin{itemize}
+  \item{Show using Bayes' theorem that the posterior distribution for
+    $\theta$ given $x$ is proportional to a Gamma distribution.}
+  \item{Suppose you observe 42 people arriving in one hour, and the
+    prior distribution has $\alpha=5$ and $\beta=6$. Generate samples
+    from the posterior distribution and show graphically how the prior
+    has changed given the observation.}
+  \end{itemize}
+  \vspace{2mm}
+  \problemAnswer{
+    \textbf{Bayes' Theorem for posterior}
+    \\~\\
+    \begin{equation*}
+      f(\theta|x)=\frac{f(x|\theta)\pi(\theta)}{f(x)}
+    \end{equation*}
+    Where $f(x)$:
+    \begin{align*}
+      f(x)&=\int_{-\infty}^{\infty}d\theta f(x,\theta)\\
+      &=\int_{-\infty}^{\infty}d\theta f(x|\theta)\pi(\theta)\\
+      &=\int_{0}^{\infty}d\theta
+      \frac{e^{-\theta}\theta^x}{x!}\cdot\frac{\theta^{\alpha-1}
+        e^{-\theta/\beta}}{\Gamma(\alpha)\beta^{\alpha}}\\
+      &=\frac{\int_{0}^{\infty}d\theta
+        e^{\theta(-1-1/\beta)}\theta^{\alpha+x-1}}
+           {x!\Gamma(\alpha)\beta^{\alpha}}
+    \end{align*}
+    The deonminator will cancel when the Posterior is solved for.
+    And the numerator, without the integral, will be the numerator
+    for the posterior derivation.
+  }
+  \problemAnswer{
+    If:
+    \begin{align*}
+      y=&\theta(1+1/\beta) \rightarrow \theta=\frac{y}{1+1/\beta}\\
+      dy=&(1+1/\beta)d\theta\\
+      \frac{dy}{1+1/\beta}=&d\theta
+    \end{align*}
+    then:
+    \begin{align*}
+      &\int_0^{\infty}d\theta e^{\theta(-1-1/\beta)}\theta^{\alpha+x-1}\\
+      =&\int_0^{\infty}\frac{dy}{1+1/\beta} e^{-y}
+      \frac{y^{\alpha+x-1}(1+1/\beta)}{(1+1/\beta)^{\alpha+x}}\\
+      =&\frac{1}{(1+1/\beta)^{\alpha+x}}\int_0^\infty
+      e^{-y}y^{\alpha+x-1}dy\\
+      =&\frac{1}{(1+1/\beta)^{\alpha+x}}\Gamma(\alpha+x)
+    \end{align*}
+  }
+  \problemAnswer{
+    Therefore the posterior is:
+    \begin{align*}
+      f(\theta|x)=&\frac{f(x|\theta)\pi(\theta)}{f(x)}\\
+      =&\frac{\frac{e^{-\theta}\theta^{x}}{x!}
+        \frac{\theta^{\alpha-1}e^{-\theta/\beta}}{\Gamma(\alpha)
+          \beta^{\alpha}}}{\frac{
+          \frac{1}{(1+1/\beta)^{\alpha+x}}\Gamma(\alpha+x)}
+        {x!\Gamma(\alpha)\beta^{\alpha}}}\\
+      =&\frac{e^{-\theta(1+1/\beta)}\theta^{\alpha+x-1}}
+      {\frac{1}{(1+1/\beta)^{\alpha+x}}\Gamma(\alpha+x)}\\
+      =&(1+1/\beta)^{\alpha+x}\frac{e^{-\theta(1+1/\beta)}\theta^{\alpha+x-1}}
+      {\Gamma(\alpha+x)}
+    \end{align*}
+    If we write a gamma distribution as:
+    \begin{equation*}
+      GammaDist(z)=\frac{1}{\Gamma(a)b^a}z^{a-1}e^{-z/b}
+    \end{equation*}
+    Then if: $a=\alpha+x$ and $b=(1+1/\beta)^{-1}$:
+    \begin{equation*}
+      GammaDist(z)=(1+1/\beta)^{\alpha+x}
+      \frac{e^{-z(1+1/\beta)}z^{\alpha+x-1}}
+      {\Gamma(\alpha+x)}
+    \end{equation*}
+    The same as the posterior where $\theta=z$.
+  }
+
+  Python script for plotting.
+  \pythonscript{Problem8/Calculations}{Python Script for problem}
+  \vspace{-7mm}
+  \begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.77\columnwidth]{Problem8/P8F1.pdf}
+    \vspace{-5mm}
+    \caption{Plots of prior and posterior.}
+    \label{fig:P8F1}
+  \end{center}
+  \end{figure}
+  The plot shifts over closer to 42.
+\end{homeworkProblem}
+
+
+\clearpage
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 9
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Generate $N$ samples from a standard normal random variable and
+  estimate the mean, variance, skewness, and kurtosis from the
+  samples. Use $N=10,10^2,\cdot\cdot\cdot,10^4$, and discuss how
+  the errors in the approximations behave as a function of N.\\
+
+  Python script for sampling, calculaiton and plotting.
+  \pythonscript{Problem9/Calculations}{Python Script for problem}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.9\columnwidth]{Problem9/P9F1.pdf}
+      \vspace{-5mm}
+      \caption{Sample parameter differences from expected values.}
+    \label{fig:P4F1}
+  \end{center}
+  \end{figure}
+
+  
+  \problemAnswer{
+    The plot shows that the error is decreasing as the sample size
+    increases. The mean and variance decrease as a function of 1/N.
+  }
+
+
+
+  
+\end{homeworkProblem}
+
+
+\clearpage
+
+%--------------------------------------------------------------------------
+%	PROBLEM 10
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Consider the joint PDF
+  \begin{equation*}
+    f(x,y)=e^{-x/y},\ \ \ \ x\in[0,\infty)\ \ y\in[0,\sqrt{2}].
+  \end{equation*}
+  Compute and plot the marginal PDFs for X and Y. Additionally,
+  compute the conditional probability distributions, and make
+  plots for $f(y|X=\mu_x)$ and $f(x|y=\mu_y)$.
+  \vspace{5mm}
+  
+  \problemAnswer{
+    \textbf{Marginal PDFs}\\~\\
+    For y:
+    \begin{align*}
+      f(y)&=\int_{0}^{\infty} e^{-x/y} dx\\
+      &=-y\left|e^{-x/y}\right|_0^{\infty}\\
+      &=-y(e^{-\infty}-e^{-0})\\
+      &=y,\ \ \ \ y\in[0,\sqrt{2}]
+    \end{align*}
+    For x (use transform $1/y=t$ and $\frac{-dt}{t^2}=dy$):
+    \begin{align*}
+      f(x)&=\int_{0}^{\sqrt{2}} e^{-x/y} dy\\
+      &=\int_{\infty}^{1/\sqrt{2}}\frac{-e^{-xt}}{t^2}dt\\
+      &=\int_{1/\sqrt{2}}^{\infty}\frac{e^{-xt}}{t^2}dt
+    \end{align*}
+    Use $u=e^{-xt}$, $du=-xe^{-xt}$, $v=-1/t$, $dv=\frac{1}{t^2}dt$,
+    \begin{align*}
+      f(x)&=\left|\frac{-e^{-xt}}{t}\right|_{\frac{1}{\sqrt{2}}}^{\infty}
+      -x\int_{\frac{1}{\sqrt{2}}}^{\infty}\frac{e^{-xt}}{t}dt\\
+      &=\left(\frac{-1}{e^{\infty}\infty}+\sqrt{2}
+      e^{\frac{-x}{\sqrt{2}}}\right)
+      -x\int_{\frac{1}{\sqrt{2}}}^{\infty}\frac{e^{-xt}}{t}dt\\
+      &=\sqrt{2}e^{\frac{-x}{\sqrt{2}}}
+      -x\int_{\frac{1}{\sqrt{2}}}^{\infty}\frac{e^{-xt}}{t}dt
+    \end{align*}
+    Wolfram alpha says that:
+    \begin{equation*}
+      \int_{\frac{1}{\sqrt{2}}}^{\infty}\frac{e^{-xt}}{t}dt=\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right)
+    \end{equation*}
+    Where $\Gamma(a,x)$ is the incomplete gamma function...Python has
+    a function for that, lets hope it works and we will leave it at that.
+    \\~\\
+    Therefore $f(x)$ is:
+
+    \begin{equation*}
+      f(x)=\sqrt{2}e^{\frac{-x}{\sqrt{2}}}-x\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right),\ \ \ \ x\in[0,\infty)
+    \end{equation*}
+  }
+  \problemAnswer{
+    \textbf{Conditional Probability Distributions}\\~\\
+    The conditional probability distribution is defined as:
+    \begin{equation*}
+      f(y|X=x)=\frac{f(x,y)}{f_X(x)}
+    \end{equation*}
+    Plugging in the above for f(y|X=x):
+    \begin{equation*}
+      f(y|X=x)=\frac{e^{-x/y}}{\sqrt{2}e^{\frac{-x}
+          {\sqrt{2}}}-x\Gamma\left(0,\frac{x}{\sqrt{2}}\right)},\ \ \ \
+      x\in[0,\infty)\ \ y\in[0,\sqrt{2}]
+    \end{equation*}
+    Plugging in for f(x|Y=y):
+    \begin{equation*}
+      f(x|Y=y)=\frac{e^{-x/y}}{y},\ \ \ \
+      x\in[0,\infty)\ \ y\in[0,\sqrt{2}]
+    \end{equation*}
+   }
+
+   \problemAnswer{
+     \textbf{Mean Values}\\~\\
+     The mean, $\mu$, is defined as:
+    \begin{equation*}
+      \mu=E[x]=\int_{-\infty}^\infty xf(x)dx
+    \end{equation*}
+    For $f(y)$
+    \begin{align*}
+      \mu_Y=E[y]&=\int_{0}^{\sqrt{2}} yf(y)dy\\
+      &=\int_{0}^{\sqrt{2}} yydy\\
+      &=\left|\frac{y^3}{3}\right|_{0}^{\sqrt{2}}\\
+      &=\frac{2^{3/2}}{3}\\
+      &=\boxed{0.9428}
+    \end{align*}
+    For $f(x)$
+    \begin{align*}
+      \mu_X=E[x]&=\int_{0}^{\infty} xf(x)dx\\
+      &=\int_{0}^{\infty} x\left(\sqrt{2}e^{\frac{-x}{\sqrt{2}}}-
+      x\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right)\right)dx\\
+      &=\int_{0}^{\infty} x\sqrt{2}e^{\frac{-x}{\sqrt{2}}}-
+      x^2\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right)dx\\
+    \end{align*}
+    Wolfram alpha says:
+    \begin{equation*}
+      \int_{0}^{\infty}xe^{-\frac{x}{\sqrt{2}}}dx=2
+    \end{equation*}
+    This means:
+    \begin{align*}
+      \mu_X=2\sqrt{2}-\int_{0}^{\infty}
+      x^2\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right)dx
+    \end{align*}
+   }
+   \problemAnswer{
+     Let us work on that incomplete Gamma:
+     \begin{align*}
+       -\int_{0}^{\infty}x^2\Gamma\left(0,
+      \frac{x}{\sqrt{2}}\right)dx
+     \end{align*}
+     Before it was an incomplete Gamma, it was this:
+     \begin{align*}
+       -\int_{0}^{\infty}x^2\ \
+       \int_{\frac{1}{\sqrt{2}}}^{\infty}\frac{e^{-xt}}{t}dtdx
+     \end{align*}
+     This looks more doable (McClarren is a mean old man).
+     \begin{align*}
+       &-\int_{0}^{\infty}dx
+       \int_{\frac{1}{\sqrt{2}}}^{\infty} dt\ \ 
+       \frac{x^2e^{-xt}}{t}\\
+       =&-\int_{\frac{1}{\sqrt{2}}}^{\infty} dt
+       \int_{0}^{\infty}dx\ \ 
+       \frac{x^2e^{-xt}}{t}\\
+       =&-\int_{\frac{1}{\sqrt{2}}}^{\infty} dt
+       \int_{0}^{\infty} 
+       \frac{x^2e^{-xt}}{t}dx
+     \end{align*}
+     Wolfram Alpha says:
+     \begin{equation*}
+       \int_{0}^{\infty} 
+       \frac{x^2e^{-xt}}{t}dx=\frac{2}{t^4}
+     \end{equation*}
+     Plugging this in:
+     \begin{align*}
+       &-\int_{\frac{1}{\sqrt{2}}}^{\infty}
+       \frac{2}{t^4}dt\\
+       =&\frac{2}{3}\left|\frac{1}{t^3}
+       \right|_{\frac{1}{\sqrt{2}}}^\infty\\
+       =&\frac{-4\sqrt{2}}{3}=-1.8856
+     \end{align*}
+     Therefore:
+     \begin{equation*}
+       \boxed{\mu_X=0.942809}
+     \end{equation*}
+   }
+   \problemAnswer{
+     \textbf{To Plot}\\~\\
+     \begin{equation*}
+       f(y|X=\mu_X)=\frac{e^{-\mu_X/y}}{\sqrt{2}e^{\frac{-\mu_X}
+           {\sqrt{2}}}-\mu_X\Gamma\left(0,\frac{\mu_X}{\sqrt{2}}\right)},
+       \ \ \ \ y\in[0,\sqrt{2}]
+    \end{equation*}
+    \begin{equation*}
+      f(x|Y=\mu_Y)=\frac{e^{-x/\mu_Y}}{\mu_Y},\ \ \ \
+      x\in[0,\infty)
+    \end{equation*}
+    Where $\mu_X=0.942809$ and $\mu_Y=0.9428$
+   }
+  \\   
+  Python script for plotting
+  \pythonscript{Problem10/Calculations}{Python Script for problem}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.9\columnwidth]{Problem10/P10F1.pdf}
+      \vspace{-5mm}
+      \caption{Conditional probability plots.}
+    \label{fig:P4F1}
+  \end{center}
+  \end{figure}
+      
+\end{homeworkProblem}
+
+
+\clearpage
+
+
+%--------------------------------------------------------------------------
+This is an example citation \cite{Tatro2013}.
+\bibliography{references} 
+\bibliographystyle{plain} 
+
+\end{document}
