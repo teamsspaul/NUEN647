@@ -476,10 +476,48 @@
   Demonstrate the tail dependence of a bivariate normal
   random variable is 0.\\~\\
   \problemAnswer{
-    According to
-    \href{mathworld.wolfram.com/BivariateNormalDistribution.html}{Link}
-    Stuff
+    The bivariate Gaussian copula is defined as:
+    \begin{equation*}
+      C_N(u,v)=\Phi_\rho(\Phi^{-1}(u),\Phi^{-1}(v))
+    \end{equation*}
+    Where:
+    \begin{align*}
+      \Phi^{-1}(q)&=\mu+\sigma\sqrt{2}erf^{-1}(2q-1)
+    \end{align*}
+    Evaluated at $q=0$:
+    \begin{equation*}
+      \Phi^{-1}(0)=-\infty
+    \end{equation*}
+    Also where:
+    \begin{equation*}
+      \Phi_\rho(x,y)=\int_{-\infty}^{x}dx'\int_{-\infty}^{y}dy'
+      \frac{1}{2\pi \sigma_x\sigma_y\sqrt{1-\rho^2}}
+      exp\left[-\frac{z}{2(1-\rho^2)}\right]
+    \end{equation*}
+    with
+    \begin{equation*}
+      z=\frac{(x'-\mu_x)^2}{\sigma_x^2}-
+      \frac{2\rho(x'-\mu_x)(y'-\mu_y)}{\sigma_x\sigma_y}+
+      \frac{(y'-\mu_y)^2}{\sigma_y^2}
+    \end{equation*}
+    and
+    \begin{equation*}
+      \rho=\frac{E[XY]-E[X]E[Y]}{\sigma_x\sigma_y}
+    \end{equation*}
+    \textbf{Note: McClarren is a poo poo head}
+    \begin{align*}
+      \Phi_\rho(x,y)=\int_{-\infty}^{x}dx'\int_{-\infty}^{y}dy'
+      \frac{1}{2\pi \sigma_x\sigma_y\sqrt{1-\rho^2}}
+      exp\left[-\frac{z}{2(1-\rho^2)}\right]
+    \end{align*}
   }
+  \problemAnswer{
+    \textbf{Tail Dependance:}\\~\\
+    \begin{equation*}
+      \lambda_l=\lim_{q \to 0} \frac{C(q,q)}{q}
+    \end{equation*}
+  }
+
 \end{homeworkProblem}
 
 \clearpage
