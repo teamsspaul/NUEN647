@@ -36,6 +36,10 @@
 \usepackage{mathrsfs}
 \usepackage{float}
 \usepackage{enumitem}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fontenc}
+\usepackage{booktabs}
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -391,6 +395,40 @@
       +\sigma_{X1A2}'\sigma_{X2A2}'\rho_2)}
       {\sigma_{X1,A3}'\sigma_{X2,A3}'}
     \end{align*}
+    Assuming that:
+    \begin{align*}
+      \frac{(X_{1,1}-X_{1,2})(X_{2,1}-X_{2,2})}
+           {\sigma_{X1,A3}'\sigma_{X2,A3}'}\approx0\\
+    \end{align*}
+    and
+    \begin{align*}
+      \sigma_{X1,A3}'\sigma_{X2,A3}'&\approx
+      4\sigma_{X1A1}'\sigma_{X2A1}'\\ or &\approx
+      4\sigma_{X1A2}'\sigma_{X2A2}'
+    \end{align*}
+    The above would simplify to:
+    \begin{align*}
+      \rho_3\approx\frac{\rho_1+\rho_2}{2}
+    \end{align*}
+    Meaning, $\rho_3$ will usually be inside the interval
+    $\rho_2<\rho_3<\rho_1$, I was curious, and wrote a script,
+    to check to see if it would ever be outside. There could
+    be an error with my script, but I found with the below script
+    that a small percentage (less than 1\% of the time),
+    it would be outside the above interval. I also made a histogram
+    plot...because I like wasting time.
+
+    \pythonscript{Problem2/Calculations}{Script for Problem}
+    \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=0.77\columnwidth]{Problem2/P2.pdf}
+        \vspace{-5mm}
+        \caption{Histogram plot showing error $\rho_g$ is
+          the approximated guess at $\rho_3$ and $\rho_a$ is the
+        actual calculated $\rho_3$.}
+        \label{fig:P2}
+      \end{center}
+    \end{figure}
 \end{homeworkProblem}
 
 \clearpage
@@ -400,7 +438,32 @@
 %--------------------------------------------------------------------------
 
 \begin{homeworkProblem}
-  Problem3
+  For the following data, compute by hand or via code you write
+  the Pearson and Spearman correlations and Kendall's tau.
+  \begin{table}[H]%
+    \begin{center}
+    \begin{tabular}{c c}
+      \toprule%
+      $X_1$ & $X_2$ \\ \midrule
+      55.01 & 82.94 \\
+      54.87 & 55.02 \\
+      57.17 & 85.18 \\
+      36.01 & -84.27 \\
+      35.88 & -106.30 \\
+      36.33 & -119.65 \\
+      43.49 & -112.03 \\
+      41.44 & -71.69 \\
+      54.43 & -3.50 \\
+      36.47 & 140.57 \\ \bottomrule
+    \end{tabular}
+    \end{center}
+  \end{table}
+  
+  \pythonscript{Problem3/Calculations}{Script for Problem}
+  Code output:\\~\\
+  Pearson: 0.000672597071936\\
+  Spearman: 0.587878787879\\
+  Kendall: 0.5111111111111111\\
 \end{homeworkProblem}
 
 \clearpage
@@ -410,7 +473,13 @@
 %--------------------------------------------------------------------------
 
 \begin{homeworkProblem}
-  Problem 4
+  Demonstrate the tail dependence of a bivariate normal
+  random variable is 0.\\~\\
+  \problemAnswer{
+    According to
+    \href{mathworld.wolfram.com/BivariateNormalDistribution.html}{Link}
+    Stuff
+  }
 \end{homeworkProblem}
 
 \clearpage
