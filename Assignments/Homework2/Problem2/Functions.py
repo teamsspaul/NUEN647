@@ -36,8 +36,8 @@ def CalculateRho(X1,X2):
     EX1=sum(X1)/len(X1)
     EX2=sum(X2)/len(X2)
     EX1X2=sum(X1*X2)/len(X1)
-    oX1=sum(X1**2-EX1**2)/len(X1)
-    oX2=sum(X2**2-EX2**2)/len(X2)
+    oX1=(sum(X1**2-EX1**2)/len(X1))**0.5
+    oX2=(sum(X2**2-EX2**2)/len(X2))**0.5
     rho=(EX1X2-EX1*EX2)/(oX1*oX2)
     return(rho)
 
@@ -47,5 +47,5 @@ def PlotHistSave(Error,Ntimes):
     ax.set_xlabel(r'Percent Error $100\frac{|\rho_g-\rho_a|}{\rho_a}$',fontsize=16)
     ax.set_ylabel(r'Count out of '+str(Ntimes),fontsize=18)
     ax.hist(Error,500,color='green',alpha=0.7,edgecolor='black')
-    ax.set_xlim(-1000,1000)
+    ax.set_xlim(-500,500)
     plt.savefig('P2.pdf')

@@ -3,12 +3,10 @@
 ################################################################
 ##################### Import packages ##########################
 ################################################################
-
 import numpy as np
 import time
 start_time = time.time()
 import Functions as Fun
-
 ################################################################
 ##################### Calculations #############################
 ################################################################
@@ -18,7 +16,7 @@ X1=np.array([55.01,54.87,57.17,36.01,35.88,36.33,
 X2=np.array([82.94,55.02,85.18,-84.27,-106.30,-119.65,
              -112.03,-71.69,-3.50,140.57])
 
-rho=Fun.CalculatePearson(X1,X2)
+rho,rhoNM1=Fun.CalculatePearson(X1,X2)
 
 #Getting rank of each element, starting with 1
 X1R=Fun.Rank(X1)
@@ -27,10 +25,9 @@ X2R=Fun.Rank(X2)
 rhoS=Fun.CalculateSpearman(X1,X2,X1R,X2R)
 tau=Fun.CalculateTau(X1,X2)
 
-print("Pearson: "+str(rho))
-print("Spearman: "+str(rhoS))
-print("Kendall: "+str(tau))
-
+print("Pearson Var Div by N: "+str(round(rho,4)))
+print("Pearson Var Div by N-1: "+str(round(rhoNM1,4)))
+print("Spearman: "+str(round(rhoS,4)))
+print("Kendall: "+str(round(tau,4)))
 ###################### Time To execute #################
-
 print("--- %s seconds ---" % (time.time() - start_time))

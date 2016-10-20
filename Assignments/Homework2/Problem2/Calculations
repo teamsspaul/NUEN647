@@ -19,7 +19,6 @@ for i in range(0,Ntimes):
 
     Positive=True
     Negative=True
-
     while(Positive or Negative):
         
         X1=np.random.uniform(-1,1,Nsamples)

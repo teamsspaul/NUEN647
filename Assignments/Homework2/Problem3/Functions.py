@@ -36,10 +36,13 @@ def CalculatePearson(X1,X2):
     EX1=sum(X1)/len(X1)
     EX2=sum(X2)/len(X2)
     EX1X2=sum(X1*X2)/len(X1)
-    oX1=sum(X1**2-EX1**2)/len(X1)
-    oX2=sum(X2**2-EX2**2)/len(X2)
-    rho=(EX1X2-EX1*EX2)/(oX1*oX2)
-    return(rho)
+    ox1=(sum(X1**2-EX1**2)/len(X1))**0.5
+    ox1NM1=(sum(X1**2-EX1**2)/(len(X1)-1))**0.5
+    ox2=(sum(X2**2-EX2**2)/len(X2))**0.5
+    ox2NM1=(sum(X2**2-EX2**2)/(len(X2)-1))**0.5
+    rho=(EX1X2-EX1*EX2)/(ox1*ox2)
+    rhoNM1=(EX1X2-EX1*EX2)/(ox1NM1*ox2NM1)
+    return(rho,rhoNM1)
 
 def Rank(X1):
     temp=X1.argsort()

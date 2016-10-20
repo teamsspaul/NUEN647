@@ -414,7 +414,8 @@
     $\rho_2<\rho_3<\rho_1$, I was curious, and wrote a script,
     to check to see if it would ever be outside. There could
     be an error with my script, but I found with the below script
-    that a small percentage (less than 1\% of the time),
+    that a small percentage (less than 1\% of the time around
+    0.2-0.4\%),
     it would be outside the above interval. I also made a histogram
     plot...because I like wasting time.
 
@@ -470,7 +471,7 @@
     \end{equation*}
     and
     \begin{equation*}
-      \sigma_X=Var(x)=\int_{-\infty}^{\infty}(x-\mu)^xf(x)dx
+      \sigma_X=Var(x)=\int_{-\infty}^{\infty}(x-\mu)^2f(x)dx
       \approx\frac{1}{N}\sum\limits_{i=1}^{N}(x_i-\mu)^2
       \approx\frac{1}{N-1}\sum\limits_{i=1}^{N}(x_i-\bar{x})^2\equiv s^2
     \end{equation*}
@@ -499,14 +500,30 @@
     \begin{center}
       \textbf{\Huge{TAU!!!!!!}}\tiny{(Powering up)}
     \end{center}
+    \begin{equation*}
+      \tau=\frac{\text{(\# of concordant pairs) -
+          (\# of discordant pairs)}}
+                {\frac{1}{2}N(N-1)}
+    \end{equation*}
+  }
+  \problemAnswer{
+    Where concordance is
+    \begin{equation*}
+      x_i>x_j\text{ and }y_i>y_j \text{ or if } x_i<x_j\text{ and }y_i<y_j
+    \end{equation*}
+    for all pairs of samples ($\frac{1}{2}N(N-1)$ of them)
+    and discordance is
+    \begin{equation*}
+      x_i>x_j\text{and }y_i<y_j \text{ or if } x_i<x_j\text{and }y_i>y_j
+    \end{equation*}
   }
   \pythonscript{Problem3/Calculations}{Script for Problem}
   Code output:\\~\\
-  Pearson: 0.000672597071936\\
-  Spearman: 0.587878787879\\
-  Kendall: 0.5111111111111111\\
+  Pearson Var Div by N: $\boxed{0.5429}$\\
+  Pearson Var Div by N-1: $\boxed{0.4886}$\\
+  Spearman: $\boxed{0.5879}$\\
+  Kendall: $\boxed{0.5111}$\\
 \end{homeworkProblem}
-
 \clearpage
 
 %--------------------------------------------------------------------------
@@ -525,9 +542,9 @@
     \begin{align*}
       \Phi^{-1}(q)&=\mu+\sigma\sqrt{2}erf^{-1}(2q-1)
     \end{align*}
-    Evaluated at $q=0$:
+    Evaluated at $q=0$ and $q=1$:
     \begin{equation*}
-      \Phi^{-1}(0)=-\infty
+      \Phi^{-1}(0)=-\infty\ \ \ \ \ \Phi^{-1}(1)=\infty
     \end{equation*}
     Also where:
     \begin{equation*}
@@ -545,20 +562,95 @@
     \begin{equation*}
       \rho=\frac{E[XY]-E[X]E[Y]}{\sigma_x\sigma_y}
     \end{equation*}
-    \textbf{Note: McClarren is a poo poo head}
+    \textbf{Note:}
     \begin{align*}
-      \Phi_\rho(x,y)=\int_{-\infty}^{x}dx'\int_{-\infty}^{y}dy'
+      \Phi_\rho(-\infty,-\infty)=\int_{-\infty}^{-\infty}dx'
+      \int_{-\infty}^{-\infty}dy'
       \frac{1}{2\pi \sigma_x\sigma_y\sqrt{1-\rho^2}}
-      exp\left[-\frac{z}{2(1-\rho^2)}\right]
+      exp\left[-\frac{z}{2(1-\rho^2)}\right]=0
+    \end{align*}
+    Because integrating over zero domain is 0.
+    \begin{align*}
+      \Phi_\rho(\infty,\infty)=\int_{-\infty}^{\infty}dx'
+      \int_{-\infty}^{\infty}dy'
+      \frac{1}{2\pi \sigma_x\sigma_y\sqrt{1-\rho^2}}
+      exp\left[-\frac{z}{2(1-\rho^2)}\right]=1
+    \end{align*}
+    Because integrating over the entire domain of a PDF is 1.
+  }
+  \problemAnswer{
+    \textbf{Lower Tail Dependance:}
+    \begin{align*}
+      \lambda_l&=\lim_{q \to 0} \frac{C(q,q)}{q}\\
+      &=\lim_{q \to 0}\frac{\Phi_\rho(\Phi^{-1}(q),\Phi^{-1}(q))}
+      {q}
+    \end{align*}
+    Applying L'H\^{o}spital (Pronouced Hospital - like the place you go
+    when you get sick - not really).
+    \begin{align*}
+      \lambda_l&=\lim_{q \to 0}
+      \frac{\frac{d}{dq}\Phi_\rho(\Phi^{-1}(q),\Phi^{-1}(q))}{1}\\
+      &=\lim_{q \to 0}\frac{d}{dq}\Phi_\rho(\Phi^{-1}(q),\Phi^{-1}(q))
     \end{align*}
   }
   \problemAnswer{
-    \textbf{Tail Dependance:}\\~\\
-    \begin{equation*}
-      \lambda_l=\lim_{q \to 0} \frac{C(q,q)}{q}
-    \end{equation*}
+    Evaluating at $q=0$
+    \begin{align*}
+      \lambda_l&=
+      \frac{d}{dq}\Phi_\rho(\Phi^{-1}(0),\Phi^{-1}(0))\\
+      &=
+      \frac{d}{dq}\Phi_\rho(-\infty,-\infty)\\
+      &=\frac{d}{dq}0\\
+      &=0
+    \end{align*}
+    The problem with this is, I do not think I can just plug in $q=0$
+    inside the whole mess, but rather like this:
+    \begin{align*}
+      \lambda_l&=
+      \left|\frac{d}{dq}
+      \Phi_\rho(\Phi^{-1}(q),\Phi^{-1}(q))\right|_{q=0}
+    \end{align*}
+    Here, I would want to say that the integral cancels with
+    $\frac{d}{dq}$ (not sure if thats correct - because
+    there are two integrals), to get
+    \begin{align*}
+      \lambda_l&=\left|\phi(\Phi^{-1}(q),\Phi^{-1}(q))\right|_{q=0}\\
+      &=\phi(\Phi^{-1}(0),\Phi^{-1}(0))\\
+        &=\phi(-\infty,-\infty)\\
+        &=0
+    \end{align*}
+    Where $\phi$ is the PDF of a bivariate normal ($\Phi$ without the
+    integrals). Noting $\phi(-\infty,-\infty)$ ends up with a $e^{-\infty}$
+    term.\\~\\
+    but if we apply the limit before L'H\^{o}spital, then we get:
+    \begin{align*}
+      \lambda_l&=\lim_{q \to 0} \frac{C(q,q)}{q}\\
+      &=\lim_{q \to 0}\frac{\Phi_\rho(\Phi^{-1}(q),\Phi^{-1}(q))}{q}\\
+      &=\frac{\Phi_\rho(\Phi^{-1}(0),\Phi^{-1}(0))}{0}\\
+      &=\frac{\Phi_\rho(-\infty,-\infty)}{0}\\
+      &=\frac{0}{0}\\
+    \end{align*}
+    I am not sure if thats healthy. 
   }
-
+  \problemAnswer{
+    \textbf{Upper Tail Dependance:}
+    \begin{align*}
+      \lambda_u&=\lim_{q \to 1} \frac{1-2q+C(q,q)}{1-q}\\
+      &=\lim_{q \to 1}\frac{1-2q+\Phi_\rho(\Phi^{-1}(q),\Phi^{-1}(q))}
+      {1-q}
+    \end{align*}
+    Applying the limit:
+    \begin{align*}
+      \lambda_u&=\frac{1-2+\Phi_\rho(\Phi^{-1}(1),\Phi^{-1}(1))}{0}\\
+      &=\frac{1-2+\Phi_\rho(\infty,\infty)}{0}\\
+      &=\frac{1-2+1}{0}\\
+      &=\frac{0}{0}
+    \end{align*}
+    Again, I do not think this is healthy, but I don't know what else
+    to do. Could look at similar things as above, but I think
+    they wouldn't even give 0...I could try and evaluate the
+    intervals and then differentiate but that sounds like a mess.
+  }
 \end{homeworkProblem}
 
 \clearpage
@@ -571,12 +663,57 @@
 \begin{homeworkProblem}
   Another Archimedean copula is the Joe copula with generator
   \begin{equation*}
-    \phi_J(t)=-log(1-(1-t)^{\theta}),
+    \varphi_J(t)=-log(1-(1-t)^{\theta}),
   \end{equation*}
   and
   \begin{equation*}
-    \phi_{J}^{-1}=1-(1-exp(-t))^{1/\theta}.
+    \varphi_{J}^{-1}=1-(1-exp(-t))^{1/\theta}.
   \end{equation*}
+  \begin{enumerate}[label=(\alph*)]
+  \item{Compute the bivariate copula for this generator}\\
+      The Archimedean copula for $\varphi$ is
+      \begin{equation*}
+        C_\varphi(u,v)=\hat{\varphi}^{-1}(\varphi(u)+\varphi(v))
+      \end{equation*}
+  \item{Derive the upper and lower tail dependence for this
+    copula}
+    \begin{align*}
+      \lambda_l=\lim_{q \to 0} \frac{C(q,q)}{q}
+    \end{align*}
+    \begin{align*}
+      \lambda_u=\lim_{q \to 1} \frac{1-2q+C(q,q)}{1-q}
+    \end{align*}
+  \item{Compute the value of Kendall's tau for this copula}
+    \begin{equation*}
+      \tau(U,V)=1+4\int_0^1\frac{\varphi(t)}{\varphi'(t)}dt
+    \end{equation*}
+  \item{Generate 1000 samples from the copula with standard
+  normal margins and a value of Kendall's tau of 0.6.}
+  \end{enumerate}
+  \problemAnswer{
+    \textbf{(a)}
+    \begin{equation*}
+        C_\varphi(u,v)=\hat{\varphi}^{-1}(\varphi(u)+\varphi(v))
+    \end{equation*}
+  }
+  \problemAnswer{
+    \textbf{(b)}
+    \begin{align*}
+      \lambda_l=\lim_{q \to 0} \frac{C(q,q)}{q}
+    \end{align*}
+    \begin{align*}
+      \lambda_u=\lim_{q \to 1} \frac{1-2q+C(q,q)}{1-q}
+    \end{align*}
+  }
+  \problemAnswer{
+    \textbf{(c)}
+    \begin{equation*}
+      \tau(U,V)=1+4\int_0^1\frac{\varphi(t)}{\varphi'(t)}dt
+    \end{equation*}
+  }
+  \problemAnswer{
+    \textbf{(d)}
+  }
 \end{homeworkProblem}
 
 
