@@ -458,7 +458,48 @@
     \end{tabular}
     \end{center}
   \end{table}
-  
+  \problemAnswer{
+    \textbf{Pearson Correlation}
+    \begin{equation*}
+      \rho(X,Y)=\frac{E[XY]-E[X]E[Y]}{\sigma_X\sigma_Y}
+    \end{equation*}
+    Where:
+    \begin{equation*}
+      E[g(x)]=\int_{-\infty}^{\infty}dx\ g(x)f(x)\approx
+      \frac{1}{N}\sum\limits_{i=1}^{N}g(x_i)
+    \end{equation*}
+    and
+    \begin{equation*}
+      \sigma_X=Var(x)=\int_{-\infty}^{\infty}(x-\mu)^xf(x)dx
+      \approx\frac{1}{N}\sum\limits_{i=1}^{N}(x_i-\mu)^2
+      \approx\frac{1}{N-1}\sum\limits_{i=1}^{N}(x_i-\bar{x})^2\equiv s^2
+    \end{equation*}
+    and
+    \begin{equation*}
+      \mu_X \approx\frac{1}{N}\sum\limits_{i=1}^{N}x_i\equiv\bar{x}
+    \end{equation*}
+    \textbf{Spearman Rank Correlation}
+    \begin{equation*}
+      \rho_S(X,Y)=\frac{\Sigma_{i=1}^{N}
+        (rank(x_i)-\bar{r}_X)(rank(y_i)-\bar{r}_Y)}
+          {\sqrt{\Sigma_{i=1}^{N}
+              (rank(x_i)-\bar{r}_X)^2}
+            \sqrt{\Sigma_{i=1}^{N}
+              (rank(y_i)-\bar{r}_Y)^2}}
+    \end{equation*}
+    Where:
+    \begin{center}
+      $rank(x_i)$= Rank of $x_i$ in sample population
+    \end{center}
+    and
+    \begin{equation*}
+      \bar{r}_X=\frac{1}{N}\Sigma_{i=1}^{N}rank(x_i)
+    \end{equation*}
+    \textbf{Kendall's Tau}
+    \begin{center}
+      \textbf{\Huge{TAU!!!!!!}}\tiny{(Powering up)}
+    \end{center}
+  }
   \pythonscript{Problem3/Calculations}{Script for Problem}
   Code output:\\~\\
   Pearson: 0.000672597071936\\

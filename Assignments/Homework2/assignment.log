@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  20 OCT 2016 09:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  20 OCT 2016 11:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -777,30 +777,35 @@ Package pdftex.def Info: Problem2/P2.pdf used on input line 424.
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.434 \clearpage
-                 <./Problem2/P2.pdf>] (./Problem3/Calculations [8
+                 <./Problem2/P2.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 502--503
+
+ []
+
+(./Problem3/Calculations [8
 
 ])
-Underfull \hbox (badness 10000) in paragraph at lines 463--468
+Underfull \hbox (badness 10000) in paragraph at lines 504--509
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 519--519
+Underfull \hbox (badness 10000) in paragraph at lines 560--560
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 519--519
+Underfull \hbox (badness 10000) in paragraph at lines 560--560
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 476--520
+Underfull \hbox (badness 10000) in paragraph at lines 517--561
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 476--520
+Underfull \hbox (badness 10000) in paragraph at lines 517--561
 
  []
 
@@ -810,21 +815,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 476--520
 
 ] 
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 550.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 550.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 591.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 591.
 (./assignment.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 550.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 550.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 591.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 591.
 Package rerunfilecheck Info: File `assignment.out' has not changed.
 (rerunfilecheck)             Checksum: B0A91638CECC0FF089CDE10F9A72DF4C;225.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 550.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 591.
  ) 
 Here is how much of TeX's memory you used:
- 9419 strings out of 494953
- 130280 string characters out of 6180977
+ 9420 strings out of 494953
+ 130298 string characters out of 6180977
  262709 words of memory out of 5000000
- 12447 multiletter control sequences out of 15000+600000
- 13144 words of font info for 49 fonts, out of 8000000 for 9000
+ 12448 multiletter control sequences out of 15000+600000
+ 13451 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  36i,12n,43p,252b,2141s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -845,7 +850,7 @@ s/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/c
 ourier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8
 a.pfb>
-Output written on assignment.pdf (11 pages, 343021 bytes).
+Output written on assignment.pdf (11 pages, 349955 bytes).
 PDF statistics:
  301 PDF objects out of 1000 (max. 8388607)
  266 compressed objects within 3 object streams
