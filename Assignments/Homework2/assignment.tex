@@ -813,12 +813,9 @@
       I cannot seem to solve for V, so I'll come up with a janky
       way to determine $C_J^{-1}(\xi|u)$. Solving for a $V$,
       and remembering that
-      $V=(1-v)^\theta=(1-C_J^{-1}(\xi|u))^\theta$.
+      $C_J^{-1}(\xi|u)=1-V^{1/\theta}$.
       \begin{align*}
         V&=\frac{U^*}{U}\xi[U+V-VU]^{1-\frac{1}{\theta}}+1\\
-        C_J^{-1}(\xi|u)&=
-        1-\left(\frac{U}{U^*}\xi[U+V-VU]^{1-\frac{1}{\theta}}+1\right)^
-        \frac{1}{\theta}
       \end{align*}
       Noting that we will have to iterate for a solution...
       this better converge, or I will destroy something.
