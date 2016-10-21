@@ -692,27 +692,119 @@
   \end{enumerate}
   \problemAnswer{
     \textbf{(a)}
-    \begin{equation*}
-        C_\varphi(u,v)=\hat{\varphi}^{-1}(\varphi(u)+\varphi(v))
-    \end{equation*}
+    \begin{align*}
+      C_\varphi(u,v)&=\hat{\varphi}^{-1}(\varphi(u)+\varphi(v))\\
+      &=\hat{\varphi}^{-1}(
+      -log(1-(1-u)^{\theta})-log(1-(1-v)^{\theta}))\\
+      &=\hat{\varphi}^{-1}(
+      -log([1-(1-u)^{\theta}][1-(1-v)^{\theta}]))\\
+      &=1-(1-exp(-\left(-log([1-(1-u)^{\theta}][1-(1-v)^{\theta}])
+      \right)))^{1/\theta}\\
+      &=1-(1-[1-(1-u)^{\theta}][1-(1-v)^{\theta}])^{1/\theta}\\
+      &=1-\left[(1-v)^\theta+(1-u)^\theta
+        -(1-u)^\theta(1-v)^\theta\right]^{1/\theta}
+    \end{align*}
   }
   \problemAnswer{
     \textbf{(b)}
+    \textbf{Lower}
     \begin{align*}
-      \lambda_l=\lim_{q \to 0} \frac{C(q,q)}{q}
+      \lambda_l&=\lim_{q \to 0} \frac{C(q,q)}{q}\\
+      &=\lim_{q \to 0} \frac{1-\left[(1-q)^\theta+(1-q)^\theta
+          -(1-q)^\theta(1-q)^\theta\right]^{1/\theta}}{q}\\
+      &=\lim_{q \to 0} \frac{1-\left[2(1-q)^\theta-(1-q)^{2\theta}
+          \right]^{1/\theta}}{q}\\
+      &=\lim_{q \to 0} \frac{1-\left[(1-q)^\theta(2-(1-q)^\theta)
+          \right]^{1/\theta}}{q}\\
+      &=\lim_{q \to 0} \frac{1-(1-q)\left[(2-(1-q)^\theta)
+          \right]^{1/\theta}}{q}
     \end{align*}
+
+  }
+  \problemAnswer{
+    Applying L'H\^{o}spital (did it in my head - not really)
     \begin{align*}
-      \lambda_u=\lim_{q \to 1} \frac{1-2q+C(q,q)}{1-q}
+      \lambda_l&=\lim_{q \to 0} -2(2-(1-q))^{\frac{1}{\theta}-1}
+      ((1-q)^\theta-1)\\
+      &=-2(2-(1-0))^{\frac{1}{\theta}-1}
+      ((1-0)^\theta-1)\\
+      &=0
+    \end{align*}
+    \textbf{Upper}
+    \begin{align*}
+      \lambda_u&=\lim_{q \to 1} \frac{1-2q+C(q,q)}{1-q}\\
+      &=\lim_{q \to 1}\frac{1-2q+1-(1-q)\left[(2-(1-q)^\theta)
+          \right]^{1/\theta}}{1-q}\\
+        &=\lim_{q \to 1}\frac{(1-q)\left(2-[(2-(1-q)^\theta)
+          ]^{1/\theta}\right)}{1-q}\\
+      &=\lim_{q \to 1}2-\left[(2-(1-q)^\theta)
+        \right]^{1/\theta}\\
+      &=2-2^{1/\theta}
     \end{align*}
   }
   \problemAnswer{
     \textbf{(c)}
     \begin{equation*}
-      \tau(U,V)=1+4\int_0^1\frac{\varphi(t)}{\varphi'(t)}dt
+      \varphi'(t)=-\frac{\theta(1-t)^{\theta-1}}{1-(1-t)^{\theta}}
+    \end{equation*}
+    \begin{align*}
+      \tau(U,V)&=1+4\int_0^1\frac{\varphi(t)}{\varphi'(t)}dt\\
+      &=1+4\int_0^1\frac{-log(1-(1-t)^{\theta})}
+          {-\frac{\theta(1-t)^{\theta-1}}{1-(1-t)^{\theta}}}dt\\
+      &=1+4\int_0^1\frac{-log(1-(1-t)^{\theta})}
+          {-\frac{\theta(1-t)^{\theta-1}}{1-(1-t)^{\theta}}}dt\\
+    \end{align*}
+    I do not want to integrate, and will assume the answer is
+    correct on this
+    \href{https://arxiv.org/pdf/1207.1708.pdf}{link}.
+    \begin{equation*}
+      \tau(U,V)=1-4\sum\limits_{k=1}^{\infty}
+      \frac{1}{(K(\theta K + 2)(\theta(K-1)+1))}
     \end{equation*}
   }
   \problemAnswer{
     \textbf{(d)}
+    For a Kendall's tau of 0.6, $\theta=3.826659$. According
+    to some random notes I have. In order to sample from
+    a bivariate copula:
+    \begin{enumerate}
+    \item{Produce $\xi_1$, $\xi_2$ where $\xi_i \sim U(0,1)$}
+    \item{Set $W\equiv C^{-1}(\xi_2|\xi_1)$}
+
+      Where:
+      \begin{align*}
+        C(v|u)&=\frac{d}{du}(C(u,v))\\
+        &=\frac{d}{du}(1-\left[(1-v)^\theta+(1-u)^\theta
+          -(1-u)^\theta(1-v)^\theta\right]^{1/\theta})\\
+      \end{align*}
+      Wolfram gives an answer, but I want to say first,
+      this is annoying. Okay, if $U=(1-u)^\theta$ and
+      $V=(1-v)^\theta$ and $U^*=(1-u)$, then a reasonable looking
+      answer is:
+      \begin{equation*}
+        C(v|u)=\frac{U}{U^*}[V-1][U+V-VU]^{\frac{1}{\theta}-1}
+      \end{equation*}
+      The next step requires us setting $C(v|u)=\xi$ and
+      solving for $v$ and calling that $C_J^{-1}(\xi|u)$.
+      I cannot seem to solve for V, so I'll come up with a janky
+      way to determine $C_J^{-1}(\xi|u)$. Solving for a $V$,
+      and remembering that
+      $V=(1-v)^\theta=(1-C_J^{-1}(\xi|u))^\theta$.
+      \begin{align*}
+        V&=\frac{U}{U^*}\xi[U+V-VU]^{1-\frac{1}{\theta}}+1\\
+        C_J^{-1}(\xi|u)&=
+        1-\left(\frac{U}{U^*}\xi[U+V-VU]^{1-\frac{1}{\theta}}+1\right)^
+        \frac{1}{\theta}
+      \end{align*}
+      Noting that we will have to iterate for a solution...
+      this better converge, or I will destroy something.
+    \item{$x=F_X^{-1}(\xi_1)\ \ \ y=F_Y^{-1}(w)$}
+      Where:
+      \begin{equation*}
+        F_X^{-1}(\xi)=\sqrt{2}erf^{-1}(2\xi-1)
+      \end{equation*}
+      For a standard normal. 
+    \end{enumerate}
   }
 \end{homeworkProblem}
 
