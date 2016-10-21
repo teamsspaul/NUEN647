@@ -263,7 +263,31 @@
   Generate 4 realizations of a Gaussian random process with zero mean,
   $\mu(x,y)=0$, and this covariance function defined on the unit square,
   $x,y\in [0,1]$. For the realizations, evaluate the process at 50
-  equally space points in each direction. Plot the realizations. 
+  equally space points in each direction. Plot the realizations.\\~\\
+  I received lots of help on this problem from other members in the class.
+  Problem took around 400 seconds to run.
+  \pythonscript{Problem1/Calculations}{Script for Problem}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1/P1realization1.pdf}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1/P1realization2.pdf}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1/P1realization3.pdf}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1/P1realization4.pdf}
+    \end{center}
+  \end{figure}
+      
 \end{homeworkProblem}
 
 \clearpage
@@ -791,7 +815,7 @@
       and remembering that
       $V=(1-v)^\theta=(1-C_J^{-1}(\xi|u))^\theta$.
       \begin{align*}
-        V&=\frac{U}{U^*}\xi[U+V-VU]^{1-\frac{1}{\theta}}+1\\
+        V&=\frac{U^*}{U}\xi[U+V-VU]^{1-\frac{1}{\theta}}+1\\
         C_J^{-1}(\xi|u)&=
         1-\left(\frac{U}{U^*}\xi[U+V-VU]^{1-\frac{1}{\theta}}+1\right)^
         \frac{1}{\theta}
