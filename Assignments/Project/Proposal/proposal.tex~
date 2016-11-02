@@ -1,0 +1,88 @@
+
+\documentclass[11pt,notitlepage]{article}
+
+\usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts
+\usepackage{booktabs} % Top and bottom rules for table
+\usepackage{wrapfig} % Allows in-line images
+\usepackage[labelfont=bf]{caption} % Make figure numbering in captions bold
+\usepackage{graphicx} % Required for including images
+\usepackage[top=0.7in,bottom=1in,left=1in,right=1in]{geometry}
+\pagestyle{empty} % Remove page numbering
+
+\hyphenation{ionto-pho-re-tic iso-tro-pic fortran} % Specifies custom hyphenation points for words or words that shouldn't be hyphenated at all
+
+\renewcommand{\thesection}{\Roman{section}}
+
+\begin{document}
+
+\vspace*{0.5cm}
+
+\noindent{\fontsize{16}{19.2}\selectfont
+  \textbf{NUEN 647 Final Project}}
+
+\vspace{1cm}
+Uncertainty quantification of depletion calculations
+for \tss{137}Cs, \tss{133}Cs, \tss{154}Eu, \tss{153}Eu,
+Depletion of irradiated fuel in ORIGEN to determine product isotope ratios
+
+%------------------------------------------------------------
+%	Introduction
+%------------------------------------------------------------
+ 
+\section{Introduction}
+
+This is an example citation \cite{Tatro2013}.
+Here is another example citation \ref{Tatro2013}. Include any
+background information that is relevant to the problem.
+
+%------------------------------------------------------------
+%	Objectives
+%------------------------------------------------------------
+
+\section{Objectives}
+
+Describe the problem and your goals in solving it.
+
+
+%------------------------------------------------------------
+%	Present Status of the Question
+%------------------------------------------------------------
+
+\section{Present Status of the Question}
+
+Summarize your literature review. What is the pertinent
+previous research in this field? Include citations.
+
+%------------------------------------------------------------
+%	Procedure
+%------------------------------------------------------------
+
+\section{Procedure}
+
+Describe your general solution method. If your work is
+experimental, give the nature of the data you will collect
+and how you will analyze it. If your work is computational,
+include a description of how you will verify your methodology
+(test cases, simulations, sensitivity analysis, etc.)
+
+%------------------------------------------------------------
+%	Expected Results:
+%------------------------------------------------------------
+
+\section{Expected Results}
+
+Include work already done and what you expect to see in the
+remaining work. Also talk about risk management - if something
+doesn't work as expected, are there alternative solutions?
+
+
+%------------------------------------------------------------
+%	Bibliography
+%------------------------------------------------------------
+
+\bibliography{references} % Use the NIHGrant.bib file for the reference list
+\bibliographystyle{plain} % Use the custom nihunsrt bibliography style included with the template
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

@@ -1,0 +1,125 @@
+
+\documentclass[11pt,notitlepage]{article}
+
+\usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts
+\usepackage{booktabs} % Top and bottom rules for table
+\usepackage{wrapfig} % Allows in-line images
+\usepackage[labelfont=bf]{caption} % Make figure numbering in captions bold
+\usepackage{graphicx} % Required for including images
+\usepackage[top=0.7in,bottom=1in,left=1in,right=1in]{geometry}
+\pagestyle{empty} % Remove page numbering
+\newcommand{\tss}{\textsuperscript}
+\newcommand{\tsbs}{\textsubscript}
+\usepackage{float}
+\hyphenation{ionto-pho-re-tic iso-tro-pic fortran} % Specifies custom hyphenation points for words or words that shouldn't be hyphenated at all
+\newcommand\tab[1][0.6cm]{\hspace*{#1}}
+
+\renewcommand{\thesection}{\Roman{section}}
+
+\begin{document}
+
+\vspace*{0.5cm}
+
+\noindent{\fontsize{16}{19.2}\selectfont
+  \textbf{NUEN 647 Final Project}}
+
+\vspace{1cm}
+Uncertainty quantification of depletion calculations
+for specific isotopes using ORIGEN.
+
+%------------------------------------------------------------
+%	Introduction
+%------------------------------------------------------------
+ 
+\section{Introduction}
+
+\tab
+Determing composition of irradiated fuel is of importance
+for a myriad of reasons. Whether for flux calculations,
+reprocessing, or irradiation history verification,
+calculating fuel composition requires a Bateman solver,
+and a means for building a sparse matrix.
+
+Applications using these compositions rarely report the
+uncertainty associated with results, even when inputs,
+such as flux shape, fission yield, cross sections,
+and half-lives have varying degrees of uncertainty. A further
+source of error in this calculation is due to the multi-group
+approximation, but will not be explored here.
+
+Several isotope concentrations, of interest to the writer,
+will calculated as a function of burnup
+with the depletion code ORIGEN for a thermal
+and fast system using depleted uranium.
+The uncertainty of these concentrations
+will then be determined.
+
+%------------------------------------------------------------
+%	Objectives
+%------------------------------------------------------------
+
+\section{Objectives}
+
+\begin{enumerate}
+\item{Build ORIGEN model for fast and thermal system which
+  calculates concentrations of isotopes shown in
+  Table \ref{Table:1}.}
+\item{Determine how to vary fission yields for calculation}
+\item{Determine how to vary cross section and or flux spectrum
+  inputs for calculation}
+\item{Determine how to vary half-life information for calculation}
+\item{Create a sampling space for all possible variations of
+  calculations}
+\item{Determine importance of various uncertain parameters
+  by running the code a number of times randomly sampling
+  the sample space (still not 100\% sure how to do this -
+  not even 50\% sure how to do this)}
+\end{enumerate}
+
+\begin{table}[H]
+  \begin{center}
+    \caption{Isotope solve list.}
+    \label{Table:1}
+    \begin{tabular}{l l l}
+      \toprule
+      \tss{133}Cs & \tss{136}Ba & \tss{153}Eu\\
+      \tss{134}Cs & \tss{138}Ba & \tss{154}Eu\\
+      \tss{135}Cs & \tss{149}Sm & \tss{239}Pu\\
+      \tss{137}Cs & \tss{150}Sm & \tss{242}Pu\\
+      \tss{148}Nd & \tss{106}Rh & \tss{125}Sb\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\end{table}
+
+%------------------------------------------------------------
+%	Quantities of Interest and uncertain parameters
+%------------------------------------------------------------
+
+\section{Quantities of Interest and Uncertain Parameters}
+
+Quantities of interest are shown in Table \ref{Table:1} above.
+Uncertain parameters are listed below:
+
+\begin{itemize}
+\item{Fission yield}
+\item{Cross sections}
+\item{Half-lives}
+\end{itemize}
+
+%------------------------------------------------------------
+%	Prediction
+%------------------------------------------------------------
+
+\section{Prediction}
+
+The first major prediction for this project is that half-lives
+will not have a large impact on results because they are
+relatively well known. Secondly, \tss{125}Sb is notorious
+for being difficult to calculate, I would would predict that
+there would be large uncertainties due to uncertainties in
+the cross section data.
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
