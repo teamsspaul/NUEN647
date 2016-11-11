@@ -1,0 +1,177 @@
+---
+title: "Monte Carlo Sampling"
+output: html_document
+author: "Ryan G. McClarren"
+---
+
+For a QoI we can sample each of the parameters from their given distribution and compute the QoI for each sampled point in parameter space.  This gives us samples from the output distribution of the QOI.
+
+For a simple example suppose you need to construct a 5 cm sphere of Uranium-235.  For safety purposes, it cannot be within 3 cm of the critical radius.  Given uncertainties in material properties, what is the distribution of masses and spheres?, Are they safe?
+
+Here are the formulae for the mass and critical radius:
+$$ \mathrm{Mass} = \frac{4}{3} \pi r^3 \rho,$$
+$$ {R}_\mathrm{c} = \frac{2.2698}{N_p \sigma_\mathrm{t}}\sqrt{\frac{\sigma_\mathrm{t}}{3 \sigma_\mathrm{f} (\nu-1)}},$$
+$$ N_p = \frac{\rho}{235\times 1.660538782\times 10^{-24}}.$$
+
+```{r,results='hide', echo=FALSE, warning=FALSE, include=FALSE}
+library(ggplot2)
+library(plyr)
+library(dplyr)
+library(smoothmest)
+```
+
+```{r}
+r = 5
+massSphere <- function(rho) 4/3*pi*r^3 * rho
+critRadius <- function(rho, sigf, sigt, nu) {
+  Np = rho /235 / 1.660538782e-24
+  2.2698/ (Np * sigt * 10^-24) *sqrt(sigt/(3 * sigf * (nu-1)))
+}
+```
+
+Let's generate samples for each uncertain parameter, assuming each is normally distributed.
+
+```{r}
+NumSamps = 500
+meanSigf = 1.43; sdSigf = 0.015
+meanSigt = 3.02; sdSigt = 0.02
+meannu = 2.5; sdnu = 0.2
+meanrho = 19.05; sdrho = 0.05
+
+
+samples <- data.frame(sigf = rnorm(NumSamps,meanSigf,sdSigf), 
+                      sigt = rnorm(NumSamps,meanSigt,sdSigt), 
+                      nu = rnorm(NumSamps,meannu,sdnu), 
+                      rho = rnorm(NumSamps,meanrho,sdrho))
+samples$mass <- massSphere(samples$rho)
+samples$critRadius <- with(samples,critRadius(rho,sigf,sigt,nu))
+```
+
+Here is a plot of each variable's histogram
+
+```{r, echo=FALSE,warning=FALSE}
+ggplot(samples, aes(x=sigf)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$sigf)-min(samples$sigf))/30) + scale_x_continuous(expression(sigma[f]))
+ggplot(samples, aes(x=sigt)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$sigt)-min(samples$sigt))/30) + scale_x_continuous(expression(sigma[t]))
+ggplot(samples, aes(x=nu)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$nu)-min(samples$nu))/30) + scale_x_continuous(expression(nu))
+ggplot(samples, aes(x=rho)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$rho)-min(samples$rho))/30) + scale_x_continuous(expression(rho))
+```
+
+For the mass of the sphere we have the following distribution:
+```{r}
+ggplot(samples, aes(x=mass)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$mass)-min(samples$mass))/30) + scale_x_continuous("Mass of Sphere") + ggtitle(paste("Mean (g) =",mean(samples$mass)," Std. Dev. =",sd(samples$mass)))
+```
+
+The critical radius of a sphere made out of the material has a distribution given by
+```{r}
+ggplot(samples, aes(x=critRadius)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$critRadius)-min(samples$critRadius))/30) + scale_x_continuous("Crit. Rad. Sphere") + ggtitle(paste("Mean (cm) =",mean(samples$critRadius)," Std. Dev. =",sd(samples$critRadius)))
+```
+
+The probability, based on these samples, of the critical radius being 8 or less is `r length(samples$critRadius[ samples$critRadius < 8])/NumSamps`. The minimum critical radius is `r min(samples$critRadius)`.
+
+#Cauchy RV
+Let's change our distribution of random variables to a Laplace (double Exponential) distribution. This has the PDF 
+
+$$f(x|\theta,\lambda)=\frac{1}{2\lambda}exp\left(-\frac{|x-\theta|}{\lambda}\right). $$
+
+With a mean equal to $\theta$ and standard deviation of $\sqrt{2}\lambda$.  Therefore, we can change our samples accordingly.  Note we have to make sure $nu$ stays larger than 1.
+
+```{r}
+NumSamps = 500
+meanSigf = 1.43; sdSigf = 0.015
+meanSigt = 3.02; sdSigt = 0.02
+meannu = 2.5; sdnu = 0.2
+meanrho = 19.05; sdrho = 0.05
+
+
+samples <- data.frame(sigf = rdoublex(NumSamps,meanSigf,sqrt(2)*sdSigf), 
+                      sigt = rdoublex(NumSamps,meanSigt,sqrt(2)*sdSigt), 
+                      nu = rdoublex(NumSamps,meannu,sqrt(2)*sdnu), 
+                      rho = rdoublex(NumSamps,meanrho,sqrt(2)*sdrho))
+samples$nu[ samples$nu<=1] <- 1.00001
+samples$mass <- massSphere(samples$rho)
+samples$critRadius <- with(samples,critRadius(rho,sigf,sigt,nu))
+```
+
+Here is a plot of each variable's histogram
+
+```{r, echo=FALSE,warning=FALSE}
+ggplot(samples, aes(x=sigf)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$sigf)-min(samples$sigf))/30) + scale_x_continuous(expression(sigma[f]))
+ggplot(samples, aes(x=sigt)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$sigt)-min(samples$sigt))/30) + scale_x_continuous(expression(sigma[t]))
+ggplot(samples, aes(x=nu)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$nu)-min(samples$nu))/30) + scale_x_continuous(expression(nu))
+ggplot(samples, aes(x=rho)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$rho)-min(samples$rho))/30) + scale_x_continuous(expression(rho))
+```
+
+For the mass of the sphere we have the following distribution:
+```{r}
+ggplot(samples, aes(x=mass)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$mass)-min(samples$mass))/30) + scale_x_continuous("Mass of Sphere") + ggtitle(paste("Mean (g) =",mean(samples$mass)," Std. Dev. =",sd(samples$mass)))
+```
+
+The critical radius of a sphere made out of the material has a distribution given by
+```{r}
+ggplot(samples, aes(x=critRadius)) + geom_histogram(fill="white",color="blue", binwidth = (max(samples$critRadius)-min(samples$critRadius))/30) + scale_x_continuous("Crit. Rad. Sphere") + ggtitle(paste("Mean (cm) =",mean(samples$critRadius)," Std. Dev. =",sd(samples$critRadius)))
+```
+
+Let's zoom in
+
+```{r}
+ggplot(samples[samples$critRadius<20,], aes(x=critRadius)) + geom_histogram(fill="white",color="blue") + scale_x_continuous("Crit. Rad. Sphere") + ggtitle(paste("Mean (cm) =",mean(samples$critRadius)," Std. Dev. =",sd(samples$critRadius)))
+```
+
+The probability, based on these samples, of the critical radius being 8 or less is `r length(samples$critRadius[ samples$critRadius < 8])/NumSamps`. The minimum critical radius is `r min(samples$critRadius)`.
+
+#Stratified Sampling
+It takes a lot of points to get samples in the "tails" of a distribution. To force our samples to spread out we can use stratified sampling.  That is we can divide our PDF into equal-probable bins and then pick a bin randomly, and a point inside the bin.
+
+Let's do an example with a standard normal. The PDF looks like:
+
+```{r}
+plotDF <- data.frame(x=seq(-3,3,length.out=1000))
+plotDF$PDF <- dnorm(plotDF$x)
+ggplot(plotDF,aes(x=x, y=PDF)) + geom_line()
+```
+
+If we generate points from this distribution randomly we will see that we don't get too many points beyond 2 standard deviations:
+
+```{r}
+Nsamps = 50
+normSamps <- data.frame(x=rnorm(Nsamps),y=0)
+ggplot(plotDF,aes(x=x, y=PDF)) + geom_line(size=2,color="blue") + geom_jitter(data =normSamps, aes(x=x,y=y),position = position_jitter(height = .01),size=3) +
+  geom_line(aes(x=c(-2,-2),y=c(0,max(plotDF$PDF))), color="red") + geom_line(aes(x=c(2,2),y=c(0,max(plotDF$PDF))), color="red")
+```
+
+Instead, let's divide the distribution into five intervals of equal probability.  The first goes from negative infinity to where the CDF, $F(x)$, equals .2, call this point $x_{.2}$.  The second bin goes from $x_{.2}$ to $x_{.4}$; the third bin goes from $x_{.4}$ to $x_{.6}$; the third bin goes from $x_{.6}$ to $x_{.8}$. The final bin extends from $x_{.8}$ to $\infty$.
+
+$x_{.2}=$`r qnorm(0.2)`
+$x_{.4}=$`r qnorm(0.4)`
+$x_{.6}=$`r qnorm(0.6)`
+$x_{.8}=$`r qnorm(0.8)`
+
+Now what we is put N/5 points in each bin, and then pick a point inside that bin.
+
+```{r, echo=FALSE}
+stratSamps <- data.frame(bins = runif(Nsamps),y=0)
+stratSamps$bin = rep(c(1,2,3,4,5),Nsamps/5)
+#this will be slow
+for (i in 1:Nsamps){
+  prob <- runif(1,min=(stratSamps$bin[i]-1)*.2,max=(stratSamps$bin[i])*.2)
+  stratSamps$x[i] = qnorm(prob)
+}
+ggplot(plotDF,aes(x=x, y=PDF)) + geom_line(size=2,color="blue") + geom_jitter(data =stratSamps, aes(x=x,y=y),position = position_jitter(height = .01),size=3) +
+  geom_line(aes(x=c(qnorm(0.2),qnorm(0.2)),y=c(-.01,dnorm(qnorm(.2)))), color="red") + geom_line(aes(x=c(qnorm(0.4),qnorm(.4)),y=c(-.01,dnorm(qnorm(.4)))), color="red")+geom_line(aes(x=c(qnorm(0.6),qnorm(0.6)),y=c(-.01,dnorm(qnorm(.6)))), color="red") + geom_line(aes(x=c(qnorm(0.8),qnorm(0.8)),y=c(-.01,dnorm(qnorm(.8)))), color="red") 
+
+```
+
+If we make 10 bins, then it spreads out even more.
+
+```{r, echo=FALSE}
+stratSamps <- data.frame(bins = runif(Nsamps),y=0)
+stratSamps$bin = rep(c(1:10),Nsamps/10) #trunc(runif(Nsamps)*10,1) + 1
+#this will be slow
+for (i in 1:Nsamps){
+  prob <- runif(1,min=(stratSamps$bin[i]-1)*.1,max=(stratSamps$bin[i])*.1)
+  stratSamps$x[i] = qnorm(prob)
+}
+ggplot(plotDF,aes(x=x, y=PDF)) + geom_line(size=2,color="blue") + geom_jitter(data =stratSamps, aes(x=x,y=y),position = position_jitter(height = .01,width=0),size=3) +
+  geom_line(aes(x=c(qnorm(0.2),qnorm(0.2)),y=c(-.01,dnorm(qnorm(.2)))), color="red") + geom_line(aes(x=c(qnorm(0.4),qnorm(.4)),y=c(-.01,dnorm(qnorm(.4)))), color="red")+geom_line(aes(x=c(qnorm(0.6),qnorm(0.6)),y=c(-.01,dnorm(qnorm(.6)))), color="red") + geom_line(aes(x=c(qnorm(0.8),qnorm(0.8)),y=c(-.01,dnorm(qnorm(.8)))), color="red") +geom_line(aes(x=c(qnorm(0.1),qnorm(0.1)),y=c(-.01,dnorm(qnorm(.1)))), color="red") + geom_line(aes(x=c(qnorm(0.3),qnorm(0.3)),y=c(-.01,dnorm(qnorm(.3)))), color="red")  + geom_line(aes(x=c(qnorm(0.5),qnorm(0.5)),y=c(-.01,dnorm(qnorm(.5)))), color="red")+ geom_line(aes(x=c(qnorm(0.7),qnorm(0.7)),y=c(-.01,dnorm(qnorm(.7)))), color="red")+ geom_line(aes(x=c(qnorm(0.9),qnorm(0.9)),y=c(-.01,dnorm(qnorm(.9)))), color="red")
+
+```
