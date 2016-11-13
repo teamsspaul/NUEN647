@@ -56,7 +56,8 @@
         %morecomment=[l][\color{Blue}]{...}, 
         numbers=left, % Line numbers on left
         firstnumber=1, % Line numbers start with line 1
-        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        %numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        numberstyle=\tiny
         stepnumber=5 % Line numbers go in steps of 5
 }
 
@@ -213,8 +214,10 @@ distributed.
 
 \item[\done]{Determine how to vary cross section and or flux spectrum
   inputs for calculation}
+  
   ORIGEN2 reads in cross section information through a file
-  named ``TAPE9.inp''. Cross sections are calculated with
+  named ``TAPE9.inp'' (specified by the 8th input on the LIB card).
+  Cross sections are calculated by flux weighting.
   This file contains information about
   single group cross 
 \item{Determine how to vary fission yields for calculation}
