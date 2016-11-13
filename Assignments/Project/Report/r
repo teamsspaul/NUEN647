@@ -1,0 +1,6 @@
+#!/bin/bash
+pdflatex project.tex
+bibtex project
+pdflatex project.tex
+pdflatex project.tex
+firefox project.pdf#page=$1
