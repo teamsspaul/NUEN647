@@ -18,7 +18,7 @@
 \usepackage[usenames,dvipsnames]{color} % Required for custom colors
 \usepackage{listings} % Required for insertion of code
 \usepackage{courier} % Required for the courier font
-
+\usepackage{mathtools}
 
 %--------------------------------------------------------------------------
 %	CODE INCLUSION CONFIGURATION
@@ -103,6 +103,14 @@
 \item[]\lstinputlisting[caption=#2,label=#1,language=Perl]{#1.inp}
 \end{itemize}
 }
+
+\newcommand{\inputdeckpages}[4]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1,language=Perl,
+       firstline=#3,lastline=#4,basicstyle=\scriptsize]{#1.inp}
+\end{itemize}
+}
+
 %\lstinputlisting[language=Octave, firstline=2, lastline=12]{BitXorMatrix.m}
 
 \newcommand{\pythonscript}[2]{
@@ -135,7 +143,7 @@
 
 \vspace{1cm}
 Uncertainty quantification of depletion calculations
-for specific isotopes using ORIGEN.
+for specific isotopes using ORIGEN2.
 
 %------------------------------------------------------------
 %	Introduction
@@ -158,7 +166,7 @@ sources of error in this calculation are due to the multi-group
 approximation, and single point approximation,
 but will not be explored here.
 
-Several isotope concentrations, of interest to the writer,
+Several isotope concentrations, shown in Table \ref{Table:1},
 were calculated as a function of burnup
 with the depletion code ORIGEN2 for a PWR system with 3 Wt\%
 enriched uranium. ORIGEN2 solves the bateman equations with
@@ -178,6 +186,22 @@ A similar calculation was done for the fisison yields, and
 half-life distributions were taken at face value as normally
 distributed. 
 
+\begin{table}[H]
+  \begin{center}
+    \caption{Isotope solve list.}
+    \label{Table:1}
+    \begin{tabular}{l l l}
+      \toprule
+      \tss{133}Cs & \tss{136}Ba & \tss{153}Eu\\
+      \tss{134}Cs & \tss{138}Ba & \tss{154}Eu\\
+      \tss{135}Cs & \tss{149}Sm & \tss{239}Pu\\
+      \tss{137}Cs & \tss{150}Sm & \tss{242}Pu\\
+      \tss{148}Nd & \tss{106}Rh & \tss{125}Sb\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\end{table}
+
 %------------------------------------------------------------
 %	Objectives
 %------------------------------------------------------------
@@ -191,7 +215,7 @@ distributed.
 
   \inputdeck{../Origen2/TAPE5}{PWR Input Deck}
 
-  Model irradiates 1 metric ton of US PWR fuel for a single
+  The model irradiates 1 metric ton of US PWR fuel for a single
   cycle (15,000 MWd/Mt). The calculations use a constant power assumption
   of 37.5 W/g. The model does not include the oxygen because
   we are not interested in the activation of oxygen.
@@ -214,37 +238,149 @@ distributed.
 
 \item[\done]{Determine how to vary cross section and or flux spectrum
   inputs for calculation}
+\item[\done]{Determine how to vary fission yields for calculation}
+\item[\done]{Determine how to vary half-life information for calculation}
   
   ORIGEN2 reads in cross section information through a file
-  named ``TAPE9.inp'' (specified by the 8th input on the LIB card).
-  Cross sections are calculated by flux weighting.
-  This file contains information about
-  single group cross 
-\item{Determine how to vary fission yields for calculation}
-\item{Determine how to vary half-life information for calculation}
+  named ``TAPE9.inp'', specified by the 8th input on the LIB card.
+  ``TAPE9.inp'' needs at least 3 cross section libraries. These
+  are specified by the 5th 6th and 7th inputs on the LIB card as
+  601, 602, and 603 for the activation products, actinides, and
+  fission products, respectively. The input for \tss{137}Cs
+  from library 603 is shown in the listing below, with
+  a corresponding key shown in Table \ref{Table:2} \cite{croff1980user}.
+  
+  \inputdeckpages{../Origen2/TAPE9_BANK}{\tss{137}Cs cross section
+  library 603 input}{5066}{5067}
+
+  \begin{table}[H]
+  \begin{center}
+    \caption{Key to parameters in cross section library}
+    \label{Table:2}
+    \begin{tabular}{l l l l l l l l l}
+      \toprule
+      LIB & NUCLID & (n,$\gamma$) & (n,2n) & (n,$\alpha$) &
+      (n,p) & (n,$\gamma^*$) & (n,2n\tss{*}) & YYN\\
+      LIB & Y(\tss{232}Th) & Y(\tss{233}U) & Y(\tss{235}U) &
+      Y(\tss{238}U) & Y(\tss{239}Pu) & Y(\tss{241}Pu) &
+      Y(\tss{245}Cm) & Y(\tss{249}Cf)\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \end{table}
+
+  Both $\sigma_\gamma$ and yield will be modified based on the
+  locations in the cross section libraries shown above.
+  Half-life information is contained in the decay
+  libraries 1, 2, and 3 for activation products, actinides,
+  and fission products, respectively. The input for \tss{137}Cs
+  from library 3 is shown in the listing below, with
+  a corresponding key shown in Table \ref{Table:3} \cite{croff1980user}.
+  
+  \inputdeckpages{../Origen2/TAPE9_BANK}{\tss{137}Cs cross section
+  library 603 input}{2896}{2897}
+
+  \begin{table}[H]
+  \begin{center}
+    \caption{Key to parameters in decay library}
+    \label{Table:3}
+    \begin{tabular}{l l l l l l l l l l}
+      \toprule
+      LIB & NUCLID & IU & THALF & FBX &
+      FPEC & FPECX & FA & FIT & FSF\\
+      LIB & - & - & FN & QREC &
+      ABUND & ARCG & WRCG &
+      -  & - \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \end{table}
+
+  Also, a program was writen to modify $\sigma_\gamma$, yield,
+  or half-life based on lines from a text file. This code is
+  shown below.
+
+  \pythonscript{../ChangeTAPE/change}{Script for modifying ORIGEN2 input.}
+
+  
+  
 \item{Create a sampling space for all possible variations of
   calculations}
+
+  I might have to reduce the number of elements to look at,
+  maybe I'll start by
+  just looking at \tss{154}Eu.
+  \begin{equation*}
+    ^{153}Pm\xrightarrow{\beta^-} {^{153}Sm}\xrightarrow{\beta^-}
+    {^{153}Eu}
+    \xrightarrow{(n,\gamma)} {^{154}Eu}
+  \end{equation*}
+
+  \begin{table}[H]
+  \begin{center}
+    \caption{Summary of parameters to vary for \tss{154}Eu}
+    \label{Table:4}
+    \begin{tabular}{l|l|l|l}
+      \toprule
+      Isotope & Half-life & $\sigma_\gamma$ & Yield\\
+      \hline
+      \tss{153}Pm & 5.25 $\pm$ 0.02 min & SIGMA & Yield \\
+      \tss{153}Sm & 46.284 $\pm$ 0.004 hr & SIGMA & Yield\\
+      \tss{153}Eu & Stable & SIGMA & Yield \\
+      \tss{154}Eu & 8.60 $\pm$ 0.01 y  & SIGMA & Yield \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \end{table}
+
+  In order to determine the sigma and yield variables I am planning on
+  flux averaging both via:
+
+  \begin{equation*}
+    \sigma=\frac{\int\sigma(E)\phi(E)dE}{\int\phi(E)dE}
+  \end{equation*}
+
+  and
+  
+  \begin{equation*}
+    \gamma=\frac{\int\gamma(E)\phi(E)dE}{\int\phi(E)dE}
+  \end{equation*}
+
+  where:
+
+  \begin{align*}
+    \phi(E) =& C_1\cdot E \cdot exp\left(-\frac{E}{0.025\
+      \text{eV}}\right)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
+    \ \ \ \ \ \ \ \ E<0.625\ \text{eV}\\
+    =& \frac{C_2}{E}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+    \ \ \ \ \ \ \ 0.625<E<1
+    \ \text{MeV}\\
+    =& C_3 \cdot \sqrt{E}\cdot exp\left(-\frac{E}{2E6}
+    \right)
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ E>1\ \text{MeV}
+  \end{align*}
+
+  and:
+
+  \begin{align*}
+    C_1=&\frac{1}{E^2_{max,th}e^{-E_{max,th}/0.025}}=3.555313629e-11
+      \\
+      C_2=&1\\
+      C_3=&\frac{1}{E^{3/2}_{max,epi}e^{-E_{max,epi}/2e6}}=1.64872e-09
+  \end{align*}
+
+  I was going to calculate $\sigma_\gamma$ with nominal cross section
+  values, then with error subtracted, and then added. These values would
+  constitue a mean with error. A similiar calculation would be done for
+  the yields.
+  
 \item{Determine importance of various uncertain parameters
   by running the code a number of times randomly sampling
   the sample space (still not 100\% sure how to do this -
   not even 50\% sure how to do this)}
 \end{todolist}
 
-\begin{table}[H]
-  \begin{center}
-    \caption{Isotope solve list.}
-    \label{Table:1}
-    \begin{tabular}{l l l}
-      \toprule
-      \tss{133}Cs & \tss{136}Ba & \tss{153}Eu\\
-      \tss{134}Cs & \tss{138}Ba & \tss{154}Eu\\
-      \tss{135}Cs & \tss{149}Sm & \tss{239}Pu\\
-      \tss{137}Cs & \tss{150}Sm & \tss{242}Pu\\
-      \tss{148}Nd & \tss{106}Rh & \tss{125}Sb\\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-\end{table}
 
 %------------------------------------------------------------
 %	Quantities of Interest and uncertain parameters
@@ -270,10 +406,13 @@ Uncertain parameters are listed below:
 The first major prediction for this project is that half-lives
 will not have a large impact on results because they are
 relatively well known. Secondly, \tss{125}Sb is notorious
-for being difficult to calculate, I would would predict that
+for being difficult to calculate correctly, I would would predict that
 there would be large uncertainties due to uncertainties in
 the cross section data.
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------
+\bibliography{references}
+\bibliographystyle{plain}
+
 
 \end{document}

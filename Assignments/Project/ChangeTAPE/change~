@@ -8,20 +8,28 @@ import time
 start_time = time.time()
 import numpy as np
 import Functions as fun
-from pyne.xs.data_source import ENDFDataSource
-from pyne import nucname
-from urllib import urlretrieve
-from os.path import isfile
-
 
 #########################################################################
 ########################## Calculations #################################
 #########################################################################
 
+#Open Input File
+with open('../Origen2/TAPE9.inp') as f:
+    content=f.readlines()
+
+#Open output file
+output=open("output.txt","w")
+
+#LIB
+LIB="603";ID="551370";
+#Change
+XSection=False;Yield=False;HalfLife=False
 
 
+for i in content:
+    if LIB 
 
-
+    print(i,file=output)
 
 
 
