@@ -141,3 +141,25 @@ def LoopTAPE(Protons,Isotope):
                 X_Section=hold[2]
                 break
     return(X_Section)
+
+def MinIndex(List):
+    Count=0
+    List2=[]
+    for item in List:
+        List2.append(item[0])
+    Min=min(List2)
+    for item in List:
+        if item[0]==Min:
+            break
+        Count=Count+1
+    return(Count)
+
+def DetermineAverages(List):
+    Count=0
+    Averages=np.zeros(4)
+    for item in List:
+        for i in range(0,4):
+            Averages[i]=Averages[i]+float(item[i])
+        Count=Count+1
+    Averages=Averages/Count
+    return(Averages)
