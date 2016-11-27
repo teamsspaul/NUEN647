@@ -8,6 +8,8 @@ import time
 start_time = time.time()
 import Functions as f
 from scipy import interpolate
+from scipy import integrate
+from scipy.integrate import trapz
 
 #########################################################################
 ########################## Calculations #################################
@@ -17,47 +19,72 @@ from scipy import interpolate
 ############### Import X-Section Data ###################
 #########################################################
 
+#Get list of csv files with X-section information
+Names=f.GETcsvFiles("X_Sections")
 
+#Loop through all the X-sections I got
+for Name in Names:
 
+    Element=Name.split('_')[0]
+    Isotope=Name.split('_')[1]
+    Protons=Name.split('_')[2]
+    Xsec = f.np.genfromtxt('X_Sections/'+Name,delimiter=',')
+    #Set energy, and convert from MeV to ev
+    E=f.copy.copy(Xsec[:,0])*10**6
+
+    #Calculate Flux
+    #Emt=0.625      #Max thermal energy in ev
+    #Eme=1e6        #Max epithermal energy in ev
+    #E0=0.0253      #Thermal average in ev
+    #Ef=1.35e6      #Fission average in ev
+    Emt=0.625
+    Eme=1e6
+    E0=0.1722
+    Ef=1.35e6
+    F=f.flux(E,Emt,Eme,E0,Ef)
+
+    #Make function for X-Section(E) * Flux(E)
+    X_phi=interpolate.interp1d(E,F*Xsec[:,1],
+                               fill_value=0,bounds_error=False)
+    #Perform the integral for X-Section(E) * Flux(E)
+    X_int=integrate.trapz(X_phi(E),E)
+    #Perform the integral for Flux(E)
+    Phi_int=integrate.trapz(F,E)
+    #Average X-section value
+    Avg=X_int/Phi_int
+
+    #Find TAPE9's X-section value for comparison
+    TAPE9_X=f.LoopTAPE(Protons,Isotope)
+
+    print(Protons+Element+Isotope+' Average: %.3e' % Avg
+          +', TAPE Value: '+TAPE9_X)
+    
+    #########################################################
+    ################## X-sec Plotting #######################
+    #########################################################
+
+    fig=f.plt.figure(figsize=f.FigureSize)
+    ax=fig.add_subplot(111)
+    label="$\sigma_a$ "+Element+"$^{"+Isotope+"}$"
+    Ylabel='$\sigma$(E)'    # Y label
+    (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
+    f.Legend(ax)
+    f.plt.savefig('X_'+Element+'_'+Isotope+'.pdf')
 
 #########################################################
 ################## Flux Plotting ########################
 #########################################################
 
-N=100 #Number of points
-
-#Define Energy, ev (will get from X-sections)
-E=f.np.logspace(-5,7,N,endpoint=True)
-
-M_th=0.625  #Max thermal energy, in eV
-M_epi=1e6      #Max epithermal energy, in eV
-B_th=0.0253  #Average thermal energy, in eV
-B_fis=1.4e6      #Average fission energy, in eV
-
-Emt=0.625
-Eme=1e6
-E0=0.0253
-Ef=1.35e6
-
-#Calculate flux
-#F=f.flux(E,M_th,M_epi,B_th,B_fis)
-(F,FdE)=f.flux2(E,Emt,Eme,E0,Ef)
-
-#Plot Flux
 fig=f.plt.figure(figsize=f.FigureSize)
 ax=fig.add_subplot(111)
 label=""
-#(fig,ax)=f.plot(E,(F*E)/f.np.sum(F),ax,'blue',label,fig)
-
-#(fig,ax)=f.plot(E[0:len(E)-1],(FdE)/f.np.sum(FdE),ax,'blue',label,fig)
-(fig,ax)=f.plot(E,(F*E)/f.np.sum(F),ax,'blue',label,fig)
+Ylabel='$\phi$(E)$\cdot$E Normalized (n/cm$^{2}$s)'    # Y label
+(fig,ax)=f.plot(E,(F*E)/f.np.sum(F),ax,'blue',label,fig,Ylabel)
 #ax=f.Legend(ax)
 f.plt.savefig('Flux_Spectra.pdf')
-
 
 #########################################################################
 ######################## Time to Execute ################################
 #########################################################################
 
 print("--- %s seconds ---" % (time.time() - start_time))
-

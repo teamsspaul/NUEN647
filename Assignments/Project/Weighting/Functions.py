@@ -26,6 +26,8 @@ matplotlib.rc('text',usetex=True)
 matplotlib.rcParams['text.latex.preamble']=[r"\usepackage{amsmath}"]
 import random as rn
 import matplotlib.mlab as mlab
+import copy
+import os
 
 #############################################################
 ######################### Variables #########################
@@ -39,16 +41,15 @@ LegendFontSize = 12
 Lfont = {'family' : TypeOfFamily}  # This sets up legend font
 Lfont['size']=LegendFontSize
 
-Title = 'Flux Spectra'
+Title = ''
 TitleFontSize = 22
 TitleFontWeight = "bold"  # "bold" or "normal"
 
-Xlabel='E (MeV)'   # X label
+Xlabel='E (eV)'   # X label
 XFontSize=18          # X label font size
 XFontWeight="normal"  # "bold" or "normal"
 XScale="log"       # 'linear' or 'log'
 
-Ylabel='$\phi$(E)$\cdot$E Normalized (n/cm$^{2}$s)'    # Y label
 YFontSize=18                    # Y label font size
 YFontWeight="normal"            # "bold" or "normal"
 YScale="log"                 # 'linear' or 'log'
@@ -57,34 +58,13 @@ YScale="log"                 # 'linear' or 'log'
 ######################### Functions ############################
 ################################################################
 
-def flux(E,M_th,M_epi,B_th,B_fis):
-    """
-    Feed in energy as a function of ev not MeV
-    """
-    #Set constants
-    C1=1/((M_th**2)*np.exp(-M_th/B_th))
-    C2=1
-    C3=1/((M_epi**(3/2))*np.exp(-M_epi/B_fis))
-    #Initialize flux
-    F=np.zeros(len(E))
-    #Loop through all values of E and calculate Flux
-    for i in range(0,len(E)):       
-        if E[i]<=M_th:
-            F[i]=C1*E[i]*np.exp(-E[i]/B_th)
-        if M_th<E[i] and E[i]<=M_epi:
-            F[i]=C2/E[i]
-        if E[i]>M_epi:
-            F[i]=C3*(E[i]**0.5)*np.exp(-E[i]/B_fis)
-    return(F)
-
-def flux2(E,Emt,Eme,E0,Ef):
+def flux(E,Emt,Eme,E0,Ef):
     """
     Feed in energy as a function of ev not MeV
     """
     #Set constants
     C1=(E0**2)/(Emt**2)*np.exp(Emt/E0)
     C2=1
-    #C3=(Ef/Eme)*np.exp(Eme/E0)*1/(np.sqrt(Eme/Ef))
     C3=(Ef/Eme)*np.exp(Eme/Ef)*1/(np.sqrt(Eme/Ef))
     #Initialize flux
     F=np.zeros(len(E))
@@ -96,16 +76,13 @@ def flux2(E,Emt,Eme,E0,Ef):
         if Emt<E[i] and E[i]<=Eme:
             F[i]=C2/E[i]
         if E[i]>Eme:
-            #F[i]=C3*(np.sqrt(E[i]/Ef)/Ef)*np.exp(-E[i]/E0)
             F[i]=C3*(np.sqrt(E[i]/Ef)/Ef)*np.exp(-E[i]/Ef)
-        if i != len(E)-1:
-            FdE[i]=F[i]*(E[i+1]-E[i])
-            
-    return(F,FdE)
+    
+    return(F)
 
 
 
-def plot(x,y,ax,Color,label,fig):
+def plot(x,y,ax,Color,label,fig,Ylabel):
 	#Plot X and Y
     ax.plot(x,y,
             linestyle="solid", #"solid","dashed","dash_dot","dotted","."
@@ -138,3 +115,29 @@ def Legend(ax):
 	ax.legend(handles,labels,loc='best',
 			fontsize=LegendFontSize,prop=font)
 	return(ax)
+
+def GETcsvFiles(directory):
+    """
+    This function gathers all files
+    ending with ".csv" in a certain directory
+    Note...NOT ".CSV" capitalization matters!
+    """
+    Filelist=[]
+    for file in os.listdir(directory):
+        if ".csv" in file:
+            Filelist.append(file)
+    return(Filelist)
+
+def LoopTAPE(Protons,Isotope):
+    ZAID=Protons+Isotope+"0"
+    with open('../Origen2/TAPE9_BANK.inp') as f:
+        content=f.readlines()
+
+    for i in content:
+        hold=i.split()
+        if len(hold)>2:
+                                   #want 600 libs not 1,2 or 3
+            if ZAID in hold[1] and len(hold[0])>1:
+                X_Section=hold[2]
+                break
+    return(X_Section)
