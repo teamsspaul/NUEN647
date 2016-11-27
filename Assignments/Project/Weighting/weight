@@ -6,23 +6,53 @@
 
 import time
 start_time = time.time()
-import numpy as np
-import Functions as fun
-from pyne.xs.data_source import ENDFDataSource
-from pyne import nucname
-from urllib import urlretrieve
-from os.path import isfile
-
+import Functions as f
+from scipy import interpolate
 
 #########################################################################
 ########################## Calculations #################################
 #########################################################################
 
+#########################################################
+############### Import X-Section Data ###################
+#########################################################
 
 
 
 
+#########################################################
+################## Flux Plotting ########################
+#########################################################
 
+N=100 #Number of points
+
+#Define Energy, ev (will get from X-sections)
+E=f.np.logspace(-5,7,N,endpoint=True)
+
+M_th=0.625  #Max thermal energy, in eV
+M_epi=1e6      #Max epithermal energy, in eV
+B_th=0.0253  #Average thermal energy, in eV
+B_fis=1.4e6      #Average fission energy, in eV
+
+Emt=0.625
+Eme=1e6
+E0=0.0253
+Ef=1.35e6
+
+#Calculate flux
+#F=f.flux(E,M_th,M_epi,B_th,B_fis)
+(F,FdE)=f.flux2(E,Emt,Eme,E0,Ef)
+
+#Plot Flux
+fig=f.plt.figure(figsize=f.FigureSize)
+ax=fig.add_subplot(111)
+label=""
+#(fig,ax)=f.plot(E,(F*E)/f.np.sum(F),ax,'blue',label,fig)
+
+#(fig,ax)=f.plot(E[0:len(E)-1],(FdE)/f.np.sum(FdE),ax,'blue',label,fig)
+(fig,ax)=f.plot(E,(F*E)/f.np.sum(F),ax,'blue',label,fig)
+#ax=f.Legend(ax)
+f.plt.savefig('Flux_Spectra.pdf')
 
 
 #########################################################################

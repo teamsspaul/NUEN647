@@ -296,6 +296,9 @@ distributed.
   \end{center}
   \end{table}
 
+  The two important parameters are IU, the time unit designation
+  of the half-life, and THALF, the half-life of nuclide in units
+  given by IU.
   Also, a program was writen to modify $\sigma_\gamma$, yield,
   or half-life based on lines from a text file. This code is
   shown below.
@@ -349,27 +352,34 @@ distributed.
   where:
 
   \begin{align*}
-    \phi(E) =& C_1\cdot E \cdot exp\left(-\frac{E}{0.025\
-      \text{eV}}\right)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
-    \ \ \ \ \ \ \ \ E<0.625\ \text{eV}\\
-    =& \frac{C_2}{E}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-    \ \ \ \ \ \ \ 0.625<E<1
-    \ \text{MeV}\\
-    =& C_3 \cdot \sqrt{E}\cdot exp\left(-\frac{E}{2E6}
-    \right)
-    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ E>1\ \text{MeV}
+    \phi(E) =& C_1\cdot E \cdot exp\left(-\frac{E}{\theta_{th}
+    }\right) &&E<E_{max,th}\\
+    =& \frac{C_2}{E}  &&E_{max,th}<E<E_{max,epi}\\
+    =& C_3 \cdot \sqrt{E}\cdot exp\left(-\frac{E}{\theta_{fis}}
+    \right) &&E>E_{max,epi}
   \end{align*}
 
   and:
 
   \begin{align*}
-    C_1=&\frac{1}{E^2_{max,th}e^{-E_{max,th}/0.025}}=3.555313629e-11
+    C_1=&\frac{1}{E^2_{max,th}e^{-E_{max,th}/\theta_{th}}}
       \\
       C_2=&1\\
-      C_3=&\frac{1}{E^{3/2}_{max,epi}e^{-E_{max,epi}/2e6}}=1.64872e-09
+      C_3=&\frac{1}{E^{3/2}_{max,epi}e^{-E_{max,epi}/\theta_{fis}}}
   \end{align*}
 
+  Where: $E_{max,th}=0.108\ \text{eV}$,
+  $E_{max,epi}=2.1E6\ \text{eV}$,
+  $\theta_{th}=0.054\ \text{eV}$,
+  and $\theta_{fis}=1.4E6\ \text{eV}$.
+
+
+  The flux spectrum is shown as below:
+
+
+
+
+  
   I was going to calculate $\sigma_\gamma$ with nominal cross section
   values, then with error subtracted, and then added. These values would
   constitue a mean with error. A similiar calculation would be done for
