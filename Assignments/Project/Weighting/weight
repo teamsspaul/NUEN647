@@ -21,6 +21,7 @@ from scipy.integrate import trapz
 
 #Get list of csv files with X-section information
 Names=f.GETcsvFiles("X_Sections")
+#Names=["U_238_92_a.csv"]
 
 #Loop through all the X-sections I got
 for Name in Names:
@@ -37,8 +38,8 @@ for Name in Names:
     #Eme=1e6        #Max epithermal energy in ev
     #E0=0.0253      #Thermal average in ev
     #Ef=1.35e6      #Fission average in ev
-    Emt=0.625
-    Eme=1e6
+    Emt=2
+    Eme=1e5
     E0=0.1722
     Ef=1.35e6
     F=f.flux(E,Emt,Eme,E0,Ef)
@@ -59,29 +60,29 @@ for Name in Names:
     print(Protons+Element+Isotope+' Average: %.3e' % Avg
           +', TAPE Value: '+TAPE9_X)
     
-    #########################################################
-    ################## X-sec Plotting #######################
-    #########################################################
+#     #########################################################
+#     ################## X-sec Plotting #######################
+#     #########################################################
 
-    fig=f.plt.figure(figsize=f.FigureSize)
-    ax=fig.add_subplot(111)
-    label="$\sigma_a$ "+Element+"$^{"+Isotope+"}$"
-    Ylabel='$\sigma$(E)'    # Y label
-    (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
-    f.Legend(ax)
-    f.plt.savefig('X_'+Element+'_'+Isotope+'.pdf')
+#     fig=f.plt.figure(figsize=f.FigureSize)
+#     ax=fig.add_subplot(111)
+#     label="$\sigma_a$ "+Element+"$^{"+Isotope+"}$"
+#     Ylabel='$\sigma$(E)'    # Y label
+#     (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
+#     f.Legend(ax)
+#     f.plt.savefig('X_'+Element+'_'+Isotope+'.pdf')
 
-#########################################################
-################## Flux Plotting ########################
-#########################################################
+# #########################################################
+# ################## Flux Plotting ########################
+# #########################################################
 
-fig=f.plt.figure(figsize=f.FigureSize)
-ax=fig.add_subplot(111)
-label=""
-Ylabel='$\phi$(E)$\cdot$E Normalized (n/cm$^{2}$s)'    # Y label
-(fig,ax)=f.plot(E,(F*E)/f.np.sum(F),ax,'blue',label,fig,Ylabel)
-#ax=f.Legend(ax)
-f.plt.savefig('Flux_Spectra.pdf')
+# fig=f.plt.figure(figsize=f.FigureSize)
+# ax=fig.add_subplot(111)
+# label=""
+# Ylabel='$\phi$(E)$\cdot$E Normalized (n/cm$^{2}$s)'    # Y label
+# (fig,ax)=f.plot(E,(F*E)/f.np.sum(F),ax,'blue',label,fig,Ylabel)
+# #ax=f.Legend(ax)
+# f.plt.savefig('Flux_Spectra.pdf')
 
 #########################################################################
 ######################## Time to Execute ################################

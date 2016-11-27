@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+
+#########################################################################
+######################## Import Packages ################################
+#########################################################################
+
+import time
+start_time = time.time()
+import Functions as f
+from scipy import interpolate
+from scipy import integrate
+from scipy.integrate import trapz
+
+#########################################################################
+########################## Calculations #################################
+#########################################################################
+
+#########################################################
+############### Import X-Section Data ###################
+#########################################################
+
+#Get list of csv files with X-section information
+#Names=f.GETcsvFiles("X_Sections")
+Names=["U_238_92_a.csv"]
+
+#Loop through all the X-sections I got
+for Name in Names:
+
+    Element=Name.split('_')[0]
+    Isotope=Name.split('_')[1]
+    Protons=Name.split('_')[2]
+    Xsec = f.np.genfromtxt('X_Sections/'+Name,delimiter=',')
+
+    #Find TAPE9's 1 Group X-section value for comparison
+    TAPE9_X=float(f.LoopTAPE(Protons,Isotope))
+    
+    #Set energy, and convert from MeV to ev
+    E=f.copy.copy(Xsec[:,0])*10**6
+
+    #Calculate Flux under all these circumstances
+    N=3
+    EmtL=f.np.linspace(0.5,2,N)
+    EmeL=f.np.logspace(5,6,N)
+    E0L=f.np.linspace(0.045375,0.1722,N)
+    Ef=1.35e6
+
+    for Emt in EmtL:
+        for Eme in EmeL:
+            for E0 in E0L: 
+                F=f.flux(E,Emt,Eme,E0,Ef)
+
+                #Make function for X-Section(E) * Flux(E)
+                X_phi=interpolate.interp1d(E,F*Xsec[:,1],
+                                           fill_value=0,bounds_error=False)
+                #Perform the integral for X-Section(E) * Flux(E)
+                X_int=integrate.trapz(X_phi(E),E)
+                #Perform the integral for Flux(E)
+                Phi_int=integrate.trapz(F,E)
+                #Average X-section value
+                Avg=X_int/Phi_int
+
+                Error=abs(Avg-TAPE9_X)/TAPE9_X
+                print('%.2f' % Error)
+    
+#########################################################################
+######################## Time to Execute ################################
+#########################################################################
+
+print("--- %s seconds ---" % (time.time() - start_time))
