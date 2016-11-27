@@ -8,6 +8,7 @@ import time
 start_time = time.time()
 import Functions_Plot as f
 import pandas as pd
+import copy
 
 #########################################################################
 ######################## Data Frame Work ################################
@@ -20,17 +21,20 @@ ColumnNames=df.columns.values #Probably wont use
 #Set X and Y values for plotting ['Error' 'Emt' 'Eme' 'E0']
 #Error will get more complicated, for now its only one isotope
 
-X='Emt'    #Should be one of the variables
+X='Eme'    #Should be one of the variables
 Y='Error'  #Should be an error term
 
 #Three variables that I am...well varying
-Variables=["Emt","Eme","E0"]
-Printing=["%.2f","%.3e","%.4f"]
+Variables=["Emt","E0","Eme"]
+Printing=["%.2f","%.2f","%.1e"]
 
 XScale="linear"     # 'linear' or 'log'
-Xlabel='Emt'  # X label
+#'E$_{max,th}$ (eV)'   For Emt
+#'E$_{avg,th}$ (eV)'   For E0
+#'E$_{max,epi}$ (eV)'  For Eme  (log scale)
+Xlabel='E$_{max,epi}$ (eV)'  # X label       
 YScale="linear"  # 'linear' or 'log'
-Ylabel='Error'        
+Ylabel=copy.copy(Y)    
 
 
 #Remove the one variable I am looking at, group by others
@@ -60,7 +64,7 @@ for U1 in UniqueOther1:
         Check=Check+1
 
 ax=f.Legend(ax)
-f.plt.savefig('Test.pdf')
+f.plt.savefig(X+"_vs_"+Y+'.pdf')
 
 #########################################################################
 ######################## Time to Execute ################################

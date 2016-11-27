@@ -33,7 +33,7 @@ import matplotlib.mlab as mlab
 FigureSize = (11, 6)              # Dimensions of the figure
 TypeOfFamily='monospace'          # This sets the type of font for text
 font = {'family' : TypeOfFamily}  # This sets the type of font for text
-LegendFontSize = 12
+LegendFontSize = 6
 Lfont = {'family' : TypeOfFamily}  # This sets up legend font
 Lfont['size']=LegendFontSize
 
@@ -66,7 +66,7 @@ MarkerType=["8","s","p","D","*","H","h","d","^",">"]
 LineStyles=["solid"]
 
 SquishGraph = 0.75
-BBOXX = 1;BBOXY = 0.5       # Set legend on right side of graph
+BBOXX = 1.24;BBOXY = 0.5       # Set legend on right side of graph
 NumberOfLegendColumns = 1  
 
 ################################################################
@@ -116,8 +116,8 @@ def plot(x,y,ax,Check,label,fig,Ylabel,Xlabel,XScale,YScale):
 def Legend(ax):
     handles,labels=ax.get_legend_handles_labels()
     box=ax.get_position()
-    ax.set_position([box.x0, box.y0, box.width,
-                     box.height*SquishGraph])
+    ax.set_position([box.x0, box.y0, box.width*SquishGraph,
+                     box.height])
     ax.legend(handles,labels,loc='center',
               bbox_to_anchor=(BBOXX,BBOXY),
               fontsize=LegendFontSize,prop=font,
