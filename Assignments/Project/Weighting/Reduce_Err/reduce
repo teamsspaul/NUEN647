@@ -20,8 +20,9 @@ from scipy.integrate import trapz
 #########################################################
 
 #Get list of csv files with X-section information
-Names=f.GETcsvFiles("X_Sections")
+#Names=f.GETcsvFiles("X_Sections")
 #Names=["U_238_92_a.csv","U_235_92_a.csv"]
+Names=["U_238_92_a.csv"]
 
 #Loop through all the X-sections I got
 for Name in Names:
@@ -38,11 +39,17 @@ for Name in Names:
     E=f.copy.copy(Xsec[:,0])*10**6
 
     #Calculate Flux under all these circumstances
-    N=5
+    N=100
     EmtL=f.np.linspace(0.5,2,N)
     EmeL=f.np.logspace(5,6,N)
     E0L=f.np.linspace(0.045375,0.1722,N)
     Ef=1.35e6
+
+    #Save all the output to this file
+    output=open(Element+Isotope+"_All_Calcs.csv","w")
+
+    print("Error,Emt,Eme,E0",file=output)
+    
     for Emt in EmtL:
         for Eme in EmeL:
             for E0 in E0L: 
@@ -65,6 +72,13 @@ for Name in Names:
                 except NameError:
                     List=f.copy.copy(Iteration)
 
+                print(str(Iteration[0])+","+             #Err
+                      str(Iteration[1])+","+             #Emt
+                      str(Iteration[2])+","+             #Eme
+                      str(Iteration[3])+",",file=output) #E0
+
+    output.close()
+    
     #Remember List, is a list of lists
     Index=f.MinIndex(List)
     print("For "+Element+Isotope+", "+
@@ -73,6 +87,7 @@ for Name in Names:
           ", Eme: %.3e" % List[Index][2]+
           ", E0: %.4f" % List[Index][3])
 
+    
     Iteration=f.np.append(List[Index],[Element+Isotope])
     try:
         All_Ele=f.np.vstack((All_Ele,Iteration))
@@ -95,6 +110,7 @@ print("Average,    "+
 print("")
 
 #Loop through all the X-sections with Average Values
+Names=f.GETcsvFiles("X_Sections")
 for Name in Names:
 
     Element=Name.split('_')[0]

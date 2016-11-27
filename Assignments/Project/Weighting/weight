@@ -60,29 +60,29 @@ for Name in Names:
     print(Protons+Element+Isotope+' Average: %.3e' % Avg
           +', TAPE Value: '+TAPE9_X)
     
-#     #########################################################
-#     ################## X-sec Plotting #######################
-#     #########################################################
+    #########################################################
+    ################## X-sec Plotting #######################
+    #########################################################
 
-#     fig=f.plt.figure(figsize=f.FigureSize)
-#     ax=fig.add_subplot(111)
-#     label="$\sigma_a$ "+Element+"$^{"+Isotope+"}$"
-#     Ylabel='$\sigma$(E)'    # Y label
-#     (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
-#     f.Legend(ax)
-#     f.plt.savefig('X_'+Element+'_'+Isotope+'.pdf')
+    fig=f.plt.figure(figsize=f.FigureSize)
+    ax=fig.add_subplot(111)
+    label="$\sigma_a$ "+Element+"$^{"+Isotope+"}$"
+    Ylabel='$\sigma$(E)'    # Y label
+    (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
+    f.Legend(ax)
+    f.plt.savefig('X_Sections/X_'+Element+'_'+Isotope+'.pdf')
 
-# #########################################################
-# ################## Flux Plotting ########################
-# #########################################################
+#########################################################
+################## Flux Plotting ########################
+#########################################################
 
-# fig=f.plt.figure(figsize=f.FigureSize)
-# ax=fig.add_subplot(111)
-# label=""
-# Ylabel='$\phi$(E)$\cdot$E Normalized (n/cm$^{2}$s)'    # Y label
-# (fig,ax)=f.plot(E,(F*E)/f.np.sum(F),ax,'blue',label,fig,Ylabel)
-# #ax=f.Legend(ax)
-# f.plt.savefig('Flux_Spectra.pdf')
+fig=f.plt.figure(figsize=f.FigureSize)
+ax=fig.add_subplot(111)
+label=""
+Ylabel='$\phi$(E)$\cdot$E Normalized (n/cm$^{2}$s)'    # Y label
+(fig,ax)=f.plot(E,(F*E)/f.np.sum(F),ax,'blue',label,fig,Ylabel)
+#ax=f.Legend(ax)
+f.plt.savefig('Flux_Spectra.pdf')
 
 #########################################################################
 ######################## Time to Execute ################################
