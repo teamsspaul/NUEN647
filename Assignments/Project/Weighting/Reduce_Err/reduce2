@@ -19,40 +19,53 @@ from scipy.integrate import trapz
 ############### Import X-Section Data ###################
 #########################################################
 
+#Open output file
+output=open("All_Calcs.csv","w")
+
+
 #Get list of csv files with X-section information
-#Names=f.GETcsvFiles("X_Sections")
+Names=f.GETcsvFiles("../X_Sections")
 #Names=["U_238_92_a.csv","U_235_92_a.csv"]
-Names=["U_238_92_a.csv"]
+#Names=["U_238_92_a.csv"]
 
-#Loop through all the X-sections I got
-for Name in Names:
+#Loop through all X-section files, save the data in variables
+#Also record all names
+TAPE9_XL=[]
+XsecL=[]
+AllNames=""
+for i in range(0,len(Names)):
+    NameList=Names[i].split('_')
+    TAPE9_XL.append(float(f.LoopTAPE(NameList[2],NameList[1])))
+    XsecL.append(f.np.genfromtxt('../X_Sections/'+Names[i],delimiter=','))
+    if i==len(Names)-1:
+        AllNames=AllNames+NameList[0]+NameList[1]
+    else:
+        AllNames=AllNames+NameList[0]+NameList[1]+","
 
-    Element=Name.split('_')[0]
-    Isotope=Name.split('_')[1]
-    Protons=Name.split('_')[2]
-    Xsec = f.np.genfromtxt('X_Sections/'+Name,delimiter=',')
+#Print first line to output file
+print("Emt,Eme,E0,"+AllNames+",SumErr",file=output)
 
-    #Find TAPE9's 1 Group X-section value for comparison
-    TAPE9_X=float(f.LoopTAPE(Protons,Isotope))
-    
-    #Set energy, and convert from MeV to ev
-    E=f.copy.copy(Xsec[:,0])*10**6
+#Loop through all possibilities
+EmtL=f.np.linspace(0.5,0.6,10)  # Is it usually 0.625?
+EmeL=f.np.logspace(5,6,1)    #We have determined that 10^5 is best
+E0L=f.np.linspace(0.09,0.1722,10) #10
+Ef=1.35e6
+SumErrs=[]
 
-    #Calculate Flux under all these circumstances
-    N=100
-    EmtL=f.np.linspace(0.5,2,N)
-    EmeL=f.np.logspace(5,6,N)
-    E0L=f.np.linspace(0.045375,0.1722,N)
-    Ef=1.35e6
-
-    #Save all the output to this file
-    output=open(Element+Isotope+"_All_Calcs.csv","w")
-
-    print("Error,Emt,Eme,E0",file=output)
-    
-    for Emt in EmtL:
-        for Eme in EmeL:
-            for E0 in E0L: 
+for Emt in EmtL:
+    for Eme in EmeL:
+        for E0 in E0L:
+            Error=[] #Zero the Error variable
+            for i in range(0,len(Names)):
+                Element=Names[i].split('_')[0]
+                Isotope=Names[i].split('_')[1]
+                Protons=Names[i].split('_')[2]
+                #Find TAPE9's 1 Group X-section value for comparison
+                TAPE9_X=TAPE9_XL[i]
+                Xsec = XsecL[i]
+                #Set energy, and convert from MeV to ev
+                E=f.copy.copy(Xsec[:,0])*10**6
+                
                 F=f.flux(E,Emt,Eme,E0,Ef)
 
                 #Make function for X-Section(E) * Flux(E)
@@ -64,94 +77,33 @@ for Name in Names:
                 Phi_int=integrate.trapz(F,E)
                 #Average X-section value
                 Avg=X_int/Phi_int
+                #Calculate the error between Avg value and
+                #TAPE9 value
+                Error.append(abs(Avg-TAPE9_X)/TAPE9_X)
 
-                Error=abs(Avg-TAPE9_X)/TAPE9_X
-                Iteration=f.np.array((Error,Emt,Eme,E0))
-                try:
-                    List=f.np.vstack((List,Iteration))
-                except NameError:
-                    List=f.copy.copy(Iteration)
+            strErr=",".join(str(e) for e in Error)
+            SumErrs.append(sum(Error))
+            print(str(Emt)+","+             #Emt
+                  str(Eme)+","+             #Eme
+                  str(E0)+","+             #E0
+                  strErr+","+
+                  str(SumErrs[-1]),file=output) #Isotope
 
-                print(str(Iteration[0])+","+             #Err
-                      str(Iteration[1])+","+             #Emt
-                      str(Iteration[2])+","+             #Eme
-                      str(Iteration[3])+",",file=output) #E0
+output.close()
 
-    output.close()
-    
-    #Remember List, is a list of lists
-    Index=f.MinIndex(List)
-    print("For "+Element+Isotope+", "+
-          'Error: %.2f' % List[Index][0]+
-          ", Emt: %.2f" % List[Index][1]+
-          ", Eme: %.3e" % List[Index][2]+
-          ", E0: %.4f" % List[Index][3])
+#Find minimium Summed Error
+Min=min(SumErrs)
+Count=0
+for Emt in EmtL:
+    for Eme in EmeL:
+        for E0 in E0L:
+            if SumErrs[Count]==Min:
+                print("Min of Summed Errors: %.2f, " % Min +
+                      "Emt: %.2f, " % Emt +
+                      'Eme: %.3e, ' % Eme +
+                      'E0: %.4f, '  % E0)
 
-    
-    Iteration=f.np.append(List[Index],[Element+Isotope])
-    try:
-        All_Ele=f.np.vstack((All_Ele,Iteration))
-    except NameError:
-        All_Ele=f.copy.copy(Iteration)
-
-    #Delete List so we don't keep appending
-    del List
-
-#Determine all the averages
-Averages=f.DetermineAverages(All_Ele)
-
-#Print all all the averages
-print("Average,    "+
-      "Error: %.2f" % Averages[0]+
-      ", Emt: %.2f" % Averages[1]+
-      ", Eme: %.3e" % Averages[2]+
-      ", E0: %.4f" % Averages[3])
-
-print("")
-
-#Loop through all the X-sections with Average Values
-Names=f.GETcsvFiles("X_Sections")
-for Name in Names:
-
-    Element=Name.split('_')[0]
-    Isotope=Name.split('_')[1]
-    Protons=Name.split('_')[2]
-    Xsec = f.np.genfromtxt('X_Sections/'+Name,delimiter=',')
-
-    #Find TAPE9's 1 Group X-section value for comparison
-    TAPE9_X=float(f.LoopTAPE(Protons,Isotope))
-    
-    #Set energy, and convert from MeV to ev
-    E=f.copy.copy(Xsec[:,0])*10**6
-
-    #Calculate Flux under all these circumstances
-    N=3
-    Emt=Averages[1]
-    Eme=Averages[2]
-    E0=Averages[3]
-    Ef=1.35e6
-
-    F=f.flux(E,Emt,Eme,E0,Ef)
-
-    #Make function for X-Section(E) * Flux(E)
-    X_phi=interpolate.interp1d(E,F*Xsec[:,1],
-                               fill_value=0,bounds_error=False)
-    #Perform the integral for X-Section(E) * Flux(E)
-    X_int=integrate.trapz(X_phi(E),E)
-    #Perform the integral for Flux(E)
-    Phi_int=integrate.trapz(F,E)
-    #Average X-section value
-    Avg=X_int/Phi_int
-
-    Error=abs(Avg-TAPE9_X)/TAPE9_X
-    Iteration=f.np.array((Error,Emt,Eme,E0))
-    
-    print("For "+Element+Isotope+", "+
-          'Error: %.2f' % Iteration[0]+
-          ", Emt: %.2f" % Iteration[1]+
-          ", Eme: %.3e" % Iteration[2]+
-          ", E0: %.4f" % Iteration[3])
-
+            Count=Count+1
 
 #########################################################################
 ######################## Time to Execute ################################

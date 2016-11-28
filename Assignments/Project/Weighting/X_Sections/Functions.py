@@ -130,7 +130,7 @@ def GETcsvFiles(directory):
 
 def LoopTAPE(Protons,Isotope):
     ZAID=Protons+Isotope+"0"
-    with open('../../Origen2/TAPE9_BANK.inp') as f:
+    with open('../Origen2/TAPE9_BANK.inp') as f:
         content=f.readlines()
 
     for i in content:

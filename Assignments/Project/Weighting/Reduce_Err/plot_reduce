@@ -15,14 +15,14 @@ import copy
 #########################################################################
 
 #Load up dataframe
-df=pd.read_csv('U235_All_Calcs.csv',sep=',',index_col=False)
+df=pd.read_csv('All_Calcs.csv',sep=',',index_col=False)
 ColumnNames=df.columns.values #Probably wont use
 
 #Set X and Y values for plotting ['Error' 'Emt' 'Eme' 'E0']
 #Error will get more complicated, for now its only one isotope
 
-X='Eme'    #Should be one of the variables
-Y='Error'  #Should be an error term
+X='E0'    #Should be one of the variables
+Y='SumErr'  #Should be an error term
 
 #Three variables that I am...well varying
 Variables=["Emt","E0","Eme"]
@@ -32,9 +32,9 @@ XScale="linear"     # 'linear' or 'log'
 #'E$_{max,th}$ (eV)'   For Emt
 #'E$_{avg,th}$ (eV)'   For E0
 #'E$_{max,epi}$ (eV)'  For Eme  (log scale)
-Xlabel='E$_{max,epi}$ (eV)'  # X label       
+Xlabel='E$_{avg,th}$ (eV)'  # X label       
 YScale="linear"  # 'linear' or 'log'
-Ylabel=copy.copy(Y)    
+Ylabel='Sum of Error for 21 X-Sections'    
 
 
 #Remove the one variable I am looking at, group by others

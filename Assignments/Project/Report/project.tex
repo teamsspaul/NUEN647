@@ -238,8 +238,8 @@ distributed.
 
 \item[\done]{Determine how to vary cross section and or flux spectrum
   inputs for calculation}
-\item[\done]{Determine how to vary fission yields for calculation}
-\item[\done]{Determine how to vary half-life information for calculation}
+%\item[\done]{Determine how to vary fission yields for calculation}
+%\item[\done]{Determine how to vary half-life information for calculation}
   
   ORIGEN2 reads in cross section information through a file
   named ``TAPE9.inp'', specified by the 8th input on the LIB card.
@@ -269,44 +269,124 @@ distributed.
   \end{center}
   \end{table}
 
-  Both $\sigma_\gamma$ and yield will be modified based on the
+  The cross section, $\sigma_\gamma$ will be modified based on the
   locations in the cross section libraries shown above.
   Half-life information is contained in the decay
   libraries 1, 2, and 3 for activation products, actinides,
-  and fission products, respectively. The input for \tss{137}Cs
-  from library 3 is shown in the listing below, with
-  a corresponding key shown in Table \ref{Table:3} \cite{croff1980user}.
+  and fission products, respectively. These values will
+  not be modified to reduce the scope of the project.
+
+  %The input for \tss{137}Cs
+  %from library 3 is shown in the listing below, with
+  %a corresponding key shown in Table \ref{Table:3} \cite{croff1980user}.
   
-  \inputdeckpages{../Origen2/TAPE9_BANK}{\tss{137}Cs decay libary
-    3 input}{2896}{2897}
+  %\inputdeckpages{../Origen2/TAPE9_BANK}{\tss{137}Cs decay libary
+  %  3 input}{2896}{2897}
 
-  \begin{table}[H]
-  \begin{center}
-    \caption{Key to parameters in decay library}
-    \label{Table:3}
-    \begin{tabular}{l l l l l l l l l l}
-      \toprule
-      LIB & NUCLID & IU & THALF & FBX &
-      FPEC & FPECX & FA & FIT & FSF\\
-      LIB & - & - & FN & QREC &
-      ABUND & ARCG & WRCG &
-      -  & - \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  \end{table}
+  %\begin{table}[H]
+  %\begin{center}
+  %%   \caption{Key to parameters in decay library}
+  %%   \label{Table:3}
+  %%   \begin{tabular}{l l l l l l l l l l}
+  %%     \toprule
+  %%     LIB & NUCLID & IU & THALF & FBX &
+  %%     FPEC & FPECX & FA & FIT & FSF\\
+  %%     LIB & - & - & FN & QREC &
+  %%     ABUND & ARCG & WRCG &
+  %%     -  & - \\
+  %%     \bottomrule
+  %%   \end{tabular}
+  %% \end{center}
+  %% \end{table}
 
-  The two important parameters are IU, the time unit designation
-  of the half-life, and THALF, the half-life of nuclide in units
-  given by IU.
-  Also, a program was writen to modify $\sigma_\gamma$, yield,
+  %% The two important parameters are IU, the time unit designation
+  %% of the half-life, and THALF, the half-life of nuclide in units
+  %% given by IU.
+  A program was writen to modify $\sigma_\gamma$, yield,
   or half-life based on lines from a text file. This code is
-  shown below.
+  shown below but will only be used to modify cross section.
 
   \pythonscript{../ChangeTAPE/change}{Script for modifying ORIGEN2 input.}
 
+
+\item{Determine variance of Cross-sections}
+
+  In order to determine the sigma %and yield
+  variables I am planning on
+  flux averaging via:
+
+  \begin{equation*}
+    \sigma=\frac{\int\sigma(E)\phi(E)dE}{\int\phi(E)dE}
+  \end{equation*}
+
+  %% and
   
+  %% \begin{equation*}
+  %%   \gamma=\frac{\int\gamma(E)\phi(E)dE}{\int\phi(E)dE}
+  %% \end{equation*}
+
+  where:
+
+  \begin{align*}
+    \phi(E) =& C_1\cdot \frac{E}{E_0^2} \cdot
+    exp\left(-\frac{E}{E_0}\right) &&E<E_{max,th}\\
+    =& \frac{C_2}{E}  &&E_{max,th}<E<E_{max,epi}\\
+    =& C_3 \cdot \frac{\sqrt{\frac{E}{E_f}}}{E_f}
+    \cdot exp\left(-\frac{E}{E_{f}}
+    \right) &&E>E_{max,epi}
+  \end{align*}
+
+  and:
+
+  \begin{align*}
+    C_1=&\frac{E_0^2}{E^2_{max,th}}e^{E_{max,th}/E_0}
+      \\
+      C_2=&1\\
+      C_3=&\frac{E_f}{E_{max,epi}}
+      \cdot
+      e^{\frac{E_{max,epi}}{E_f}}\frac{1}
+      {\sqrt{\frac{E_{max,epi}}{E_f}}}
+  \end{align*}
+
+  Where: $E_{max,th}=0.50\ \text{eV}$,
+  $E_{max,epi}=1E5\ \text{eV}$,
+  $\theta_{th}=0.09\ \text{eV}$ (1045 K),
+  and $\theta_{fis}=1.35E6\ \text{eV}$. These values
+  were picked because they minimized the difference
+  between the cross-sections in the TAPE9 file, and
+  those calculated with ENDF-VII and the above method.
+  This is highlighted in figure \ref{fig:err}. Half
+  of this error is from \tss{238}U.
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Weighting/Reduce_Err/E0_vs_SumErr_old.pdf}
+      \vspace{-5mm}
+      \caption{Minimized error for 21 cross section calculations}
+      \label{fig:err}
+    \end{center}
+  \end{figure}
   
+  The flux spectrum is shown as below:
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Weighting/Flux_Spectra.pdf}
+      \vspace{-5mm}
+      \caption{Flux Spectra used for weighting x-sections and yields}
+      \label{fig:Flux}
+    \end{center}
+  \end{figure}
+  
+  I was going to calculate $\sigma_\gamma$ with nominal cross section
+  values, then with error subtracted, and then added. These values would
+  constitue a mean with error. A similiar calculation would be done for
+  the yields.
+
+  
+
+  
+    
 \item{Create a sampling space for all possible variations of
   calculations}
 
@@ -336,54 +416,6 @@ distributed.
   \end{center}
   \end{table}
 
-  In order to determine the sigma and yield variables I am planning on
-  flux averaging both via:
-
-  \begin{equation*}
-    \sigma=\frac{\int\sigma(E)\phi(E)dE}{\int\phi(E)dE}
-  \end{equation*}
-
-  and
-  
-  \begin{equation*}
-    \gamma=\frac{\int\gamma(E)\phi(E)dE}{\int\phi(E)dE}
-  \end{equation*}
-
-  where:
-
-  \begin{align*}
-    \phi(E) =& C_1\cdot E \cdot exp\left(-\frac{E}{\theta_{th}
-    }\right) &&E<E_{max,th}\\
-    =& \frac{C_2}{E}  &&E_{max,th}<E<E_{max,epi}\\
-    =& C_3 \cdot \sqrt{E}\cdot exp\left(-\frac{E}{\theta_{fis}}
-    \right) &&E>E_{max,epi}
-  \end{align*}
-
-  and:
-
-  \begin{align*}
-    C_1=&\frac{1}{E^2_{max,th}e^{-E_{max,th}/\theta_{th}}}
-      \\
-      C_2=&1\\
-      C_3=&\frac{1}{E^{3/2}_{max,epi}e^{-E_{max,epi}/\theta_{fis}}}
-  \end{align*}
-
-  Where: $E_{max,th}=0.108\ \text{eV}$,
-  $E_{max,epi}=2.1E6\ \text{eV}$,
-  $\theta_{th}=0.054\ \text{eV}$,
-  and $\theta_{fis}=1.4E6\ \text{eV}$.
-
-
-  The flux spectrum is shown as below:
-
-
-
-
-  
-  I was going to calculate $\sigma_\gamma$ with nominal cross section
-  values, then with error subtracted, and then added. These values would
-  constitue a mean with error. A similiar calculation would be done for
-  the yields.
   
 \item{Determine importance of various uncertain parameters
   by running the code a number of times randomly sampling
