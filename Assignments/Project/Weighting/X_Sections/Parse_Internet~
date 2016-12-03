@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+#########################################################################
+######################## Import Packages ################################
+#########################################################################
+
+import time
+start_time = time.time()
+import Functions as f
+from scipy import interpolate
+from scipy import integrate
+from scipy.integrate import trapz
+import os
+from bs4 import BeautifulSoup as bs
+import urllib.request
+
+
+
+
+
+Link='http://www.nndc.bnl.gov/exfor/servlet/X4sGetTabData?datfile=E4R21219_tdat.dat&emin=1e-05&emax=2e%2B07'
+
+
+with urllib.request.urlopen(Link) as url:
+        html = url.read()
+        #I'm guessing this would output the html source code?
+        print(html)
+soup = bs(html, 'html.parser')
+texts = soup.findAll(text=True)
