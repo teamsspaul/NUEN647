@@ -55,8 +55,8 @@ for i in range(0,len(Names)):
 print("Emt,Eme,E0,"+AllNames+",SumErr",file=output)
 
 #Loop through all possibilities
-EmtL=f.np.linspace(0.1,1,10)  # Is it usually 0.625?
-EmeL=f.np.logspace(5,6,3)    #We have determined that 10^5 is best
+EmtL=f.np.linspace(0.1,1,20)  # Is it usually 0.625?
+EmeL=f.np.logspace(5,6,1)    #We have determined that 10^5 is best
 E0L=f.np.linspace(0.02,0.1722,10) #10
 Ef=1.35e6
 SumErrs=[]
