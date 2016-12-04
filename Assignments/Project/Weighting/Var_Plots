@@ -52,7 +52,8 @@ NameVar=Names[1]
 Element=Name.split('_')[0]
 Isotope=Name.split('_')[1]
 Protons=Name.split('_')[2]
-        
+Reaction=Name.split('_')[3].split('.')[0]
+
 Xsec = f.np.genfromtxt('X_Sections/'+Name,delimiter=',')
 Var  = f.np.genfromtxt('X_Sections/'+NameVar,delimiter=',')
 #Set energy, and convert from MeV to ev
@@ -70,7 +71,7 @@ Var_int=interpolate.interp1d(Evar,Var[:,1],
 
 fig=f.plt.figure(figsize=f.FigureSize)
 ax=fig.add_subplot(111)
-label="ENDF/B-VII.1: $\sigma_a$ "+Element+"$^{"+Isotope+"}$"
+label="ENDF/B-VII.1: $\sigma_"+Reaction+"$ "+Element+"$^{"+Isotope+"}$"
 Ylabel='$\sigma$(E)'
 (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
 
