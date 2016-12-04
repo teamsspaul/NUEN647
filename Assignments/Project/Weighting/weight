@@ -29,11 +29,13 @@ from scipy.integrate import trapz
 
 #Get list of csv files with X-section information
 Names=f.GETcsvFiles("X_Sections")
-Names=["Pu_239_94_a.csv",
-       "Pu_240_94_a.csv",
-       "Pu_241_94_a.csv",
-       "U_235_92_a.csv",
-       "U_238_92_a.csv"]
+#Names=["Pu_239_94_a.csv",
+#       "Pu_240_94_a.csv",
+#       "Pu_241_94_a.csv",
+#       "U_235_92_a.csv",
+#       "U_238_92_a.csv"]
+Names=["U_235_92_a.csv",
+       "U_235_92_f.csv"]
 
 #Flux Parameters
 Emt=0.50       #Max thermal energy in ev
@@ -88,7 +90,8 @@ for Name in Names:
     
     (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
     f.Legend(ax)
-    f.plt.savefig('X_Sections/X_'+Element+'_'+Isotope+'.pdf')
+    f.plt.savefig('X_Sections/X_'+Element+'_'+Isotope+'_'+
+                  Reaction+'.pdf')
     
 #########################################################
 ################## Flux Plotting ########################

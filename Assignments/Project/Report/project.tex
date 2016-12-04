@@ -20,9 +20,9 @@
 \usepackage{courier} % Required for the courier font
 \usepackage{mathtools}
 
-%--------------------------------------------------------------------------
+%--------------------------------------------------------------------
 %	CODE INCLUSION CONFIGURATION
-%--------------------------------------------------------------------------
+%---------------------------------------------------------------------
 % This is the color used for comments
 \definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} 
 \lstloadlanguages{Perl,Python} % Load Perl syntax for listings,
@@ -177,14 +177,18 @@ averaging before execution of the code,
 with the assumption that the flux has the same shape as a typical PWR.
 
 The uncertainty of concentrations were determined by varying the
-cross section, fission yeild, and half-life information
-that was fed into ORIGEN2. The uncertainties on cross sections
+absorption and fission cross sections for \tss{235}U, \tss{238}U
+\tss{239}Pu, \tss{240}Pu, and \tss{241}Pu. Originally, absorption
+cross sections and yields for the fission products were to be
+varied, but
+variance information for the lighter nuclides is either
+difficult to acquire or not available.
+
+The uncertainties on cross sections
 were determined by calculating the range of the single group
 cross section, taking the mid point as a mean, the range as
 a standard deviation, and assuming a Gaussian distribution.
-A similar calculation was done for the fisison yields, and
-half-life distributions were taken at face value as normally
-distributed. 
+
 
 \begin{table}[H]
   \begin{center}
@@ -246,12 +250,12 @@ distributed.
   ``TAPE9.inp'' needs at least 3 cross section libraries. These
   are specified by the 5th 6th and 7th inputs on the LIB card as
   601, 602, and 603 for the activation products, actinides, and
-  fission products, respectively. The input for \tss{137}Cs
-  from library 603 is shown in the listing below, with
+  fission products, respectively. The input for \tss{235}U
+  from library 601 is shown in the listing below, with
   a corresponding key shown in Table \ref{Table:2} \cite{croff1980user}.
   
-  \inputdeckpages{../Origen2/TAPE9_BANK}{\tss{137}Cs cross section
-    library 603 input}{5066}{5067}
+  \inputdeckpages{../Origen2/TAPE9_BANK}{\tss{235}U cross section
+    library 602 input}{3827}{3827}
 
   \begin{table}[H]
   \begin{center}
@@ -259,17 +263,18 @@ distributed.
     \label{Table:2}
     \begin{tabular}{l l l l l l l l l}
       \toprule
-      LIB & NUCLID & (n,$\gamma$) & (n,2n) & (n,$\alpha$) &
-      (n,p) & (n,$\gamma^*$) & (n,2n\tss{*}) & YYN\\
-      LIB & Y(\tss{232}Th) & Y(\tss{233}U) & Y(\tss{235}U) &
-      Y(\tss{238}U) & Y(\tss{239}Pu) & Y(\tss{241}Pu) &
-      Y(\tss{245}Cm) & Y(\tss{249}Cf)\\
+      LIB & NUCLID & (n,$\gamma$) & (n,2n) & (n,3n) &
+      (n,f) & (n,$\gamma^*$) & (n,2n\tss{*}) & YYN\\
+      %LIB & Y(\tss{232}Th) & Y(\tss{233}U) & Y(\tss{235}U) &
+      %Y(\tss{238}U) & Y(\tss{239}Pu) & Y(\tss{241}Pu) &
+      %Y(\tss{245}Cm) & Y(\tss{249}Cf)\\
       \bottomrule
     \end{tabular}
   \end{center}
   \end{table}
 
-  The cross section, $\sigma_\gamma$ will be modified based on the
+  The cross sections, $\sigma_\gamma$
+  and $\sigma_f$ will be modified based on the
   locations in the cross section libraries shown above.
   Half-life information is contained in the decay
   libraries 1, 2, and 3 for activation products, actinides,
@@ -311,8 +316,8 @@ distributed.
 
 \item{Determine variance of Cross-sections}
 
-  In order to determine the sigma %and yield
-  variables I am planning on
+  Both $\sigma_\gamma$ and $\sigma_f$ %and yield
+  were determined by 
   flux averaging via:
 
   \begin{equation*}
@@ -390,31 +395,32 @@ distributed.
 \item{Create a sampling space for all possible variations of
   calculations}
 
-  I might have to reduce the number of elements to look at,
-  maybe I'll start by
-  just looking at \tss{154}Eu.
-  \begin{equation*}
-    ^{153}Pm\xrightarrow{\beta^-} {^{153}Sm}\xrightarrow{\beta^-}
-    {^{153}Eu}
-    \xrightarrow{(n,\gamma)} {^{154}Eu}
-  \end{equation*}
+  With the following codes the sampling space was detemined to be...
+  %% I might have to reduce the number of elements to look at,
+  %% maybe I'll start by
+  %% just looking at \tss{154}Eu.
+  %% \begin{equation*}
+  %%   ^{153}Pm\xrightarrow{\beta^-} {^{153}Sm}\xrightarrow{\beta^-}
+  %%   {^{153}Eu}
+  %%   \xrightarrow{(n,\gamma)} {^{154}Eu}
+  %% \end{equation*}
 
-  \begin{table}[H]
-  \begin{center}
-    \caption{Summary of parameters to vary for \tss{154}Eu}
-    \label{Table:4}
-    \begin{tabular}{l|l|l|l}
-      \toprule
-      Isotope & Half-life & $\sigma_\gamma$ & Yield\\
-      \hline
-      \tss{153}Pm & 5.25 $\pm$ 0.02 min & SIGMA & Yield \\
-      \tss{153}Sm & 46.284 $\pm$ 0.004 hr & SIGMA & Yield\\
-      \tss{153}Eu & Stable & SIGMA & Yield \\
-      \tss{154}Eu & 8.60 $\pm$ 0.01 y  & SIGMA & Yield \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  \end{table}
+  %% \begin{table}[H]
+  %% \begin{center}
+  %%   \caption{Summary of parameters to vary for \tss{154}Eu}
+  %%   \label{Table:4}
+  %%   \begin{tabular}{l|l|l|l}
+  %%     \toprule
+  %%     Isotope & Half-life & $\sigma_\gamma$ & Yield\\
+  %%     \hline
+  %%     \tss{153}Pm & 5.25 $\pm$ 0.02 min & SIGMA & Yield \\
+  %%     \tss{153}Sm & 46.284 $\pm$ 0.004 hr & SIGMA & Yield\\
+  %%     \tss{153}Eu & Stable & SIGMA & Yield \\
+  %%     \tss{154}Eu & 8.60 $\pm$ 0.01 y  & SIGMA & Yield \\
+  %%     \bottomrule
+  %%   \end{tabular}
+  %% \end{center}
+  %% \end{table}
 
   
 \item{Determine importance of various uncertain parameters
