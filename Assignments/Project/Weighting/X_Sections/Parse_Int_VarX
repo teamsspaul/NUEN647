@@ -13,7 +13,13 @@ from bs4 import BeautifulSoup
 ############################################################
 
 #Might have to update these URLs
-url_to_scrape='http://www.nndc.bnl.gov/exfor/servlet/X4sShowData?File=E4R8176_e4.zvd'
+#To Find, Google ENDF
+#Pick link for Brookhaven National Lab (not IAEA)
+#Search for element you are looking for
+#Reaction n,g
+#Pick plots for covariance, pick intertive mode for
+#covariacne plot, on bottom left look at data (copy that link)
+url_to_scrape='http://www.nndc.bnl.gov/exfor/servlet/X4sShowData?File=E4R_ZV2.zvd'
 
 #not sure what these two lines do, but it
 #gets all the information from the URL, and saves
@@ -22,21 +28,31 @@ r = requests.get(url_to_scrape)
 soup = BeautifulSoup(r.text,"lxml")
 
 #Find the index of our starting point
-x=soup.prettify().find('xx:\n')+4
-print(x)
+x=soup.prettify().find('fun: MT102xMT102')
 
 #Save all the information in a long list
 LongList=soup.prettify()[x:-1].split('\n')
 
-print(len(LongList))
-
 #open the output file
-#output=open('U_235_92_cov',"w")
+output=open('U_235_92_cov.csv',"w")
 
-#Modify the data, and store in file
+#Modify the data (to Mev), and store in file
+#Add extra point to make flat
+Collect=False;
 for i in range(0,len(LongList)-1):
-        if i<4:
-                print(LongList[i])
-        #Data=LongList[i].split()
-        #Data[0]=str(float(Data[0])*1e-6)
-        #print(",".join(Data),file=output)
+        if '//' in LongList[i] and not Collect:
+                Collect=True
+                continue
+        if '//' in LongList[i] and Collect:
+                break
+        if Collect:
+                try:
+                        yold=Data[1]
+                        Data=LongList[i].split()
+                        Data[0]=str(float(Data[0])*1e-6)
+                        print(Data[0]+","+yold,file=output)
+                        print(",".join(Data),file=output)
+                except NameError:
+                        Data=LongList[i].split()
+                        Data[0]=str(float(Data[0])*1e-6)
+                        print(",".join(Data),file=output)

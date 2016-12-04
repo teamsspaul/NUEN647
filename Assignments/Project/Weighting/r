@@ -1,0 +1,3 @@
+#!/bin/bash
+./Var_Plots
+firefox "X_Sections/XwVar_U_235.pdf"
