@@ -54,16 +54,16 @@ for i in range(0,len(Names)):
     TAPE9_XL.append(float(f.LoopTAPE(NameList[2],NameList[1],Reaction)))
     XsecL.append(f.np.genfromtxt('../X_Sections/'+Names[i],delimiter=','))
     if i==len(Names)-1:
-        AllNames=AllNames+NameList[0]+NameList[1]
+        AllNames=AllNames+NameList[0]+NameList[1]+Reaction
     else:
-        AllNames=AllNames+NameList[0]+NameList[1]+","
+        AllNames=AllNames+NameList[0]+NameList[1]+Reaction+","
 
 #Print first line to output file
 print("Emt,Eme,E0,"+AllNames+",SumErr",file=output)
 
 #Loop through all possibilities
 EmtL=f.np.linspace(0.1,1,10)  # Is it usually 0.625?
-EmeL=f.np.logspace(5,6,1)    #We have determined that 10^5 is best
+EmeL=f.np.logspace(5,6,3)    #We have determined that 10^5 is best
 E0L=f.np.linspace(0.02,0.1722,10) #10
 Ef=1.35e6
 SumErrs=[]
