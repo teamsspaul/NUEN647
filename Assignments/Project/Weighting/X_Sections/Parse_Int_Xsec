@@ -21,9 +21,9 @@ from bs4 import BeautifulSoup
 #google ENDF, pick the brookhaven link
 #Search for the x-section you want, click the sigma symbol
 #then interpolate the data so there is a 'Lin-Lin'
-url_to_scrape='http://www.nndc.bnl.gov/exfor/servlet/X4sGetTabData?datfile=E4R21383_tdat.dat&emin=1e-05&emax=2e%2B07'
+url_to_scrape='http://www.nndc.bnl.gov/exfor/servlet/X4sGetTabData?datfile=E4R21387_tdat.dat&emin=1e-05&emax=2e%2B07'
 
-Name="U_235_92_f"
+Name="Pu_241_94_f"
 
 
 #not sure what these two lines do, but it

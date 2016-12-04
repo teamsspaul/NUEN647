@@ -24,8 +24,10 @@ from bs4 import BeautifulSoup
 #Reaction n,g
 #Pick plots for covariance, pick intertive mode for
 #covariacne plot, on bottom left look at data (copy that link)
-url_to_scrape='http://www.nndc.bnl.gov/exfor/servlet/X4sShowData?File=E4R_ZV6.zvd'
-Name="Pu_241_94"
+url_to_scrape='http://www.nndc.bnl.gov/exfor/servlet/X4sShowData?File=E4R_ZV15.zvd'
+Name="U_235_92_f"
+MTFunction='fun: MT102xMT102'
+MTFunction='fun: MT18xMT18'
 
 #not sure what these two lines do, but it
 #gets all the information from the URL, and saves
@@ -34,7 +36,7 @@ r = requests.get(url_to_scrape)
 soup = BeautifulSoup(r.text,"lxml")
 
 #Find the index of our starting point
-x=soup.prettify().find('fun: MT102xMT102')
+x=soup.prettify().find(MTFunction)
 if x==-1:
         while x==-1:
                 print("")
@@ -52,7 +54,7 @@ if x==-1:
 LongList=soup.prettify()[x:-1].split('\n')
 
 #open the output file
-output=open(Name+'_cov.csv',"w")
+output=open(Name+'V.csv',"w")
 
 #Modify the data (to Mev), and store in file
 #Add extra point to make flat
