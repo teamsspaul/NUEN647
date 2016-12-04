@@ -69,11 +69,11 @@ for Name in Names:
     Ylabel='$\sigma$(E)'    # Y label
     
     (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
-    #f.Legend(ax)
+    f.Legend(ax)
     if 'a' in Reaction:
         f.plt.savefig('X_Sections/X_'+Element+'_'+Isotope+'.pdf')
-    #if 'cov' in Reaction:
-    #    f.plt.savefig('X_Sections/Var_'+Element+'_'+Isotope+'.pdf')
+    if 'cov' in Reaction:
+        f.plt.savefig('X_Sections/Var_'+Element+'_'+Isotope+'.pdf')
         
 #########################################################
 ################## Flux Plotting ########################
