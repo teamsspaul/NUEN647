@@ -83,7 +83,7 @@ def flux(E,Emt,Eme,E0,Ef):
 
 
 def plot(x,y,ax,Color,label,fig,Ylabel):
-	#Plot X and Y
+    #Plot X and Y
     ax.plot(x,y,
             linestyle="solid", #"solid","dashed","dash_dot","dotted","."
             marker="", # "*" "H" "h" "d" "^" ">"
@@ -98,15 +98,16 @@ def plot(x,y,ax,Color,label,fig,Ylabel):
     ax.set_yscale(YScale)
     #Set Title
     fig.suptitle(Title,fontsize=TitleFontSize,
-		 fontweight=TitleFontWeight,fontdict=font,ha='center')
+        	 fontweight=TitleFontWeight,fontdict=font,
+                 ha='center')
     #Set X and y labels
     ax.set_xlabel(Xlabel,
-		  fontsize=XFontSize,fontweight=XFontWeight,
-		  fontdict=font)
+        	  fontsize=XFontSize,fontweight=XFontWeight,
+        	  fontdict=font)
     ax.set_ylabel(Ylabel,
-		  fontsize=YFontSize,
-		  fontweight=YFontWeight,
-		  fontdict=font)
+        	  fontsize=YFontSize,
+        	  fontweight=YFontWeight,
+        	  fontdict=font)
 	
     return(fig,ax)
 

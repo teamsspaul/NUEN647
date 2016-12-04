@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+
+############################################################
+############### Import Packages ############################
+############################################################
+
+
+import requests
+from bs4 import BeautifulSoup
+
+############################################################
+#################### Open Link #############################
+############################################################
+
+#Might have to update these URLs
+url_to_scrape='http://www.nndc.bnl.gov/exfor/servlet/X4sGetTabData?datfile=E4R21332_tdat.dat&emin=1e-05&emax=2e%2B07'
+
+#not sure what these two lines do, but it
+#gets all the information from the URL, and saves
+#it in a soup type...thingy
+r = requests.get(url_to_scrape)
+soup = BeautifulSoup(r.text,"lxml")
+
+#Find the index of our starting point
+x=soup.prettify().find('Interpolation\r\n')+15
+
+#Save all the information in a long list
+LongList=soup.prettify()[x:-1].split('Lin-Lin\r\n')
+
+#open the output file
+output=open('U_235_92_aa.csv',"w")
+
+#Modify the data, and store in file
+for i in range(0,len(LongList)-1):
+        Data=LongList[i].split()
+        Data[0]=str(float(Data[0])*1e-6)
+        print(",".join(Data),file=output)
