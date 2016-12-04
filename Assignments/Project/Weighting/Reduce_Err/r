@@ -1,4 +1,4 @@
 #!/bin/bash
-./reduce_by_All
+#./reduce_by_All
 ./plot_reduce
 firefox "E0_vs_SumErr.pdf" &
