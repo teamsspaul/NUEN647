@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-
+"""
+This will plot how the error behaves as a function of flux
+parameters. The error is the difference between the calculated
+1-group cross section and the x-section ORIGEN reports
+"""
 #########################################################################
 ######################## Import Packages ################################
 #########################################################################
@@ -19,9 +23,8 @@ df=pd.read_csv('All_Calcs.csv',sep=',',index_col=False)
 ColumnNames=df.columns.values #Probably wont use
 
 #Set X and Y values for plotting ['Error' 'Emt' 'Eme' 'E0']
-#Error will get more complicated, for now its only one isotope
-
 X='E0'    #Should be one of the variables
+#ALSO IF YOU CHANGE CHANGE Xlabel!!!!!!!!!!!!!!!!!!!
 Y='SumErr'  #Should be an error term
 
 #Three variables that I am...well varying
@@ -34,8 +37,7 @@ XScale="linear"     # 'linear' or 'log'
 #'E$_{max,epi}$ (eV)'  For Eme  (log scale)
 Xlabel='E$_{avg,th}$ (eV)'  # X label       
 YScale="linear"  # 'linear' or 'log'
-Ylabel='Sum of Error for 21 X-Sections'    
-
+Ylabel='Sum of Error for 12 X-Sections'    
 
 #Remove the one variable I am looking at, group by others
 del Printing[Variables.index(X)]

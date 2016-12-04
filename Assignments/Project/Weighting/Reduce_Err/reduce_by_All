@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-
+"""
+This program will loop through values for three parameters for flux
+and determine the error between calculated flux and ORIGEN2 values.
+All the values will stored in a csv file named 'All_Calcs.csv'.
+Also the minimium summed error point in the paramter space will
+be printed to the screen
+"""
 #########################################################################
 ######################## Import Packages ################################
 #########################################################################
@@ -22,11 +28,14 @@ from scipy.integrate import trapz
 #Open output file
 output=open("All_Calcs.csv","w")
 
-
 #Get list of csv files with X-section information
 Names=f.GETcsvFiles("../X_Sections")
-#Names=["U_238_92_a.csv","U_235_92_a.csv"]
-#Names=["U_238_92_a.csv"]
+Names=["Pu_239_94_a.csv",
+       "Pu_240_94_a.csv",
+       "Pu_241_94_a.csv",
+       "U_235_92_a.csv",
+       "U_238_92_a.csv"]
+
 
 #Loop through all X-section files, save the data in variables
 #Also record all names
@@ -46,9 +55,9 @@ for i in range(0,len(Names)):
 print("Emt,Eme,E0,"+AllNames+",SumErr",file=output)
 
 #Loop through all possibilities
-EmtL=f.np.linspace(0.5,0.6,10)  # Is it usually 0.625?
-EmeL=f.np.logspace(5,6,1)    #We have determined that 10^5 is best
-E0L=f.np.linspace(0.09,0.1722,10) #10
+EmtL=f.np.linspace(0.1,1,10)  # Is it usually 0.625?
+EmeL=f.np.logspace(5,6,3)    #We have determined that 10^5 is best
+E0L=f.np.linspace(0.02,0.1722,10) #10
 Ef=1.35e6
 SumErrs=[]
 
