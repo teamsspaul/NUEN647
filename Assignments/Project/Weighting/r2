@@ -1,0 +1,4 @@
+#!/bin/bash
+X_Sections/Parse_Int_VarX
+./weight
+firefox "Var_U_235.pdf"
