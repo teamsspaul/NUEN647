@@ -74,7 +74,7 @@ for Name in Names:
     Avg=X_int/Phi_int
 
     #Find TAPE9's X-section value for comparison
-    TAPE9_X=f.LoopTAPE(Protons,Isotope)
+    TAPE9_X=f.LoopTAPE(Protons,Isotope,Reaction)
 
     print(Protons+Element+Isotope+' Average: %.3e' % Avg
           +', TAPE Value: '+TAPE9_X)
