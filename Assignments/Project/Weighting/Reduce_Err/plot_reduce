@@ -37,7 +37,7 @@ XScale="linear"     # 'linear' or 'log'
 #'E$_{max,epi}$ (eV)'  For Eme  (log scale)
 Xlabel='E$_{avg,th}$ (eV)'  # X label       
 YScale="linear"  # 'linear' or 'log'
-Ylabel='Sum of Error for 12 X-Sections'    
+Ylabel='Sum of Error for 10 X-Sections'    
 
 #Remove the one variable I am looking at, group by others
 del Printing[Variables.index(X)]
