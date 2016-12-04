@@ -29,18 +29,21 @@ from scipy.integrate import trapz
 
 #Get list of csv files with X-section information
 Names=f.GETcsvFiles("X_Sections")
-#Names=["Pu_239_94_a.csv",
-#       "Pu_240_94_a.csv",
-#       "Pu_241_94_a.csv",
-#       "U_235_92_a.csv",
-#       "U_238_92_a.csv"]
-Names=["U_235_92_a.csv",
-       "U_235_92_f.csv"]
+Names=["Pu_239_94_a.csv",
+       "Pu_240_94_a.csv",
+       "Pu_241_94_a.csv",
+       "U_235_92_a.csv",
+       "U_238_92_a.csv",
+       "Pu_239_94_f.csv",
+       "Pu_240_94_f.csv",
+       "Pu_241_94_f.csv",
+       "U_235_92_f.csv",
+       "U_238_92_f.csv"]
 
 #Flux Parameters
-Emt=0.50       #Max thermal energy in ev
+Emt=0.38       #Max thermal energy in ev
 Eme=1e5        #Max epithermal energy in ev
-E0=0.090       #Thermal average in ev (1045 K)
+E0=0.0658       #Thermal average in ev (1045 K)
 Ef=1.35e6      #Fission average in ev
 
 #Loop through all the X-sections I got

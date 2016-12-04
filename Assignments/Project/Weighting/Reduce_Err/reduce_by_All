@@ -65,9 +65,11 @@ print("Emt,Eme,E0,"+AllNames+",SumErr",file=output)
 EmtL=f.np.linspace(0.1,1,20)  # Is it usually 0.625?
 EmeL=f.np.logspace(5,6,1)    #We have determined that 10^5 is best
 E0L=f.np.linspace(0.02,0.1722,20) #10
-EmtL=f.np.linspace(0.3,0.5,20)  # Is it usually 0.625?
+
+EmtL=f.np.linspace(0.5,0.8,20)  # Is it usually 0.625?
 EmeL=f.np.logspace(5,6,1)    #We have determined that 10^5 is best
-E0L=f.np.linspace(0.04,0.11,20) #10
+E0L=f.np.linspace(0.06,0.1722,20) #10
+
 Ef=1.35e6
 SumErrs=[]
 
