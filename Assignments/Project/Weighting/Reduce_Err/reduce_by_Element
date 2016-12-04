@@ -32,10 +32,11 @@ for Name in Names:
     Element=Name.split('_')[0]
     Isotope=Name.split('_')[1]
     Protons=Name.split('_')[2]
+    Reaction=Name.split('_')[3].split(',')[0]
     Xsec = f.np.genfromtxt('X_Sections/'+Name,delimiter=',')
 
     #Find TAPE9's 1 Group X-section value for comparison
-    TAPE9_X=float(f.LoopTAPE(Protons,Isotope))
+    TAPE9_X=float(f.LoopTAPE(Protons,Isotope,Reaction))
     
     #Set energy, and convert from MeV to ev
     E=f.copy.copy(Xsec[:,0])*10**6
@@ -118,10 +119,11 @@ for Name in Names:
     Element=Name.split('_')[0]
     Isotope=Name.split('_')[1]
     Protons=Name.split('_')[2]
+    Reaction=Name.split('_')[3].split(',')[0]
     Xsec = f.np.genfromtxt('X_Sections/'+Name,delimiter=',')
 
     #Find TAPE9's 1 Group X-section value for comparison
-    TAPE9_X=float(f.LoopTAPE(Protons,Isotope))
+    TAPE9_X=float(f.LoopTAPE(Protons,Isotope,Reaction))
     
     #Set energy, and convert from MeV to ev
     E=f.copy.copy(Xsec[:,0])*10**6

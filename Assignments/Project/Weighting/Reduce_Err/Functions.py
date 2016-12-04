@@ -128,17 +128,21 @@ def GETcsvFiles(directory):
             Filelist.append(file)
     return(Filelist)
 
-def LoopTAPE(Protons,Isotope):
+def LoopTAPE(Protons,Isotope,Reaction):
     ZAID=Protons+Isotope+"0"
     with open('../../Origen2/TAPE9_BANK.inp') as f:
         content=f.readlines()
 
+    if 'a' in Reaction:
+        Place=2
+    elif 'f' in Reaction:
+        Place=5
     for i in content:
         hold=i.split()
         if len(hold)>2:
                                    #want 600 libs not 1,2 or 3
             if ZAID in hold[1] and len(hold[0])>1:
-                X_Section=hold[2]
+                X_Section=hold[Place]
                 break
     return(X_Section)
 

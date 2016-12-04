@@ -34,7 +34,13 @@ Names=["Pu_239_94_a.csv",
        "Pu_240_94_a.csv",
        "Pu_241_94_a.csv",
        "U_235_92_a.csv",
-       "U_238_92_a.csv"]
+       "U_238_92_a.csv",
+       #Line to Sep
+       "Pu_239_94_f.csv",
+       "Pu_240_94_f.csv",
+       "Pu_241_94_f.csv",
+       "U_235_92_f.csv",
+       "U_238_92_f.csv"]
 
 
 #Loop through all X-section files, save the data in variables
@@ -44,7 +50,8 @@ XsecL=[]
 AllNames=""
 for i in range(0,len(Names)):
     NameList=Names[i].split('_')
-    TAPE9_XL.append(float(f.LoopTAPE(NameList[2],NameList[1])))
+    Reaction=NameList[3].split('.')[0]
+    TAPE9_XL.append(float(f.LoopTAPE(NameList[2],NameList[1],Reaction)))
     XsecL.append(f.np.genfromtxt('../X_Sections/'+Names[i],delimiter=','))
     if i==len(Names)-1:
         AllNames=AllNames+NameList[0]+NameList[1]
@@ -55,7 +62,7 @@ for i in range(0,len(Names)):
 print("Emt,Eme,E0,"+AllNames+",SumErr",file=output)
 
 #Loop through all possibilities
-EmtL=f.np.linspace(0.1,1,20)  # Is it usually 0.625?
+EmtL=f.np.linspace(0.1,1,10)  # Is it usually 0.625?
 EmeL=f.np.logspace(5,6,1)    #We have determined that 10^5 is best
 E0L=f.np.linspace(0.02,0.1722,10) #10
 Ef=1.35e6
