@@ -55,7 +55,7 @@ for Name in Names:
     Reaction=Name.split('_')[3].split('.')[0]
 
     #Do not do Averaging of variances
-    if 'cov' in Reaction:
+    if 'V' in Reaction:
         continue
 
     Xsec = f.np.genfromtxt('X_Sections/'+Name,delimiter=',')
@@ -88,7 +88,7 @@ for Name in Names:
 
     fig=f.plt.figure(figsize=f.FigureSize)
     ax=fig.add_subplot(111)
-    label="$\sigma_a$ "+Element+"$^{"+Isotope+"}$"
+    label="$\sigma_"+Reaction+"$ "+Element+"$^{"+Isotope+"}$"
     Ylabel='$\sigma$(E)'    # Y label
     
     (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
