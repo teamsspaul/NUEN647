@@ -1,3 +1,7 @@
 #!/bin/bash
-./Var_Plots
-firefox "X_Sections/XwVar_U_235.pdf"
+#This bash script will run Var_Plots
+#And pull up the pdf Var_Plots creates
+#The input $1 should be an isotope for
+#which you have x-section and variance data for
+./Var_Plots $1
+firefox "X_Sections/XwVar_${1}.pdf"

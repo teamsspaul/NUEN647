@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-
+"""
+This function will loop through
+csv files in a directory, and format them...
+not really using this code anymore
+"""
 #########################################################################
 ######################## Import Packages ################################
 #########################################################################
@@ -42,8 +46,6 @@ for Name in Names:
             #Print to output
             print(i,file=output)
         os.system("mv "+Name+'.copy '+Name)
-
-
     
 #########################################################################
 ######################## Time to Execute ################################

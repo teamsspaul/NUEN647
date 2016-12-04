@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
+"""
 
+"""
 #########################################################################
 ######################## Import Packages ################################
 #########################################################################
@@ -81,7 +83,7 @@ for Name in Names:
     
     #Remember List, is a list of lists
     Index=f.MinIndex(List)
-    print("For "+Element+Isotope+", "+
+    print("For "+Element+Isotope+" the MIN, "+
           'Error: %.2f' % List[Index][0]+
           ", Emt: %.2f" % List[Index][1]+
           ", Eme: %.3e" % List[Index][2]+

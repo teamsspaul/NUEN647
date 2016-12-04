@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-
+"""
+This program will pull x-section information from the 
+brookhaven site. I know this is janky, but its the easiest
+fastest way for me to do it. 
+"""
 ############################################################
 ############### Import Packages ############################
 ############################################################
@@ -13,6 +17,10 @@ from bs4 import BeautifulSoup
 ############################################################
 
 #Might have to update these URLs
+#Meaning they expire.
+#google ENDF, pick the brookhaven link
+#Search for the x-section you want, click the sigma symbol
+#then interpolate the data so there is a 'Lin-Lin'
 url_to_scrape='http://www.nndc.bnl.gov/exfor/servlet/X4sGetTabData?datfile=E4R21332_tdat.dat&emin=1e-05&emax=2e%2B07'
 
 #not sure what these two lines do, but it

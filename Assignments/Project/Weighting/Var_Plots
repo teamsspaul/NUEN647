@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+"""
+This program will need command line input in the form:
+element-symbol_Isotope_Number-of-Protons
+make sure its the second argument like: './Var_Plots U_235_92'
+also make sure absorbtion and variance informatio for absorption
+are in a subdirectory 'X_Sections' with the same format
+'U_235_92_a.csv' and 'U_235_92_cov.csv'
+This function will plot the two over each other
+"""
+
 
 #########################################################################
 ######################## Import Packages ################################
@@ -10,6 +20,8 @@ import Functions as f
 from scipy import interpolate
 from scipy import integrate
 from scipy.integrate import trapz
+import sys
+import os
 
 #########################################################################
 ########################## Calculations #################################
@@ -19,8 +31,19 @@ from scipy.integrate import trapz
 ############### Import X-Section Data ###################
 #########################################################
 
+#Command line input
+ElementInput=sys.argv[1]
+
 # (n,g) x section with its variance (x-section first, variance second)
-Names=["U_235_92_a.csv","U_235_92_cov.csv"]
+Names=[ElementInput+"_a.csv",ElementInput+"_cov.csv"]
+
+#Check if both files exist
+if not os.path.isfile('X_Sections/'+Names[0]):
+    print("File "+Names[0]+" does not exist in X_Sections directory")
+    quit()
+if not os.path.isfile('X_Sections/'+Names[1]):
+    print("File "+Names[1]+" does not exist in X_Sections directory")
+    quit()
 
 #Get Into
 Name=Names[0]
@@ -51,9 +74,9 @@ Ylabel='$\sigma$(E)'
 (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
 
 # Make the y-axis label and tick labels match the line color.
-# ax1.set_ylabel('exp', color='b')
+# ax.set_ylabel(Ylabel, color='blue')
 for tl in ax.get_yticklabels():
-    tl.set_color('b')
+    tl.set_color('blue')
 
 #########################################################
 ################## Variance Plot  #######################
@@ -65,16 +88,16 @@ Ylabel='Uncertainty (\%)'
 (fig,ax2)=f.plot(Evar,Var[:,1],ax2,'red',label,fig,Ylabel)
 
 # Make the y-axis label and tick labels match the line color.
-# ax2.set_ylabel('sin', color='r')
+# ax2.set_ylabel(Ylabel, color='red')
 for tl in ax2.get_yticklabels():
-    tl.set_color('r')
+    tl.set_color('red')
 
 #########################################################
 ################### Legend/Save  ########################
 #########################################################
 
 f.Legend(ax)
-f.plt.savefig('X_Sections/XwVar_'+Element+'_'+Isotope+'.pdf')
+f.plt.savefig('X_Sections/XwVar_'+ElementInput+'.pdf')
 
 ##################################################################
 ######################## Time to Execute #########################

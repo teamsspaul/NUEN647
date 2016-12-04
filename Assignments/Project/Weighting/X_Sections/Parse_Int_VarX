@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-
+"""
+This function will look at the url,
+and pull information from it. I am assuming in this file
+variance information for x-sections. The 
+information should be taken from the brookhaven site
+"""
 ############################################################
 ############### Import Packages ############################
 ############################################################
@@ -19,7 +24,8 @@ from bs4 import BeautifulSoup
 #Reaction n,g
 #Pick plots for covariance, pick intertive mode for
 #covariacne plot, on bottom left look at data (copy that link)
-url_to_scrape='http://www.nndc.bnl.gov/exfor/servlet/X4sShowData?File=E4R_ZV2.zvd'
+url_to_scrape='http://www.nndc.bnl.gov/exfor/servlet/X4sShowData?File=E4R_ZV6.zvd'
+Name="Pu_241_94"
 
 #not sure what these two lines do, but it
 #gets all the information from the URL, and saves
@@ -29,12 +35,24 @@ soup = BeautifulSoup(r.text,"lxml")
 
 #Find the index of our starting point
 x=soup.prettify().find('fun: MT102xMT102')
+if x==-1:
+        while x==-1:
+                print("")
+                print("Could not find MT102xMT102")
+                print("Input different string to look for in the html")
+                print("Or to leave enter 'Done'")
+                newparse=input('')
+                if newparse == 'Done':
+                        quit()
+                else:
+                        x=soup.prettify().find(newparse)
+
 
 #Save all the information in a long list
 LongList=soup.prettify()[x:-1].split('\n')
 
 #open the output file
-output=open('U_235_92_cov.csv',"w")
+output=open(Name+'_cov.csv',"w")
 
 #Modify the data (to Mev), and store in file
 #Add extra point to make flat

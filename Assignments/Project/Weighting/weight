@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+"""
+This program will compute 1-group cross sections with a weighted 
+flux. The flux is plotted in the same directory and you can
+check it out if you want. Also parameters for the flux were
+determined in a subdirectory called Reduce_Err.
+This program also will plot the X-section values, but not the covariance
+values. 
+"""
 
 #########################################################################
 ######################## Import Packages ################################
@@ -21,7 +29,17 @@ from scipy.integrate import trapz
 
 #Get list of csv files with X-section information
 Names=f.GETcsvFiles("X_Sections")
-Names=["U_235_92_cov.csv"]
+Names=["Pu_239_94_a.csv",
+       "Pu_240_94_a.csv",
+       "Pu_241_94_a.csv",
+       "U_235_92_a.csv",
+       "U_238_92_a.csv"]
+
+#Flux Parameters
+Emt=0.50       #Max thermal energy in ev
+Eme=1e5        #Max epithermal energy in ev
+E0=0.090       #Thermal average in ev (1045 K)
+Ef=1.35e6      #Fission average in ev
 
 #Loop through all the X-sections I got
 for Name in Names:
@@ -30,17 +48,17 @@ for Name in Names:
     Isotope=Name.split('_')[1]
     Protons=Name.split('_')[2]
     Reaction=Name.split('_')[3].split('.')[0]
-    
+
+    #Do not do Averaging of variances
+    if 'cov' in Reaction:
+        continue
+
     Xsec = f.np.genfromtxt('X_Sections/'+Name,delimiter=',')
+    
     #Set energy, and convert from MeV to ev
     E=f.copy.copy(Xsec[:,0])*10**6
 
-    #Calculate Flux
-    Emt=0.50       #Max thermal energy in ev
-    Eme=1e5        #Max epithermal energy in ev
-    E0=0.090       #Thermal average in ev (1045 K)
-    Ef=1.35e6      #Fission average in ev
-    
+    #Calculate flux (yes we need E)
     F=f.flux(E,Emt,Eme,E0,Ef)
 
     #Make function for X-Section(E) * Flux(E)
@@ -70,11 +88,8 @@ for Name in Names:
     
     (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
     f.Legend(ax)
-    if 'a' in Reaction:
-        f.plt.savefig('X_Sections/X_'+Element+'_'+Isotope+'.pdf')
-    if 'cov' in Reaction:
-        f.plt.savefig('X_Sections/Var_'+Element+'_'+Isotope+'.pdf')
-        
+    f.plt.savefig('X_Sections/X_'+Element+'_'+Isotope+'.pdf')
+    
 #########################################################
 ################## Flux Plotting ########################
 #########################################################
