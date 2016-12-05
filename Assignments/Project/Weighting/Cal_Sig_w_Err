@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 """
 This program will compute 1-group cross sections with a weighted 
-flux. The flux is plotted in the same directory and you can
-check it out if you want. Also parameters for the flux were
-determined in a subdirectory called Reduce_Err.
-This program also will plot the X-section values, but not the covariance
-values. 
+flux. Parameters for the flux were
+determined in a subdirectory called Reduce_Err. 
 """
 
-#########################################################################
-######################## Import Packages ################################
-#########################################################################
+#####################################################################
+######################## Import Packages ############################
+#####################################################################
 
 import time
 start_time = time.time()
@@ -19,9 +16,9 @@ from scipy import interpolate
 from scipy import integrate
 from scipy.integrate import trapz
 
-#########################################################################
-########################## Calculations #################################
-#########################################################################
+#####################################################################
+########################## Calculations #############################
+#####################################################################
 
 #To fix X-section data to ORIGEN values
 Ratios=[1.05578868993,1.46437937788,0.929974069639,1.13769098926,

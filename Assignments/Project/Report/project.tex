@@ -422,9 +422,38 @@ a standard deviation, and assuming a Gaussian distribution.
 
   Both $\sigma^{error}_\gamma$ and $\sigma^{error}_f$
   were determined by calculating the single group cross section
-  with error subtracted, and then added. These values would
-  constitue a mean with error.
+  with error subtracted, and then added. These values will
+  constitue a mean with error. This was done with the following code:
 
+  \pythonscript{../Weighting/Cal_Sig_w_Err}{Script calculating average x-sections}
+
+  With results in Table \ref{Table:4}
+
+  \begin{table}[H]
+  \begin{center}
+    \caption{Errors in single group cross sections}
+    \label{Table:4}
+    \begin{tabular}{l l}
+      \toprule
+      Isotope\tss{Rxn} & $\sigma$ with 1STD Error\\
+      \hline
+      \tss{239}Pu\tss{$\gamma$} & 69.09$\pm$8.15\\
+      \tss{240}Pu\tss{$\gamma$} & 222.8$\pm$50.9\\
+      \tss{241}Pu\tss{$\gamma$} & 42.02$\pm$10.92\\
+      \tss{235}U\tss{$\gamma$}  & 10.68$\pm$3.23\\
+      \tss{238}U\tss{$\gamma$}  & 0.887$\pm$0.175\\
+      \tss{239}Pu\tss{f} & 121.1$\pm$1.2 \\
+      \tss{240}Pu\tss{f} & 0.579$\pm$0.003 \\
+      \tss{241}Pu\tss{f} & 125.9$\pm$2.3 \\
+      \tss{235}U\tss{f}  & 47.52$\pm$0.71 \\
+      \tss{238}U\tss{f}  & 0.093$\pm$8.2e-7 \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \end{table}
+
+
+  
   Cross section versus flux for several isotopes are shown in the
   following figures.
 
@@ -474,6 +503,11 @@ a standard deviation, and assuming a Gaussian distribution.
   \end{figure}
   
 
+
+
+
+
+  
     
 \item{Create a sampling space for all possible variations of
   calculations}
