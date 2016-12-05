@@ -83,111 +83,109 @@ with open('TAPE9_BANK.inp') as f:
 ##################### Loop through all samples ######################
 ############################ and ... ################################
 #####################################################################
-k=0
 
-############################################################
-################### Make new TAPE9 #########################
-############################################################
+for k in range(0,len(U238f)):
 
-#Open output file
-output=open("TAPE9.inp","w")
-        
-#Loop through the TAPE9 template file, make changes,
-#and write to new TAPE9 (output)
-for i in TAPE9content:
-    hold=i.split()
-    if '602' in hold[0] and "-" not in hold[0]:
-        if "942390" in hold[1]:
-            #Replace the gamma x-section
-            i=i.replace(hold[2],Pu239a[k])
-            #Replace the fission x-section
-            i=i.replace(hold[5],Pu239f[k])
-        if "942400" in hold[1]:
-            #Replace the gamma x-section
-            i=i.replace(hold[2],Pu240a[k])
-            #Replace the fission x-section
-            i=i.replace(hold[5],Pu240f[k])
-        if "942410" in hold[1]:
-            #Replace the gamma x-section
-            i=i.replace(hold[2],Pu241a[k])
-            #Replace the fission x-section
-            i=i.replace(hold[5],Pu241f[k])
-        if "922350" in hold[1]:
-            #Replace the gamma x-section
-            i=i.replace(hold[2],U235a[k])
-            #Replace the fission x-section
-            i=i.replace(hold[5],U235f[k])
-        if "922380" in hold[1]:
-            #Replace the gamma x-section
-            i=i.replace(hold[2],U238a[k])
-            #Replace the fission x-section
-            i=i.replace(hold[5],U238f[k])
+    ############################################################
+    ################### Make new TAPE9 #########################
+    ############################################################
+
+    #Open output file
+    output=open("TAPE9.inp","w")
+    
+    #Loop through the TAPE9 template file, make changes,
+    #and write to new TAPE9 (output)
+    for i in TAPE9content:
+        hold=i.split()
+        if '602' in hold[0] and "-" not in hold[0]:
+            if "942390" in hold[1]:
+                #Replace the gamma x-section
+                i=i.replace(hold[2],Pu239a[k])
+                #Replace the fission x-section
+                i=i.replace(hold[5],Pu239f[k])
+            if "942400" in hold[1]:
+                #Replace the gamma x-section
+                i=i.replace(hold[2],Pu240a[k])
+                #Replace the fission x-section
+                i=i.replace(hold[5],Pu240f[k])
+            if "942410" in hold[1]:
+                #Replace the gamma x-section
+                i=i.replace(hold[2],Pu241a[k])
+                #Replace the fission x-section
+                i=i.replace(hold[5],Pu241f[k])
+            if "922350" in hold[1]:
+                #Replace the gamma x-section
+                i=i.replace(hold[2],U235a[k])
+                #Replace the fission x-section
+                i=i.replace(hold[5],U235f[k])
+            if "922380" in hold[1]:
+                #Replace the gamma x-section
+                i=i.replace(hold[2],U238a[k])
+                #Replace the fission x-section
+                i=i.replace(hold[5],U238f[k])
                 
-    i=i.replace("\n","")
-    print(i,file=output)
+        i=i.replace("\n","")
+        print(i,file=output)
 
 
-output.close() #important or ORIGEN2 wont run
-#endfile record being detected otherwise
+    output.close() #important or ORIGEN2 wont run
+    #endfile record being detected otherwise
 
-############################################################
-##################### Run ORIGEN2 ##########################
-############################################################
+    ############################################################
+    ##################### Run ORIGEN2 ##########################
+    ############################################################
 
-#Run with new TAPE9, also deletes old files
-call(["./r"])
+    #Run with new TAPE9, also deletes old files
+    print("Run number :"+str(k+1))
+    call(["./r"])
 
-############################################################
-################## COLLECT OUTPUT ##########################
-############################################################
+    ############################################################
+    ################## COLLECT OUTPUT ##########################
+    ############################################################
 
-#Open output file and save contents
-with open('TAPE6.OUT') as f:
-    content=f.readlines()
+    #Open output file and save contents
+    with open('TAPE6.OUT') as f:
+        content=f.readlines()
 
-#Work on Page by Page Basis for output
-#Also grab time steps
-Pages=[];Page=""
-TimeDays=[]
-for i in content:
-    if "PAGE" in i:
-        #Save the Page if it has useful information
-        if "ACTINIDES+DAUGHTERS" in Page or "FISSION PRODUCTS" in Page:
-            Pages.append(Page)
-        Page=""
-    else:
-        Page=Page+i
-    #If we have located the time steps pull the info
-    if "TIME, SEC" in i:
-        i=i.replace("TIME, SEC","")
-        i=i.split()
-        for j in i:
-            TimeDays.append(str(round(float(j)/86400,2)))
+    #Work on Page by Page Basis for output
+    #Also grab time steps
+    Pages=[];Page=""
+    TimeDays=[];AD="ACTINIDES+DAUGHTERS" #For space
+    for i in content:
+        if "PAGE" in i:
+            #Save the Page if it has useful information
+            if AD in Page or "FISSION PRODUCTS" in Page:
+                Pages.append(Page)
+            Page=""
+        else:
+            Page=Page+i
+        #If we have located the time steps pull the info
+        if "TIME, SEC" in i:
+            i=i.replace("TIME, SEC","")
+            i=i.split()
+            for j in i:
+                TimeDays.append(str(round(float(j)/86400,2)))
 
-#Pages has a list of strings, each with a page on it
-#from the output
-#The only pages saved in Pages are ones with text:
-#"ACTINIDES+DAUGHTERS" or "FISSION PRODUCTS" the rest
-#of the output is trashed
+    #Pages has a list of strings, each with a page on it
+    #from the output
+    #The only pages saved in Pages are ones with text:
+    #"ACTINIDES+DAUGHTERS" or "FISSION PRODUCTS" the rest
+    #of the output is trashed
 
-#Loop through all isotopes and grab info
-for item in ListToPull:
-    Isotope=item.Isotope
-    Type=item.Type
-    Info=Fun.Graboutput(Isotope,Pages,Type)
-    if k==0:
-        SaveFile=open(Isotope+'.out','w')
-        print('D,'.join(TimeDays)+'D',file=SaveFile)
-        print(','.join(Info),file=SaveFile)
-        SaveFile.close()
-    else:
-        SaveFile=open(Isotope+'.out','a')
-        print(','.join(Info),file=SaveFile)
-        SaveFile.close()
-
-
-
-
+    #Loop through all isotopes and grab info
+    for item in ListToPull:
+        Isotope=item.Isotope
+        Type=item.Type
+        Info=Fun.Graboutput(Isotope,Pages,Type)
+        if k==0:
+            SaveFile=open(Isotope+'.out','w')
+            print('D,'.join(TimeDays)+'D',file=SaveFile)
+            print(','.join(Info),file=SaveFile)
+            SaveFile.close()
+        else:
+            SaveFile=open(Isotope+'.out','a')
+            print(','.join(Info),file=SaveFile)
+            SaveFile.close()
 
     
 #####################################################################
