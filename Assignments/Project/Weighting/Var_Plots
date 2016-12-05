@@ -64,6 +64,13 @@ Evar=f.copy.copy(Var[:,0])*10**6
 Var_int=interpolate.interp1d(Evar,Var[:,1],
                              fill_value=0,bounds_error=False)
 
+#Determine the absolute err from the variance
+ErrAb=(Var_int(E)/100)*Xsec[:,1]
+#Find minimum X-section
+Xmin=Xsec[:,1]-ErrAb
+#Find Max X-section
+Xmax=Xsec[:,1]+ErrAb
+
 
 #########################################################
 ################## X-sec Plotting #######################
@@ -74,6 +81,9 @@ ax=fig.add_subplot(111)
 label="ENDF/B-VII.1: $\sigma_"+Reaction+"$ "+Element+"$^{"+Isotope+"}$"
 Ylabel='$\sigma$(E)'
 (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
+label=""
+(fig,ax)=f.plot(X,Xmin,ax,'black',label,fig,Ylabel)
+(fig,ax)=f.plot(X,Xmax,ax,'black',label,fig,Ylabel)
 
 # Make the y-axis label and tick labels match the line color.
 # ax.set_ylabel(Ylabel, color='blue')

@@ -23,6 +23,11 @@ from scipy.integrate import trapz
 ########################## Calculations #################################
 #########################################################################
 
+#To fix X-section data to ORIGEN values
+Ratios=[1.05578868993,1.46437937788,0.929974069639,1.13769098926,
+        0.216470218472,1.02697467277,0.602248684356,1.0049132997,
+        1.02836592353,0.443767334257]
+
 #########################################################
 ############### Import X-Section Data ###################
 #########################################################
@@ -47,6 +52,7 @@ E0=0.0658       #Thermal average in ev (1045 K)
 Ef=1.35e6      #Fission average in ev
 
 #Loop through all the X-sections I got
+index=0
 for Name in Names:
 
     Element=Name.split('_')[0]
@@ -59,54 +65,58 @@ for Name in Names:
         continue
 
     Xsec = f.np.genfromtxt('X_Sections/'+Name,delimiter=',')
+    #Modify Xsections to match with ORIGEN2
+    Xsec[:,1]=Xsec[:,1]*Ratios[index]
+    index=index+1
     
     #Set energy, and convert from MeV to ev
     E=f.copy.copy(Xsec[:,0])*10**6
+    
+    #Gather Variance and make function for it
+    VarName=Name.split(".")[0]+"V.csv"
+    Var=f.np.genfromtxt('X_Sections/'+VarName,delimiter=',')
+    Var_int=interpolate.interp1d(Var[:,0],Var[:,1],
+                                 fill_value=0,bounds_error=False)
 
+    #Determine the absolute err from the variance
+    ErrAb=(Var_int(E)/100)*Xsec[:,1]
+    #Find minimum X-section
+    Xmin=Xsec[:,1]-ErrAb
+    #Find Max X-section
+    Xmax=Xsec[:,1]+ErrAb
+    
     #Calculate flux (yes we need E)
     F=f.flux(E,Emt,Eme,E0,Ef)
-
-    #Make function for X-Section(E) * Flux(E)
-    X_phi=interpolate.interp1d(E,F*Xsec[:,1],
+    
+    #Make function for Min-X-Section(E) * Flux(E)
+    X_phimin=interpolate.interp1d(E,F*Xmin,
                                fill_value=0,bounds_error=False)
-    #Perform the integral for X-Section(E) * Flux(E)
-    X_int=integrate.trapz(X_phi(E),E)
+    #Make function for Max-X-Section(E) * Flux(E)
+    X_phimax=interpolate.interp1d(E,F*Xmax,
+                               fill_value=0,bounds_error=False)
+    #Perform the integral for Max-X-Section(E) * Flux(E)
+    X_int_max=integrate.trapz(X_phimax(E),E)
+    #Perform the integral for Min-X-Section(E) * Flux(E)
+    X_int_min=integrate.trapz(X_phimin(E),E)
     #Perform the integral for Flux(E)
     Phi_int=integrate.trapz(F,E)
     #Average X-section value
-    Avg=X_int/Phi_int
+    Avgmin=X_int_min/Phi_int
+    Avgmax=X_int_max/Phi_int
 
+    Avg=(Avgmin+Avgmax)/2
+
+    print(Protons+Element+Isotope+Reaction+' '+str(Avg)+
+          '+/-'+str(Avg-Avgmin))
+
+    #With the ratio fixes, Ratio should be one
     #Find TAPE9's X-section value for comparison
-    TAPE9_X=f.LoopTAPE(Protons,Isotope,Reaction)
-    Ratio=str(float(TAPE9_X)/Avg)
-    print(Protons+Element+Isotope+Reaction+' Average: %.3e' % Avg
-          +', TAPE Value: '+TAPE9_X+
-          ", Their Ratio: "+Ratio)
-    #########################################################
-    ################## X-sec Plotting #######################
-    #########################################################
-
-    fig=f.plt.figure(figsize=f.FigureSize)
-    ax=fig.add_subplot(111)
-    label="$\sigma_"+Reaction+"$ "+Element+"$^{"+Isotope+"}$"
-    Ylabel='$\sigma$(E)'    # Y label
+    #TAPE9_X=f.LoopTAPE(Protons,Isotope,Reaction)
+    #Ratio=str(float(TAPE9_X)/Avg)
+    #print(Protons+Element+Isotope+Reaction+' Average: %.3e' % Avg
+    #      +', TAPE Value: '+TAPE9_X+
+    #      ", Their Ratio: "+Ratio)
     
-    (fig,ax)=f.plot(E,Xsec[:,1],ax,'blue',label,fig,Ylabel)
-    f.Legend(ax)
-    f.plt.savefig('X_Sections/X_'+Element+'_'+Isotope+'_'+
-                  Reaction+'.pdf')
-    
-#########################################################
-################## Flux Plotting ########################
-#########################################################
-
-fig=f.plt.figure(figsize=f.FigureSize)
-ax=fig.add_subplot(111)
-label=""
-Ylabel='$\phi$(E)$\cdot$E Normalized (n/cm$^{2}$s)'    # Y label
-(fig,ax)=f.plot(E,(F*E)/f.np.sum(F),ax,'blue',label,fig,Ylabel)
-ax=f.Legend(ax)
-f.plt.savefig('Flux_Spectra.pdf')
 
 ##################################################################
 ######################## Time to Execute #########################
