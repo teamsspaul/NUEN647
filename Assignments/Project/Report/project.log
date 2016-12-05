@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  5 DEC 2016 00:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  5 DEC 2016 01:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -466,12 +466,12 @@ LaTeX Font Info:    Try loading font information for T1+pcr on input line 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 ) [3]
-Overfull \hbox (19.71452pt too wide) in paragraph at lines 81--82
+Overfull \hbox (19.71452pt too wide) in paragraph at lines 87--88
 [][][][][][][][][][][][][][][][][] 
  []
 
 ) [4]
-<../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf, id=29, 794.97pt x 433.62pt>
+<../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf, id=28, 794.97pt x 433.62pt>
 File: ../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf Graphic file (type pdf)
 
 <use ../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf>
@@ -479,7 +479,7 @@ Package pdftex.def Info: ../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf used on
  input line 368.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
 
-<../Weighting/Flux_Spectra.pdf, id=30, 794.97pt x 433.62pt>
+<../Weighting/Flux_Spectra.pdf, id=29, 794.97pt x 433.62pt>
 File: ../Weighting/Flux_Spectra.pdf Graphic file (type pdf)
 
 <use ../Weighting/Flux_Spectra.pdf>
@@ -570,10 +570,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7135 strings out of 494953
- 105837 string characters out of 6180977
+ 7144 strings out of 494953
+ 105929 string characters out of 6180977
  220895 words of memory out of 5000000
- 10263 multiletter control sequences out of 15000+600000
+ 10272 multiletter control sequences out of 15000+600000
  13360 words of font info for 49 fonts, out of 8000000 for 9000
  17 hyphenation exceptions out of 8191
  38i,14n,47p,281b,1946s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -594,7 +594,7 @@ dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfd
 ing/uzdr.pfb>
-Output written on project.pdf (16 pages, 586484 bytes).
+Output written on project.pdf (16 pages, 586033 bytes).
 PDF statistics:
  346 PDF objects out of 1000 (max. 8388607)
  271 compressed objects within 3 object streams

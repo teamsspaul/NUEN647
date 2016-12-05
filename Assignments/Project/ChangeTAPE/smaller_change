@@ -14,21 +14,45 @@ import numpy as np
 import Functions as Fun
 
 #####################################################################
-######################## Class For Change ###########################
+######################## Load all samples ###########################
 #####################################################################
 
-class ChangeClass:
-    def __init__(self):
-        self.XSec      = False #X Section
-        self.Xsecf     = False
-        self.Y         = False #Yield
-        self.HL        = False #Half Life
-        self.LIB       = ""
-        self.ID        = ""
-        self.Mod       = 0
+with open('94Pu239a') as f:
+    Pu239a=f.readlines()
+Pu239a=Fun.StripNL(Pu239a)
+with open('94Pu240a') as f:
+    Pu240a=f.readlines()
+Pu240a=Fun.StripNL(Pu240a)
+with open('94Pu241a') as f:
+    Pu241a=f.readlines()
+Pu241a=Fun.StripNL(Pu241a)
+
+with open('94Pu239f') as f:
+    Pu239f=f.readlines()
+Pu239f=Fun.StripNL(Pu239f)
+with open('94Pu240f') as f:
+    Pu240f=f.readlines()
+Pu240f=Fun.StripNL(Pu240f)
+with open('94Pu241f') as f:
+    Pu241f=f.readlines()
+Pu241f=Fun.StripNL(Pu241f)
+
+with open('92U235a') as f:
+    U235a=f.readlines()
+U235a=Fun.StripNL(U235a)
+with open('92U238a') as f:
+    U238a=f.readlines()
+U238a=Fun.StripNL(U238a)
+
+with open('92U235f') as f:
+    U235f=f.readlines()
+U235f=Fun.StripNL(U235f)
+with open('92U238f') as f:
+    U238f=f.readlines()
+U238f=Fun.StripNL(U238f)
 
 #####################################################################
-########################## Calculations #############################
+########################### Modify TAPE #############################
 #####################################################################
 
 #Open Input File
@@ -38,53 +62,49 @@ with open('../Origen2/TAPE9_BANK.inp') as f:
 #Open output file
 output=open("../Origen2/TAPE9.inp","w")
 
-#Grab all the changes you want to make from
-#the 'ChangesToMake.txt' file C will be a list with
-#Each item being a change to make (all items are the same class)
-C=[]
-with open('ChangesToMake.txt') as f:
-    Lines=f.readlines()
-for i in Lines:
-    i=i.split()
-    C.append(ChangeClass())
-    C[-1].XSec = eval(i[0])
-    C[-1].Y    = eval(i[1])
-    C[-1].HL   = eval(i[2])
-    C[-1].LIB  = i[3]
-    C[-1].ID   = i[4]
-    C[-1].Mod  = i[5]
-    if C[-1].HL:
-        C[-1].Mod2 = i[6] #Change time scale too for half life
-
         
 #Loop through the TAPE9 file, make changes, and write to output
-SecondLine=False
+j=0
 for i in content:
     hold=i.split()
-    for M in C: #Look through all the Mods
-        if M.LIB in hold[0] and "-" not in hold[0]:
-            if M.ID in hold[1]:
-                if M.XSec: #Replace the gamma x-section
-                    i=i.replace(hold[2],M.Mod)
-                if SecondLine: #If on second line,replaceU235yield
-                    #Iftherewerea third line, thenthiswouldn't work
-                    i=i.replace(hold[3],M.Mod)
-                SecondLine=False
-                if M.Y: #Look to see if there is a second line
-                    if hold[8]>0:
-                        SecondLine=True #if so, then change yield
-                                        #next tim
-                if M.HL: #Change Half-life
-                    #Count occurances of integer to replace (before
-                    #our occurance), so
-                    #we only replace the one we want to
-                    Count=hold[0].count(hold[2])+hold[1].count(hold[2])+1
-                    i=Fun.nth_repl(i,hold[2],M.Mod2,Count)
-                    i=i.replace(hold[3],M.Mod)
+    if '602' in hold[0] and "-" not in hold[0]:
+        if "942390" in hold[1]:
+            #Replace the gamma x-section
+            i=i.replace(hold[2],Pu239a[j])
+            #Replace the fission x-section
+            i=i.replace(hold[5],Pu239f[j])
+        if "942400" in hold[1]:
+            #Replace the gamma x-section
+            i=i.replace(hold[2],Pu240a[j])
+            #Replace the fission x-section
+            i=i.replace(hold[5],Pu240f[j])
+        if "942410" in hold[1]:
+            #Replace the gamma x-section
+            i=i.replace(hold[2],Pu241a[j])
+            #Replace the fission x-section
+            i=i.replace(hold[5],Pu241f[j])
+        if "922350" in hold[1]:
+            #Replace the gamma x-section
+            i=i.replace(hold[2],U235a[j])
+            #Replace the fission x-section
+            i=i.replace(hold[5],U235f[j])
+        if "922380" in hold[1]:
+            #Replace the gamma x-section
+            i=i.replace(hold[2],U238a[j])
+            #Replace the fission x-section
+            i=i.replace(hold[5],U238f[j])
+                
     i=i.replace("\n","")
     print(i,file=output)
 
+#Run with TAPE9
 
+#Graboutput print to file
+
+#Make sure things are deleted
+
+
+    
 #####################################################################
 ######################## Time to Execute ############################
 #####################################################################

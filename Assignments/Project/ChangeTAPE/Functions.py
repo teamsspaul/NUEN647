@@ -69,3 +69,12 @@ def PlotHistSave(Error,Ntimes,Element,Nbins):
     ax.hist(Error,Nbins,color='green',alpha=0.7,edgecolor='black')
     #ax.set_xlim(-500,500)
     plt.savefig(Element+'HIST.pdf')
+
+
+def StripNL(List):
+    List2=[]
+    for i in range(0,len(List)):
+        hold=List[i].replace('\n','')
+        hold='%.3e' % float(hold)
+        List2.append(hold)
+    return(List2)
