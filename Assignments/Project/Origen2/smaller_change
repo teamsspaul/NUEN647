@@ -76,8 +76,9 @@ U238f=Fun.StripNL(U238f)
 ##################### Load TAPE9 Template ###########################
 #####################################################################
 
-with open('TAPE9_BANK.inp') as f:
+with open('BACKUP/TAPE9_BANK.inp') as f:
     TAPE9content=f.readlines()
+f.close()
 
 #####################################################################
 ##################### Loop through all samples ######################
@@ -85,49 +86,58 @@ with open('TAPE9_BANK.inp') as f:
 #####################################################################
 
 for k in range(0,len(U238f)):
-
+#for k in range(0,1):
+    #k=2
     ############################################################
     ################### Make new TAPE9 #########################
     ############################################################
 
     #Open output file
-    output=open("TAPE9.inp","w")
+    output=open("TAPE8.inp","w")
     
     #Loop through the TAPE9 template file, make changes,
     #and write to new TAPE9 (output)
     for i in TAPE9content:
         hold=i.split()
+        toprint=False
         if '602' in hold[0] and "-" not in hold[0]:
             if "942390" in hold[1]:
                 #Replace the gamma x-section
                 i=i.replace(hold[2],Pu239a[k])
                 #Replace the fission x-section
                 i=i.replace(hold[5],Pu239f[k])
+                toprint=True
             if "942400" in hold[1]:
                 #Replace the gamma x-section
                 i=i.replace(hold[2],Pu240a[k])
                 #Replace the fission x-section
                 i=i.replace(hold[5],Pu240f[k])
+                toprint=True
             if "942410" in hold[1]:
                 #Replace the gamma x-section
                 i=i.replace(hold[2],Pu241a[k])
                 #Replace the fission x-section
                 i=i.replace(hold[5],Pu241f[k])
+                toprint=True
             if "922350" in hold[1]:
                 #Replace the gamma x-section
                 i=i.replace(hold[2],U235a[k])
                 #Replace the fission x-section
                 i=i.replace(hold[5],U235f[k])
+                toprint=True
             if "922380" in hold[1]:
                 #Replace the gamma x-section
                 i=i.replace(hold[2],U238a[k])
                 #Replace the fission x-section
                 i=i.replace(hold[5],U238f[k])
-                
-        i=i.replace("\n","")
-        print(i,file=output)
+                toprint=True
+            if "ACTINIDE+AND" in i:
+                toprint=True
+            if toprint:
+                i=i.replace("\n","")
+                print(i,file=output)
 
-
+    print("  -1",file=output)
     output.close() #important or ORIGEN2 wont run
     #endfile record being detected otherwise
 

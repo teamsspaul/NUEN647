@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+"""
+
+"""
+
+
+#########################################################################
+######################## Import Packages ################################
+#########################################################################
+
+import time
+start_time = time.time()
+import Functions as Fun
+from scipy import interpolate
+from scipy import integrate
+from scipy.integrate import trapz
+import sys
+import os
+import numpy as np
+import copy
+
+#########################################################################
+############################ Inputs #####################################
+#########################################################################
+
+#For histogram plots
+TimeIndex=3
+#Below should be the same as in 'Sample_Gen' file (I know its lame)
+N=10
+Nbins=3
+
+
+#####################################################################
+############################ Low Class ##############################
+#####################################################################
+#As opposed to high class
+class ToPull:
+    def __init__(self):
+        self.File  = ""
+        
+#Gather all output file names
+ListToPull=[]
+with open('LISTTOPULL.txt') as f:
+    Lines=f.readlines()
+for i in Lines:
+    i=i.split()
+    ListToPull.append(ToPull())
+    ListToPull[-1].File =i[0]+'.out'
+
+#####################################################################
+############### Orchestral Manoeuvres in the Dark ###################
+#####################################################################
+    
+#Loop through output file names
+for item in ListToPull:
+    fileparse=item.File
+
+    #Save output file information
+    with open(fileparse) as f:
+        Lines=f.readlines()
+
+    #Get time information from first row
+    TimeList=Lines[0].replace('\n','').replace('D','').split(',')
+    Time=[]
+    for time in TimeList:
+        Time.append(float(time))
+
+    #Make matrix of data for rest
+    Data=[]
+    del Data
+    for i in range(1,len(Lines)):
+        line=Lines[i].replace('\n','')
+        line=line.split(',')
+        line=[float(i) for i in line]
+        try:
+            Data=np.vstack((Data,line))
+        except NameError:
+            Data=copy.copy(line)
+
+    #Plot Time vs grams for all different runs
+    HISTSamples=[]
+    for run in Data:
+        HISTSamples.append(run[TimeIndex])
+        #print(run) Plot each over each other
+        
+    #Make histogram for specified time for all different runs
+    Fun.PlotHistSave2(HISTSamples,N,fileparse,Nbins)
+
+##################################################################
+######################## Time to Execute #########################
+##################################################################
+
+print("--- %s seconds ---" % (time.time() - start_time))

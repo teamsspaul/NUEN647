@@ -70,6 +70,26 @@ def PlotHistSave(Error,Ntimes,Element,Nbins):
     #ax.set_xlim(-500,500)
     plt.savefig(Element+'HIST.pdf')
 
+def PlotHistSave2(Error,Ntimes,Element,Nbins):
+    Element=Element.split('.')[0]
+
+    if Element[1].isalpha():
+        E=Element[0:2]
+        I=Element[2:5]
+    else:
+        E=Element[0]
+        I=Element[1:4]
+        
+    print(E,I)
+    
+    fig=plt.figure()
+    ax=fig.add_subplot(111)
+    ax.set_xlabel(r'$^{'+I+'}$'+E,fontsize=16)
+    ax.set_ylabel(r'Count out of '+str(Ntimes),fontsize=18)
+    ax.hist(Error,Nbins,color='green',alpha=0.7,edgecolor='black')
+    
+    plt.savefig(Element+'Post_HIST.pdf')
+
 
 def StripNL(List):
     List2=[]
