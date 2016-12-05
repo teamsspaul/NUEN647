@@ -12,6 +12,8 @@ import time
 start_time = time.time()
 import numpy as np
 import Functions as Fun
+import os
+
 
 #####################################################################
 ######################## Load all samples ###########################
@@ -98,10 +100,11 @@ for i in content:
     print(i,file=output)
 
 #Run with TAPE9
+os.system("../Origen2/r")
 
 #Graboutput print to file
 
-#Make sure things are deleted
+
 
 
     

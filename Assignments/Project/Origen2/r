@@ -1,13 +1,13 @@
 #!/bin/bash
-
-rm TAPE6.OUT
-./origen2.EXE
-rm TAPE11.OUT
-rm TAPE15.OUT
-rm TAPE4.INP
-rm TAPE12.OUT
-rm TAPE16.OUT
-rm TAPE50.OUT
-rm TAPE7.OUT
-rm TAPE13.OUT
-rm TAPE3.INP
+Dir="/home/paul/Documents/NUEN647/Assignments/Project/Origen2/"
+rm "${Dir}TAPE6.OUT"
+"${Dir}origen2.EXE"
+rm "${Dir}TAPE11.OUT"
+rm "${Dir}TAPE15.OUT"
+rm "${Dir}TAPE4.INP"
+rm "${Dir}TAPE12.OUT"
+rm "${Dir}TAPE16.OUT"
+rm "${Dir}TAPE50.OUT"
+rm "${Dir}TAPE7.OUT"
+rm "${Dir}TAPE13.OUT"
+rm "${Dir}TAPE3.INP"
