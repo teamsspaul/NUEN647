@@ -106,7 +106,40 @@ output.close() #important or ORIGEN2 wont run
 call(["./r"])
 
 #Graboutput print to file
-t=Fun.Gaboutput("55137")
+
+with open('TAPE6.OUT') as f:
+    content=f.readlines()
+
+#Work on Page by Page Basis for output
+#Grab Time
+Pages=[]
+TimeDays=[]
+PageNum=0
+Page=""
+for i in content:
+    if "PAGE" in i:
+        #Save the Page if it has useful information
+        if "ACTINIDES+DAUGHTERS" in Page or "FISSION PRODUCTS" in Page:
+            Pages.append(Page)
+        Page=""
+    else:
+        Page=Page+i
+    if "TIME, SEC" in i:
+        i=i.replace("TIME, SEC","")
+        i=i.split()
+        for j in i:
+            TimeDays.append(str(round(float(j)/86400,2)))
+
+#Pages has a list of strings, each with a page on it
+#from the output
+#The only pages saved in Pages are ones with text:
+#"ACTINIDES+DAUGHTERS" or "FISSION PRODUCTS" the rest of the output
+#is trashed
+
+#Graboutput print to file
+t=Fun.Graboutput("U238",Pages,"ACTINIDES+DAUGHTERS")
+print(t)
+
 
 
 

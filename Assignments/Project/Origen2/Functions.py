@@ -76,17 +76,19 @@ def StripNL(List):
     for i in range(0,len(List)):
         hold=List[i].replace('\n','')
         hold='%.3e' % float(hold)
+        hold=hold.replace('e','E')
         List2.append(hold)
     return(List2)
 
-def Graboutput(Isotope):
-    with open('TAPE6.OUT') as f:
-        content=f.readlines()
+def Graboutput(Isotope,Pages,TYPE):
 
-    for i in content:
-        hold=i
-        hold=hold.replace("\n","")
-        if "TABLE" in hold:
-            print(hold)
-        if Isotope in hold:
-            print(hold)
+    for Page in Pages:
+        if TYPE in Page and Isotope in Page:
+            List=Page.split('\n')
+            for item in List:
+                if Isotope in item:
+                    hold=item
+                    hold=hold.replace(Isotope,"")
+                    hold=hold.split()
+                    return(hold)
+                    
