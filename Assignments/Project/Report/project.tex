@@ -511,7 +511,29 @@ a standard deviation, and assuming a Gaussian distribution.
     
 \item{Create a sampling space for all possible variations of
   calculations}
-    
+
+  The distribution for all 10 of the above cross sections are
+  assumed as Gamma distributions to avoid negative cross section
+  values.
+  \begin{equation*}
+    \pi(\theta)=\frac{\theta^{\alpha-1}e^{-\theta/\beta}}{\Gamma(\alpha)
+      \beta^{\alpha}},\ \ \ \ \ \theta,\alpha,\beta>0.
+  \end{equation*}
+  Therefore, we say that $\theta\sim G(\alpha,\beta)$. Where the mean
+  and errors determined above fit into $\alpha$ and $\beta$ via
+  \begin{equation*}
+    \alpha=\frac{\text{Mean}^2}{\text{Error}^2}
+  \end{equation*}
+  and
+  \begin{equation*}
+    \beta=\frac{\text{Error}^2}{\text{Mean}}
+  \end{equation*}
+  
+
+
+
+
+  
   With the following codes the sampling space was detemined to be...
   %% I might have to reduce the number of elements to look at,
   %% maybe I'll start by

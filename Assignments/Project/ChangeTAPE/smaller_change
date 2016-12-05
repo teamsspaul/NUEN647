@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+
+#Please note, might have to run command
+# sed -i 's/E /E\+/g' TAPE9_BANK.inp
+# on file to make sure there are no spaces after E's
+
+#####################################################################
+######################## Import Packages ############################
+#####################################################################
+
+import time
+start_time = time.time()
+import numpy as np
+import Functions as Fun
+
+#####################################################################
+######################## Class For Change ###########################
+#####################################################################
+
+class ChangeClass:
+    def __init__(self):
+        self.XSec      = False #X Section
+        self.Xsecf     = False
+        self.Y         = False #Yield
+        self.HL        = False #Half Life
+        self.LIB       = ""
+        self.ID        = ""
+        self.Mod       = 0
+
+#####################################################################
+########################## Calculations #############################
+#####################################################################
+
+#Open Input File
+with open('../Origen2/TAPE9_BANK.inp') as f:
+    content=f.readlines()
+
+#Open output file
+output=open("../Origen2/TAPE9.inp","w")
+
+#Grab all the changes you want to make from
+#the 'ChangesToMake.txt' file C will be a list with
+#Each item being a change to make (all items are the same class)
+C=[]
+with open('ChangesToMake.txt') as f:
+    Lines=f.readlines()
+for i in Lines:
+    i=i.split()
+    C.append(ChangeClass())
+    C[-1].XSec = eval(i[0])
+    C[-1].Y    = eval(i[1])
+    C[-1].HL   = eval(i[2])
+    C[-1].LIB  = i[3]
+    C[-1].ID   = i[4]
+    C[-1].Mod  = i[5]
+    if C[-1].HL:
+        C[-1].Mod2 = i[6] #Change time scale too for half life
+
+        
+#Loop through the TAPE9 file, make changes, and write to output
+SecondLine=False
+for i in content:
+    hold=i.split()
+    for M in C: #Look through all the Mods
+        if M.LIB in hold[0] and "-" not in hold[0]:
+            if M.ID in hold[1]:
+                if M.XSec: #Replace the gamma x-section
+                    i=i.replace(hold[2],M.Mod)
+                if SecondLine: #If on second line,replaceU235yield
+                    #Iftherewerea third line, thenthiswouldn't work
+                    i=i.replace(hold[3],M.Mod)
+                SecondLine=False
+                if M.Y: #Look to see if there is a second line
+                    if hold[8]>0:
+                        SecondLine=True #if so, then change yield
+                                        #next tim
+                if M.HL: #Change Half-life
+                    #Count occurances of integer to replace (before
+                    #our occurance), so
+                    #we only replace the one we want to
+                    Count=hold[0].count(hold[2])+hold[1].count(hold[2])+1
+                    i=Fun.nth_repl(i,hold[2],M.Mod2,Count)
+                    i=i.replace(hold[3],M.Mod)
+    i=i.replace("\n","")
+    print(i,file=output)
+
+
+#####################################################################
+######################## Time to Execute ############################
+#####################################################################
+
+print("--- %s seconds ---" % (time.time() - start_time))
+
