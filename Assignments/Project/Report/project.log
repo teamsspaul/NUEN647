@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  4 DEC 2016 18:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  4 DEC 2016 18:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -311,11 +311,7 @@ LaTeX Font Info:    Try loading font information for U+psy on input line 64.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/upsy.fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
-)) (./project.aux
-
-LaTeX Warning: Label `fig:Flux' multiply defined.
-
-)
+)) (./project.aux)
 \openout1 = `project.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 137.
@@ -334,7 +330,8 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count124
 \scratchdimen=\dimen158
@@ -483,33 +480,74 @@ File: ../Weighting/Flux_Spectra.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../Weighting/Flux_Spectra.pdf used on input line 379.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
  [5 <../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf>]
-File: ../Weighting/Flux_Spectra.pdf Graphic file (type pdf)
- <use ../Weighting/Flux_Spectra.pdf>
-Package pdftex.def Info: ../Weighting/Flux_Spectra.pdf used on input line 433.
+<../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf, id=80, 794.97pt x 433.62pt>
+File: ../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf Graphic file (type pdf)
+
+<use ../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf>
+Package pdftex.def Info: ../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf used on 
+input line 433.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
  [6 <../Weighting/Flux_Spectra.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 488.
+<../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf, id=110, 794.97pt x 433.62pt>
+File: ../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf Graphic file (type pdf)
+
+<use ../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf>
+Package pdftex.def Info: ../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf used on 
+input line 442.
+(pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
+
+<../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf, id=111, 794.97pt x 433.62pt>
+File: ../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf Graphic file (type pdf)
+
+<use ../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf>
+Package pdftex.def Info: ../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf used on 
+input line 451.
+(pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
+ [7 <../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf> <../Weighting/X_Sections/Xw
+Var_Pu_240_94_a.pdf
+
+pdfTeX warning: pdflatex (file ../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf): 
+PDF inclusion: multiple pdfs with page group included in a single page
+>] <../Weighting/X_Sections/XwVar_U_235_92_a.pdf, id=165, 794.97pt x 433.62pt>
+File: ../Weighting/X_Sections/XwVar_U_235_92_a.pdf Graphic file (type pdf)
+
+<use ../Weighting/X_Sections/XwVar_U_235_92_a.pdf>
+Package pdftex.def Info: ../Weighting/X_Sections/XwVar_U_235_92_a.pdf used on i
+nput line 460.
+(pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
+
+<../Weighting/X_Sections/XwVar_U_238_92_a.pdf, id=166, 794.97pt x 433.62pt>
+File: ../Weighting/X_Sections/XwVar_U_238_92_a.pdf Graphic file (type pdf)
+
+<use ../Weighting/X_Sections/XwVar_U_238_92_a.pdf>
+Package pdftex.def Info: ../Weighting/X_Sections/XwVar_U_238_92_a.pdf used on i
+nput line 469.
+(pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
+ [8 <../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf> <../Weighting/X_Sections/Xw
+Var_U_235_92_a.pdf
+
+pdfTeX warning: pdflatex (file ../Weighting/X_Sections/XwVar_U_235_92_a.pdf): P
+DF inclusion: multiple pdfs with page group included in a single page
+>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 526.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 488.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 526.
  (./project.bbl)
-[7] (./project.aux)
+[9 <../Weighting/X_Sections/XwVar_U_238_92_a.pdf>] (./project.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 7043 strings out of 494953
- 103764 string characters out of 6180977
+ 7074 strings out of 494953
+ 104936 string characters out of 6180977
  215895 words of memory out of 5000000
- 10184 multiletter control sequences out of 15000+600000
+ 10209 multiletter control sequences out of 15000+600000
  13360 words of font info for 49 fonts, out of 8000000 for 9000
  17 hyphenation exceptions out of 8191
  38i,14n,47p,281b,1946s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -530,10 +568,10 @@ dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfd
 ing/uzdr.pfb>
-Output written on project.pdf (7 pages, 353941 bytes).
+Output written on project.pdf (9 pages, 564808 bytes).
 PDF statistics:
- 161 PDF objects out of 1000 (max. 8388607)
- 103 compressed objects within 2 object streams
+ 288 PDF objects out of 1000 (max. 8388607)
+ 222 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
