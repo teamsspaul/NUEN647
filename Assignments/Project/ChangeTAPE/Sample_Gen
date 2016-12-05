@@ -30,6 +30,7 @@ class OneGroupwError:
 #####################################################################
 
 N=100
+Nbins=20
 
 O=[]
 with open('OneGroupXSections') as f:
@@ -43,14 +44,18 @@ for i in Lines:
 
 
 for i in O:
-    #open the output file
-    output=open(i.Element,"w")
-    #Save Constants
+    #Make Samples
     alpha=(i.XSec**2)/(i.Err**2)
     beta=(i.Err**2)/(i.XSec)
     Sample=np.random.gamma(alpha,beta,size=N)
+    #Make histogram plot
+    Fun.PlotHistSave(Sample,N,i.Element,Nbins)
+    #Convert Data to string
     Sample=[str(x) for x in Sample]
+    #open the output file and save
+    output=open(i.Element,"w")
     print("\n".join(Sample),file=output)
+    output.close()
 
 #####################################################################
 ######################## Time to Execute ############################

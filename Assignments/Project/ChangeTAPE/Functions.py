@@ -49,3 +49,23 @@ def nth_repl(s, sub, repl, nth):
     if i == nth:
         return s[:find]+repl+s[find + len(sub):]
     return s
+
+
+def PlotHistSave(Error,Ntimes,Element,Nbins):
+    P=Element[0:2]
+    if Element[3].isalpha():
+        E=Element[2:4]
+        I=Element[4:7]
+    else:
+        E=Element[2]
+        I=Element[3:6]
+    S=Element[-1]
+    print(P,E,I,S)
+    
+    fig=plt.figure()
+    ax=fig.add_subplot(111)
+    ax.set_xlabel(r'$\sigma_'+S+'\ ^{'+I+'}$'+E,fontsize=16)
+    ax.set_ylabel(r'Count out of '+str(Ntimes),fontsize=18)
+    ax.hist(Error,Nbins,color='green',alpha=0.7,edgecolor='black')
+    #ax.set_xlim(-500,500)
+    plt.savefig(Element+'HIST.pdf')

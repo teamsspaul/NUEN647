@@ -311,7 +311,7 @@ a standard deviation, and assuming a Gaussian distribution.
   or half-life based on lines from a text file. This code is
   shown below but will only be used to modify cross section.
 
-  \pythonscript{../ChangeTAPE/change}{Script for modifying ORIGEN2 input.}
+  \pythonscript{../ChangeTAPE/smaller_change}{Script for modifying ORIGEN2 input.}
 
 
 \item[\done]{Determine variance of Cross-sections}
@@ -509,7 +509,7 @@ a standard deviation, and assuming a Gaussian distribution.
 
   
     
-\item{Create a sampling space for all possible variations of
+\item[\done]{Create a sampling space for all possible variations of
   calculations}
 
   The distribution for all 10 of the above cross sections are
@@ -535,6 +535,31 @@ a standard deviation, and assuming a Gaussian distribution.
   
   \pythonscript{../ChangeTAPE/Sample_Gen}{Sample Generation code}
 
+
+  Below are histograms of the sampling space
+  
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../ChangeTAPE/94Pu239aHIST.pdf}
+      \vspace{-5mm}
+      \caption{Histogram of sample space for $\sigma_a$ \tss{239}Pu}
+      \label{fig:SPu239a}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../ChangeTAPE/94Pu240fHIST.pdf}
+      \vspace{-5mm}
+      \caption{Histogram of sample space for $\sigma_f$ \tss{240}Pu}
+      \label{fig:SPu240f}
+    \end{center}
+  \end{figure}
+
+
+  The sampling spaces were run through ORIGEN with the code
+  shown in the first section.
+  
   
   %% I might have to reduce the number of elements to look at,
   %% maybe I'll start by
@@ -563,10 +588,14 @@ a standard deviation, and assuming a Gaussian distribution.
   %% \end{table}
 
   
-\item{Determine importance of various uncertain parameters
-  by running the code a number of times randomly sampling
-  the sample space (still not 100\% sure how to do this -
-  not even 50\% sure how to do this)}
+\item{Plot Results}
+
+  The function for plotting results are shown below.
+
+  
+  \pythonscript{../ChangeTAPE/Sample_Gen}{Sample Generation code}
+
+  
 \end{todolist}
 
 
@@ -574,29 +603,33 @@ a standard deviation, and assuming a Gaussian distribution.
 %	Quantities of Interest and uncertain parameters
 %------------------------------------------------------------
 
-\section{Quantities of Interest and Uncertain Parameters}
+\section{Results}
 
 Quantities of interest are shown in Table \ref{Table:1} above.
-Uncertain parameters are listed below:
+The uncertain parameters were the absorption and fission
+cross-sections for \tss{235}U, \tss{238}U, \tss{239}Pu,
+\tss{240}Pu, and \tss{241}Pu.
 
-\begin{itemize}
-\item{Fission yield}
-\item{Cross sections}
-\item{Half-lives}
-\end{itemize}
+Results are graphically represented below.
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../ChangeTAPE/94Pu240fHIST.pdf}
+      \vspace{-5mm}
+      \caption{Histogram of sample space for $\sigma_f$ \tss{240}Pu}
+      \label{fig:SPu240f}
+    \end{center}
+  \end{figure}
+
 
 %------------------------------------------------------------
 %	Prediction
 %------------------------------------------------------------
 
-\section{Prediction}
+\section{Conclusions}
 
-The first major prediction for this project is that half-lives
-will not have a large impact on results because they are
-relatively well known. Secondly, \tss{125}Sb is notorious
-for being difficult to calculate correctly, I would would predict that
-there would be large uncertainties due to uncertainties in
-the cross section data.
+There was an unexpectedly large amount of error in the
+one group cross sections.
 
 %-----------------------------------------------------------
 \bibliography{references}
