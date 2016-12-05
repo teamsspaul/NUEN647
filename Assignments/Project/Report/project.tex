@@ -314,7 +314,7 @@ a standard deviation, and assuming a Gaussian distribution.
   \pythonscript{../ChangeTAPE/change}{Script for modifying ORIGEN2 input.}
 
 
-\item{Determine variance of Cross-sections}
+\item[\done]{Determine variance of Cross-sections}
 
   Both $\sigma_\gamma$ and $\sigma_f$ %and yield
   were determined by 
@@ -360,8 +360,8 @@ a standard deviation, and assuming a Gaussian distribution.
   were picked because they minimized the difference
   between the cross-sections in the TAPE9 file, and
   those calculated with ENDF-VII and the above method.
-  This is highlighted in figure \ref{fig:err}. Half
-  of this error is from \tss{238}U.
+  This is highlighted in figure \ref{fig:err}. Most
+  of this error is from \tss{238}U and \tss{240}Pu.
 
   \begin{figure}[H]
     \begin{center}
@@ -382,19 +382,64 @@ a standard deviation, and assuming a Gaussian distribution.
       \label{fig:Flux}
     \end{center}
   \end{figure}
-  
-  I was going to calculate $\sigma_\gamma$ with nominal cross section
-  values, then with error subtracted, and then added. These values would
-  constitue a mean with error. A similiar calculation would be done for
-  the yields.
 
-  
+  Table \ref{Table:3} shows the difference between my calculated cross
+  section and the cross sections provided in ORIGEN2.
+  The ratios will be used as a correction factor for the cross sections
+  so that the input to ORIGEN2 will be constant.
+  Differences
+  have been attributed to the fact that the flux spectrum used
+  does not capture reasonances. The cross sections were calculated
+  with ENDF VII, and ORIGEN2 could have been processed with ENDF V,
+  which would further account for differences, but has not been
+  verified. The reason ENDF VII is being used for the current
+  analysis is because the variance information is included
+  in ENDF VII and not ENDF V.
 
+
+  \begin{table}[H]
+  \begin{center}
+    \caption{Comparison of one-group cross sections}
+    \label{Table:3}
+    \begin{tabular}{l l l l}
+      \toprule
+      Isotope\tss{Rxn} & ENDF VII & ORIGEN2 & Ratio\\
+      \hline
+      \tss{239}Pu\tss{$\gamma$} & 6.544e+01 & 6.909E+01 & 1.06\\
+      \tss{240}Pu\tss{$\gamma$} & 1.521e+02 & 2.228E+02 & 1.46\\
+      \tss{241}Pu\tss{$\gamma$} & 4.518e+01 & 4.202E+01 & 0.93\\
+      \tss{235}U\tss{$\gamma$}  & 9.387e+00 & 1.068E+01 & 1.14\\
+      \tss{238}U\tss{$\gamma$}  & 4.098e+00 & 8.872E-01 & 0.22\\
+      \tss{239}Pu\tss{f} & 1.179e+02 & 1.211E+02 & 1.03\\
+      \tss{240}Pu\tss{f} & 9.609e-01 & 5.787E-01 & 0.60\\
+      \tss{241}Pu\tss{f} & 1.253e+02 & 1.259E+02 & 1.01\\
+      \tss{235}U\tss{f}  & 4.621e+01 & 4.752E+01 & 1.03\\
+      \tss{238}U\tss{f}  & 2.091e-01 & 9.281E-02 & 0.44\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \end{table}
+
+  Both $\sigma^{error}_\gamma$ and $\sigma^{error}_f$
+  were determined by calculating the single group cross section
+  with error subtracted, and then added. These values would
+  constitue a mean with error.
+
+  Cross section versus flux for several isotopes are shown in the
+  following figures.
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Weighting/Flux_Spectra.pdf}
+      \vspace{-5mm}
+      \caption{Flux Spectra used for weighting x-sections and yields}
+      \label{fig:Flux}
+    \end{center}
+  \end{figure}
   
-    
 \item{Create a sampling space for all possible variations of
   calculations}
-
+    
   With the following codes the sampling space was detemined to be...
   %% I might have to reduce the number of elements to look at,
   %% maybe I'll start by

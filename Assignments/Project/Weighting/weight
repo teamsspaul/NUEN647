@@ -78,9 +78,10 @@ for Name in Names:
 
     #Find TAPE9's X-section value for comparison
     TAPE9_X=f.LoopTAPE(Protons,Isotope,Reaction)
-
-    print(Protons+Element+Isotope+' Average: %.3e' % Avg
-          +', TAPE Value: '+TAPE9_X)
+    Ratio=str(float(TAPE9_X)/Avg)
+    print(Protons+Element+Isotope+Reaction+' Average: %.3e' % Avg
+          +', TAPE Value: '+TAPE9_X+
+          ", Their Ratio: "+Ratio)
     
     #########################################################
     ################## X-sec Plotting #######################
