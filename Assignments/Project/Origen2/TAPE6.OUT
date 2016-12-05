@@ -42,12 +42,12 @@
                   *           CCC-371(A) - MAINFRAMES                       *
                   *           CCC-371(E) - ALL PCS WITH WINDOWS             *
                   *                                                         *
-                  *     ORIGEN2 RUN  DATE: 12/05/16    TIME 07:07:19        *
+                  *     ORIGEN2 RUN  DATE: 12/05/16    TIME 07:32:27        *
                   *                                                         *
                   *                                                         *
                   ***********************************************************
                                                                               OUTPUT UNIT =  6                        PAGE    1
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -94,7 +94,7 @@ DOCUMENTATION
         A.G. CROFF, R.L. HAESE, AND N.B. GOVE, "UPDATED DECAY AND PHOTON LIBRARIES FOR THE ORIGEN CODE", ORNL/TM-6055 (FEB 1979)
         A.G. CROFF, "ORIGEN2: A REVISED AND UPDATED VERSION OF ORIGEN", TRANS. AM. NUCL. SOC., VOL. 34, P. 349-50 (JUNE 1980).  
                                                                               OUTPUT UNIT =  6                        PAGE    2
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -155,7 +155,7 @@ ORGANIZATION OF ORIGEN2 OUTPUT
    ARE ROUTED TO PAPER, THE TABLE OF CONTENTS FOR UNIT 11, WHICH IS ON UNIT 13, WILL IMMEDIATELY FOLLOW THE DEBUGGING AND       
    INTERNAL INFORMATION (UNIT 15) OUTPUT.  THE "OUTPUT N" TABLES FOR UNIT 11 WILL BE PRINTED FOLLOWING THE TABLE OF CONTENTS.   
                                                                                                                       PAGE    3
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 LISTING OF INPUT DATA ON UNIT = 5
 
 INPUT   WRITE     CARD                                    CARD IMAGE
@@ -186,7 +186,7 @@ UNIT    UNIT      NUMBER
    5      50          24    2 922340 270. 922350 30000. 922380 969730. 0 0.0                                
    5      50          25    0                                                                               
                                                                               OUTPUT UNIT =  6                        PAGE    4
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 NEUTRON YIELD PER NEUTRON-INDUCED FISSION
 
     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD
@@ -213,7 +213,7 @@ NEUTRON YIELD PER NEUTRON-INDUCED FISSION
 
       982540    0.0000      992530    0.0000      992541    0.0000      992540    0.0000           0    0.0000           0    0.0000
                                                                               OUTPUT UNIT =  6                        PAGE    5
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 SPONTANEOUS FISSION NEUTRON YIELD, NEUT/FISSION
 
 NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE
@@ -227,7 +227,7 @@ NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE             
 
 THE REMAINING NEUTRON YIELDS ARE CALCULATED FROM THE EQUATION: NEUT/FISS=(2.84+0.1225*(AT WT-244)
                                                                               OUTPUT UNIT =  6                        PAGE    6
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
 
   ELEMENT   SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER 
@@ -282,7 +282,7 @@ INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
     48      0.0000000   1.0000000   0.0005000   0.0000000   1.0000000   1.0000000   1.0000000   0.0000000   0.0000000   1.0000000
     49      0.0000000   1.0000000   0.0005000   0.0000000   1.0000000   1.0000000   1.0000000   0.0000000   0.0000000   1.0000000
                                                                               OUTPUT UNIT =  6                        PAGE    7
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
 
   ELEMENT   SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER 
@@ -338,7 +338,7 @@ INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
     98      0.0000000   1.0000000   0.0005000   0.0000000   0.0010000   0.0010000   0.0000000   0.0000000   0.0000000   1.0000000
     99      0.0000000   1.0000000   0.0005000   0.0000000   0.0010000   0.0010000   0.0000000   0.0000000   0.0000000   1.0000000
                                                                               OUTPUT UNIT =  6                        PAGE    8
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 GROUP FRACTIONAL RECOVERIES
 
    GROUP     SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER 
@@ -364,7 +364,7 @@ GROUP FRACTIONAL RECOVERIES
     19      0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000
     20      0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000
                                                                               OUTPUT UNIT =  6                        PAGE    9
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 ELEMENT ASSIGNMENTS TO FRACTIONAL RECOVERY GROUPS
 
  ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP   
@@ -380,7 +380,7 @@ ELEMENT ASSIGNMENTS TO FRACTIONAL RECOVERY GROUPS
   82    1       83    1       84    1       85    1       86   13       87    1       88    1       89    1       90    2
   91    3       92    4       93    5       94    6       95    7       96    8       97    9       98   10       99   11
                                                                               OUTPUT UNIT =  6                        PAGE   10
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
                                       CHEMICAL TOXICITIES, GRAMS PER M**3 WATER
 
 
@@ -403,7 +403,7 @@ NUCLIDE   TOXICITY  NUCLIDE   TOXICITY  NUCLIDE   TOXICITY  NUCLIDE   TOXICITY  
     91   5.00E-03       92   5.00E-01       93   8.00E-03       94   8.00E-04       95   4.00E-02       96   5.00E-01
     97   5.00E-03       98   1.00E-02       99   1.00E-02
                                                                               OUTPUT UNIT =  6                        PAGE   11
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
    1    0 RDA  *  RDA  Irradiation of 1 MT of PWR fuel                                          *
    2    0 RDA  *  RDA  Fuel enrichment is 3.0 w/o U-235                                         *
    3    0 RDA  *  RDA                                                                           *
@@ -454,7 +454,7 @@ SUM OF YIELDS FOR EACH FISSILE ISOTOPE:                           0.0000E+00 0.0
 
 ISOTOPES FOR WHICH YIELDS ARE EXPLICITLY ACCOUNTED FOR: 922350 922380 942390 942410
                                                                               OUTPUT UNIT =  6                        PAGE   12
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                        
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -486,7 +486,7 @@ THE NUMBER OF NON-ZERO NATURAL ABUNDANCES= 437
 THE NUMBER OF NON-ZERO PHOTON YIELDS= 7903
 THE MAXIMUM NUMBER OF TERMS IN AP= 3317
                                                                               OUTPUT UNIT =  6                        PAGE   13
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          ACTINIDES+DAUGHTERS 
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -546,7 +546,7 @@ TH228      0.000E+00 1.720E-07 3.001E-07 3.957E-06 7.600E-07
 TH229      0.000E+00 3.314E-08 3.409E-08 7.933E-08 6.026E-06
 TH230      0.000E+00 6.528E-04 8.181E-04 6.871E-03 1.267E-01
                                                                               OUTPUT UNIT =  6                        PAGE   14
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          ACTINIDES+DAUGHTERS 
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -606,7 +606,7 @@ AM244M     0.000E+00 2.029E-04 0.000E+00 0.000E+00 0.000E+00
 AM244      0.000E+00 2.482E-04 0.000E+00 0.000E+00 0.000E+00
 AM245      0.000E+00 3.555E-09 4.783E-19 1.763E-22 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   15
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          ACTINIDES+DAUGHTERS 
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -649,7 +649,7 @@ AP+FP      0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00
 ACT+FP     1.000E+06 9.845E+05 9.845E+05 9.845E+05 9.845E+05
 AP+ACT+FP  1.000E+06 9.845E+05 9.845E+05 9.845E+05 9.845E+05
                                                                               OUTPUT UNIT =  6                        PAGE   16
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -709,7 +709,7 @@ GE 75M     0.000E+00 8.184E-09 0.000E+00 0.000E+00 0.000E+00
 AS 75      0.000E+00 9.228E-02 9.230E-02 9.230E-02 9.230E-02
 NI 76      0.000E+00 2.834E-12 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   17
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -769,7 +769,7 @@ BR 81      0.000E+00 1.068E+01 1.068E+01 1.068E+01 1.068E+01
 KR 81      0.000E+00 5.088E-06 5.088E-06 5.088E-06 5.085E-06
 KR 81M     0.000E+00 2.040E-12 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   18
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -829,7 +829,7 @@ RB 87      0.000E+00 1.249E+02 1.249E+02 1.249E+02 1.249E+02
 SR 87      0.000E+00 6.335E-04 6.337E-04 6.337E-04 6.341E-04
 SR 87M     0.000E+00 1.871E-07 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   19
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -889,7 +889,7 @@ SR 93      0.000E+00 5.913E-03 0.000E+00 0.000E+00 0.000E+00
 ZR 93      0.000E+00 3.549E+02 3.554E+02 3.554E+02 3.553E+02
 NB 93      0.000E+00 9.720E-06 1.344E-05 4.759E-04 2.932E-02
                                                                               OUTPUT UNIT =  6                        PAGE   20
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -949,7 +949,7 @@ NB 99M     0.000E+00 9.017E-05 0.000E+00 0.000E+00 0.000E+00
 MO 99      0.000E+00 3.862E+00 4.368E-11 0.000E+00 0.000E+00
 TC 99      0.000E+00 3.741E+02 3.783E+02 3.783E+02 3.780E+02
                                                                               OUTPUT UNIT =  6                        PAGE   21
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1009,7 +1009,7 @@ PD104      0.000E+00 3.860E+01 3.860E+01 3.860E+01 3.860E+01
 ZR105      0.000E+00 2.660E-08 0.000E+00 0.000E+00 0.000E+00
 NB105      0.000E+00 1.989E-06 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   22
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1069,7 +1069,7 @@ CD109      0.000E+00 2.405E-08 2.071E-08 8.879E-11 0.000E+00
 NB110      0.000E+00 2.806E-11 0.000E+00 0.000E+00 0.000E+00
 MO110      0.000E+00 4.621E-08 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   23
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1129,7 +1129,7 @@ MO115      0.000E+00 5.444E-14 0.000E+00 0.000E+00 0.000E+00
 TC115      0.000E+00 7.036E-11 0.000E+00 0.000E+00 0.000E+00
 RU115      0.000E+00 1.546E-08 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   24
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1189,7 +1189,7 @@ IN119M     0.000E+00 1.216E-04 0.000E+00 0.000E+00 0.000E+00
 SN119      0.000E+00 3.297E+00 3.305E+00 3.329E+00 3.329E+00
 SN119M     0.000E+00 3.123E-02 2.353E-02 7.715E-07 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   25
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1249,7 +1249,7 @@ CD125      0.000E+00 1.447E-07 0.000E+00 0.000E+00 0.000E+00
 IN125      0.000E+00 3.094E-07 0.000E+00 0.000E+00 0.000E+00
 IN125M     0.000E+00 1.172E-06 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   26
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1309,7 +1309,7 @@ SB130M     0.000E+00 1.985E-03 0.000E+00 0.000E+00 0.000E+00
 TE130      0.000E+00 1.525E+02 1.525E+02 1.525E+02 1.525E+02
  I130      0.000E+00 7.644E-03 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   27
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1369,7 +1369,7 @@ XE135      0.000E+00 1.880E-01 0.000E+00 0.000E+00 0.000E+00
 XE135M     0.000E+00 4.314E-03 0.000E+00 0.000E+00 0.000E+00
 CS135      0.000E+00 1.433E+02 1.441E+02 1.441E+02 1.440E+02
                                                                               OUTPUT UNIT =  6                        PAGE   28
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1429,7 +1429,7 @@ BA141      0.000E+00 2.325E-02 0.000E+00 0.000E+00 0.000E+00
 LA141      0.000E+00 3.016E-01 0.000E+00 0.000E+00 0.000E+00
 CE141      0.000E+00 6.074E+01 7.243E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   29
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1489,7 +1489,7 @@ XE147      0.000E+00 5.094E-12 0.000E+00 0.000E+00 0.000E+00
 CS147      0.000E+00 3.732E-09 0.000E+00 0.000E+00 0.000E+00
 BA147      0.000E+00 1.273E-06 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   30
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1549,7 +1549,7 @@ SM152      0.000E+00 6.491E+01 6.491E+01 6.492E+01 6.492E+01
 EU152      0.000E+00 2.197E-02 2.167E-02 1.302E-02 8.168E-07
 EU152M     0.000E+00 3.415E-05 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   31
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1609,7 +1609,7 @@ ND159      0.000E+00 3.529E-10 0.000E+00 0.000E+00 0.000E+00
 PM159      0.000E+00 2.729E-08 0.000E+00 0.000E+00 0.000E+00
 SM159      0.000E+00 6.699E-06 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   32
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1669,7 +1669,7 @@ ER168      0.000E+00 1.071E-03 1.071E-03 1.071E-03 1.071E-03
 YB168      0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00
 ER169      0.000E+00 3.871E-07 2.429E-10 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   33
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
     *                                                                                                                                                                          FISSION PRODUCTS    
     POWER= 3.75000E+01 MW,  BURNUP= 1.50000E+04 MWD,  FLUX= 3.05E+14 N/CM**2-SEC
@@ -1697,7 +1697,7 @@ AP+FP      0.000E+00 1.556E+04 1.556E+04 1.556E+04 1.556E+04
 ACT+FP     1.000E+06 1.000E+06 1.000E+06 1.000E+06 1.000E+06
 AP+ACT+FP  1.000E+06 1.000E+06 1.000E+06 1.000E+06 1.000E+06
                                                                               OUTPUT UNIT =  6                        PAGE   34
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
                                                                                                       
                             (ALPHA,N) NEUTRON SOURCE, NEUTRONS/SEC
 BASIS=                                                                        
@@ -1717,7 +1717,7 @@ TOTALS
 TABLE      1.064E+03 5.686E+06 4.051E+06 1.389E+06 1.739E+06
 ACTUAL     1.064E+03 5.686E+06 4.051E+06 1.389E+06 1.739E+06
                                                                               OUTPUT UNIT =  6                        PAGE   35
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
                                                                                                       
                             SPONTANEOUS FISSION NEUTRON SOURCE, NEUTRONS/SEC
                           BASIS=                                                                        
@@ -1741,7 +1741,7 @@ TOTALS
 TABLE      1.338E+04 3.768E+07 2.786E+07 7.112E+06 2.757E+06
 ACTUAL     1.338E+04 3.768E+07 2.786E+07 7.112E+06 2.757E+06
                                                                               OUTPUT UNIT =  6                        PAGE   36
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
                PHOTON SPECTRUM FOR ACTIVATION PRODUCTS
 
                                                                                                       
@@ -1801,9 +1801,9 @@ MEV/SEC    0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00
 
  GAM POW   0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   37
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
                                                                               OUTPUT UNIT =  6                        PAGE   38
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
                PHOTON SPECTRUM FOR ACTINIDES + DAUGHTERS
 
                                                                                                       
@@ -1863,7 +1863,7 @@ MEV/SEC    4.783E+08 1.715E+17 3.663E+11 7.183E+11 1.278E+12
 
  GAM POW   7.666E-05 2.748E+04 5.872E-02 1.151E-01 2.049E-01
                                                                               OUTPUT UNIT =  6                        PAGE   39
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
                     PRINCIPAL PHOTON SOURCES IN GROUP  1,PHOTONS/SEC
                      MEAN ENERGY= 0.010MEV
@@ -1914,7 +1914,7 @@ AM243      0.000E+00 2.826E+09 2.836E+09 2.833E+09 2.783E+09
 CM242      0.000E+00 5.216E+10 3.455E+10 2.269E+07 9.544E+06
 CM244      0.000E+00 5.501E+08 5.447E+08 3.716E+08 2.594E+05
                                                                               OUTPUT UNIT =  6                        PAGE   40
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
                     PRINCIPAL PHOTON SOURCES IN GROUP  4,PHOTONS/SEC
                      MEAN ENERGY= 0.058MEV
@@ -1965,7 +1965,7 @@ AM241      0.000E+00 2.127E+08 4.171E+08 6.247E+09 1.188E+10
 AM242      0.000E+00 4.012E+13 5.862E+09 5.601E+09 2.356E+09
 CM243      0.000E+00 7.193E+09 7.145E+09 5.603E+09 5.533E+07
                                                                               OUTPUT UNIT =  6                        PAGE   41
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
                     PRINCIPAL PHOTON SOURCES IN GROUP  7,PHOTONS/SEC
                      MEAN ENERGY= 0.225MEV
@@ -2012,7 +2012,7 @@ PU239      0.000E+00 2.159E+07 2.203E+07 2.202E+07 2.190E+07
 AM241      0.000E+00 6.308E+06 1.237E+07 1.853E+08 3.522E+08
 CM242      0.000E+00 3.577E+08 2.370E+08 1.556E+05 6.546E+04
                                                                               OUTPUT UNIT =  6                        PAGE   42
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
                     PRINCIPAL PHOTON SOURCES IN GROUP 10,PHOTONS/SEC
                      MEAN ENERGY= 0.850MEV
@@ -2066,7 +2066,7 @@ PU240      0.000E+00 3.872E+05 3.872E+05 3.869E+05 3.793E+05
 CM242      0.000E+00 8.807E+06 5.834E+06 3.831E+03 1.611E+03
 CM244      0.000E+00 2.334E+06 2.311E+06 1.576E+06 1.100E+03
                                                                               OUTPUT UNIT =  6                        PAGE   43
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
                     PRINCIPAL PHOTON SOURCES IN GROUP 13,PHOTONS/SEC
                      MEAN ENERGY= 2.250MEV
@@ -2120,7 +2120,7 @@ AM241      0.000E+00 4.829E+01 9.469E+01 1.418E+03 2.696E+03
 CM242      0.000E+00 1.133E+06 7.507E+05 4.930E+02 2.074E+02
 CM244      0.000E+00 3.019E+05 2.990E+05 2.039E+05 1.424E+02
                                                                               OUTPUT UNIT =  6                        PAGE   44
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
                     PRINCIPAL PHOTON SOURCES IN GROUP 17,PHOTONS/SEC
                      MEAN ENERGY= 7.000MEV
@@ -2148,7 +2148,7 @@ AM241      0.000E+00 2.018E-01 3.956E-01 5.925E+00 1.126E+01
 CM242      0.000E+00 1.502E+04 9.950E+03 6.534E+00 2.748E+00
 CM244      0.000E+00 4.001E+03 3.962E+03 2.703E+03 1.886E+00
                                                                               OUTPUT UNIT =  6                        PAGE   45
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
                PHOTON SPECTRUM FOR FISSION PRODUCTS
 
                                                                                                       
@@ -2208,7 +2208,7 @@ MEV/SEC    0.000E+00 3.682E+18 6.398E+16 1.005E+15 1.090E+13
 
  GAM POW   0.000E+00 5.903E+05 1.026E+04 1.611E+02 1.747E+00
                                                                               OUTPUT UNIT =  6                        PAGE   46
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
                     PRINCIPAL PHOTON SOURCES IN GROUP  1,PHOTONS/SEC
                      MEAN ENERGY= 0.010MEV
@@ -2261,7 +2261,7 @@ LA142      0.000E+00 3.094E+16 0.000E+00 0.000E+00 0.000E+00
 CE144      0.000E+00 1.899E+15 1.488E+15 2.029E+11 0.000E+00
 PR144      0.000E+00 2.576E+16 1.997E+16 2.723E+12 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   47
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 PM147      0.000E+00 1.327E+14 1.322E+14 9.434E+12 0.000E+00
 
                     PRINCIPAL PHOTON SOURCES IN GROUP  2,PHOTONS/SEC
@@ -2314,7 +2314,7 @@ XE139      0.000E+00 1.151E+16 0.000E+00 0.000E+00 0.000E+00
 CS139      0.000E+00 1.480E+16 0.000E+00 0.000E+00 0.000E+00
 BA139      0.000E+00 7.777E+15 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   48
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 BA140      0.000E+00 1.369E+16 6.064E+13 0.000E+00 0.000E+00
 BA141      0.000E+00 7.036E+15 0.000E+00 0.000E+00 0.000E+00
 LA141      0.000E+00 7.635E+15 0.000E+00 0.000E+00 0.000E+00
@@ -2367,7 +2367,7 @@ BA142      0.000E+00 1.267E+16 0.000E+00 0.000E+00 0.000E+00
 CE143      0.000E+00 3.801E+16 0.000E+00 0.000E+00 0.000E+00
 CE144      0.000E+00 3.834E+15 3.004E+15 4.096E+11 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   49
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 PR144      0.000E+00 3.731E+15 2.893E+15 3.945E+11 0.000E+00
 CE145      0.000E+00 2.279E+16 0.000E+00 0.000E+00 0.000E+00
 ND147      0.000E+00 1.227E+16 2.332E+13 0.000E+00 0.000E+00
@@ -2420,7 +2420,7 @@ CS138      0.000E+00 1.089E+16 0.000E+00 0.000E+00 0.000E+00
 XE139      0.000E+00 1.176E+16 0.000E+00 0.000E+00 0.000E+00
 CS139      0.000E+00 1.507E+16 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   50
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 BA139      0.000E+00 7.570E+15 0.000E+00 0.000E+00 0.000E+00
 BA141      0.000E+00 6.784E+15 0.000E+00 0.000E+00 0.000E+00
 LA141      0.000E+00 7.446E+15 0.000E+00 0.000E+00 0.000E+00
@@ -2473,7 +2473,7 @@ CS137      0.000E+00 1.286E+13 1.278E+13 1.015E+13 1.262E+11
  I138      0.000E+00 4.916E+15 0.000E+00 0.000E+00 0.000E+00
 CS138      0.000E+00 6.896E+15 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   51
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 XE139      0.000E+00 7.723E+15 0.000E+00 0.000E+00 0.000E+00
 CS139      0.000E+00 9.780E+15 0.000E+00 0.000E+00 0.000E+00
 BA139      0.000E+00 4.687E+15 0.000E+00 0.000E+00 0.000E+00
@@ -2526,7 +2526,7 @@ CS139      0.000E+00 6.766E+15 0.000E+00 0.000E+00 0.000E+00
 CE141      0.000E+00 3.592E+16 4.283E+15 0.000E+00 0.000E+00
 CE144      0.000E+00 4.118E+15 3.227E+15 4.400E+11 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   52
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 PR144      0.000E+00 2.407E+15 1.867E+15 2.545E+11 0.000E+00
 EU154      0.000E+00 2.648E+13 2.590E+13 1.158E+13 2.615E+06
 EU155      0.000E+00 1.089E+13 1.048E+13 2.593E+12 7.733E+00
@@ -2574,7 +2574,7 @@ PR144      0.000E+00 3.516E+15 2.726E+15 3.717E+11 0.000E+00
 ND149      0.000E+00 9.388E+15 0.000E+00 0.000E+00 0.000E+00
 EU154      0.000E+00 5.472E+12 5.352E+12 2.392E+12 5.404E+05
                                                                               OUTPUT UNIT =  6                        PAGE   53
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
                     PRINCIPAL PHOTON SOURCES IN GROUP  8,PHOTONS/SEC
                      MEAN ENERGY= 0.375MEV
@@ -2622,7 +2622,7 @@ CE146      0.000E+00 8.494E+15 0.000E+00 0.000E+00 0.000E+00
 PR148      0.000E+00 1.571E+16 0.000E+00 0.000E+00 0.000E+00
 PM148M     0.000E+00 2.519E+14 4.702E+13 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   54
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 
                     PRINCIPAL PHOTON SOURCES IN GROUP  9,PHOTONS/SEC
                      MEAN ENERGY= 0.575MEV
@@ -2676,7 +2676,7 @@ RB 94      0.000E+00 1.703E+16 0.000E+00 0.000E+00 0.000E+00
  Y 94      0.000E+00 5.063E+16 0.000E+00 0.000E+00 0.000E+00
 ZR 95      0.000E+00 5.742E+16 1.944E+16 1.305E-01 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   55
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 NB 95      0.000E+00 5.941E+16 3.460E+16 3.003E-01 0.000E+00
 NB 97M     0.000E+00 5.154E+16 0.000E+00 0.000E+00 0.000E+00
 TC104      0.000E+00 1.192E+16 0.000E+00 0.000E+00 0.000E+00
@@ -2729,7 +2729,7 @@ CS138      0.000E+00 8.276E+16 0.000E+00 0.000E+00 0.000E+00
 XE139      0.000E+00 6.158E+15 0.000E+00 0.000E+00 0.000E+00
 CS139      0.000E+00 7.570E+15 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   56
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 BA141      0.000E+00 8.794E+15 0.000E+00 0.000E+00 0.000E+00
 BA142      0.000E+00 2.834E+16 0.000E+00 0.000E+00 0.000E+00
 LA142      0.000E+00 1.111E+16 0.000E+00 0.000E+00 0.000E+00
@@ -2783,7 +2783,7 @@ MO101      0.000E+00 5.467E+15 0.000E+00 0.000E+00 0.000E+00
 TC104      0.000E+00 3.077E+15 0.000E+00 0.000E+00 0.000E+00
 RH106      0.000E+00 1.606E+13 1.121E+13 1.171E+10 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   57
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 SB131      0.000E+00 2.572E+15 0.000E+00 0.000E+00 0.000E+00
 TE133M     0.000E+00 1.926E+15 0.000E+00 0.000E+00 0.000E+00
  I135      0.000E+00 1.849E+15 0.000E+00 0.000E+00 0.000E+00
@@ -2837,7 +2837,7 @@ RB 90M     0.000E+00 2.047E+15 0.000E+00 0.000E+00 0.000E+00
 RB 92      0.000E+00 5.494E+14 0.000E+00 0.000E+00 0.000E+00
 RB 94      0.000E+00 3.202E+14 0.000E+00 0.000E+00 0.000E+00
                                                                               OUTPUT UNIT =  6                        PAGE   58
-ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:07:19
+ORIGEN2 V2.2 (5-4-2002), Run on 12/05/16    at 07:32:27
 TC104      0.000E+00 1.464E+15 0.000E+00 0.000E+00 0.000E+00
 RH106      0.000E+00 3.071E+11 2.142E+11 2.238E+08 0.000E+00
  I136      0.000E+00 6.861E+14 0.000E+00 0.000E+00 0.000E+00

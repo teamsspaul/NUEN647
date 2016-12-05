@@ -12,8 +12,7 @@ import time
 start_time = time.time()
 import numpy as np
 import Functions as Fun
-import os
-
+from subprocess import call
 
 #####################################################################
 ######################## Load all samples ###########################
@@ -58,11 +57,11 @@ U238f=Fun.StripNL(U238f)
 #####################################################################
 
 #Open Input File
-with open('../Origen2/TAPE9_BANK.inp') as f:
+with open('TAPE9_BANK.inp') as f:
     content=f.readlines()
 
 #Open output file
-output=open("../Origen2/TAPE9.inp","w")
+output=open("TAPE9.inp","w")
 
         
 #Loop through the TAPE9 file, make changes, and write to output
@@ -99,11 +98,15 @@ for i in content:
     i=i.replace("\n","")
     print(i,file=output)
 
+
+output.close() #important or ORIGEN2 wont run
+#endfile record being detected otherwise
+    
 #Run with TAPE9
-os.system("../Origen2/r")
+call(["./r"])
 
 #Graboutput print to file
-
+t=Fun.Gaboutput("55137")
 
 
 

@@ -31,11 +31,11 @@ class ChangeClass:
 #####################################################################
 
 #Open Input File
-with open('../Origen2/TAPE9_BANK.inp') as f:
+with open('TAPE9_BANK.inp') as f:
     content=f.readlines()
 
 #Open output file
-output=open("../Origen2/TAPE9.inp","w")
+output=open("TAPE9.inp","w")
 
 #Grab all the changes you want to make from
 #the 'ChangesToMake.txt' file C will be a list with
