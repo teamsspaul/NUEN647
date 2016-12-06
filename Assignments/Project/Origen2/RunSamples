@@ -13,7 +13,7 @@ start_time = time.time()
 import numpy as np
 import Functions as Fun
 from subprocess import call
-
+import os
 
 
 #####################################################################
@@ -78,7 +78,6 @@ U238f=Fun.StripNL(U238f)
 
 with open('ORIGENBACKUP/TAPE9_BANK.inp') as f:
     TAPE9content=f.readlines()
-f.close()
 
 #####################################################################
 ##################### Loop through all samples ######################
@@ -93,13 +92,16 @@ for k in range(0,len(U238f)):
     ############################################################
 
     #Open output file
-    output=open("TAPE8.inp","w")
-    
+    output=open("tape8.inp","w")
+    #output=open("tape9.inp","w")
+    START=True #To print everything (True), otherwise print somethings...
+    PRINTFIRSTLINE=True #Print first line of actinides lib
+    PRINTLASTLINE=True  #Print the minus 1 at the end of act lib
     #Loop through the TAPE9 template file, make changes,
     #and write to new TAPE9 (output)
     for i in TAPE9content:
         hold=i.split()
-        toprint=False
+        toprint=START
         if '602' in hold[0] and "-" not in hold[0]:
             if "942390" in hold[1]:
                 #Replace the gamma x-section
@@ -131,13 +133,13 @@ for k in range(0,len(U238f)):
                 #Replace the fission x-section
                 i=i.replace(hold[5],U238f[k])
                 toprint=True
-            if "ACTINIDE+AND" in i:
+            if "ACTINIDE+AND" in i and PRINTFIRSTLINE:
                 toprint=True
-            if toprint:
-                i=i.replace("\n","")
-                print(i,file=output)
-
-    print("  -1",file=output)
+        if toprint:
+            i=i.replace("\n","")
+            print(i,file=output)
+    if not START and PRINTLASTLINE:
+        print("  -1",file=output)
     output.close() #important or ORIGEN2 wont run
     #endfile record being detected otherwise
 
@@ -145,6 +147,10 @@ for k in range(0,len(U238f)):
     ##################### Run ORIGEN2 ##########################
     ############################################################
 
+    #I think tape9 needs to be executable?
+    #os.system("chmod +x tape9.inp")
+    os.system("chmod +x tape8.inp")
+    
     #Run with new TAPE9, also deletes old files
     print("Run number :"+str(k+1))
     call(["./r"])
@@ -156,7 +162,7 @@ for k in range(0,len(U238f)):
     #Open output file and save contents
     with open('TAPE6.OUT') as f:
         content=f.readlines()
-
+    
     #Work on Page by Page Basis for output
     #Also grab time steps
     Pages=[];Page=""

@@ -42,12 +42,12 @@
                   *           CCC-371(A) - MAINFRAMES                       *
                   *           CCC-371(E) - ALL PCS WITH WINDOWS             *
                   *                                                         *
-                  *     ORIGEN2 RUN  DATE: 12/06/16    TIME 00:16:26        *
+                  *     ORIGEN2 RUN  DATE: 12/06/16    TIME 02:31:41        *
                   *                                                         *
                   *                                                         *
                   ***********************************************************
                                                                               OUTPUT UNIT =  6                        PAGE    1
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 00:16:26
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 02:31:41
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -94,7 +94,7 @@ DOCUMENTATION
         A.G. CROFF, R.L. HAESE, AND N.B. GOVE, "UPDATED DECAY AND PHOTON LIBRARIES FOR THE ORIGEN CODE", ORNL/TM-6055 (FEB 1979)
         A.G. CROFF, "ORIGEN2: A REVISED AND UPDATED VERSION OF ORIGEN", TRANS. AM. NUCL. SOC., VOL. 34, P. 349-50 (JUNE 1980).  
                                                                               OUTPUT UNIT =  6                        PAGE    2
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 00:16:26
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 02:31:41
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -155,7 +155,7 @@ ORGANIZATION OF ORIGEN2 OUTPUT
    ARE ROUTED TO PAPER, THE TABLE OF CONTENTS FOR UNIT 11, WHICH IS ON UNIT 13, WILL IMMEDIATELY FOLLOW THE DEBUGGING AND       
    INTERNAL INFORMATION (UNIT 15) OUTPUT.  THE "OUTPUT N" TABLES FOR UNIT 11 WILL BE PRINTED FOLLOWING THE TABLE OF CONTENTS.   
                                                                                                                       PAGE    3
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 00:16:26
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 02:31:41
 LISTING OF INPUT DATA ON UNIT = 5
 
 INPUT   WRITE     CARD                                    CARD IMAGE
@@ -167,7 +167,7 @@ UNIT    UNIT      NUMBER
    5      50           5      RDA  Fuel enrichment is 3.0 w/o U-235                                         
    5      50           6      RDA                                                                           
    5      50           7      LPU 922350 922380 942390 942400 942410 -1                                     
-   5      50           8      LIB  1  1 2 3  601 -602 603  9  8 0 1 38                                      
+   5      50           8      LIB  0  1 2 3  601 -602 603  9  8 0 1 38                                      
    5      50           9      PHO     101 102 103  10                                                       
    5      50          10      INP  1   1  -1  -1   1   1                                                    
    5      50          11      BUP                                                                           
@@ -187,7 +187,7 @@ UNIT    UNIT      NUMBER
    5      50          25    2 922340 270. 922350 30000. 922380 969730. 0 0.0                                
    5      50          26    0                                                                               
                                                                               OUTPUT UNIT =  6                        PAGE    4
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 00:16:26
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 02:31:41
 NEUTRON YIELD PER NEUTRON-INDUCED FISSION
 
     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD
@@ -214,7 +214,7 @@ NEUTRON YIELD PER NEUTRON-INDUCED FISSION
 
       982540    0.0000      992530    0.0000      992541    0.0000      992540    0.0000           0    0.0000           0    0.0000
                                                                               OUTPUT UNIT =  6                        PAGE    5
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 00:16:26
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 02:31:41
 SPONTANEOUS FISSION NEUTRON YIELD, NEUT/FISSION
 
 NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE
@@ -228,7 +228,7 @@ NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE             
 
 THE REMAINING NEUTRON YIELDS ARE CALCULATED FROM THE EQUATION: NEUT/FISS=(2.84+0.1225*(AT WT-244)
                                                                               OUTPUT UNIT =  6                        PAGE    6
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 00:16:26
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 02:31:41
 INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
 
   ELEMENT   SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER 
@@ -283,7 +283,7 @@ INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
     48      0.0000000   1.0000000   0.0005000   0.0000000   1.0000000   1.0000000   1.0000000   0.0000000   0.0000000   1.0000000
     49      0.0000000   1.0000000   0.0005000   0.0000000   1.0000000   1.0000000   1.0000000   0.0000000   0.0000000   1.0000000
                                                                               OUTPUT UNIT =  6                        PAGE    7
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 00:16:26
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 02:31:41
 INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
 
   ELEMENT   SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER 
@@ -339,7 +339,7 @@ INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
     98      0.0000000   1.0000000   0.0005000   0.0000000   0.0010000   0.0010000   0.0000000   0.0000000   0.0000000   1.0000000
     99      0.0000000   1.0000000   0.0005000   0.0000000   0.0010000   0.0010000   0.0000000   0.0000000   0.0000000   1.0000000
                                                                               OUTPUT UNIT =  6                        PAGE    8
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 00:16:26
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 02:31:41
 GROUP FRACTIONAL RECOVERIES
 
    GROUP     SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER 
@@ -365,7 +365,7 @@ GROUP FRACTIONAL RECOVERIES
     19      0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000
     20      0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000
                                                                               OUTPUT UNIT =  6                        PAGE    9
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 00:16:26
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 02:31:41
 ELEMENT ASSIGNMENTS TO FRACTIONAL RECOVERY GROUPS
 
  ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP   
@@ -381,7 +381,7 @@ ELEMENT ASSIGNMENTS TO FRACTIONAL RECOVERY GROUPS
   82    1       83    1       84    1       85    1       86   13       87    1       88    1       89    1       90    2
   91    3       92    4       93    5       94    6       95    7       96    8       97    9       98   10       99   11
                                                                               OUTPUT UNIT =  6                        PAGE   10
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 00:16:26
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 02:31:41
                                       CHEMICAL TOXICITIES, GRAMS PER M**3 WATER
 
 
@@ -404,12 +404,12 @@ NUCLIDE   TOXICITY  NUCLIDE   TOXICITY  NUCLIDE   TOXICITY  NUCLIDE   TOXICITY  
     91   5.00E-03       92   5.00E-01       93   8.00E-03       94   8.00E-04       95   4.00E-02       96   5.00E-01
     97   5.00E-03       98   1.00E-02       99   1.00E-02
                                                                               OUTPUT UNIT =  6                        PAGE   11
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 00:16:26
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 02:31:41
    1    0 RDA  *  RDA  Irradiation of 1 MT of PWR fuel                                          *
    2    0 RDA  *  RDA  Fuel enrichment is 3.0 w/o U-235                                         *
    3    0 RDA  *  RDA                                                                           *
    4    0 LPU  *  LPU 922350 922380 942390 942400 942410 -1                                     *
-   5    0 LIB  *  LIB  1  1 2 3  601 -602 603  9  8 0 1 38                                      *
+   5    0 LIB  *  LIB  0  1 2 3  601 -602 603  9  8 0 1 38                                      *
    6    0 PHO  *  PHO     101 102 103  10                                                       *
    7    0 INP  *  INP  1   1  -1  -1   1   1                                                    *
    8    0 BUP  *  BUP                                                                           *
