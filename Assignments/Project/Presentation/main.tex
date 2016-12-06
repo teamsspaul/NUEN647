@@ -57,6 +57,12 @@
 \usepackage{courier} % Required for the courier font
 \usepackage{mathtools}
 
+
+% define ``struts'', as suggested by Claudio Beccari in
+%    a piece in TeX and TUG News, Vol. 2, 1993.
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+
 %--------------------------------------------------------------------
 %	CODE INCLUSION CONFIGURATION
 %---------------------------------------------------------------------
@@ -304,7 +310,8 @@
 
 \section{Objectives}
 \begin{frame}
-\begin{block}{Objectives}
+  \begin{block}{Objectives}
+  \vspace{0.3cm}
   \begin{itemize}
   \item[\ndone]{Build ORIGEN2 model for thermal system, calculating
   concentrations of QOIs}
@@ -314,6 +321,7 @@
     calculations}
   \item[\ndone]{Write program to plot results}
   \end{itemize}
+  \vspace{0.3cm}
 \end{block}
 \end{frame}
 
@@ -347,7 +355,8 @@
 
 
 \begin{frame}
-\begin{block}{Objectives}
+  \begin{block}{Objectives}
+    \vspace{0.3cm}
   \begin{itemize}
   \item[\done]{Build ORIGEN2 model for thermal system, calculating
   concentrations of QOIs}
@@ -357,9 +366,9 @@
     calculations}
   \item[\ndone]{Write program to plot results}
   \end{itemize}
+  \vspace{0.3cm}
 \end{block}
 \end{frame}
-
 
 
 \subsection{Cross Section Variations}
@@ -406,7 +415,8 @@
 
 
 \begin{frame}
-\begin{block}{Objectives}
+  \begin{block}{Objectives}
+    \vspace{0.3cm}
   \begin{itemize}
   \item[\done]{Build ORIGEN2 model for thermal system, calculating
   concentrations of QOIs}
@@ -416,6 +426,7 @@
     calculations}
   \item[\ndone]{Write program to plot results}
   \end{itemize}
+  \vspace{0.3cm}
 \end{block}
 \end{frame}
 
@@ -463,7 +474,7 @@
 \begin{frame}{Difference Minimization}
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=1.1\columnwidth]{../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf}
+      \hspace*{-0.9cm}\includegraphics[width=1.1\columnwidth]{../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf}
       \vspace{-5mm}
       \label{fig:err}
     \end{center}
@@ -473,23 +484,23 @@
 \begin{frame}{Flux Distribution}
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=1.1\columnwidth]{../Weighting/Flux_Spectra.pdf}
+      \hspace*{-0.5cm}\includegraphics[width=1.1\columnwidth]{../Weighting/Flux_Spectra.pdf}
       \vspace{-5mm}
-      \caption{Flux Spectra used for weighting x-sections and yields}
       \label{fig:Flux}
     \end{center}
   \end{figure}
 \end{frame}
 
 \begin{frame}{One Group Cross Section Comparison}
+  \vspace{-4mm}
   \begin{table}[H]
   \begin{center}
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{l l l l}
       \toprule
-      Isotope\tss{Rxn} & ENDF VII & ORIGEN2 & Ratio\\
+      Isotope\tss{Rxn} & ENDF VII & ORIGEN2 & Ratio\Tstrut\Bstrut\\
       \hline
-      \tss{239}Pu\tss{$\gamma$} & 6.544e+01 & 6.909E+01 & 1.06\\
+      \tss{239}Pu\tss{$\gamma$} & 6.544e+01 & 6.909E+01 & 1.06\Tstrut\\
       \tss{240}Pu\tss{$\gamma$} & 1.521e+02 & 2.228E+02 & 1.46\\
       \tss{241}Pu\tss{$\gamma$} & 4.518e+01 & 4.202E+01 & 0.93\\
       \tss{235}U\tss{$\gamma$}  & 9.387e+00 & 1.068E+01 & 1.14\\
@@ -609,12 +620,11 @@
   \begin{table}[H]
   \begin{center}
     \label{Table:4}
-    \resizebox{\textwidth}{!}{%
     \begin{tabular}{l l}
       \toprule
-      Isotope\tss{Rxn} & $\sigma$ with 1STD Error\\
+      Isotope\tss{Rxn} & $\sigma$ with 1STD Error\Tstrut\Bstrut\\
       \hline
-      \tss{239}Pu\tss{$\gamma$} & 69.09$\pm$8.15\\
+      \tss{239}Pu\tss{$\gamma$} & 69.09$\pm$8.15\Tstrut\\
       \tss{240}Pu\tss{$\gamma$} & 222.8$\pm$50.9\\
       \tss{241}Pu\tss{$\gamma$} & 42.02$\pm$10.92\\
       \tss{235}U\tss{$\gamma$}  & 10.68$\pm$3.23\\
@@ -625,12 +635,14 @@
       \tss{235}U\tss{f}  & 47.52$\pm$0.71 \\
       \tss{238}U\tss{f}  & 0.093$\pm$8.2e-7 \\
       \bottomrule
-    \end{tabular}}
+    \end{tabular}
   \end{center}
   \end{table}
 \end{frame}
 
-\begin{frame}{Objectives}
+\begin{frame}
+  \begin{block}{Objectives}
+  \vspace{0.3cm}
   \begin{itemize}
   \item[\done]{Build ORIGEN2 model for thermal system, calculating
   concentrations of QOIs}
@@ -640,14 +652,52 @@
     calculations}
   \item[\ndone]{Write program to plot results}
   \end{itemize}
+  \vspace{0.3cm}
+\end{block}
 \end{frame}
+
 
 \subsection{Sampling Space and Plotting Program}
-\begin{frame}
-
+\begin{frame}{Sampling space and Plotting}
+  \begin{equation*}
+    \pi(\theta)=\frac{\theta^{\alpha-1}e^{-\theta/\beta}}{\Gamma(\alpha)
+      \beta^{\alpha}},\ \ \ \ \ \theta,\alpha,\beta>0.
+  \end{equation*}
+  \vspace{1cm}
+  \begin{equation*}
+    \alpha=\frac{\text{Mean}^2}{\text{Error}^2}
+  \end{equation*}
+  \begin{equation*}
+    \beta=\frac{\text{Error}^2}{\text{Mean}}
+  \end{equation*}
 \end{frame}
 
-\begin{frame}{Objectives}
+
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.6cm}\includegraphics[width=1\columnwidth]{../Origen2/PLOTS/94Pu239aHIST.pdf}
+      \vspace{-5mm}
+      \label{fig:SPu239a}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.6cm}\includegraphics[width=1\columnwidth]{../Origen2/PLOTS/94Pu240fHIST.pdf}
+      \vspace{-5mm}
+      \label{fig:SPu240f}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+  \begin{block}{Objectives}
+  \vspace{0.3cm}
   \begin{itemize}
   \item[\done]{Build ORIGEN2 model for thermal system, calculating
   concentrations of QOIs}
@@ -657,33 +707,202 @@
     calculations}
   \item[\done]{Write program to plot results}
   \end{itemize}
+  \vspace{0.3cm}
+\end{block}
 \end{frame}
-
 
 \section{Results}
 \begin{frame}
 \sectionpage
 \end{frame}
 
-\begin{frame}{Irradiation}
-
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.6cm}\includegraphics[width=1\columnwidth]{../Origen2/PLOTS/PU239Post_HIST.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTHISTPu239}
+    \end{center}
+  \end{figure}
 \end{frame}
 
-\begin{frame}{Dissolution of the spent fuel pellet}
-
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.6cm}\includegraphics[width=1.1\columnwidth]{../Origen2/PLOTS/PU239Post_XY.pdf}
+      \vspace{-5mm}
+    \end{center}
+  \end{figure}
 \end{frame}
 
-\begin{frame}{Glovebox}
 
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/PU242Post_HIST.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTHISTPu242}
+    \end{center}
+  \end{figure}
+\end{frame}
+  
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/PU242Post_XY.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTXYPu242}
+    \end{center}
+  \end{figure}
+\end{frame}
+    
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/SB125Post_HIST.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTHISTSb125}
+    \end{center}
+  \end{figure}
+\end{frame}
+  
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/SB125Post_XY.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTXYSb125}
+    \end{center}
+  \end{figure}
+\end{frame}
+    
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/EU154Post_HIST.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTHISTEu154}
+    \end{center}
+  \end{figure}
+\end{frame}
+  
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/EU154Post_XY.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTXYEu154}
+    \end{center}
+  \end{figure}
+\end{frame}
+    
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/RH106Post_HIST.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTHISTRh106}
+    \end{center}
+  \end{figure}
+\end{frame}
+  
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/RH106Post_XY.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTXYRh106}
+    \end{center}
+  \end{figure}
+\end{frame}
+    
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/SM150Post_HIST.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTHISTSm150}
+    \end{center}
+  \end{figure}
+\end{frame}
+  
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/SM150Post_XY.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTXYSm150}
+    \end{center}
+  \end{figure}
+\end{frame}
+    
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/ND148Post_HIST.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTHISTNd148}
+    \end{center}
+  \end{figure}
+\end{frame}
+  
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/ND148Post_XY.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTXYNd148}
+    \end{center}
+  \end{figure}
+\end{frame}
+    
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/BA136Post_HIST.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTHISTBa136}
+    \end{center}
+  \end{figure}
+\end{frame}
+  
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/BA136Post_XY.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTXYBa136}
+    \end{center}
+  \end{figure}
+\end{frame}
+    
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/CS134Post_HIST.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTHISTBa136}
+    \end{center}
+  \end{figure}
+\end{frame}
+  
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/CS134Post_XY.pdf}
+      \vspace{-5mm}
+      \label{fig:POSTXYCs134}
+    \end{center}
+  \end{figure}
 \end{frame}
 
-\begin{frame}{Experiments}
-
-\end{frame}
 
 \section{Conclusions}
 \begin{frame}{Conclusions}
-
+  \begin{itemize}
+  \item{Surprised at size of error}
+  \item{Sad it didn't work fully}
+  \end{itemize}
 \end{frame}
 
 \end{document}

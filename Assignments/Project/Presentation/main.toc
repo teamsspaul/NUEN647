@@ -8,5 +8,5 @@
 \beamer@subsectionintoc {2}{2}{Cross Section Variations}{9}{0}{2}
 \beamer@subsectionintoc {2}{3}{Variance for cross-sections}{11}{0}{2}
 \beamer@subsectionintoc {2}{4}{Sampling Space and Plotting Program}{27}{0}{2}
-\beamer@sectionintoc {3}{Results}{29}{0}{3}
-\beamer@sectionintoc {4}{Conclusions}{34}{0}{4}
+\beamer@sectionintoc {3}{Results}{31}{0}{3}
+\beamer@sectionintoc {4}{Conclusions}{50}{0}{4}
