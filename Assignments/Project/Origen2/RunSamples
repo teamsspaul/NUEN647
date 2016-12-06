@@ -191,7 +191,7 @@ for k in range(0,len(U238f)):
     #The only pages saved in Pages are ones with text:
     #"ACTINIDES+DAUGHTERS" or "FISSION PRODUCTS" the rest
     #of the output is trashed
-
+    
     #Loop through all isotopes and grab info
     for item in ListToPull:
         Isotope=item.Isotope

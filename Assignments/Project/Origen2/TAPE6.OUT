@@ -42,12 +42,12 @@
                   *           CCC-371(A) - MAINFRAMES                       *
                   *           CCC-371(E) - ALL PCS WITH WINDOWS             *
                   *                                                         *
-                  *     ORIGEN2 RUN  DATE: 12/06/16    TIME 08:21:10        *
+                  *     ORIGEN2 RUN  DATE: 12/06/16    TIME 11:03:57        *
                   *                                                         *
                   *                                                         *
                   ***********************************************************
                                                                               OUTPUT UNIT =  6                        PAGE    1
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 08:21:10
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 11:03:57
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -94,7 +94,7 @@ DOCUMENTATION
         A.G. CROFF, R.L. HAESE, AND N.B. GOVE, "UPDATED DECAY AND PHOTON LIBRARIES FOR THE ORIGEN CODE", ORNL/TM-6055 (FEB 1979)
         A.G. CROFF, "ORIGEN2: A REVISED AND UPDATED VERSION OF ORIGEN", TRANS. AM. NUCL. SOC., VOL. 34, P. 349-50 (JUNE 1980).  
                                                                               OUTPUT UNIT =  6                        PAGE    2
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 08:21:10
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 11:03:57
 
 **********************************************************************************************************************************
 **********************************************************************************************************************************
@@ -155,7 +155,7 @@ ORGANIZATION OF ORIGEN2 OUTPUT
    ARE ROUTED TO PAPER, THE TABLE OF CONTENTS FOR UNIT 11, WHICH IS ON UNIT 13, WILL IMMEDIATELY FOLLOW THE DEBUGGING AND       
    INTERNAL INFORMATION (UNIT 15) OUTPUT.  THE "OUTPUT N" TABLES FOR UNIT 11 WILL BE PRINTED FOLLOWING THE TABLE OF CONTENTS.   
                                                                                                                       PAGE    3
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 08:21:10
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 11:03:57
 LISTING OF INPUT DATA ON UNIT = 5
 
 INPUT   WRITE     CARD                                    CARD IMAGE
@@ -166,32 +166,28 @@ UNIT    UNIT      NUMBER
    5      50           4      RDA  Irradiation of 1 MT of PWR fuel                                          
    5      50           5      RDA  Fuel enrichment is 3.0 w/o U-235                                         
    5      50           6      RDA                                                                           
-   5      50           7      LPU -1                                                                        
-   5      50           8      LPU -1                                                                        
-   5      50           9      LPU -1                                                                        
-   5      50          10      LPU -1                                                                        
-   5      50          11      LPU 922350 922380 942390 942400 942410  -1                                    
-   5      50          12      LIB  0  -1 -2 -3  -601 -602 603  9  8 0 1 38                                  
-   5      50          13      PHO     101 102 103  10                                                       
-   5      50          14      INP  1   1  -1  -1   1   1                                                    
-   5      50          15      BUP                                                                           
-   5      50          16      IRP 100.0 37.5 1 2 4 2 BURNUP=3,750 MWD/MT                                    
-   5      50          17      IRP 200.0 37.5 2 3 4 0 BURNUP=7,500 MWD/MT                                    
-   5      50          18      IRP 300.0 37.5 3 4 4 0 BURNUP=11,250 MWD/MT                                   
-   5      50          19      IRP 400.0 37.5 4 5 4 0 BURNUP=15,000 MWD/MT                                   
-   5      50          20      DEC 500.0      5 6 4 0 DECAY FOR 100.0 DAYS                                   
-   5      50          21      DEC 4150.0     6 7 4 0 DECAY FOR 10 YEARS                                     
-   5      50          22      DEC 73500.0    7 8 4 0 DECAY FOR 200.0 YEARS                                  
-   5      50          23      BUP                                                                           
-   5      50          24      OPTL 24*8                                                                     
-   5      50          25      OPTA 4*8 5 19*8                                                               
-   5      50          26      OPTF 4*8 5 19*8                                                               
-   5      50          27      OUT     8   1  -1   0                                                         
-   5      50          28      END                                                                           
-   5      50          29    2 922340 270. 922350 30000. 922380 969730. 0 0.0                                
-   5      50          30    0                                                                               
+   5      50           7      LPU 922350 922380 942390 942400 942410  -1                                    
+   5      50           8      LIB  0  1 2 3  601 -777 603  9 8 0 1 38                                       
+   5      50           9      PHO     101 102 103  10                                                       
+   5      50          10      INP  1   1  -1  -1   1   1                                                    
+   5      50          11      BUP                                                                           
+   5      50          12      IRP 100.0 37.5 1 2 4 2 BURNUP=3,750 MWD/MT                                    
+   5      50          13      IRP 200.0 37.5 2 3 4 0 BURNUP=7,500 MWD/MT                                    
+   5      50          14      IRP 300.0 37.5 3 4 4 0 BURNUP=11,250 MWD/MT                                   
+   5      50          15      IRP 400.0 37.5 4 5 4 0 BURNUP=15,000 MWD/MT                                   
+   5      50          16      DEC 500.0      5 6 4 0 DECAY FOR 100.0 DAYS                                   
+   5      50          17      DEC 4150.0     6 7 4 0 DECAY FOR 10 YEARS                                     
+   5      50          18      DEC 73500.0    7 8 4 0 DECAY FOR 200.0 YEARS                                  
+   5      50          19      BUP                                                                           
+   5      50          20      OPTL 24*8                                                                     
+   5      50          21      OPTA 4*8 5 19*8                                                               
+   5      50          22      OPTF 4*8 5 19*8                                                               
+   5      50          23      OUT     8   1  -1   0                                                         
+   5      50          24      END                                                                           
+   5      50          25    2 922340 270. 922350 30000. 922380 969730. 0 0.0                                
+   5      50          26    0                                                                               
                                                                               OUTPUT UNIT =  6                        PAGE    4
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 08:21:10
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 11:03:57
 NEUTRON YIELD PER NEUTRON-INDUCED FISSION
 
     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD     NUCLIDE     YIELD
@@ -218,7 +214,7 @@ NEUTRON YIELD PER NEUTRON-INDUCED FISSION
 
       982540    0.0000      992530    0.0000      992541    0.0000      992540    0.0000           0    0.0000           0    0.0000
                                                                               OUTPUT UNIT =  6                        PAGE    5
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 08:21:10
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 11:03:57
 SPONTANEOUS FISSION NEUTRON YIELD, NEUT/FISSION
 
 NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE
@@ -232,7 +228,7 @@ NUCLIDE             NUCLIDE             NUCLIDE             NUCLIDE             
 
 THE REMAINING NEUTRON YIELDS ARE CALCULATED FROM THE EQUATION: NEUT/FISS=(2.84+0.1225*(AT WT-244)
                                                                               OUTPUT UNIT =  6                        PAGE    6
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 08:21:10
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 11:03:57
 INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
 
   ELEMENT   SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER 
@@ -287,7 +283,7 @@ INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
     48      0.0000000   1.0000000   0.0005000   0.0000000   1.0000000   1.0000000   1.0000000   0.0000000   0.0000000   1.0000000
     49      0.0000000   1.0000000   0.0005000   0.0000000   1.0000000   1.0000000   1.0000000   0.0000000   0.0000000   1.0000000
                                                                               OUTPUT UNIT =  6                        PAGE    7
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 08:21:10
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 11:03:57
 INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
 
   ELEMENT   SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER 
@@ -343,7 +339,7 @@ INDIVIDUAL ELEMENT FRACTIONAL RECOVERIES
     98      0.0000000   1.0000000   0.0005000   0.0000000   0.0010000   0.0010000   0.0000000   0.0000000   0.0000000   1.0000000
     99      0.0000000   1.0000000   0.0005000   0.0000000   0.0010000   0.0010000   0.0000000   0.0000000   0.0000000   1.0000000
                                                                               OUTPUT UNIT =  6                        PAGE    8
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 08:21:10
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 11:03:57
 GROUP FRACTIONAL RECOVERIES
 
    GROUP     SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER  SET NUMBER 
@@ -369,7 +365,7 @@ GROUP FRACTIONAL RECOVERIES
     19      0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000
     20      0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000
                                                                               OUTPUT UNIT =  6                        PAGE    9
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 08:21:10
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 11:03:57
 ELEMENT ASSIGNMENTS TO FRACTIONAL RECOVERY GROUPS
 
  ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP    ELEM GROUP   
@@ -385,7 +381,7 @@ ELEMENT ASSIGNMENTS TO FRACTIONAL RECOVERY GROUPS
   82    1       83    1       84    1       85    1       86   13       87    1       88    1       89    1       90    2
   91    3       92    4       93    5       94    6       95    7       96    8       97    9       98   10       99   11
                                                                               OUTPUT UNIT =  6                        PAGE   10
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 08:21:10
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 11:03:57
                                       CHEMICAL TOXICITIES, GRAMS PER M**3 WATER
 
 
@@ -408,29 +404,25 @@ NUCLIDE   TOXICITY  NUCLIDE   TOXICITY  NUCLIDE   TOXICITY  NUCLIDE   TOXICITY  
     91   5.00E-03       92   5.00E-01       93   8.00E-03       94   8.00E-04       95   4.00E-02       96   5.00E-01
     97   5.00E-03       98   1.00E-02       99   1.00E-02
                                                                               OUTPUT UNIT =  6                        PAGE   11
-ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 08:21:10
+ORIGEN2 V2.2 (5-4-2002), Run on 12/06/16    at 11:03:57
    1    0 RDA  *  RDA  Irradiation of 1 MT of PWR fuel                                          *
    2    0 RDA  *  RDA  Fuel enrichment is 3.0 w/o U-235                                         *
    3    0 RDA  *  RDA                                                                           *
-   4    0 LPU  *  LPU -1                                                                        *
-   5    0 LPU  *  LPU -1                                                                        *
-   6    0 LPU  *  LPU -1                                                                        *
-   7    0 LPU  *  LPU -1                                                                        *
-   8    0 LPU  *  LPU 922350 922380 942390 942400 942410  -1                                    *
-   9    0 LIB  *  LIB  0  -1 -2 -3  -601 -602 603  9  8 0 1 38                                  *
-  10    0 PHO  *  PHO     101 102 103  10                                                       *
-  11    0 INP  *  INP  1   1  -1  -1   1   1                                                    *
-  12    0 BUP  *  BUP                                                                           *
-  13    0 IRP  *  IRP 100.0 37.5 1 2 4 2 BURNUP=3,750 MWD/MT                                    *
-  14    0 IRP  *  IRP 200.0 37.5 2 3 4 0 BURNUP=7,500 MWD/MT                                    *
-  15    0 IRP  *  IRP 300.0 37.5 3 4 4 0 BURNUP=11,250 MWD/MT                                   *
-  16    0 IRP  *  IRP 400.0 37.5 4 5 4 0 BURNUP=15,000 MWD/MT                                   *
-  17    0 DEC  *  DEC 500.0      5 6 4 0 DECAY FOR 100.0 DAYS                                   *
-  18    0 DEC  *  DEC 4150.0     6 7 4 0 DECAY FOR 10 YEARS                                     *
-  19    0 DEC  *  DEC 73500.0    7 8 4 0 DECAY FOR 200.0 YEARS                                  *
-  20    0 BUP  *  BUP                                                                           *
-  21    0 OPTL *  OPTL 24*8                                                                     *
-  22    0 OPTA *  OPTA 4*8 5 19*8                                                               *
-  23    0 OPTF *  OPTF 4*8 5 19*8                                                               *
-  24    0 OUT  *  OUT     8   1  -1   0                                                         *
-  25    0 END  *  END                                                                           *
+   4    0 LPU  *  LPU 922350 922380 942390 942400 942410  -1                                    *
+   5    0 LIB  *  LIB  0  1 2 3  601 -777 603  9 8 0 1 38                                       *
+   6    0 PHO  *  PHO     101 102 103  10                                                       *
+   7    0 INP  *  INP  1   1  -1  -1   1   1                                                    *
+   8    0 BUP  *  BUP                                                                           *
+   9    0 IRP  *  IRP 100.0 37.5 1 2 4 2 BURNUP=3,750 MWD/MT                                    *
+  10    0 IRP  *  IRP 200.0 37.5 2 3 4 0 BURNUP=7,500 MWD/MT                                    *
+  11    0 IRP  *  IRP 300.0 37.5 3 4 4 0 BURNUP=11,250 MWD/MT                                   *
+  12    0 IRP  *  IRP 400.0 37.5 4 5 4 0 BURNUP=15,000 MWD/MT                                   *
+  13    0 DEC  *  DEC 500.0      5 6 4 0 DECAY FOR 100.0 DAYS                                   *
+  14    0 DEC  *  DEC 4150.0     6 7 4 0 DECAY FOR 10 YEARS                                     *
+  15    0 DEC  *  DEC 73500.0    7 8 4 0 DECAY FOR 200.0 YEARS                                  *
+  16    0 BUP  *  BUP                                                                           *
+  17    0 OPTL *  OPTL 24*8                                                                     *
+  18    0 OPTA *  OPTA 4*8 5 19*8                                                               *
+  19    0 OPTF *  OPTF 4*8 5 19*8                                                               *
+  20    0 OUT  *  OUT     8   1  -1   0                                                         *
+  21    0 END  *  END                                                                           *
