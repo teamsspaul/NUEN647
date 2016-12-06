@@ -94,9 +94,11 @@ for k in range(0,len(U238f)):
     #Open output file
     output=open("tape8.inp","w")
     #output=open("tape9.inp","w")
-    START=True #To print everything (True), otherwise print somethings...
+    START=False #To print everything (True), otherwise print somethings...
     PRINTFIRSTLINE=True #Print first line of actinides lib
     PRINTLASTLINE=True  #Print the minus 1 at the end of act lib
+    REMOVEM1=False #If you want to remove all the -1s after each line
+                  #Be careful if you are moding the first lib
     #Loop through the TAPE9 template file, make changes,
     #and write to new TAPE9 (output)
     for i in TAPE9content:
@@ -135,6 +137,8 @@ for k in range(0,len(U238f)):
                 toprint=True
             if "ACTINIDE+AND" in i and PRINTFIRSTLINE:
                 toprint=True
+        if REMOVEM1:
+            i=i.replace("-1","")
         if toprint:
             i=i.replace("\n","")
             print(i,file=output)
