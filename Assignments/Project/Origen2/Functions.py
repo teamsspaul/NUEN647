@@ -26,6 +26,35 @@ matplotlib.rc('text',usetex=True)
 matplotlib.rcParams['text.latex.preamble']=[r"\usepackage{amsmath}"]
 import random as rn
 
+
+#############################################################
+######################### Variables #########################
+#############################################################
+
+# Basic information
+FigureSize = (11, 6)              # Dimensions of the figure
+TypeOfFamily='monospace'          # This sets the type of font for text
+font = {'family' : TypeOfFamily}  # This sets the type of font for text
+LegendFontSize = 12
+Lfont = {'family' : TypeOfFamily}  # This sets up legend font
+Lfont['size']=LegendFontSize
+
+Title = ''
+TitleFontSize = 22
+TitleFontWeight = "bold"  # "bold" or "normal"
+
+Xlabel='Time (d)'   # X label
+XFontSize=18          # X label font size
+XFontWeight="normal"  # "bold" or "normal"
+XScale="linear"       # 'linear' or 'log'
+
+YFontSize=18                    # Y label font size
+YFontWeight="normal"            # "bold" or "normal"
+YScale="linear"                 # 'linear' or 'log'
+
+
+
+
 ################################################################
 ######################### Functions ############################
 ################################################################
@@ -68,7 +97,7 @@ def PlotHistSave(Error,Ntimes,Element,Nbins):
     ax.set_ylabel(r'Count out of '+str(Ntimes),fontsize=18)
     ax.hist(Error,Nbins,color='green',alpha=0.7,edgecolor='black')
     #ax.set_xlim(-500,500)
-    plt.savefig(Element+'HIST.pdf')
+    plt.savefig("PLOTS"+Element+'HIST.pdf')
 
 def PlotHistSave2(Error,Ntimes,Element,Nbins):
     Element=Element.split('.')[0]
@@ -79,7 +108,9 @@ def PlotHistSave2(Error,Ntimes,Element,Nbins):
     else:
         E=Element[0]
         I=Element[1:4]
-        
+
+    if len(E)>1:
+        E=E[0]+E[1].lower()
     print(E,I)
     
     fig=plt.figure()
@@ -88,7 +119,7 @@ def PlotHistSave2(Error,Ntimes,Element,Nbins):
     ax.set_ylabel(r'Count out of '+str(Ntimes),fontsize=18)
     ax.hist(Error,Nbins,color='green',alpha=0.7,edgecolor='black')
     
-    plt.savefig(Element+'Post_HIST.pdf')
+    plt.savefig("PLOTS/"+Element+'Post_HIST.pdf')
 
 
 def StripNL(List):
@@ -112,3 +143,51 @@ def Graboutput(Isotope,Pages,TYPE):
                     hold=hold.split()
                     return(hold)
                     
+
+
+def plot(x,y,ax,Color,label,fig,Element):
+    Element=Element.split('.')[0]
+
+    if Element[1].isalpha():
+        E=Element[0:2]
+        I=Element[2:5]
+    else:
+        E=Element[0]
+        I=Element[1:4]
+    if len(E)>1:
+        E=E[0]+E[1].lower()
+    
+    #Plot X and Y
+    ax.plot(x,y,
+            linestyle="solid", #"solid","dashed","dash_dot","dotted","."
+            marker="", # "*" "H" "h" "d" "^" ">"
+# good ones http://matplotlib.org/1.4.1/api/markers_api.html for more
+            color=Color,
+            markersize=8,
+            alpha=1,
+            label=label)
+
+    #Log or linear scale?
+    ax.set_xscale(XScale)
+    ax.set_yscale(YScale)
+    #Set Title
+    fig.suptitle(Title,fontsize=TitleFontSize,
+        	 fontweight=TitleFontWeight,fontdict=font,
+                 ha='center')
+    #Set X and y labels
+    Ylabel=r'$^{'+I+'}$'+E+" (g)"
+    ax.set_xlabel(Xlabel,
+        	  fontsize=XFontSize,fontweight=XFontWeight,
+        	  fontdict=font)
+    ax.set_ylabel(Ylabel,
+        	  fontsize=YFontSize,
+        	  fontweight=YFontWeight,
+        	  fontdict=font)
+	
+    return(fig,ax)
+
+def Legend(ax):
+	handles,labels=ax.get_legend_handles_labels()
+	ax.legend(handles,labels,loc='best',
+			fontsize=LegendFontSize,prop=font)
+	return(ax)

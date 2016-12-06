@@ -26,7 +26,7 @@ class ToPull:
         self.Type     = ""
 
 ListToPull=[]
-with open('LISTTOPULL.txt') as f:
+with open('LISTTOPULL') as f:
     Lines=f.readlines()
 for i in Lines:
     i=i.split()
@@ -38,37 +38,37 @@ for i in Lines:
 ######################## Load all samples ###########################
 #####################################################################
 
-with open('94Pu239a') as f:
+with open('SAMPLES/94Pu239a') as f:
     Pu239a=f.readlines()
 Pu239a=Fun.StripNL(Pu239a)
-with open('94Pu240a') as f:
+with open('SAMPLES/94Pu240a') as f:
     Pu240a=f.readlines()
 Pu240a=Fun.StripNL(Pu240a)
-with open('94Pu241a') as f:
+with open('SAMPLES/94Pu241a') as f:
     Pu241a=f.readlines()
 Pu241a=Fun.StripNL(Pu241a)
 
-with open('94Pu239f') as f:
+with open('SAMPLES/94Pu239f') as f:
     Pu239f=f.readlines()
 Pu239f=Fun.StripNL(Pu239f)
-with open('94Pu240f') as f:
+with open('SAMPLES/94Pu240f') as f:
     Pu240f=f.readlines()
 Pu240f=Fun.StripNL(Pu240f)
-with open('94Pu241f') as f:
+with open('SAMPLES/94Pu241f') as f:
     Pu241f=f.readlines()
 Pu241f=Fun.StripNL(Pu241f)
 
-with open('92U235a') as f:
+with open('SAMPLES/92U235a') as f:
     U235a=f.readlines()
 U235a=Fun.StripNL(U235a)
-with open('92U238a') as f:
+with open('SAMPLES/92U238a') as f:
     U238a=f.readlines()
 U238a=Fun.StripNL(U238a)
 
-with open('92U235f') as f:
+with open('SAMPLES/92U235f') as f:
     U235f=f.readlines()
 U235f=Fun.StripNL(U235f)
-with open('92U238f') as f:
+with open('SAMPLES/92U238f') as f:
     U238f=f.readlines()
 U238f=Fun.StripNL(U238f)
 
@@ -188,12 +188,12 @@ for k in range(0,len(U238f)):
         Type=item.Type
         Info=Fun.Graboutput(Isotope,Pages,Type)
         if k==0:
-            SaveFile=open(Isotope+'.out','w')
+            SaveFile=open("OUTPUTDATA/"+Isotope+'.out','w')
             print('D,'.join(TimeDays)+'D',file=SaveFile)
             print(','.join(Info),file=SaveFile)
             SaveFile.close()
         else:
-            SaveFile=open(Isotope+'.out','a')
+            SaveFile=open("OUTPUTDATA/"+Isotope+'.out','a')
             print(','.join(Info),file=SaveFile)
             SaveFile.close()
 

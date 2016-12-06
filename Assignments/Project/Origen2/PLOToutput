@@ -29,6 +29,15 @@ TimeIndex=3
 N=10
 Nbins=3
 
+#Which Time Steps for range...
+T1=0
+Tf=5
+
+#15 Elements, cant do all at once Do 8 at a time (lame again)
+#E1=9
+#Ef=15
+E1=0  
+Ef=9
 
 #####################################################################
 ############################ Low Class ##############################
@@ -40,7 +49,7 @@ class ToPull:
         
 #Gather all output file names
 ListToPull=[]
-with open('LISTTOPULL.txt') as f:
+with open('LISTTOPULL') as f:
     Lines=f.readlines()
 for i in Lines:
     i=i.split()
@@ -50,20 +59,20 @@ for i in Lines:
 #####################################################################
 ############### Orchestral Manoeuvres in the Dark ###################
 #####################################################################
-    
+
 #Loop through output file names
-for item in ListToPull:
-    fileparse=item.File
+for index in range(E1,Ef):
+    fileparse=ListToPull[index].File
 
     #Save output file information
-    with open(fileparse) as f:
+    with open("OUTPUTDATA/"+fileparse) as f:
         Lines=f.readlines()
 
     #Get time information from first row
     TimeList=Lines[0].replace('\n','').replace('D','').split(',')
     Time=[]
-    for time in TimeList:
-        Time.append(float(time))
+    for times in TimeList:
+        Time.append(float(times))
 
     #Make matrix of data for rest
     Data=[]
@@ -79,10 +88,17 @@ for item in ListToPull:
 
     #Plot Time vs grams for all different runs
     HISTSamples=[]
+    fig=Fun.plt.figure(figsize=Fun.FigureSize)
+    ax=fig.add_subplot(111)
+    label=''
     for run in Data:
         HISTSamples.append(run[TimeIndex])
-        #print(run) Plot each over each other
-        
+        #print(run) Plot
+        (fig,ax)=Fun.plot(Time[T1:Tf],run[T1:Tf],
+                          ax,'black',label,fig,fileparse)
+
+    Element=fileparse.split('.')[0]
+    Fun.plt.savefig("PLOTS/"+Element+'Post_XY.pdf')
     #Make histogram for specified time for all different runs
     Fun.PlotHistSave2(HISTSamples,N,fileparse,Nbins)
 

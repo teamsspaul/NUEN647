@@ -53,7 +53,7 @@ for i in O:
     #Convert Data to string
     Sample=[str(x) for x in Sample]
     #open the output file and save
-    output=open(i.Element,"w")
+    output=open("SAMPLES/"+i.Element,"w")
     print("\n".join(Sample),file=output)
     output.close()
 
