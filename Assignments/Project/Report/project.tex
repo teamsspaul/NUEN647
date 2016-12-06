@@ -187,7 +187,7 @@ difficult to acquire or not available.
 The uncertainties on cross sections
 were determined by calculating the range of the single group
 cross section, taking the mid point as a mean, the range as
-a standard deviation, and assuming a Gaussian distribution.
+a standard deviation, and assuming a Gamma distribution.
 
 
 \begin{table}[H]
@@ -254,7 +254,7 @@ a standard deviation, and assuming a Gaussian distribution.
   from library 601 is shown in the listing below, with
   a corresponding key shown in Table \ref{Table:2} \cite{croff1980user}.
   
-  \inputdeckpages{../Origen2/TAPE9_BANK}{\tss{235}U cross section
+  \inputdeckpages{../Origen2/ORIGENBACKUP/TAPE9_BANK}{\tss{235}U cross section
     library 602 input}{3827}{3827}
 
   \begin{table}[H]
@@ -281,11 +281,15 @@ a standard deviation, and assuming a Gaussian distribution.
   and fission products, respectively. These values will
   not be modified to reduce the scope of the project.
 
+  Modifying the cross section libraries seems to have
+  no bearing on the output of the code. This will be shown
+  in the results section.
+
   %The input for \tss{137}Cs
   %from library 3 is shown in the listing below, with
   %a corresponding key shown in Table \ref{Table:3} \cite{croff1980user}.
   
-  %\inputdeckpages{../Origen2/TAPE9_BANK}{\tss{137}Cs decay libary
+  %\inputdeckpages{../Origen2/ORIGENBACKUP/TAPE9_BANK}{\tss{137}Cs decay libary
   %  3 input}{2896}{2897}
 
   %\begin{table}[H]
@@ -308,10 +312,12 @@ a standard deviation, and assuming a Gaussian distribution.
   %% of the half-life, and THALF, the half-life of nuclide in units
   %% given by IU.
   A program was writen to modify $\sigma_\gamma$, yield,
-  or half-life based on lines from a text file. This code is
-  shown below but will only be used to modify cross section.
+  or half-life based on lines from a text file. The project was
+  simplified to only modify cross section input for the actnides,
+  and therefore a modified version of is provided below. The code
+  below is used to modify $\sigma_\gamma$ and $\sigma_f$.
 
-  \pythonscript{../Origen2/smaller_change}{Script for modifying ORIGEN2 input.}
+  \pythonscript{../Origen2/RunSamples}{Script for modifying ORIGEN2 input.}
 
 
 \item[\done]{Determine variance of Cross-sections}
@@ -365,7 +371,7 @@ a standard deviation, and assuming a Gaussian distribution.
 
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf}
       \vspace{-5mm}
       \caption{Minimized error for 10 cross section calculations}
       \label{fig:err}
@@ -376,7 +382,7 @@ a standard deviation, and assuming a Gaussian distribution.
 
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{../Weighting/Flux_Spectra.pdf}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/Flux_Spectra.pdf}
       \vspace{-5mm}
       \caption{Flux Spectra used for weighting x-sections and yields}
       \label{fig:Flux}
@@ -459,7 +465,7 @@ a standard deviation, and assuming a Gaussian distribution.
 
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf}
       \vspace{-5mm}
       \caption{$\sigma_a$ with corresponding error for \tss{239}Pu}
       \label{fig:XPu239}
@@ -468,7 +474,7 @@ a standard deviation, and assuming a Gaussian distribution.
 
     \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf}
       \vspace{-5mm}
       \caption{$\sigma_a$ with corresponding error for \tss{240}Pu}
       \label{fig:XPu240}
@@ -477,7 +483,7 @@ a standard deviation, and assuming a Gaussian distribution.
 
     \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf}
       \vspace{-5mm}
       \caption{$\sigma_a$ with corresponding error for \tss{241}Pu}
       \label{fig:XPu241}
@@ -486,7 +492,7 @@ a standard deviation, and assuming a Gaussian distribution.
 
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{../Weighting/X_Sections/XwVar_U_235_92_a.pdf}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/X_Sections/XwVar_U_235_92_a.pdf}
       \vspace{-5mm}
       \caption{$\sigma_a$ with corresponding error for \tss{235}U}
       \label{fig:XU235}
@@ -495,17 +501,57 @@ a standard deviation, and assuming a Gaussian distribution.
 
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{../Weighting/X_Sections/XwVar_U_238_92_a.pdf}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/X_Sections/XwVar_U_238_92_a.pdf}
       \vspace{-5mm}
       \caption{$\sigma_a$ with corresponding error for \tss{238}U}
       \label{fig:XU238}
     \end{center}
   \end{figure}
-  
 
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/X_Sections/XwVar_Pu_239_94_f.pdf}
+      \vspace{-5mm}
+      \caption{$\sigma_f$ with corresponding error for \tss{239}Pu}
+      \label{fig:XPu239}
+    \end{center}
+  \end{figure}
 
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/X_Sections/XwVar_Pu_240_94_f.pdf}
+      \vspace{-5mm}
+      \caption{$\sigma_f$ with corresponding error for \tss{240}Pu}
+      \label{fig:XPu240}
+    \end{center}
+  \end{figure}
 
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/X_Sections/XwVar_Pu_241_94_f.pdf}
+      \vspace{-5mm}
+      \caption{$\sigma_f$ with corresponding error for \tss{241}Pu}
+      \label{fig:XPu241}
+    \end{center}
+  \end{figure}
 
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/X_Sections/XwVar_U_235_92_f.pdf}
+      \vspace{-5mm}
+      \caption{$\sigma_f$ with corresponding error for \tss{235}U}
+      \label{fig:XU235}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.9\columnwidth]{../Weighting/X_Sections/XwVar_U_238_92_f.pdf}
+      \vspace{-5mm}
+      \caption{$\sigma_f$ with corresponding error for \tss{238}U}
+      \label{fig:XU238}
+    \end{center}
+  \end{figure}
 
   
     
@@ -533,14 +579,15 @@ a standard deviation, and assuming a Gaussian distribution.
   With the following codes the sampling space was detemined.
 
   
-  \pythonscript{../Origen2/Sample_Gen}{Sample Generation code}
+  \pythonscript{../Origen2/SampleGen}{Sample Generation code}
 
 
-  Below are histograms of the sampling space
+  Below are histograms of the sampling space, most of the others look
+  the same, with samples surrounding the mean.
   
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{../Origen2/94Pu239aHIST.pdf}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/94Pu239aHIST.pdf}
       \vspace{-5mm}
       \caption{Histogram of sample space for $\sigma_a$ \tss{239}Pu}
       \label{fig:SPu239a}
@@ -549,7 +596,7 @@ a standard deviation, and assuming a Gaussian distribution.
 
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{../Origen2/94Pu240fHIST.pdf}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/94Pu240fHIST.pdf}
       \vspace{-5mm}
       \caption{Histogram of sample space for $\sigma_f$ \tss{240}Pu}
       \label{fig:SPu240f}
@@ -588,12 +635,11 @@ a standard deviation, and assuming a Gaussian distribution.
   %% \end{table}
 
   
-\item{Plot Results}
+\item[\done]{Plot Results}
 
   The function for plotting results are shown below.
 
-  
-  \pythonscript{../Origen2/Sample_Gen}{Sample Generation code}
+  \pythonscript{../Origen2/PLOToutput}{Code for plots}
 
   
 \end{todolist}
@@ -610,18 +656,173 @@ The uncertain parameters were the absorption and fission
 cross-sections for \tss{235}U, \tss{238}U, \tss{239}Pu,
 \tss{240}Pu, and \tss{241}Pu.
 
-Results are graphically represented below.
+Results are graphically represented below. 
 
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{../Origen2/94Pu240fHIST.pdf}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/PU239Post_HIST.pdf}
       \vspace{-5mm}
-      \caption{Histogram of sample space for $\sigma_f$ \tss{240}Pu}
-      \label{fig:SPu240f}
+      \caption{Histogram of QOI \tss{239}Pu}
+      \label{fig:POSTHISTPu239}
+    \end{center}
+  \end{figure}
+
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/PU239Post_XY.pdf}
+      \vspace{-5mm}
+      \caption{XY plot of QOI \tss{239}Pu}
+      \label{fig:POSTXYPu239}
     \end{center}
   \end{figure}
 
 
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/PU242Post_HIST.pdf}
+      \vspace{-5mm}
+      \caption{Histogram of QOI \tss{242}Pu}
+      \label{fig:POSTHISTPu242}
+    \end{center}
+  \end{figure}
+
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/PU242Post_XY.pdf}
+      \vspace{-5mm}
+      \caption{XY plot of QOI \tss{242}Pu}
+      \label{fig:POSTXYPu242}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/SB125Post_HIST.pdf}
+      \vspace{-5mm}
+      \caption{Histogram of QOI \tss{125}Sb}
+      \label{fig:POSTHISTSb125}
+    \end{center}
+  \end{figure}
+
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/SB125Post_XY.pdf}
+      \vspace{-5mm}
+      \caption{XY plot of QOI \tss{125}Sb}
+      \label{fig:POSTXYSb125}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/EU154Post_HIST.pdf}
+      \vspace{-5mm}
+      \caption{Histogram of QOI \tss{154}Eu}
+      \label{fig:POSTHISTEu154}
+    \end{center}
+  \end{figure}
+
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/EU154Post_XY.pdf}
+      \vspace{-5mm}
+      \caption{XY plot of QOI \tss{154}Eu}
+      \label{fig:POSTXYEu154}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/RH106Post_HIST.pdf}
+      \vspace{-5mm}
+      \caption{Histogram of QOI \tss{106}Rh}
+      \label{fig:POSTHISTRh106}
+    \end{center}
+  \end{figure}
+
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/RH106Post_XY.pdf}
+      \vspace{-5mm}
+      \caption{XY plot of QOI \tss{106}Rh}
+      \label{fig:POSTXYRh106}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/SM150Post_HIST.pdf}
+      \vspace{-5mm}
+      \caption{Histogram of QOI \tss{150}Sm}
+      \label{fig:POSTHISTSm150}
+    \end{center}
+  \end{figure}
+
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/SM150Post_XY.pdf}
+      \vspace{-5mm}
+      \caption{XY plot of QOI \tss{150}Sm}
+      \label{fig:POSTXYSm150}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/ND148Post_HIST.pdf}
+      \vspace{-5mm}
+      \caption{Histogram of QOI \tss{148}Nd}
+      \label{fig:POSTHISTNd148}
+    \end{center}
+  \end{figure}
+
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/ND148Post_XY.pdf}
+      \vspace{-5mm}
+      \caption{XY plot of QOI \tss{148}Nd}
+      \label{fig:POSTXYNd148}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/BA136Post_HIST.pdf}
+      \vspace{-5mm}
+      \caption{Histogram of QOI \tss{136}Ba}
+      \label{fig:POSTHISTBa136}
+    \end{center}
+  \end{figure}
+
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/BA136Post_XY.pdf}
+      \vspace{-5mm}
+      \caption{XY plot of QOI \tss{136}Ba}
+      \label{fig:POSTXYBa136}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/CS134Post_HIST.pdf}
+      \vspace{-5mm}
+      \caption{Histogram of QOI \tss{134}Cs}
+      \label{fig:POSTHISTBa136}
+    \end{center}
+  \end{figure}
+
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{../Origen2/PLOTS/CS134Post_XY.pdf}
+      \vspace{-5mm}
+      \caption{XY plot of QOI \tss{134}Cs}
+      \label{fig:POSTXYCs134}
+    \end{center}
+  \end{figure}
+
+
+I apologize for the wall of graphs. I left some out.
 %------------------------------------------------------------
 %	Prediction
 %------------------------------------------------------------
@@ -629,7 +830,10 @@ Results are graphically represented below.
 \section{Conclusions}
 
 There was an unexpectedly large amount of error in the
-one group cross sections.
+one group cross sections, but currently there is no variation
+in the output, even when I change the cross section by a
+factor of over 1000, I don't think ORIGEN is taking up
+what I am laying down.
 
 %-----------------------------------------------------------
 \bibliography{references}
