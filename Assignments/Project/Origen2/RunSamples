@@ -76,7 +76,7 @@ U238f=Fun.StripNL(U238f)
 ##################### Load TAPE9 Template ###########################
 #####################################################################
 
-with open('BACKUP/TAPE9_BANK.inp') as f:
+with open('ORIGENBACKUP/TAPE9_BANK.inp') as f:
     TAPE9content=f.readlines()
 f.close()
 

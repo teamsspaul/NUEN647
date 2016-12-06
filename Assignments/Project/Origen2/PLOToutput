@@ -26,8 +26,8 @@ import copy
 #For histogram plots
 TimeIndex=3
 #Below should be the same as in 'Sample_Gen' file (I know its lame)
-N=10
-Nbins=3
+N=Fun.N
+Nbins=Fun.Nbins
 
 #Which Time Steps for range...
 T1=0

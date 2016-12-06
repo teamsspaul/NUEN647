@@ -29,8 +29,8 @@ class OneGroupwError:
 ##################### Grab all X-sections ###########################
 #####################################################################
 
-N=10
-Nbins=3
+N=Fun.N
+Nbins=Fun.Nbins
 
 O=[]
 with open('OneGroupXSections') as f:
