@@ -52,6 +52,116 @@
 %% ]{biblatex}
 \setbeamerfont{caption}{size=\tiny}
 
+%\usepackage[usenames,dvipsnames]{color}
+\usepackage{listings}
+\usepackage{courier} % Required for the courier font
+\usepackage{mathtools}
+
+%--------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%---------------------------------------------------------------------
+% This is the color used for comments
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+\definecolor{Blue}{rgb}{0.0,0.0,0.5}
+\lstloadlanguages{Perl,Python} % Load Perl syntax for listings,
+% for a list of other languages supported see:
+%ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=Perl, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\tiny\ttfamily, % Use small true type font
+        %keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        %keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        % Custom functions underlined and blue
+        %keywordstyle=[3]\color{Blue}\underbar, 
+        identifierstyle=, % Nothing special about identifiers
+        % Comments small dark green courier font
+        %commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, 
+        %stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included
+        % in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        % Line continuation (...) like blue comment
+        %morecomment=[l][\color{Blue}]{...}, 
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{White}, % Line numbers are blue and small
+        %numberstyle=\tiny
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+\lstset{language=Python, % Use Python in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Python functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Python function arguments purple
+        % Custom functions underlined and blue
+        keywordstyle=[3]\color{Blue}\underbar, 
+        identifierstyle=, % Nothing special about identifiers
+        % Comments small dark green courier font
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, 
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=3, % 5 spaces per tab
+        %
+        % Put standard Python functions not included in the
+        % default language here
+        morekeywords={rand},
+        %
+        % Put Python function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        % Line continuation (...) like blue comment
+        morecomment=[l][\color{Blue}]{...}, 
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+% Creates a new command to include a perl script, the first
+% parameter is the filename of the script (without .inp), the
+% second parameter is the caption
+\newcommand{\inputdeck}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1,language=Perl]{#1.inp}
+\end{itemize}
+}
+
+\newcommand{\inputdeckpages}[3]{
+\begin{itemize}
+\item[]\lstinputlisting[label=#1,language=Perl,
+       firstline=#2,lastline=#3,basicstyle=\scriptsize]{#1.inp}
+\end{itemize}
+}
+
+%\lstinputlisting[language=Octave, firstline=2, lastline=12]{BitXorMatrix.m}
+
+\newcommand{\pythonscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1}
+\end{itemize}
+}
+
+\newcommand{\pythonscriptpages}[3]{
+  \begin{itemize}
+  \item[]\lstinputlisting[label=#1,language=Python,
+    firstline=#2,lastline=#3,basicstyle=\scriptsize]{#1.inp}
+  \end{itemize}
+}
+
 %\setbeameroption{show notes}
 %\setbeamertemplate{note page}[plain]
 \newcommand{\tss}{\textsuperscript}
@@ -62,6 +172,14 @@
 \setbeamertemplate{itemize subsubitem}{\tiny\raise1.25pt\hbox{\ding{169}}}
 \setbeamertemplate{enumerate item}{\insertenumlabel.}
 
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+  \hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+\newcommand{\ndone}{\rlap{$\square$}{\raisebox{2pt}{}}%
+  \hspace{8pt}}
 
 %%To select specific font
 %{\fontsize{2.5}{4}\selectfont tobesize}
@@ -140,13 +258,13 @@
 \subsection{Current Problem}
 \begin{frame}{Current Problem}
   \begin{columns}
-    \begin{column}{0.5\textwidth}
-      \vspace{-10mm}
+    \begin{column}{0.6\textwidth}
+      %\vspace{10mm}
       \begin{itemize}
       \item{Use of depletion code ORIGEN2}
         \begin{itemize}
         \item{Solves with exponential method}
-        \item{Requires library}
+        \item{Requires libraries}
           \begin{itemize}
           \item{Decay information}
           \item{Fission yield data}
@@ -154,7 +272,8 @@
           \end{itemize}
         \end{itemize}
       \item{PWR system with 3 wt\% enriched uranium}
-      \item{Varied \tss{235}U, \tss{238}U
+      \item{Varied $\sigma_\gamma$
+        and $\sigma_f$ for: \tss{235}U, \tss{238}U,
         \tss{239}Pu, \tss{240}Pu, and \tss{241}Pu}
         \begin{itemize}
         \item{Originally, $\sigma_\gamma$ and $\gamma$ for
@@ -162,10 +281,10 @@
         \end{itemize}
       \end{itemize}
     \end{column}
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.4\textwidth}
       \begin{table}[H]
         \begin{center}
-          \caption{\large{Isotope solve list}}
+          \caption{\large{Quantities of Interest}}
           \label{Table:1}
           \begin{tabular}{l l l}
             \toprule
@@ -183,418 +302,388 @@
 \end{frame}
 
 
-\section{Future}
+\section{Objectives}
 \begin{frame}
-\sectionpage
+\begin{block}{Objectives}
+  \begin{itemize}
+  \item[\ndone]{Build ORIGEN2 model for thermal system, calculating
+  concentrations of QOIs}
+  \item[\ndone]{Determine how to vary cross section inputs for calculation}
+  \item[\ndone]{Determine variance of cross-sections}
+  \item[\ndone]{Create a sampling space for all possible variations of
+    calculations}
+  \item[\ndone]{Write program to plot results}
+  \end{itemize}
+\end{block}
 \end{frame}
 
-\subsection{The PUREX Process}
-\begin{frame}{What is PUREX - A type of laundry detergent?}
-  \vspace{0.5cm}
+
+
+\subsection{ORIGEN2 Model}
+\begin{frame}{ORIGEN2 Model}
   \begin{itemize}
-  \item Plutonium Uranium Redox EXtraction 
+  \item{Model irradiates 1 metric ton of US PWR fuel for a single
+    cycle (15,000 MWd/Mt)}
+  \item{Constant power assumption (37.5 W/g)}
+  \item{Does not include oxygen}
+  \item{Verified with \tss{137}Cs content}
+  \end{itemize}
+  \vspace{4mm}
+  \begin{center}
+    \small
+    $
+    \frac{552.8\ \text{g \tss{137}Cs}}{Mt}\cdot
+    \frac{6.022E23\ \text{atoms}}{137\ \text{g \tss{137}Cs}}\cdot
+    \frac{\text{Fission}}{0.06\ \text{atoms}}\cdot
+    \frac{200\ \text{MeV}}{\text{Fission}}\cdot
+    \frac{1.602E-19\ \text{MJ}}{1\ \text{MeV}}\cdot
+    \frac{1\ \text{day}}{86400\ \text{s}}=15,018\ \frac{\text{MWd}}{Mt}$
+  \end{center}
+\end{frame}
+
+\begin{frame}{ORIGEN2 Model}
+  \inputdeckpages{../Origen2/TAPE5}{4}{25} %11
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{Objectives}
+  \begin{itemize}
+  \item[\done]{Build ORIGEN2 model for thermal system, calculating
+  concentrations of QOIs}
+  \item[\ndone]{Determine how to vary cross section inputs for calculation}
+  \item[\ndone]{Determine variance of cross-sections}
+  \item[\ndone]{Create a sampling space for all possible variations of
+    calculations}
+  \item[\ndone]{Write program to plot results}
+  \end{itemize}
+\end{block}
+\end{frame}
+
+
+
+\subsection{Cross Section Variations}
+\begin{frame}{How the manual says it is\tss{\tiny{\AsteriskThin}}...}
+  \vspace{5mm}
+  \begin{itemize}
+  \item{TAPE9.inp (8th input on LIB card)}
+  \item{TAPE8.inp (9th input on LIB card)}
     \begin{itemize}
-    \item Liquid-liquid solvent extraction
-    \item Many stages:
-      \begin{enumerate}
-      \item{Preparation for Dissolution}
-      \item{Dissolution}
-      \item{Preparation of Dissolved Feed}
-      \item{Primary Decontamination - Extraction to
-        organic\textsuperscript{\tiny{\AsteriskThin}}}
-      \item{Scrubbing}
-      \item{Plutonium Partition - Back-Extraction to
-        aqueous\textsuperscript{\tiny{\AsteriskThin}}}
-      \item{Plutonium Purification}
-      \end{enumerate}
+    \item{Sorry for the confusion}
+    \end{itemize}
+  \item{LPU card}
+    \begin{itemize}
+    \item{Short for Lost Plutonium\tss{\tiny{\AsteriskThin}}}
+    \end{itemize}
+  \item{Programed both, neither worked}
+    \begin{itemize}
+    \item{The first lied to my face}
+    \item{The second complained about:
+      ``An endfile record was detected in a READ statement (unit= 8)''}
+    \item{Didn't find out about the lying until last night}
     \end{itemize}
   \end{itemize}
-  \vspace{1.5cm}
-  \textsuperscript{\tiny{\AsteriskThin\hspace{1mm}- Discussing Next}}
+
+  \begin{table}[H]
+  \begin{center}
+    \label{Table:2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{l l l l l l l l l}
+      \toprule
+      LIB & NUCLID & (n,$\gamma$) & (n,2n) & (n,3n) &
+      (n,f) & (n,$\gamma^*$) & (n,2n\tss{*}) & YYN\\
+      %LIB & Y(\tss{232}Th) & Y(\tss{233}U) & Y(\tss{235}U) &
+      %Y(\tss{238}U) & Y(\tss{239}Pu) & Y(\tss{241}Pu) &
+      %Y(\tss{245}Cm) & Y(\tss{249}Cf)\\
+      \bottomrule
+    \end{tabular}}
+  \end{center}
+  \end{table}
+
+  \vspace{1.3cm}
+  \textsuperscript{\tiny{\AsteriskThin\hspace{1mm} Its not Really}}  
 \end{frame}
 
 
-\begin{frame}{Extraction}
-  $UO_{2(aq)}^{2+}+2NO^{-}_{3(aq)}+2TBP_{(o)}
-  \leftrightarrow UO_2(NO_3)_2\cdot2TBP_{(o)}$\tss{\cite{benedict1982nuclear}}
-  $Pu^{4+}_{(aq)}+4NO^{-}_{3(aq)}+2TBP_{(o)}
-  \leftrightarrow Pu(NO_3)_4\cdot 2TBP_{(o)}$
-  \note[item]{Most of the fission products are
-    left in the aqueous solution
-    at valence III and V states\tss{\cite{kok2009nuclear}}}
-  \vspace{-3mm}
+\begin{frame}
+\begin{block}{Objectives}
+  \begin{itemize}
+  \item[\done]{Build ORIGEN2 model for thermal system, calculating
+  concentrations of QOIs}
+  \item[\wontfix]{Determine how to vary cross section inputs for calculation}
+  \item[\ndone]{Determine variance of cross-sections}
+  \item[\ndone]{Create a sampling space for all possible variations of
+    calculations}
+  \item[\ndone]{Write program to plot results}
+  \end{itemize}
+\end{block}
+\end{frame}
+
+
+
+\subsection{Variance for cross-sections}
+\begin{frame}{Cross-section calculations}
+
+  \begin{equation*}
+    \sigma=\frac{\int\sigma(E)\phi(E)dE}{\int\phi(E)dE}
+  \end{equation*}
+
+  \begin{align*}
+    \phi(E) =& C_1\cdot \frac{E}{E_0^2} \cdot
+    exp\left(-\frac{E}{E_0}\right) &&E<E_{max,th}\\
+    =& \frac{C_2}{E}  &&E_{max,th}<E<E_{max,epi}\\
+    =& C_3 \cdot \frac{\sqrt{\frac{E}{E_f}}}{E_f}
+    \cdot exp\left(-\frac{E}{E_{f}}
+    \right) &&E>E_{max,epi}
+  \end{align*}
+
+
+  {\tiny
+    \setlength{\abovedisplayskip}{6pt}
+    \setlength{\belowdisplayskip}{\abovedisplayskip}
+    \setlength{\abovedisplayshortskip}{0pt}
+    \setlength{\belowdisplayshortskip}{3pt}
+    \begin{align*}
+      C_1=&\frac{E_0^2}{E^2_{max,th}}e^{E_{max,th}/E_0}
+      \\
+      C_2=&1\\
+      C_3=&\frac{E_f}{E_{max,epi}}
+      \cdot
+      e^{\frac{E_{max,epi}}{E_f}}\frac{1}
+      {\sqrt{\frac{E_{max,epi}}{E_f}}}
+    \end{align*}
+    }%
+  {\tiny
+  $E_{max,th}=0.50\ \text{eV}$,
+  $E_{max,epi}=1E5\ \text{eV}$,
+  $\theta_{th}=0.09\ \text{eV}$ (764 K),
+  $\theta_{fis}=1.35E6\ \text{eV}$}%
+\end{frame}
+
+\begin{frame}{Difference Minimization}
   \begin{figure}[H]
-    \vspace*{0.1cm}
     \begin{center}
-      \includegraphics[scale = 0.5]{Extraction}
+      \includegraphics[width=1.1\columnwidth]{../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf}
+      \vspace{-5mm}
+      \label{fig:err}
     \end{center}
   \end{figure}
 \end{frame}
 
-\begin{frame}{Back-Extraction}
-  $Pu(NO_3)_4(TBP)_{2(o)}+Fe^{2+}_{(aq)}\leftrightarrow Pu^{3+}_{(aq)}+4NO^{-}_{3(aq)}+2TBP_{(o)}$\tss{\cite{konings2006chemistry}}
-  \note[item]{The fission products that contribute mostly
-    to the radioactive contamination of product in PUREX
-    are zirconium, niobium, and ruthenium - with multiple
-    oxidation states.}
+\begin{frame}{Flux Distribution}
   \begin{figure}[H]
-    \vspace*{0.1cm}
     \begin{center}
-      \includegraphics[scale = 0.5]{Back_Extraction}
+      \includegraphics[width=1.1\columnwidth]{../Weighting/Flux_Spectra.pdf}
+      \vspace{-5mm}
+      \caption{Flux Spectra used for weighting x-sections and yields}
+      \label{fig:Flux}
     \end{center}
   \end{figure}
 \end{frame}
 
+\begin{frame}{One Group Cross Section Comparison}
+  \begin{table}[H]
+  \begin{center}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{l l l l}
+      \toprule
+      Isotope\tss{Rxn} & ENDF VII & ORIGEN2 & Ratio\\
+      \hline
+      \tss{239}Pu\tss{$\gamma$} & 6.544e+01 & 6.909E+01 & 1.06\\
+      \tss{240}Pu\tss{$\gamma$} & 1.521e+02 & 2.228E+02 & 1.46\\
+      \tss{241}Pu\tss{$\gamma$} & 4.518e+01 & 4.202E+01 & 0.93\\
+      \tss{235}U\tss{$\gamma$}  & 9.387e+00 & 1.068E+01 & 1.14\\
+      \tss{238}U\tss{$\gamma$}  & 4.098e+00 & 8.872E-01 & 0.22\\
+      \tss{239}Pu\tss{f} & 1.179e+02 & 1.211E+02 & 1.03\\
+      \tss{240}Pu\tss{f} & 9.609e-01 & 5.787E-01 & 0.60\\
+      \tss{241}Pu\tss{f} & 1.253e+02 & 1.259E+02 & 1.01\\
+      \tss{235}U\tss{f}  & 4.621e+01 & 4.752E+01 & 1.03\\
+      \tss{238}U\tss{f}  & 2.091e-01 & 9.281E-02 & 0.44\\
+      \bottomrule
+    \end{tabular}}
+  \end{center}
+  \end{table}
+\end{frame}
 
-%% \begin{frame}{Extraction and Back-extraction}
-%%   \begin{columns}
-%%     \begin{column}{0.5\textwidth}
-%%       \vspace{-3mm}
-%%       \begin{itemize}
-%%       \item{Extraction}
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.7cm}\includegraphics[width=1.1\columnwidth]{../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf}
+      \vspace{-5mm}
+      \label{fig:XPu239}
+    \end{center}
+  \end{figure}
+\end{frame}
 
-%%       \item{Back-extraction}
-%%         \begin{itemize}
-%%           \item{An item}
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.7cm}\includegraphics[width=1.1\columnwidth]{../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf}
+      \vspace{-5mm}
+      \label{fig:XPu240}
+    \end{center}
+  \end{figure}
+\end{frame}
 
-%%         \end{itemize}
-%%       \end{itemize}
-%%     \end{column}
-%%     \begin{column}{0.5\textwidth}
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.7cm}\includegraphics[width=1.1\columnwidth]{../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf}
+      \vspace{-5mm}
+      \label{fig:XPu241}
+    \end{center}
+  \end{figure}
+\end{frame}
 
-%%     \end{column}
-%%   \end{columns}  
-%% \end{frame}
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.7cm}\includegraphics[width=1.1\columnwidth]{../Weighting/X_Sections/XwVar_U_235_92_a.pdf}
+      \vspace{-5mm}
+      \label{fig:XU235}
+    \end{center}
+  \end{figure}
+\end{frame}
 
-\subsection{Distribution Coefficients}
-\begin{frame}{Distribution Coefficients - The Missing link}
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.7cm}\includegraphics[width=1.1\columnwidth]{../Weighting/X_Sections/XwVar_U_238_92_a.pdf}
+      \vspace{-5mm}
+      \label{fig:XU238}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.7cm}\includegraphics[width=1.1\columnwidth]{../Weighting/X_Sections/XwVar_Pu_239_94_f.pdf}
+      \vspace{-5mm}
+      \label{fig:XPu239}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.7cm}\includegraphics[width=1.1\columnwidth]{../Weighting/X_Sections/XwVar_Pu_240_94_f.pdf}
+      \vspace{-5mm}
+      \label{fig:XPu240}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.7cm}\includegraphics[width=1.1\columnwidth]{../Weighting/X_Sections/XwVar_Pu_241_94_f.pdf}
+      \vspace{-5mm}
+      \label{fig:XPu241}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.7cm}\includegraphics[width=1.1\columnwidth]{../Weighting/X_Sections/XwVar_U_235_92_f.pdf}
+      \vspace{-5mm}
+      \label{fig:XU235}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[H]
+    \begin{center}
+      \hspace*{-0.7cm}\includegraphics[width=1.1\columnwidth]{../Weighting/X_Sections/XwVar_U_238_92_f.pdf}
+      \vspace{-5mm}
+      \label{fig:XU238}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Single Group Cross Sections with Errors}
+  \begin{table}[H]
+  \begin{center}
+    \label{Table:4}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{l l}
+      \toprule
+      Isotope\tss{Rxn} & $\sigma$ with 1STD Error\\
+      \hline
+      \tss{239}Pu\tss{$\gamma$} & 69.09$\pm$8.15\\
+      \tss{240}Pu\tss{$\gamma$} & 222.8$\pm$50.9\\
+      \tss{241}Pu\tss{$\gamma$} & 42.02$\pm$10.92\\
+      \tss{235}U\tss{$\gamma$}  & 10.68$\pm$3.23\\
+      \tss{238}U\tss{$\gamma$}  & 0.887$\pm$0.175\\
+      \tss{239}Pu\tss{f} & 121.1$\pm$1.2 \\
+      \tss{240}Pu\tss{f} & 0.579$\pm$0.003 \\
+      \tss{241}Pu\tss{f} & 125.9$\pm$2.3 \\
+      \tss{235}U\tss{f}  & 47.52$\pm$0.71 \\
+      \tss{238}U\tss{f}  & 0.093$\pm$8.2e-7 \\
+      \bottomrule
+    \end{tabular}}
+  \end{center}
+  \end{table}
+\end{frame}
+
+\begin{frame}{Objectives}
   \begin{itemize}
-  \item{Distribution Coefficient (D): The ratio between the organic
-  and aqueous phases (aka: D-values)}
-    \begin{equation*}
-      D=\frac{c_{o}}{c_{aq}}
-    \end{equation*}
-    \note[item]{Distribution coefficients can be reported
-      in terms of volume basis (weight per unit volume), or a
-      mass basis (mass of solute per unit mass of solute free
-      solvent)- usually reported on volume basis}
-  \item{Specific element to element}
-  \item{Vary widely with:\tss{\cite{stoller1961reactor}}}
-    \begin{itemize}
-    \item{Composition of phases}
-    \item{Solution saturation}
-    \item{Temperature of the solvent}
-    \end{itemize}
-  \item{The fraction of mass, $f_o$ deposited in the organic
-    phase, assuming a volume ratio between
-    the aqueous and organic phases, $V_R$, is:}
-    \begin{equation*}
-      f_o=(1+D^{-1}V^{-1}_R)^{-1}
-    \end{equation*}
-    \note[item]{Note not a function of density, even though
-      the two solutions have different densities, when solving for
-      this value it cancels out}
-    \note[item]{Solved this way to show, volume matters, and to give
-      me a more intuitive sense of where things are going}
+  \item[\done]{Build ORIGEN2 model for thermal system, calculating
+  concentrations of QOIs}
+  \item[\wontfix]{Determine how to vary cross section inputs for calculation}
+  \item[\done]{Determine variance of cross-sections}
+  \item[\ndone]{Create a sampling space for all possible variations of
+    calculations}
+  \item[\ndone]{Write program to plot results}
   \end{itemize}
 \end{frame}
 
-\subsection{Decontamination Factors}
-\begin{frame}{Decontamination Factors - The Pot of gold}
+\subsection{Sampling Space and Plotting Program}
+\begin{frame}
+
+\end{frame}
+
+\begin{frame}{Objectives}
   \begin{itemize}
-  \item{After several cycles of Pu extraction/scrubbing/back-extraction
-    are completed, the effectiveness of a PUREX cycle is described
-    by the decontamination factor (DF):}
-    \begin{equation*}
-      DF_j=\frac{\left|\frac{c_j}{c_{Pu}}\right|_{initial}}
-      {\left|\frac{c_j}{c_{Pu}}\right|_{final}}
-    \end{equation*}
-  \item{DFs are characteristic of different process cycles}
-  \item{Larger values (10\tss{7}) for industrial scale PUREX (compared
-  to benchtop)\tss{\cite{stoller1961reactor,benedict1982nuclear}}}
+  \item[\done]{Build ORIGEN2 model for thermal system, calculating
+  concentrations of QOIs}
+  \item[\wontfix]{Determine how to vary cross section inputs for calculation}
+  \item[\done]{Determine variance of cross-sections}
+  \item[\done]{Create a sampling space for all possible variations of
+    calculations}
+  \item[\done]{Write program to plot results}
   \end{itemize}
 \end{frame}
 
-%% \begin{frame}{Complexity of reprocessing schemes}
-%%   \begin{figure}[H]
-%%     \vspace*{-1cm}
-%%     \begin{center}
-%%       \includegraphics[scale = 0.4]{PUREX_Process}
-%%       \caption{\tiny{Principal steps in PUREX\tss{\cite{benedict1982nuclear}}}}
-%%     \end{center}
-%%   \end{figure}
-%%   \note[item]{Worry about dependancies of of DC
-%%   Worry about non equilibrium
-%%   flow rates, blah blah blah.
-%%   Show mixer settler columns, show batch.
-%%   What I want to do, get some distribution coefficients
-%%   develop a reasonable process for isolating a large
-%%   fraction of Pu, then, based on process, calculate what
-%%   the decontamination factor should be, and then actually measure it}
-%% \end{frame}
 
-
-%% \begin{frame}{Complexity of reprocessing schemes}
-%%   \begin{figure}[H]
-%%     \vspace*{-1cm}
-%%     \begin{center}
-%%       \includegraphics[scale = 0.4]{mixer}
-%%       \caption{\tiny{Mixer-Settler Diagram}}
-%%     \end{center}
-%%   \end{figure}
-%% \end{frame}
-
-
-%% \begin{frame}{Complexity of reprocessing schemes}
-%%   \begin{figure}[H]
-%%     \vspace*{-1cm}
-%%     \begin{center}
-%%       \includegraphics[scale = 0.35]{stage}
-%%       \caption{\tiny{Multistage countercurrent solvent extraction.
-%%           M, mixer; S, settler.\tss{\cite{benedict1982nuclear}}}}
-%%     \end{center}
-%%   \end{figure}
-%% \end{frame}
-
-
-%% \begin{frame}{Complexity of reprocessing schemes}
-%%   \begin{figure}[H]
-%%     \vspace*{-1cm}
-%%     \begin{center}
-%%       \includegraphics[scale = 0.4]{column}
-%%       \caption{\tiny{Pulsed Column Diagram}}
-%%     \end{center}
-%%   \end{figure}
-%% \end{frame}
-
-\section{Previous Work}
+\section{Results}
 \begin{frame}
 \sectionpage
 \end{frame}
 
-\subsection{Experiment}
 \begin{frame}{Irradiation}
-  \begin{columns}
-    \begin{column}{0.5\textwidth}
-      \vspace{-1cm}
-      \begin{itemize}
-      \item{12.9 $\pm$ 0.1 mg of DUO\tsbs{2} was irradiated}
-        \begin{itemize}
-        \item{High Flux Isotope Reactor at Oak Ridge National Laboratory}
-        \end{itemize}
-      \item{Burnup was 4.43 $\pm$ 0.31 GWd/tHM\tss{\cite{swinney2015experimental}}}
-      \item{0.196 $\pm$ mg of total Pu was produced as measured by ICP-MS}
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \begin{figure}[H]
-        \vspace*{-1cm}
-        \begin{center}
-	   \includegraphics[scale = 0.4]{irradiated}
-           %\caption{\tiny{Picture of irradiated sample}}
-	\end{center}
-      \end{figure}
-    \end{column}
-  \end{columns}  
-  \end{frame}
+
+\end{frame}
 
 \begin{frame}{Dissolution of the spent fuel pellet}
-      \begin{figure}[H]
-        \vspace*{-1cm}
-        \begin{center}
-	   \includegraphics[scale = 0.65]{dissolution}
-	\end{center}
-      \end{figure}
+
 \end{frame}
 
 \begin{frame}{Glovebox}
-      \begin{figure}[H]
-        \vspace*{-1cm}
-        \begin{center}
-	   \includegraphics[scale = 0.5]{glovebox}
-	\end{center}
-      \end{figure}
+
 \end{frame}
 
 \begin{frame}{Experiments}
-  \begin{itemize}
-  \item{Single stage extraction and back-extraction}
-    \begin{itemize}
-    \item{Purpose: quantify product recovery, D-values and DF values
-      for single stage extraction and back extraction}
-    \item{Conditions:}
-    \end{itemize}
-  \end{itemize}
-  \begin{center}
-    \vskip -0.2cm
-    {\fontsize{2.5}{4}\selectfont
-      \begin{tabular}{l  c  c}\toprule
-        Starting Solution  & Extraction Solution
-        & Back extraction solution \\ \midrule \vspace{0.1cm}
-        4 M nitric acid & 30\% vol.\% TBP, 70 vol.\% kerosene & 0.024 M ferrous sulfamate in 0.75 M nitric acid \\ \bottomrule
-      \end{tabular}
-      }
-  \end{center}
-  \begin{itemize}
-  \item{Multi-contact extraction and back-extraction}
-    \begin{itemize}
-    \item{Purpose: Maximize recovery of Pu with 4 extractions,
-      3 back extractions}
-    \item{Conditions:}
-    \end{itemize}
-  \end{itemize}
-    \begin{center}
-    \vskip -0.2cm
-    {\fontsize{2.5}{4}\selectfont
-      \begin{tabular}{l  c  c}\toprule
-        Starting Solution  & Extraction Solution
-        & Back extraction solution \\ \midrule \vspace{0.1cm}
-        4 M nitric acid & 30\% vol.\% TBP, 70 vol.\% kerosene & 0.024 M ferrous sulfamate in 4 M nitric acid \\ \bottomrule
-      \end{tabular}
-      }
-  \end{center}
+
 \end{frame}
 
-\subsection{Recovery of Pu and U}
-\begin{frame}{Previous Experiment Results}
-  \begin{block}{Recoveries of U and Pu}
-    \begin{center}
-      \vskip -0.2cm
-   %{\fontsize{2.5}{4}\selectfont
-  \begin{tabular}{l  c  c}\toprule
-                & Pu Recovery & U Recovery \\ \midrule \vspace{0.1cm}
-   Single stage         & (83.4$\pm$9.5)\% & (11.2$\pm$1.3)\% \\
-   Multi-contact Cycle 1 & (99.7$\pm$4.2)\% & (6.8$\pm$0.3)\% \\
-   Multi-contact Cycle 2 & (93.0$\pm$4.6)\% & (6.6$\pm$0.3)\% \\
-   Overall Experiment 2 & (92.7$\pm$6.0)\% & (0.45$\pm$0.03)\% \\ \bottomrule
-  \end{tabular}
-  %}
-  \end{center}
-  \end{block}
-\end{frame}
-
-\subsection{Experimental Decontamination Factors}
-\begin{frame}{Previous Experiment Results}
-  \vspace{-0.6cm}
-  \begin{block}{Decontamination Factors}
-    \begin{center}
-      \vskip -0.2cm
-  {\fontsize{7}{11.2}\selectfont
-  \begin{tabular}{l  c  c c c c}\toprule
-   Element (Z)  & SS & Error & MC Cycle 1 & Error & Isotopes Used\\ \midrule 
-   Rb(37) & 39.0 & 5.9 & 11.8 & 0.8 & $^{85}$Rb \\
-   Sr(38) & 283  & 43  & 84.6 & 5.9 & $^{90}$Sr \\
-   Mo(42) & 5.7  & 0.8 & 1.9  & 0.2 & $^{97,98,100}$Mo \\
-   Ru(44) & 59.2 & 6.4 & 16.6 & 2.5 & $^{101,102,104}$Ru \\
-   Pd(46) & 65   & 14  & 8.9  & 1.2 & $^{110}$Pd \\
-   Cd(48) & 74   & 17  & 22.1 & 2.5 & $^{112}$Cd \\
-   Cs(55) & 177  & 28  & 52.9 & 3.9 & $^{133}$Cs \\
-   Ce(58) & 43   & 16  & 11.5 & 4.9 & $^{140,142}$Ce \\
-   Nd(60) & 19.2 & 2.1 & 5.9  & 0.4 & $^{143}$Nd \\
-   Pm(61) & 12.8 & 1.9 & 3.9  & 0.3 & $^{147}$Pm \\
-   Sm(62) & 11.5 & 1.5 & 3.6  & 0.3 & $^{151}$Sm \\
-   Eu(63) & 10.0 & 1.4 & 3.6  & 0.3 & $^{154}$Eu \\
-   U(92) & 7.4   & 1.2 & 14.7 & 0.9 & $^{238}$U \\ \bottomrule
-  \end{tabular}
-  }
-  \end{center}
-  \end{block}
-\end{frame}
-
+\section{Conclusions}
 \begin{frame}{Conclusions}
-  \begin{itemize}
-  \item{Two PUREX experiments were conducted}
-    \begin{itemize}
-    \item{Single stage: Determined DC values for Pu, U and several FP}
-    \item{Multi-contact: Utilized Experiment 1 to recover over 92\%
-      of Pu while leaving less than 1\% of the U}
-    \end{itemize}
-  \item{DF values were measured for 12 FP elements}
-  \item{DF values were lower than those typically found in industrial
-    scale PUREX plants due to multiple extraction and back-extraction
-    steps without an intermittent scrubbing step.}
-  \item{This work provide DF data that will be built upon for
-        nuclear forensic investigations of interdicted Pu.}
-  \end{itemize}
+
 \end{frame}
-
-
-\section{Future Work}
-\begin{frame}
-\sectionpage
-\end{frame}
-
-\begin{frame}{Future Work}
-  \begin{itemize}
-  \item{Modify Multi-contact extraction, to recover a larger
-    fraction of Pu}
-  \item{Investigation of how D-values for (Cs, Sb,
-    Eu, Rb, Sr, Nd, Pm, and Sm) change as a function of
-    nitric acid concentration}
-  \item{Determine statistical uncertainty of D and DF values.}
-    \begin{itemize}
-    \item{Repeat above experiments 3-5 times}
-    \end{itemize}
-  \item{Connect D-values with process information to DF values}
-\end{itemize}
-\end{frame}
-
-\appendix
-\section{Questions?}
-\begin{frame}
-\sectionpage
-\end{frame}
-
-\begin{frame}{Previous Experiment Results}
-  \begin{figure}[H]
-    \vspace*{-.1cm}
-    \begin{center}
-      \includegraphics[scale = 0.6]{df}
-      \vspace{-0.5cm}
-      \caption{\tiny{Decontamination Factors for multi-contact extraction.}}
-    \end{center}
-  \end{figure}
-\end{frame}
-
-\begin{frame}[allowframebreaks]{References}
-\def\newblock{}
-\nocite{*}
-\scriptsize{\bibliographystyle{plain}}
-\bibliography{references}
-\end{frame}
-
-\begin{frame}{Mass Spec}
-  \begin{figure}[H]
-    \vspace*{-1cm}
-    \begin{center}
-      \includegraphics[scale = 0.75]{instrument_response}
-    \end{center}
-  \end{figure}
-\end{frame}
-
-  %% \begin{columns}
-  %%   \begin{column}{0.5\textwidth}
-  %%     \vspace{-10mm}
-  %%     \begin{itemize}
-  %%     \item{Attribution for unpurified Pu has been previously studied
-  %%       \tss{\cite{chirayath2015trace,scott2005nuclear,glaser2009isotopic}}}
-  %%     \item{Interdicted Pu would likely have been processed}
-  %%     \item{Lack of literature on decontamination factors and
-  %%       distribution coefficients for useful forensic elements (Cs, Sb,
-  %%       Eu, Rb, Sr, Nd, Pm, and Sm)} 
-  %%     \end{itemize}
-  %%   \end{column}
-  %%   \begin{column}{0.5\textwidth}
-  %%     \begin{figure}[H]
-  %%       \vspace*{-1cm}
-  %%       \begin{center}
-  %%         \includegraphics[scale = 0.5]{Stoller}
-  %%         \vspace{-0.5cm}
-  %%          \caption{\tiny{Adapted from Stoller\tss{\cite{stoller1961reactor}}}}
-  %%       \end{center}
-  %%     \end{figure}
-  %%   \end{column}
-  %% \end{columns}  
-
 
 \end{document}
