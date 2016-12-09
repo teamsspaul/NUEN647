@@ -92,7 +92,7 @@ for k in range(0,len(U238f)):
     ############################################################
 
     #Open output file
-    output=open("tape8.inp","w")
+    output=open("TAPE50.inp","w")
     #output=open("tape9.inp","w")
     START=False #To print everything (True), otherwise print somethings...
     PRINTFIRSTLINE=True #Print first line of actinides lib
@@ -153,7 +153,7 @@ for k in range(0,len(U238f)):
 
     #I think tape9 needs to be executable?
     #os.system("chmod +x tape9.inp")
-    os.system("chmod +x tape8.inp")
+    #os.system("chmod +x TAPE50.inp")
     
     #Run with new TAPE9, also deletes old files
     print("Run number :"+str(k+1))
