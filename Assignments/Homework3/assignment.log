@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  10 DEC 2016 12:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  10 DEC 2016 15:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -783,7 +783,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 \openout4 = `assignment.toc'.
 
  [2]
-<Problem1_R/Problem1.pdf, id=37, 614.295pt x 794.97pt>
+<Problem1_R/Problem1.pdf, id=42, 614.295pt x 794.97pt>
 File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 
 <use Problem1_R/Problem1.pdf>
@@ -794,7 +794,7 @@ File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 Package pdftex.def Info: Problem1_R/Problem1.pdf used on input line 311.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 
-<Problem1_R/Problem1.pdf, id=40, page=1, 614.295pt x 794.97pt>
+<Problem1_R/Problem1.pdf, id=45, page=1, 614.295pt x 794.97pt>
 File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 
 <use Problem1_R/Problem1.pdf, page 1>
@@ -841,7 +841,7 @@ Package pdftex.def Info: Problem1_R/Problem1.pdf, page1 used on input line 311.
 
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [4 <./Problem1_R/Problem1.pdf>]
-<Problem1_R/Problem1.pdf, id=87, page=2, 614.295pt x 794.97pt>
+<Problem1_R/Problem1.pdf, id=92, page=2, 614.295pt x 794.97pt>
 File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 
 <use Problem1_R/Problem1.pdf, page 2>
@@ -860,7 +860,7 @@ Package pdftex.def Info: Problem1_R/Problem1.pdf, page2 used on input line 311.
 
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [5 <./Problem1_R/Problem1.pdf>]
-<Problem1_R/Problem1.pdf, id=101, page=3, 614.295pt x 794.97pt>
+<Problem1_R/Problem1.pdf, id=106, page=3, 614.295pt x 794.97pt>
 File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 
 <use Problem1_R/Problem1.pdf, page 3>
@@ -879,7 +879,7 @@ Package pdftex.def Info: Problem1_R/Problem1.pdf, page3 used on input line 311.
 
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [6 <./Problem1_R/Problem1.pdf>]
-<Problem1_R/Problem1.pdf, id=112, page=4, 614.295pt x 794.97pt>
+<Problem1_R/Problem1.pdf, id=117, page=4, 614.295pt x 794.97pt>
 File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 
 <use Problem1_R/Problem1.pdf, page 4>
@@ -898,7 +898,7 @@ Package pdftex.def Info: Problem1_R/Problem1.pdf, page4 used on input line 311.
 
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [7 <./Problem1_R/Problem1.pdf>]
-<Problem1_R/Problem1.pdf, id=124, page=5, 614.295pt x 794.97pt>
+<Problem1_R/Problem1.pdf, id=129, page=5, 614.295pt x 794.97pt>
 File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 
 <use Problem1_R/Problem1.pdf, page 5>
@@ -917,7 +917,7 @@ Package pdftex.def Info: Problem1_R/Problem1.pdf, page5 used on input line 311.
 
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [8 <./Problem1_R/Problem1.pdf>]
-<Problem1_R/Problem1.pdf, id=135, page=6, 614.295pt x 794.97pt>
+<Problem1_R/Problem1.pdf, id=140, page=6, 614.295pt x 794.97pt>
 File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 
 <use Problem1_R/Problem1.pdf, page 6>
@@ -936,7 +936,7 @@ Package pdftex.def Info: Problem1_R/Problem1.pdf, page6 used on input line 311.
 
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [9 <./Problem1_R/Problem1.pdf>]
-<Problem1_R/Problem1.pdf, id=146, page=7, 614.295pt x 794.97pt>
+<Problem1_R/Problem1.pdf, id=151, page=7, 614.295pt x 794.97pt>
 File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 
 <use Problem1_R/Problem1.pdf, page 7>
@@ -955,7 +955,7 @@ Package pdftex.def Info: Problem1_R/Problem1.pdf, page7 used on input line 311.
 
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [10 <./Problem1_R/Problem1.pdf>]
-<Problem1_R/Problem1.pdf, id=157, page=8, 614.295pt x 794.97pt>
+<Problem1_R/Problem1.pdf, id=162, page=8, 614.295pt x 794.97pt>
 File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 
 <use Problem1_R/Problem1.pdf, page 8>
@@ -974,7 +974,7 @@ Package pdftex.def Info: Problem1_R/Problem1.pdf, page8 used on input line 311.
 
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [11 <./Problem1_R/Problem1.pdf>]
-<Problem1_R/Problem1.pdf, id=169, page=9, 614.295pt x 794.97pt>
+<Problem1_R/Problem1.pdf, id=174, page=9, 614.295pt x 794.97pt>
 File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 
 <use Problem1_R/Problem1.pdf, page 9>
@@ -993,7 +993,7 @@ Package pdftex.def Info: Problem1_R/Problem1.pdf, page9 used on input line 311.
 
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [12 <./Problem1_R/Problem1.pdf>]
-<Problem1_R/Problem1.pdf, id=180, page=10, 614.295pt x 794.97pt>
+<Problem1_R/Problem1.pdf, id=185, page=10, 614.295pt x 794.97pt>
 File: Problem1_R/Problem1.pdf Graphic file (type pdf)
 
 <use Problem1_R/Problem1.pdf, page 10>
@@ -1044,9 +1044,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 486--486
  []
 
 [15]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 505.
+Underfull \hbox (badness 10000) in paragraph at lines 516--516
 
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 516--517
+
+ []
+
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 518.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 (./Problem3/Calculations
@@ -1054,34 +1063,72 @@ LaTeX Font Info:    Try loading font information for T1+pcr on input line 1.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-))
-<Problem3/NNorm.pdf, id=211, 578.16pt x 433.62pt>
+) [16
+
+])
+<Problem3/NNorm.pdf, id=261, 578.16pt x 433.62pt>
 File: Problem3/NNorm.pdf Graphic file (type pdf)
  <use Problem3/NNorm.pdf>
-Package pdftex.def Info: Problem3/NNorm.pdf used on input line 509.
+Package pdftex.def Info: Problem3/NNorm.pdf used on input line 522.
 (pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
 
-[16
+[17] <Problem3/SNorm.pdf, id=309, 578.16pt x 433.62pt>
+File: Problem3/SNorm.pdf Graphic file (type pdf)
 
-] [17 <./Problem3/NNorm.pdf>] 
+<use Problem3/SNorm.pdf>
+Package pdftex.def Info: Problem3/SNorm.pdf used on input line 528.
+(pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
+ <Problem3/V2Norm.pdf, id=310, 578.16pt x 433.62pt>
+File: Problem3/V2Norm.pdf Graphic file (type pdf)
+
+<use Problem3/V2Norm.pdf>
+Package pdftex.def Info: Problem3/V2Norm.pdf used on input line 534.
+(pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
+ [18 <./Problem3/NNorm.pdf> <./Problem3/SNorm.pdf
+
+pdfTeX warning: pdflatex (file ./Problem3/SNorm.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
+>] <Problem3/V3Norm.pdf, id=377, 578.16pt x 433.62pt>
+File: Problem3/V3Norm.pdf Graphic file (type pdf)
+
+<use Problem3/V3Norm.pdf>
+Package pdftex.def Info: Problem3/V3Norm.pdf used on input line 540.
+(pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
+ [19 <./Problem3/V2Norm.pdf> <./Problem3/V3Norm.pdf
+
+pdfTeX warning: pdflatex (file ./Problem3/V3Norm.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 567--570
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 567--570
+
+ []
+
+[20
+
+] 
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 539.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 539.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 594.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 594.
 (./assignment.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 539.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 539.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 594.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 594.
 Package rerunfilecheck Info: File `assignment.out' has not changed.
-(rerunfilecheck)             Checksum: 58E1A720419F084FA3F60A5BC5D57A79;135.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 539.
+(rerunfilecheck)             Checksum: 21F4F757ACAF6C7CBB0C81446F3E80F1;180.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 594.
  ) 
 Here is how much of TeX's memory you used:
- 10125 strings out of 494953
- 142061 string characters out of 6180977
- 280674 words of memory out of 5000000
- 13168 multiletter control sequences out of 15000+600000
+ 10197 strings out of 494953
+ 143038 string characters out of 6180977
+ 282674 words of memory out of 5000000
+ 13196 multiletter control sequences out of 15000+600000
  12871 words of font info for 48 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 40i,18n,46p,250b,1612s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,18n,46p,250b,2147s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist
@@ -1103,10 +1150,10 @@ ype1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/p
 ublic/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on assignment.pdf (17 pages, 425174 bytes).
+Output written on assignment.pdf (20 pages, 471419 bytes).
 PDF statistics:
- 383 PDF objects out of 1000 (max. 8388607)
- 278 compressed objects within 3 object streams
- 71 named destinations out of 1000 (max. 500000)
- 95 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 558 PDF objects out of 1000 (max. 8388607)
+ 358 compressed objects within 4 object streams
+ 112 named destinations out of 1000 (max. 500000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 

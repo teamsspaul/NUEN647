@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  5 DEC 2016 20:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  10 DEC 2016 14:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -477,7 +477,13 @@ LaTeX Font Info:    Try loading font information for T1+pcr on input line 1.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [3] [4] [5]) [6]
+) [3]
+Overfull \hbox (25.71458pt too wide) in paragraph at lines 97--98
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][] 
+ []
+
+[4] [5] [6])
 <../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf, id=34, 794.97pt x 433.62pt>
 File: ../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf Graphic file (type pdf)
 
@@ -485,134 +491,138 @@ File: ../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf used on
  input line 374.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
-
-<../Weighting/Flux_Spectra.pdf, id=35, 794.97pt x 433.62pt>
+ [7]
+<../Weighting/Flux_Spectra.pdf, id=41, 794.97pt x 433.62pt>
 File: ../Weighting/Flux_Spectra.pdf Graphic file (type pdf)
 
 <use ../Weighting/Flux_Spectra.pdf>
 Package pdftex.def Info: ../Weighting/Flux_Spectra.pdf used on input line 385.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
- [7 <../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf>] (../Weighting/Cal_Sig_w_E
-rr [8 <../Weighting/Flux_Spectra.pdf>]
-[9] [10])
-<../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf, id=122, 794.97pt x 433.62pt>
+ [8 <../Weighting/Reduce_Err/E0_vs_SumErr_third.pdf> <../Weighting/Flux_Spectra
+.pdf
+
+pdfTeX warning: pdflatex (file ../Weighting/Flux_Spectra.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+>] (../Weighting/Cal_Sig_w_Err [9] [10])
+<../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf, id=121, 794.97pt x 433.62pt>
 File: ../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf Graphic file (type pdf)
 
 <use ../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf>
 Package pdftex.def Info: ../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf used on 
 input line 468.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
-
-<../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf, id=123, 794.97pt x 433.62pt>
+ [11]
+<../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf, id=125, 794.97pt x 433.62pt>
 File: ../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf Graphic file (type pdf)
 
 <use ../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf>
 Package pdftex.def Info: ../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf used on 
 input line 477.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
- [11 <../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf>]
-<../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf, id=154, 794.97pt x 433.62pt>
+
+<../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf, id=126, 794.97pt x 433.62pt>
 File: ../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf Graphic file (type pdf)
 
 <use ../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf>
 Package pdftex.def Info: ../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf used on 
 input line 486.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
+ [12 <../Weighting/X_Sections/XwVar_Pu_239_94_a.pdf> <../Weighting/X_Sections/X
+wVar_Pu_240_94_a.pdf
 
-<../Weighting/X_Sections/XwVar_U_235_92_a.pdf, id=155, 794.97pt x 433.62pt>
+pdfTeX warning: pdflatex (file ../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf): 
+PDF inclusion: multiple pdfs with page group included in a single page
+>] <../Weighting/X_Sections/XwVar_U_235_92_a.pdf, id=179, 794.97pt x 433.62pt>
 File: ../Weighting/X_Sections/XwVar_U_235_92_a.pdf Graphic file (type pdf)
 
 <use ../Weighting/X_Sections/XwVar_U_235_92_a.pdf>
 Package pdftex.def Info: ../Weighting/X_Sections/XwVar_U_235_92_a.pdf used on i
 nput line 495.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
- [12 <../Weighting/X_Sections/XwVar_Pu_240_94_a.pdf> <../Weighting/X_Sections/X
-wVar_Pu_241_94_a.pdf
 
-pdfTeX warning: pdflatex (file ../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
->] <../Weighting/X_Sections/XwVar_U_238_92_a.pdf, id=205, 794.97pt x 433.62pt>
+<../Weighting/X_Sections/XwVar_U_238_92_a.pdf, id=180, 794.97pt x 433.62pt>
 File: ../Weighting/X_Sections/XwVar_U_238_92_a.pdf Graphic file (type pdf)
 
 <use ../Weighting/X_Sections/XwVar_U_238_92_a.pdf>
 Package pdftex.def Info: ../Weighting/X_Sections/XwVar_U_238_92_a.pdf used on i
 nput line 504.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
+ [13 <../Weighting/X_Sections/XwVar_Pu_241_94_a.pdf> <../Weighting/X_Sections/X
+wVar_U_235_92_a.pdf
 
-<../Weighting/X_Sections/XwVar_Pu_239_94_f.pdf, id=206, 794.97pt x 433.62pt>
+pdfTeX warning: pdflatex (file ../Weighting/X_Sections/XwVar_U_235_92_a.pdf): P
+DF inclusion: multiple pdfs with page group included in a single page
+>]
+<../Weighting/X_Sections/XwVar_Pu_239_94_f.pdf, id=231, 794.97pt x 433.62pt>
 File: ../Weighting/X_Sections/XwVar_Pu_239_94_f.pdf Graphic file (type pdf)
 
 <use ../Weighting/X_Sections/XwVar_Pu_239_94_f.pdf>
 Package pdftex.def Info: ../Weighting/X_Sections/XwVar_Pu_239_94_f.pdf used on 
 input line 513.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
- [13 <../Weighting/X_Sections/XwVar_U_235_92_a.pdf> <../Weighting/X_Sections/Xw
-Var_U_238_92_a.pdf
 
-pdfTeX warning: pdflatex (file ../Weighting/X_Sections/XwVar_U_238_92_a.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
->]
-<../Weighting/X_Sections/XwVar_Pu_240_94_f.pdf, id=256, 794.97pt x 433.62pt>
+<../Weighting/X_Sections/XwVar_Pu_240_94_f.pdf, id=232, 794.97pt x 433.62pt>
 File: ../Weighting/X_Sections/XwVar_Pu_240_94_f.pdf Graphic file (type pdf)
 
 <use ../Weighting/X_Sections/XwVar_Pu_240_94_f.pdf>
 Package pdftex.def Info: ../Weighting/X_Sections/XwVar_Pu_240_94_f.pdf used on 
 input line 522.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
+ [14 <../Weighting/X_Sections/XwVar_U_238_92_a.pdf> <../Weighting/X_Sections/Xw
+Var_Pu_239_94_f.pdf
 
-<../Weighting/X_Sections/XwVar_Pu_241_94_f.pdf, id=257, 794.97pt x 433.62pt>
+pdfTeX warning: pdflatex (file ../Weighting/X_Sections/XwVar_Pu_239_94_f.pdf): 
+PDF inclusion: multiple pdfs with page group included in a single page
+>]
+<../Weighting/X_Sections/XwVar_Pu_241_94_f.pdf, id=281, 794.97pt x 433.62pt>
 File: ../Weighting/X_Sections/XwVar_Pu_241_94_f.pdf Graphic file (type pdf)
 
 <use ../Weighting/X_Sections/XwVar_Pu_241_94_f.pdf>
 Package pdftex.def Info: ../Weighting/X_Sections/XwVar_Pu_241_94_f.pdf used on 
 input line 531.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
- [14 <../Weighting/X_Sections/XwVar_Pu_239_94_f.pdf> <../Weighting/X_Sections/X
-wVar_Pu_240_94_f.pdf
 
-pdfTeX warning: pdflatex (file ../Weighting/X_Sections/XwVar_Pu_240_94_f.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
->] <../Weighting/X_Sections/XwVar_U_235_92_f.pdf, id=307, 794.97pt x 433.62pt>
+<../Weighting/X_Sections/XwVar_U_235_92_f.pdf, id=282, 794.97pt x 433.62pt>
 File: ../Weighting/X_Sections/XwVar_U_235_92_f.pdf Graphic file (type pdf)
 
 <use ../Weighting/X_Sections/XwVar_U_235_92_f.pdf>
 Package pdftex.def Info: ../Weighting/X_Sections/XwVar_U_235_92_f.pdf used on i
 nput line 540.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
+ [15 <../Weighting/X_Sections/XwVar_Pu_240_94_f.pdf> <../Weighting/X_Sections/X
+wVar_Pu_241_94_f.pdf
 
-<../Weighting/X_Sections/XwVar_U_238_92_f.pdf, id=308, 794.97pt x 433.62pt>
+pdfTeX warning: pdflatex (file ../Weighting/X_Sections/XwVar_Pu_241_94_f.pdf): 
+PDF inclusion: multiple pdfs with page group included in a single page
+>] <../Weighting/X_Sections/XwVar_U_238_92_f.pdf, id=332, 794.97pt x 433.62pt>
 File: ../Weighting/X_Sections/XwVar_U_238_92_f.pdf Graphic file (type pdf)
 
 <use ../Weighting/X_Sections/XwVar_U_238_92_f.pdf>
 Package pdftex.def Info: ../Weighting/X_Sections/XwVar_U_238_92_f.pdf used on i
 nput line 549.
 (pdftex.def)             Requested size: 422.77664pt x 230.61148pt.
- [15 <../Weighting/X_Sections/XwVar_Pu_241_94_f.pdf> <../Weighting/X_Sections/X
-wVar_U_235_92_f.pdf
+ [16 <../Weighting/X_Sections/XwVar_U_235_92_f.pdf> <../Weighting/X_Sections/Xw
+Var_U_238_92_f.pdf
 
-pdfTeX warning: pdflatex (file ../Weighting/X_Sections/XwVar_U_235_92_f.pdf): P
+pdfTeX warning: pdflatex (file ../Weighting/X_Sections/XwVar_U_238_92_f.pdf): P
 DF inclusion: multiple pdfs with page group included in a single page
->] (../Origen2/SampleGen [16 <../Weighting/X_Sections/XwVar_U_238_92_f.pdf>])
-<../Origen2/PLOTS/94Pu239aHIST.pdf, id=383, 578.16pt x 433.62pt>
+>] (../Origen2/SampleGen [17])
+<../Origen2/PLOTS/94Pu239aHIST.pdf, id=384, 578.16pt x 433.62pt>
 File: ../Origen2/PLOTS/94Pu239aHIST.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/94Pu239aHIST.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/94Pu239aHIST.pdf used on input line 5
 90.
 (pdftex.def)             Requested size: 361.71336pt x 271.28311pt.
- [17]
-<../Origen2/PLOTS/94Pu240fHIST.pdf, id=387, 578.16pt x 433.62pt>
+
+<../Origen2/PLOTS/94Pu240fHIST.pdf, id=385, 578.16pt x 433.62pt>
 File: ../Origen2/PLOTS/94Pu240fHIST.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/94Pu240fHIST.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/94Pu240fHIST.pdf used on input line 5
 99.
 (pdftex.def)             Requested size: 361.71336pt x 271.28311pt.
- [18 <../Origen2/PLOTS/94Pu239aHIST.pdf> <../Origen2/PLOTS/94Pu240fHIST.pdf
-
-pdfTeX warning: pdflatex (file ../Origen2/PLOTS/94Pu240fHIST.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
->] (../Origen2/PLOToutput
+ [18 <../Origen2/PLOTS/94Pu239aHIST.pdf>] (../Origen2/PLOToutput
 Overfull \hbox (1.71434pt too wide) in paragraph at lines 7--8
 [][][][][][][][] 
  []
@@ -642,15 +652,16 @@ Overfull \hbox (1.71434pt too wide) in paragraph at lines 24--26
 [][][][][][][][] 
  []
 
-[19]) [20] <../Origen2/PLOTS/PU239Post_HIST.pdf, id=432, 578.16pt x 433.62pt>
+[19 <../Origen2/PLOTS/94Pu240fHIST.pdf>] [20])
+<../Origen2/PLOTS/PU239Post_HIST.pdf, id=431, 578.16pt x 433.62pt>
 File: ../Origen2/PLOTS/PU239Post_HIST.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/PU239Post_HIST.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/PU239Post_HIST.pdf used on input line
  663.
 (pdftex.def)             Requested size: 361.71336pt x 271.28311pt.
-
-<../Origen2/PLOTS/PU239Post_XY.pdf, id=433, 794.97pt x 433.62pt>
+ [21]
+<../Origen2/PLOTS/PU239Post_XY.pdf, id=435, 794.97pt x 433.62pt>
 File: ../Origen2/PLOTS/PU239Post_XY.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/PU239Post_XY.pdf>
@@ -658,18 +669,18 @@ Package pdftex.def Info: ../Origen2/PLOTS/PU239Post_XY.pdf used on input line 6
 72.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
 
-<../Origen2/PLOTS/PU242Post_HIST.pdf, id=434, 578.16pt x 433.62pt>
+<../Origen2/PLOTS/PU242Post_HIST.pdf, id=436, 578.16pt x 433.62pt>
 File: ../Origen2/PLOTS/PU242Post_HIST.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/PU242Post_HIST.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/PU242Post_HIST.pdf used on input line
  682.
 (pdftex.def)             Requested size: 361.71336pt x 271.28311pt.
- [21 <../Origen2/PLOTS/PU239Post_HIST.pdf> <../Origen2/PLOTS/PU239Post_XY.pdf
+ [22 <../Origen2/PLOTS/PU239Post_HIST.pdf> <../Origen2/PLOTS/PU239Post_XY.pdf
 
 pdfTeX warning: pdflatex (file ../Origen2/PLOTS/PU239Post_XY.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <../Origen2/PLOTS/PU242Post_XY.pdf, id=465, 794.97pt x 433.62pt>
+>] <../Origen2/PLOTS/PU242Post_XY.pdf, id=467, 794.97pt x 433.62pt>
 File: ../Origen2/PLOTS/PU242Post_XY.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/PU242Post_XY.pdf>
@@ -677,18 +688,18 @@ Package pdftex.def Info: ../Origen2/PLOTS/PU242Post_XY.pdf used on input line 6
 91.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
 
-<../Origen2/PLOTS/SB125Post_HIST.pdf, id=466, 578.16pt x 433.62pt>
+<../Origen2/PLOTS/SB125Post_HIST.pdf, id=468, 578.16pt x 433.62pt>
 File: ../Origen2/PLOTS/SB125Post_HIST.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/SB125Post_HIST.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/SB125Post_HIST.pdf used on input line
  700.
 (pdftex.def)             Requested size: 361.71336pt x 271.28311pt.
- [22 <../Origen2/PLOTS/PU242Post_HIST.pdf> <../Origen2/PLOTS/PU242Post_XY.pdf
+ [23 <../Origen2/PLOTS/PU242Post_HIST.pdf> <../Origen2/PLOTS/PU242Post_XY.pdf
 
 pdfTeX warning: pdflatex (file ../Origen2/PLOTS/PU242Post_XY.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <../Origen2/PLOTS/SB125Post_XY.pdf, id=491, 794.97pt x 433.62pt>
+>] <../Origen2/PLOTS/SB125Post_XY.pdf, id=493, 794.97pt x 433.62pt>
 File: ../Origen2/PLOTS/SB125Post_XY.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/SB125Post_XY.pdf>
@@ -696,18 +707,18 @@ Package pdftex.def Info: ../Origen2/PLOTS/SB125Post_XY.pdf used on input line 7
 09.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
 
-<../Origen2/PLOTS/EU154Post_HIST.pdf, id=492, 578.16pt x 433.62pt>
+<../Origen2/PLOTS/EU154Post_HIST.pdf, id=494, 578.16pt x 433.62pt>
 File: ../Origen2/PLOTS/EU154Post_HIST.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/EU154Post_HIST.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/EU154Post_HIST.pdf used on input line
  718.
 (pdftex.def)             Requested size: 361.71336pt x 271.28311pt.
- [23 <../Origen2/PLOTS/SB125Post_HIST.pdf> <../Origen2/PLOTS/SB125Post_XY.pdf
+ [24 <../Origen2/PLOTS/SB125Post_HIST.pdf> <../Origen2/PLOTS/SB125Post_XY.pdf
 
 pdfTeX warning: pdflatex (file ../Origen2/PLOTS/SB125Post_XY.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <../Origen2/PLOTS/EU154Post_XY.pdf, id=518, 794.97pt x 433.62pt>
+>] <../Origen2/PLOTS/EU154Post_XY.pdf, id=520, 794.97pt x 433.62pt>
 File: ../Origen2/PLOTS/EU154Post_XY.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/EU154Post_XY.pdf>
@@ -715,18 +726,18 @@ Package pdftex.def Info: ../Origen2/PLOTS/EU154Post_XY.pdf used on input line 7
 27.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
 
-<../Origen2/PLOTS/RH106Post_HIST.pdf, id=519, 578.16pt x 433.62pt>
+<../Origen2/PLOTS/RH106Post_HIST.pdf, id=521, 578.16pt x 433.62pt>
 File: ../Origen2/PLOTS/RH106Post_HIST.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/RH106Post_HIST.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/RH106Post_HIST.pdf used on input line
  736.
 (pdftex.def)             Requested size: 361.71336pt x 271.28311pt.
- [24 <../Origen2/PLOTS/EU154Post_HIST.pdf> <../Origen2/PLOTS/EU154Post_XY.pdf
+ [25 <../Origen2/PLOTS/EU154Post_HIST.pdf> <../Origen2/PLOTS/EU154Post_XY.pdf
 
 pdfTeX warning: pdflatex (file ../Origen2/PLOTS/EU154Post_XY.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <../Origen2/PLOTS/RH106Post_XY.pdf, id=544, 794.97pt x 433.62pt>
+>] <../Origen2/PLOTS/RH106Post_XY.pdf, id=547, 794.97pt x 433.62pt>
 File: ../Origen2/PLOTS/RH106Post_XY.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/RH106Post_XY.pdf>
@@ -734,18 +745,18 @@ Package pdftex.def Info: ../Origen2/PLOTS/RH106Post_XY.pdf used on input line 7
 45.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
 
-<../Origen2/PLOTS/SM150Post_HIST.pdf, id=545, 578.16pt x 433.62pt>
+<../Origen2/PLOTS/SM150Post_HIST.pdf, id=548, 578.16pt x 433.62pt>
 File: ../Origen2/PLOTS/SM150Post_HIST.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/SM150Post_HIST.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/SM150Post_HIST.pdf used on input line
  754.
 (pdftex.def)             Requested size: 361.71336pt x 271.28311pt.
- [25 <../Origen2/PLOTS/RH106Post_HIST.pdf> <../Origen2/PLOTS/RH106Post_XY.pdf
+ [26 <../Origen2/PLOTS/RH106Post_HIST.pdf> <../Origen2/PLOTS/RH106Post_XY.pdf
 
 pdfTeX warning: pdflatex (file ../Origen2/PLOTS/RH106Post_XY.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <../Origen2/PLOTS/SM150Post_XY.pdf, id=577, 794.97pt x 433.62pt>
+>] <../Origen2/PLOTS/SM150Post_XY.pdf, id=579, 794.97pt x 433.62pt>
 File: ../Origen2/PLOTS/SM150Post_XY.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/SM150Post_XY.pdf>
@@ -753,18 +764,18 @@ Package pdftex.def Info: ../Origen2/PLOTS/SM150Post_XY.pdf used on input line 7
 63.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
 
-<../Origen2/PLOTS/ND148Post_HIST.pdf, id=578, 578.16pt x 433.62pt>
+<../Origen2/PLOTS/ND148Post_HIST.pdf, id=580, 578.16pt x 433.62pt>
 File: ../Origen2/PLOTS/ND148Post_HIST.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/ND148Post_HIST.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/ND148Post_HIST.pdf used on input line
  772.
 (pdftex.def)             Requested size: 361.71336pt x 271.28311pt.
- [26 <../Origen2/PLOTS/SM150Post_HIST.pdf> <../Origen2/PLOTS/SM150Post_XY.pdf
+ [27 <../Origen2/PLOTS/SM150Post_HIST.pdf> <../Origen2/PLOTS/SM150Post_XY.pdf
 
 pdfTeX warning: pdflatex (file ../Origen2/PLOTS/SM150Post_XY.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <../Origen2/PLOTS/ND148Post_XY.pdf, id=603, 794.97pt x 433.62pt>
+>] <../Origen2/PLOTS/ND148Post_XY.pdf, id=605, 794.97pt x 433.62pt>
 File: ../Origen2/PLOTS/ND148Post_XY.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/ND148Post_XY.pdf>
@@ -772,18 +783,18 @@ Package pdftex.def Info: ../Origen2/PLOTS/ND148Post_XY.pdf used on input line 7
 81.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
 
-<../Origen2/PLOTS/BA136Post_HIST.pdf, id=604, 578.16pt x 433.62pt>
+<../Origen2/PLOTS/BA136Post_HIST.pdf, id=606, 578.16pt x 433.62pt>
 File: ../Origen2/PLOTS/BA136Post_HIST.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/BA136Post_HIST.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/BA136Post_HIST.pdf used on input line
  790.
 (pdftex.def)             Requested size: 361.71336pt x 271.28311pt.
- [27 <../Origen2/PLOTS/ND148Post_HIST.pdf> <../Origen2/PLOTS/ND148Post_XY.pdf
+ [28 <../Origen2/PLOTS/ND148Post_HIST.pdf> <../Origen2/PLOTS/ND148Post_XY.pdf
 
 pdfTeX warning: pdflatex (file ../Origen2/PLOTS/ND148Post_XY.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <../Origen2/PLOTS/BA136Post_XY.pdf, id=630, 794.97pt x 433.62pt>
+>] <../Origen2/PLOTS/BA136Post_XY.pdf, id=632, 794.97pt x 433.62pt>
 File: ../Origen2/PLOTS/BA136Post_XY.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/BA136Post_XY.pdf>
@@ -791,30 +802,30 @@ Package pdftex.def Info: ../Origen2/PLOTS/BA136Post_XY.pdf used on input line 7
 99.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
 
-<../Origen2/PLOTS/CS134Post_HIST.pdf, id=631, 578.16pt x 433.62pt>
+<../Origen2/PLOTS/CS134Post_HIST.pdf, id=633, 578.16pt x 433.62pt>
 File: ../Origen2/PLOTS/CS134Post_HIST.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/CS134Post_HIST.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/CS134Post_HIST.pdf used on input line
  808.
 (pdftex.def)             Requested size: 361.71336pt x 271.28311pt.
- [28 <../Origen2/PLOTS/BA136Post_HIST.pdf> <../Origen2/PLOTS/BA136Post_XY.pdf
+ [29 <../Origen2/PLOTS/BA136Post_HIST.pdf> <../Origen2/PLOTS/BA136Post_XY.pdf
 
 pdfTeX warning: pdflatex (file ../Origen2/PLOTS/BA136Post_XY.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <../Origen2/PLOTS/CS134Post_XY.pdf, id=659, 794.97pt x 433.62pt>
+>] <../Origen2/PLOTS/CS134Post_XY.pdf, id=661, 794.97pt x 433.62pt>
 File: ../Origen2/PLOTS/CS134Post_XY.pdf Graphic file (type pdf)
 
 <use ../Origen2/PLOTS/CS134Post_XY.pdf>
 Package pdftex.def Info: ../Origen2/PLOTS/CS134Post_XY.pdf used on input line 8
 17.
 (pdftex.def)             Requested size: 361.71336pt x 197.30402pt.
- (./project.bbl [29 <../Origen2/PLOTS/CS134Post_HIST.pdf> <../Origen2/PLOTS/CS1
+ (./project.bbl [30 <../Origen2/PLOTS/CS134Post_HIST.pdf> <../Origen2/PLOTS/CS1
 34Post_XY.pdf
 
 pdfTeX warning: pdflatex (file ../Origen2/PLOTS/CS134Post_XY.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->]) [30] (./project.aux)
+>]) [31] (./project.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
@@ -824,10 +835,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7313 strings out of 494953
- 110883 string characters out of 6180977
- 219895 words of memory out of 5000000
- 10416 multiletter control sequences out of 15000+600000
+ 7317 strings out of 494953
+ 110943 string characters out of 6180977
+ 220895 words of memory out of 5000000
+ 10420 multiletter control sequences out of 15000+600000
  13360 words of font info for 49 fonts, out of 8000000 for 9000
  17 hyphenation exceptions out of 8191
  38i,14n,47p,281b,1946s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -848,10 +859,10 @@ dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfd
 ing/uzdr.pfb>
-Output written on project.pdf (30 pages, 768007 bytes).
+Output written on project.pdf (31 pages, 769973 bytes).
 PDF statistics:
- 733 PDF objects out of 1000 (max. 8388607)
- 617 compressed objects within 7 object streams
+ 736 PDF objects out of 1000 (max. 8388607)
+ 619 compressed objects within 7 object streams
  0 named destinations out of 1000 (max. 500000)
  161 words of extra memory for PDF output out of 10000 (max. 10000000)
 
