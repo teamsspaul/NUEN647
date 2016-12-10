@@ -373,13 +373,13 @@
     $(\mathcal{L}\phi,\phi^\dag)=(\phi,\mathcal{L}^\dag\phi^\dag)$.
     \\~\\
     Equivalent to:
-    \begin{equation*}
+    \begin{equation}
       \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(\phi^\dag
       \bigtriangledown^2\phi+\phi^\dag\frac{\phi}{L^2}\right)
       =
       \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(\phi\bigtriangledown^2\phi^\dag
       +\phi\frac{\phi^\dag}{L^2}\right)
-    \end{equation*}
+    \end{equation}
     The terms
     \begin{equation*}
       \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(\phi^\dag\frac{\phi}{L^2}\right)
@@ -414,19 +414,76 @@
       \left|
       \phi^\dag\frac{\delta\phi}{\delta x}
       \right|_{x=0}^{x=X}
-      -\int_0^Xdx\ \frac{\delta\phi}{\delta\ x}
+      -\int_0^Xdx\ \frac{\delta\phi}{\delta x}
       \frac{\delta\phi^\dag}{\delta x}dx
       \right)
     \end{align*}
-  }
+  
   Performing another integration by parts,
   with $u=\frac{\delta\phi^\dag}{\delta x}$,
   $du=\frac{\delta^2\phi^dag}{\delta x} dx$ and,
   $v=\phi$, $dv=\frac{\delta \phi}{\delta x} dx$.
   \begin{align*}
-    k
+      =\int_0^Ydy\int_0^Zdz\left(
+      \left|
+      \phi^\dag\frac{\delta\phi}{\delta x}
+      \right|_{x=0}^{x=X}
+      -\left|
+      \phi\frac{\delta\phi^\dag}{\delta x}
+      \right|_{x=0}^{x=X}
+      +\int_0^Xdx\ \phi
+      \frac{\delta^2\phi^\dag}{\delta x^2}dx
+      \right)
   \end{align*}
+  At the boundaries, both $\phi$ and $\phi^\dag$ are
+  a constant, and the derivatives of both at the
+  boundaries are equal, and therefore those terms cancel,
+  leaving
+  \begin{align*}
+    \int_0^Ydy\int_0^Zdz\left(
+      \int_0^Xdx\ \phi
+      \frac{\delta^2\phi^\dag}{\delta x^2}dx
+      \right)
+  \end{align*}
+  which is equal to the $x$ component of the $\bigtriangledown^2$
+  term of the RHS of equation 1 above. 
+  }
 
+
+  \vspace{5mm}
+
+  
+  \problemAnswer{
+    \textbf{Compute the sensitivity to the QoI:}\\~\\
+    I don't know if this is the right way to go about this,
+    but if you modify the first equation listed in this problem to:
+    \begin{equation*}
+      \phi=L^2\left[\frac{Q}{D}+\bigtriangledown^2\phi\right]
+    \end{equation*}
+    and use it as a substitution, then we get something like this,
+    \begin{align*}
+      \text{QoI}&=\int_0^Xdx\int_0^Ydy\int_0^Zdz\
+      \frac{D}{L^2}\phi\\
+      &=\int_0^Xdx\int_0^Ydy\int_0^Zdz\
+      \frac{D}{L^2}\left(
+      L^2\left[\frac{Q}{D}+\bigtriangledown^2\phi\right]
+      \right)\\
+      &=\int_0^Xdx\int_0^Ydy\int_0^Zdz\
+      \left[Q+D\bigtriangledown^2\phi\right]\\
+    \end{align*}
+    If $Q$ and $D$ both are independent of space, then
+    \begin{align*}
+      \text{QoI}=QXYZ+D\left[
+        \int_0^Ydy\int_0^Zdz\
+        \left|\frac{\delta\phi}{\delta x}\right|_{x=0}^{x=X}+
+        \int_0^Xdx\int_0^Zdz\
+        \left|\frac{\delta\phi}{\delta y}\right|_{y=0}^{y=Y}+
+        \int_0^Xdx\int_0^Zdz\
+        \left|\frac{\delta\phi}{\delta z}\right|_{z=0}^{z=Z}
+        \right]
+    \end{align*}
+    I'm not sure how the adjoint helps me though.
+  }
 \end{homeworkProblem}
 
 \clearpage
@@ -445,6 +502,20 @@
   \item{Stratifid sampling}
   \end{enumerate}
 
+  \pythonscript{Problem3/Calculations}{Script for Problem}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem3/NNorm.pdf}
+    \end{center}
+  \end{figure}
+
+  %% \begin{figure}[H]
+  %%   \begin{center}
+  %%  \includegraphics[width=0.77\columnwidth]{Problem1/SNorm.pdf}
+  %%   \end{center}
+  %% \end{figure}
+  
 \end{homeworkProblem}
 
 \clearpage

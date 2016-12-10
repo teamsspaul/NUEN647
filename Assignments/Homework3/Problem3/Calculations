@@ -8,30 +8,33 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 start_time = time.time()
-from scipy.stats import multivariate_normal
-
-import Functions as fun
+from scipy.stats import norm
 
 ################################################################
 ###################### Calculations ############################
 ################################################################
 
-u=np.zeros(2500)
+N=1000
+Nbins=30
+RandomNumbers=np.random.uniform(low=0,high=1,size=N)
 
-k=np.zeros((2500,2500))
+#Sample the inverse of the CDF of the standard normal
+#distribution
+Samples=norm.ppf(RandomNumbers)
 
-for i in range(0,50):
-    print(i)
-    for j in range(0,50):
-        for l in range(0,50):
-            for m in range(0,50):
-                k[i*50+l,j*50+m] = np.exp(-np.abs(i/50.0-j/50.0)-np.abs(l/50.0-m/50.0))
+#Generate histogram
+fig=plt.figure()
+ax=fig.add_subplot(111)
+ax.set_xlabel('Normal Sampling',fontsize=16)
+ax.set_ylabel('Count out of '+str(N),fontsize=18)
+ax.hist(Samples,Nbins,color='green',alpha=0.7,edgecolor='black')
+#ax.set_xlim(-500,500)
+plt.savefig("NNorm.pdf")
+                            
 
-for m in range(1,5):
-    U=multivariate_normal.rvs(u,k)
-    Z = [[U[50*i+j] for j in range(0,50)] for i in range(0,50)]
-    plt.imshow(Z, extent=(0,1,0,1))
-    plt.savefig("P1realization"+str(m)+".pdf")
+#Strat sampling...
+
+
 
 ###################### Time To execute #################
 
