@@ -40,6 +40,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{fontenc}
 \usepackage{booktabs}
+\usepackage{pdfpages}
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -303,21 +304,161 @@
   \end{table}
   
   Be sure to do cross-validation for each fit, and for each method
-  present your best estimate of the model.
-  
-  %\pythonscript{Problem1/Calculations}{Script for Problem}
-  %% \begin{figure}[H]
-  %%   \begin{center}
-  %%     \includegraphics[width=0.77\columnwidth]{Problem1/P1realization1.pdf}
-  %%   \end{center}
-  %% \end{figure}
-  \problemAnswer{TADA}
-  
+  present your best estimate of the model.\\~\\
+  \problemAnswer{
+  Did this problem in R, and appended the PDF on the following
+  pages.}
+  \includepdf[pages={1-10}]{Problem1_R/Problem1.pdf}
 \end{homeworkProblem}
 
 \clearpage
 
 
+
+%--------------------------------------------------------------------------
+%	PROBLEM 2
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Derive the adjoint operator for the equation
+  \begin{equation*}
+    -\bigtriangledown^2\phi(x,y,z)+\frac{1}{L^2}\phi(x,y,z)=\frac{Q}{D}
+  \end{equation*}
+  \begin{equation*}
+    \phi(0,y,z)=\phi(x,0,z)=\phi(x,y,0)=\phi(X,y,z)=\phi(x,Y,z)
+     =\phi(x,y,Z)=C
+  \end{equation*}
+  Compute the sensitivity to the QOI:
+  \begin{equation*}
+    QoI=\int_0^Xdx\int_0^Ydy\int_0^Zdz\frac{D}{L^2}\phi(x,y,z)
+  \end{equation*}
+  for X,Y,Z,L,, and Q.\\~\\
+
+  \problemAnswer{
+    \textbf{Derive the adjoint operator}\\~\\
+    Define the operator $\mathcal{L}$ as
+    \begin{equation*}
+      \mathcal{L}=\bigtriangledown^2+\frac{1}{L^2}
+    \end{equation*}
+    and the adjoint $\mathcal{L^{\dag}}$ as
+    \begin{equation*}
+      \mathcal{L^{\dag}}=\bigtriangledown^2+\frac{1}{L^2}
+    \end{equation*}
+      \begin{equation*}
+        \phi^\dag(0,y,z)=\phi^\dag(x,0,z)=
+        \phi^\dag(x,y,0)=\phi^\dag(X,y,z)=\phi^\dag(x,Y,z)
+     =\phi^\dag(x,y,Z)=C
+      \end{equation*}
+      Setting:
+      \begin{equation*}
+        \left|\frac{\delta\phi^\dag}{\delta x}\right|_{x=0}
+        =
+        \left|\frac{\delta\phi}{\delta x}\right|_{x=0}
+      \end{equation*}
+      and
+      \begin{equation*}
+        \left|\frac{\delta\phi^\dag}{\delta x}\right|_{x=X}
+        =
+        \left|\frac{\delta\phi}{\delta x}\right|_{x=X}
+      \end{equation*}
+      and similar for the other two dimentions.
+    Also define the inner product as:
+    \begin{equation*}
+      (u,v)=\int_0^Xdx\int_0^Ydy\int_0^Zdz\ uv
+    \end{equation*}
+    
+    \textit{Proof},
+    in order to prove that this is an adjoint
+    operator for the above equation, it needs to be shown that
+    $(\mathcal{L}\phi,\phi^\dag)=(\phi,\mathcal{L}^\dag\phi^\dag)$.
+    \\~\\
+    Equivalent to:
+    \begin{equation*}
+      \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(\phi^\dag
+      \bigtriangledown^2\phi+\phi^\dag\frac{\phi}{L^2}\right)
+      =
+      \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(\phi\bigtriangledown^2\phi^\dag
+      +\phi\frac{\phi^\dag}{L^2}\right)
+    \end{equation*}
+    The terms
+    \begin{equation*}
+      \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(\phi^\dag\frac{\phi}{L^2}\right)
+      =
+      \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(\phi\frac{\phi^\dag}{L^2}\right)
+    \end{equation*}
+    are equal.
+    For the other term with, $\bigtriangledown^2$, we can expand to:
+    \begin{equation*}
+      \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(
+      \phi^\dag\left[
+        \frac{\delta^2\phi}{\delta x^2}+
+        \frac{\delta^2\phi}{\delta y^2}+
+        \frac{\delta^2\phi}{\delta z^2}
+      \right]
+      \right)
+    \end{equation*}
+  }
+  \problemAnswer{
+    Focusing on the $x$ terms, noting that $y$ and $z$
+    will have the same derivation. Integration by parts,
+    with $u=\phi^\dag$,
+    $du=\frac{\delta\phi^\dag}{\delta x}dx$, and
+    $v=\frac{\delta\phi}{dx}$,
+    $dv=\frac{\delta^2\phi}{\delta x^2}dx$ yields.
+
+    \begin{align*}
+      \int_0^Ydy\int_0^Zdz\left(
+      \int_0^Xdx\ \phi^\dag\frac{\delta^2\phi}{\delta x^2}
+      \right)=
+      \int_0^Ydy\int_0^Zdz\left(
+      \left|
+      \phi^\dag\frac{\delta\phi}{\delta x}
+      \right|_{x=0}^{x=X}
+      -\int_0^Xdx\ \frac{\delta\phi}{\delta\ x}
+      \frac{\delta\phi^\dag}{\delta x}dx
+      \right)
+    \end{align*}
+  }
+  Performing another integration by parts,
+  with $u=\frac{\delta\phi^\dag}{\delta x}$,
+  $du=\frac{\delta^2\phi^dag}{\delta x} dx$ and,
+  $v=\phi$, $dv=\frac{\delta \phi}{\delta x} dx$.
+  \begin{align*}
+    k
+  \end{align*}
+
+\end{homeworkProblem}
+
+\clearpage
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 3
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  For the random variable X $\sim$ N(0,1) draw fifty samples
+  and generate histograms using the following sampling
+  techniques
+  \begin{enumerate}[label=(\alph*)]
+  \item{Simple random sampling}
+  \item{Stratifid sampling}
+  \end{enumerate}
+
+\end{homeworkProblem}
+
+\clearpage
+
+
+
+
+%\pythonscript{Problem1/Calculations}{Script for Problem}
+%% \begin{figure}[H]
+%%   \begin{center}
+%%     \includegraphics[width=0.77\columnwidth]{Problem1/P1realization1.pdf}
+%%   \end{center}
+%% \end{figure}
+%\problemAnswer{TADA}
 
 %--------------------------------------------------------------------------
 %% This is an example citation \cite{Tatro2013}.
