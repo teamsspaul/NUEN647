@@ -33,18 +33,8 @@ from scipy.integrate import trapz
 ######################### Functions ############################
 ################################################################
 
-def betau(a,b):
-    return(a/(a+b))
-
-def betao(a,b):
-    return((a*b)/(((a+b)**2)*(a+b+1)))
-
 def Rosen(x,y):
     return((1-x)**2+100*(y-x**2)**2)
-
-def Z(x,y):
-    return(10-Rosen(x,y))
-
 
 def X(t):
     return(2*t-1)
@@ -92,7 +82,7 @@ def Rvdc(N,base=2):
         RN.append(vdc(i+1,base))
     return(RN)
 
-def HIST(Xlabel,Samples,Nbins,filename,N):
+def HIST(Xlabel,Samples,Nbins,N):
     """
     Plot histogram
     """
@@ -106,31 +96,41 @@ def HIST(Xlabel,Samples,Nbins,filename,N):
     #Get data from histogram and plot
     n,bins,patches=ax.hist(Samples,Nbins,
             weights=weights,color='green',alpha=0.7,edgecolor='black')
+    return(n,bins,ax,fig)
 
-    #Modify some of the data from histograms
-    Probability=n #Probability in a particular bin
+def HISTDataToPDF(n,bins,ax,fig):
+    
+    Probability=n #Probability of being in a particular bin
+                  #Make sure to have used the weights when getting n
     XValues=[]
     PDF=[]   #Probability density function (different than Prob)
+             #Divide probability by bin width
     for i in range(0,len(n)):
         XValues.append((bins[i]+bins[i+1])/2)
         PDF.append(Probability[i]/(bins[i+1]-bins[i]))
         
     #Fit the data to a function
+    
+    #First set a zero value (this is assuming the PDF is non negative
+    #and is increasing towards zero)
     m=(PDF[1]-PDF[0])/(XValues[1]-XValues[0]) #slope at start
-    b=PDF[0]-m*XValues[0]
+    b=PDF[0]-m*XValues[0]  #y intercept
     #print(b,PDF[0],PDF[1])
+    
+    #Append the zero value, assuming first two bins slope are constant
     XValues.insert(0,0)
     PDF.insert(0,b)
+
+    #Create a PDF function
     I=interpolate.interp1d(XValues,PDF,
                            fill_value=max(Probability),bounds_error=False)
+    
     #Evaluate the function and see how well it
-    #fits the data
+    #fits the data by plotting it
     x=np.linspace(min(XValues),max(XValues),10000)
-    x=np.linspace(min(XValues),10,10000)
     y=I(x)
     ax.plot(x,y,'r',linewidth=2.0)
-    plt.savefig(filename)
-
+    
     #does the pdf integrate to 1?
-    print(integrate.trapz(I(x),x))
-    return(I)
+    print("Your PDF integrates to: "+str(integrate.trapz(I(x),x)))
+    return(ax,fig)

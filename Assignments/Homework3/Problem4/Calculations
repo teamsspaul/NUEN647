@@ -7,50 +7,47 @@
 import time
 start_time = time.time()
 import Functions as fun
-
+import lhsmdu
+from random import shuffle
 
 ################################################################
 ###################### Calculations ############################
 ################################################################
 
-N=10000  #Samples
-Nbins=200 #Hist Plot
-Nstrata=1000
-filename="Histf.pdf"
+N=50  #Samples
+Nbins=30 #Hist Plot
+Nstrata=10
+filename="StratStrat.pdf"
 
-Xlabel="Stratified Sampling both samples"
-RandomNumbersX=fun.Rstrat(N,Nstrata)
+Xlabel="Stratified Sampling"
+RandomNumbersX=fun.Rstrat(N,Nstrata)  #strat sampling
 RandomNumbersY=fun.Rstrat(N,Nstrata)
+#l=lhsmdu.sample(2,N)  #Hyper cube sampling
+#RandomNumbersX=l[0].A1
+#RandomNumbersY=l[1].A1
+#RandomNumbersX=fun.Rvdc(N,7)    #Halton sequence
+#RandomNumbersY=fun.Rvdc(N,7)    #shuffled the list
+shuffle(RandomNumbersX)
+shuffle(RandomNumbersY)
 
 Samplest=fun.beta.ppf(RandomNumbersX,3,2)
 Sampless=fun.beta.ppf(RandomNumbersY,1.1,2)
-
-ut=fun.betau(3,2)
-us=fun.betau(1.1,2)
-ot=fun.betao(3,2)
-os=fun.betao(1.1,2)
-ux=fun.X(ut)
-uy=fun.Y(us)
-
-
-print("X mean is "+str(ux))
-print("Y mean is "+str(uy))
-print("X sig is "+str((ot**0.5)*2))
-print("Y sig is "+str((os**0.5)*2))
-print("Mean Z is "+str(fun.Z())
-quit()
 
 X=fun.X(Samplest)
 Y=fun.Y(Sampless)
 
 f=fun.Rosen(X,Y)
 
+#Plot the data for Rosenbrok, and plot fitted PDF
 Xlabel="Rosenbrock Function Histogram"
-(I)=fun.HIST(Xlabel,f,Nbins,filename,N)
+(n,bins,ax,fig)=fun.HIST(Xlabel,f,Nbins,N)
+(ax,fig)=fun.HISTDataToPDF(n,bins,ax,fig)
+fun.plt.savefig(filename)
 
+#Find the probability of f being less than 10
 PGreater=sum(i<10 for i in f)/N
 
-print("The probability of being less than 10 is: "+str(PGreater[0]))
+print("The probability of being less than 10 is: "+str(PGreater))
 
 
 

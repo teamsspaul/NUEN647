@@ -727,14 +727,43 @@
       &=\boxed{\bm{0.268}}
     \end{align*}
   }
-  \pythonscript{Problem4/Calculations}{Script for Problem}
+  \pythonscript{Problem4/Calculations}{Script for Hypercube and Halton}
 
-  The output is 0.3795 probability of being less than 10.
-  Here is a PDF of the function f generated from the code above.
+  My PDF integrates to 1.01, which I'm okay with. The table below
+  summarizes my results.
+
+  \begin{table}[H]
+    \begin{center}
+      \caption{Different Sampling Techniques}
+      \begin{tabular}{l l l}
+        \toprule
+        Method & $p_{fail}$ 50 points & $p_{fail}$ 100 points\\
+        \hline
+        Stratified & 0.30 & 0.28\\
+        First Order & 0.268 & \\
+        Latin Hyper & 0.36 & 0.26\\
+        Halton & 0.26 & 0.28\\
+        \bottomrule
+      \end{tabular}
+    \end{center}
+  \end{table}
+  
+  It should be noted that I shuffled the stratified samples and the
+  halton samples as well, because otherwise there would be some
+  correlation between the numbers. The first order listing in the
+  table is not from the code, but the calculation above, and did
+  not use 50 points.
   
   \begin{figure}[H]
     \begin{center}
       \includegraphics[width=0.77\columnwidth]{Problem4/Histf.pdf}
+    \end{center}
+  \end{figure}
+
+    
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem4/HistLatin.pdf}
     \end{center}
   \end{figure}
 
