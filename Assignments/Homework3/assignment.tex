@@ -33,6 +33,7 @@
 \usepackage{courier} % Required for the courier font
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{bm}
 \usepackage{mathrsfs}
 \usepackage{float}
 \usepackage{enumitem}
@@ -626,7 +627,8 @@
       \mu_Z\approx g(\mu_{x,y})
     \end{equation*}
     where $g$ is the function we defined as $Z$ (first part of
-    the taylor expansion of Z). The standard
+    the taylor expansion of Z) evaluated at the mean values
+    of $x$ and $y$. The standard
     deviation of $Z$ was defined as the the second part of the
     taylor expansion of $Z$ (without covariances because we
     are going to assume that all random variables are independent), namely
@@ -641,7 +643,7 @@
       \left|\frac{\delta g}{\delta y}\right|_{\mu_y}\sigma_y
       \right)^2
     \end{equation*}
-
+    
     For what I defined as $Z$ above,
     
     \begin{align*}
@@ -653,7 +655,78 @@
       \mu&=\frac{a}{a+b}\\
       \sigma^2&=\frac{ab}{(a+b)^2(a+b+1)}
     \end{align*}
-    }
+  }
+  \problemAnswer{
+    \textbf{Calculations}\\~\\
+    For the random variable $t$ used in $x=2t-1$
+    \begin{center}
+      mean
+    \end{center}
+    \begin{align*}
+      \mu_t&=\frac{3}{3+2}=\bm{0.6}\\
+      \mu_x&=2*\bm{0.6}-1=\boxed{0.2}
+    \end{align*}
+    \begin{center}
+      standard deviation
+    \end{center}
+    \begin{align*}
+      \sigma_t^2&=\frac{3\cdot2}{(3+2)^2(3+2+1)}=\bm{0.04}\\
+      \sigma_x^2&=\left|
+      \frac{\delta x}{\delta t}
+      \right|_{\mu_T}^2\sigma_t^2\\
+      &=2^2\cdot\bm{0.04}=\boxed{0.16}
+    \end{align*}
+  }
+  \problemAnswer{
+    For the random variable $s$ used in $y=2s-1$
+    \begin{center}
+      mean
+    \end{center}
+    \begin{align*}
+      \mu_s&=\frac{1.1}{1.1+2}=\bm{0.354839}\\
+      \mu_y&=2*\bm{0.354839}-1=\boxed{-0.290323}
+    \end{align*}
+    \begin{center}
+      standard deviation
+    \end{center}
+    \begin{align*}
+      \sigma_s^2&=\frac{1.1\cdot2}{(1.1+2)^2(1.1+2+1)}=\bm{0.055836}\\
+      \sigma_y^2&=\left|
+      \frac{\delta y}{\delta s}
+      \right|_{\mu_s}^2\sigma_Ss^2\\
+      &=2^2\cdot\bm{0.055836}=\boxed{0.223345}
+    \end{align*}
+  }
+  \problemAnswer{
+    For the partial derivative terms
+    \begin{align*}
+      \left|\frac{\delta g}{\delta x}\right|_{\mu_X}=
+      -2(x-1)-400x(x^2-y)=-2(0.2-1)-400\cdot2(0.2^2-(-0.290323))=
+      \boxed{-24.8258}
+    \end{align*}
+
+    \begin{align*}
+      \left|\frac{\delta g}{\delta y}\right|_{\mu_y}=
+      -200(y-x^2)=-200(-0.290323-0.2^2)=\boxed{66.0646}
+    \end{align*}
+  }
+  \problemAnswer{
+    For Z and the probability of failure
+
+    \begin{align*}
+      \mu_Z=10-(1-0.2)^2+100(-0.290323-0.2^2)^2=\boxed{20.2713}
+    \end{align*}
+
+    \begin{align*}
+      \sigma_Z^2&=24.8^2\cdot0.16+66.0646^2\cdot0.223345=1073.41\\
+      \sigma_Z&=\boxed{32.7629}
+    \end{align*}
+
+    \begin{align*}
+      p_{fail}&=1-\Phi\left(\frac{20.27}{32.7629}\right)\\
+      &=\boxed{\bm{0.268}}
+    \end{align*}
+  }
   \pythonscript{Problem4/Calculations}{Script for Problem}
 
   The output is 0.3795 probability of being less than 10.
