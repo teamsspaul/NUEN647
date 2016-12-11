@@ -71,6 +71,9 @@ def Rstrat(N,Nstrata):
                             high=(j+1)/Nstrata,size=1))
     return(RN)
 
+
+
+
 #Van Sampling
 def Rvdc(N,base=2):
     """
