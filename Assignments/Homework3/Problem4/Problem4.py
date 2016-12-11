@@ -3,8 +3,39 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import norm
 import random
+import lhsmdu
 
-N=7
+
+
+
+
+
+
+
+
+
+#Latin Hypercube sampling
+
+l = lhsmdu.sample(2,50)
+
+c = (beta.ppf((l[0]),3,2))
+d = (beta.ppf((l[1]),1.1,2))
+
+LessThan10 = 0
+for i in range(0,50):
+    x = 2*c[0,i] - 1
+    y = 2*d[0,i] - 1
+    F = (1-x)**2 +100*(y-x**2)**2
+    if F < 10.:
+        LessThan10 += 1.
+
+LessThan10 = LessThan10/50
+
+print ("Hypercube probability =", LessThan10)
+
+
+
+
 
 # Halton is basically the same as Van Der Corputs but in more dimensions so....
 def vdc(n, base=2):
@@ -15,6 +46,9 @@ def vdc(n, base=2):
         vdc += remainder / denom
     return vdc
 
+    
+N=7
+    
 # This creates an NxN (49 point) matrix from a Halton sampling
 a=[]
 b=[]
@@ -62,12 +96,12 @@ plt.title("Histogram of random data")
 plt.savefig('C:\\PythonScripts\\UQhomework\\HW3P4Test2')
 plt.clf()
 
-plt.hist(a, bins=np.arange(51)/50) 
+plt.hist(c[0], bins=np.arange(11)/10) 
 plt.title("Histogram of random data")
 plt.savefig('C:\\PythonScripts\\UQhomework\\HW3P4Test3')
 plt.clf()
 
-plt.hist(b, bins=np.arange(51)/50) 
+plt.hist(d[0], bins=np.arange(11)/10) 
 plt.title("Histogram of random data")
 plt.savefig('C:\\PythonScripts\\UQhomework\\HW3P4Test4')
 plt.clf()
