@@ -569,7 +569,90 @@
     built-in function for sampling beta R.V.'s ``betard''}).\\~\\
 
   \problemAnswer{
+    \textbf{A first-order second-moment reliability method}\\~\\
+    Will use a gaussian approximation as shown in section
+    7.3 in the course notes (FORM).\\~\\
 
+    In this method the performance function ($Z(x,y)$) is
+    a function of the random variables $x$ and $y$, and
+    is defined such that the failure surface is the location
+    where $Z=0$ (top of page 119 Ch 7) such that $Z<0$
+    represents failure and $Z>0$ represents success. For the
+    case above, this would mean that our performance function
+    is:
+    
+    \begin{align*}
+      Z&=10-f(x,y)\\&=10-(1-x)^2+100(y-x^2)^2
+    \end{align*}
+
+    Next, the probability of failure is defined as:
+
+    \begin{equation*}
+      p_{fail}=1-\Phi\left(\frac{\mu_Z}{\sigma_Z}\right)
+    \end{equation*}
+
+    Where $\Phi$ is the CDF for a standard normal, $\mu_Z$ and
+    $\sigma_Z$ are the mean and standard deviation of $Z$. As a
+    reminder, if $Z$ were a standard normal, defined such
+    that any part of $Z$ that is less than 0 is failure. Then
+    because $\mu_Z=0$ there would be a 50\% chance of failure.
+    If $Z$ were a non standard normal, then the distance from
+    zero would be normalized (by dividing by $\sigma_Z$) to units
+    of $\sigma$, and 
+    as $\mu_Z$ increases, the chance of failure would continue
+    to decrease, which make sense, as the mean of the
+    performance function moves further and further away from
+    the failure point ($Z=0$), the probability of failure decreases.
+    \\~\\
+    I am trying to spell this out for myself, because I was really
+    confused about this.
+    There are two things I would like to point out to future self.
+    First, $Z$ may not be normal, which is why this method is only
+    exact if $Z$ is normal, otherwise its an approximation. Second,
+    if $\mu_Z$ were less than 0, then the equation for the
+    probability of failure should (I think) change to
+
+    \begin{equation*}
+    p_{fail}=0.5+\Phi\left(\frac{|\mu_Z|}{\sigma_Z}\right)
+    \end{equation*}
+
+    Also third, I am not sure if $Z$ has to be a typical PDF
+    or CDF, will let you know after I do some of the math McClarren
+    gave.
+  }
+  \problemAnswer{
+    The mean for $Z$ was defined as
+    \begin{equation*}
+      \mu_Z\approx g(\mu_{x,y})
+    \end{equation*}
+    where $g$ is the function we defined as $Z$ (first part of
+    the taylor expansion of Z). The standard
+    deviation of $Z$ was defined as the the second part of the
+    taylor expansion of $Z$ (without covariances because we
+    are going to assume that all random variables are independent), namely
+
+    \begin{equation*}
+      \sigma_Z^2=
+      \left(
+      \left|\frac{\delta g}{\delta x}\right|_{\mu_x}\sigma_x
+      \right)^2
+      +
+      \left(
+      \left|\frac{\delta g}{\delta y}\right|_{\mu_y}\sigma_y
+      \right)^2
+    \end{equation*}
+
+    For what I defined as $Z$ above,
+    
+    \begin{align*}
+      \frac{\delta g}{\delta x}&=-2(x-1)-400x(x^2-y)\\
+      \frac{\delta g}{\delta y}&=-200(y-x^2)
+    \end{align*}
+    Also for a beta R.V
+    \begin{align*}
+      \mu&=\frac{a}{a+b}\\
+      \sigma^2&=\frac{ab}{(a+b)^2(a+b+1)}
+    \end{align*}
     }
   \pythonscript{Problem4/Calculations}{Script for Problem}
 

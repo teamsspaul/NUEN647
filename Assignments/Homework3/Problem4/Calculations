@@ -14,7 +14,7 @@ import Functions as fun
 ################################################################
 
 N=10000  #Samples
-Nbins=100 #Hist Plot
+Nbins=200 #Hist Plot
 Nstrata=1000
 filename="Histf.pdf"
 
@@ -25,20 +25,36 @@ RandomNumbersY=fun.Rstrat(N,Nstrata)
 Samplest=fun.beta.ppf(RandomNumbersX,3,2)
 Sampless=fun.beta.ppf(RandomNumbersY,1.1,2)
 
+ut=fun.betau(3,2)
+us=fun.betau(1.1,2)
+ot=fun.betao(3,2)
+os=fun.betao(1.1,2)
+ux=fun.X(ut)
+uy=fun.Y(us)
+
+
+print("X mean is "+str(ux))
+print("Y mean is "+str(uy))
+print("X sig is "+str((ot**0.5)*2))
+print("Y sig is "+str((os**0.5)*2))
+print("Mean Z is "+str(fun.Z())
+quit()
+
 X=fun.X(Samplest)
 Y=fun.Y(Sampless)
 
 f=fun.Rosen(X,Y)
 
 Xlabel="Rosenbrock Function Histogram"
-fun.HIST(Xlabel,f,Nbins,filename,N)
-
+(I)=fun.HIST(Xlabel,f,Nbins,filename,N)
 
 PGreater=sum(i<10 for i in f)/N
 
 print("The probability of being less than 10 is: "+str(PGreater[0]))
 
-                            
+
+
+
 ###################### Time To execute #################
 
 print("--- %s seconds ---" % (time.time() - start_time))
