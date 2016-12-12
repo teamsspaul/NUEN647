@@ -331,19 +331,19 @@
   \end{equation*}
   Compute the sensitivity to the QOI:
   \begin{equation*}
-    QoI=\int_0^Xdx\int_0^Ydy\int_0^Zdz\frac{D}{L^2}\phi(x,y,z)
+    QoI=\int_0^Xdx\int_0^Ydy\int_0^Zdz\ \frac{D}{L^2}\phi(x,y,z)
   \end{equation*}
-  for X,Y,Z,L,, and Q.\\~\\
+  for X,Y,Z,L,D and Q.\\~\\
 
   \problemAnswer{
     \textbf{Derive the adjoint operator}\\~\\
-    Define the operator $\mathcal{L}$ as
+    See Ch 6 for help more background. Define the operator $\mathcal{L}$ as
     \begin{equation*}
-      \mathcal{L}=\bigtriangledown^2+\frac{1}{L^2}
+      \mathcal{L}=-D\bigtriangledown^2+\frac{D}{L^2}
     \end{equation*}
     and the adjoint $\mathcal{L^{\dag}}$ as
     \begin{equation*}
-      \mathcal{L^{\dag}}=\bigtriangledown^2+\frac{1}{L^2}
+      \mathcal{L^{\dag}}=-D\bigtriangledown^2+\frac{D}{L^2}
     \end{equation*}
       \begin{equation*}
         \phi^\dag(0,y,z)=\phi^\dag(x,0,z)=
@@ -373,12 +373,12 @@
     operator for the above equation, it needs to be shown that
     $(\mathcal{L}\phi,\phi^\dag)=(\phi,\mathcal{L}^\dag\phi^\dag)$.
     \\~\\
-    Equivalent to:
+    Equivalent to (all terms have a $D$ in them and cancel):
     \begin{equation}
-      \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(\phi^\dag
+      \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(-\phi^\dag
       \bigtriangledown^2\phi+\phi^\dag\frac{\phi}{L^2}\right)
       =
-      \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(\phi\bigtriangledown^2\phi^\dag
+      \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(-\phi\bigtriangledown^2\phi^\dag
       +\phi\frac{\phi^\dag}{L^2}\right)
     \end{equation}
     The terms
@@ -388,7 +388,8 @@
       \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(\phi\frac{\phi^\dag}{L^2}\right)
     \end{equation*}
     are equal.
-    For the other term with, $\bigtriangledown^2$, we can expand to:
+    For the other term with, $\bigtriangledown^2$, we can expand to
+    (removing the negative sign for simplicity):
     \begin{equation*}
       \int_0^Xdx\int_0^Ydy\int_0^Zdz\left(
       \phi^\dag\left[
@@ -456,35 +457,84 @@
   
   \problemAnswer{
     \textbf{Compute the sensitivity to the QoI:}\\~\\
-    I don't know if this is the right way to go about this,
-    but if you modify the first equation listed in this problem to:
+    The QoI has been defined as,
     \begin{equation*}
-      \phi=L^2\left[\frac{Q}{D}+\bigtriangledown^2\phi\right]
+      QoI=\int_0^Xdx\int_0^Ydy\int_0^Zdz\ \frac{D}{L^2}\phi(x,y,z)=
+      (\phi,p),
     \end{equation*}
-    and use it as a substitution, then we get something like this,
+    with $p=\frac{D}{L^2}$. Recall the original system being,
+    \begin{equation*}
+      \mathcal{L}\phi=Q.
+    \end{equation*}
+    If we define an adjoint system as,
+    \begin{equation*}
+      \mathcal{L^{\dag}}\phi^\dag=p,
+    \end{equation*}
+    then the QoI can be represented as,
+    \begin{equation*}
+      QoI=(\phi,p)=(Q,\phi^\dag)
+    \end{equation*}
+    This is because,
     \begin{align*}
-      \text{QoI}&=\int_0^Xdx\int_0^Ydy\int_0^Zdz\
-      \frac{D}{L^2}\phi\\
-      &=\int_0^Xdx\int_0^Ydy\int_0^Zdz\
-      \frac{D}{L^2}\left(
-      L^2\left[\frac{Q}{D}+\bigtriangledown^2\phi\right]
+      (\mathcal{L}\phi,\phi^\dag)&=(\phi,\mathcal{L}^\dag\phi^\dag)\\
+      (Q,\phi^\dag)&=(\phi,p)
+    \end{align*}
+    The first line was proved in the first part of the problem,
+    and the second line substitutes $q$ for $\mathcal{L}\phi$
+    on the LHS of the equation and $p$ for $\mathcal{L}^\dag\phi^\dag$
+    on the RHS.
+
+    If the solution for $\phi^\dag$ were known, then this problem
+    would be a lot easier. Lets see if we can find it.
+    \begin{align*}
+      \mathcal{L^\dag}\phi^\dag&=p\\
+      -D\bigtriangledown^2\phi^\dag+\frac{D}{L^2}\phi^\dag&=
+      \frac{D}{L^2}\\
+      \phi^\dag=1+L^2\bigtriangledown^2\phi^\dag
+    \end{align*}
+    Where the solution is $\phi^\dag=1+exp(\frac{x}{L})+exp(\frac{y}{L})
+    +exp(\frac{z}{L})$
+    }
+  \problemAnswer{
+    Now the QoI is, 
+    \begin{align*}
+      QoI&=(Q,\phi^\dag)\\
+      &=\int_0^Xdx\int_0^Ydy\int_0^Zdz\ Q\phi^\dag\\
+      &=\int_0^Xdx\int_0^Ydy\int_0^Zdz\ Q\left(
+      1+e^{\frac{x}{L}}+e^{\frac{y}{L}}+e^{\frac{z}{L}}
       \right)\\
-      &=\int_0^Xdx\int_0^Ydy\int_0^Zdz\
-      \left[Q+D\bigtriangledown^2\phi\right]\\
+      &=QXYZ+YZL(e^{X/L}-1)+XZL(e^{Y/L}-1)+XYL(e^{Z/L}-1)
     \end{align*}
-    If $Q$ and $D$ both are independent of space, then
-    \begin{align*}
-      \text{QoI}=QXYZ+D\left[
-        \int_0^Ydy\int_0^Zdz\
-        \left|\frac{\delta\phi}{\delta x}\right|_{x=0}^{x=X}+
-        \int_0^Xdx\int_0^Zdz\
-        \left|\frac{\delta\phi}{\delta y}\right|_{y=0}^{y=Y}+
-        \int_0^Xdx\int_0^Zdz\
-        \left|\frac{\delta\phi}{\delta z}\right|_{z=0}^{z=Z}
-        \right]
-    \end{align*}
-    I'm not sure how the adjoint helps me though.
-  }
+  
+    The sensitivity to the QoI will be determined with a simple
+    derivative of the QoI with respect to particular variables.
+    \begin{equation*}
+      \frac{\delta QoI}{\delta X}
+      =\boxed{QYZ+YZe^{X/L}+ZL(e^{Y/L}-1)+YL(e^{Z/L}-1)}
+    \end{equation*}
+    \begin{equation*}
+      \frac{\delta QoI}{\delta Y}
+      =\boxed{QXZ+ZL(e^{X/L}-1)+XZe^{Y/L}+XL(e^{Z/L}-1)}
+    \end{equation*}
+    \begin{equation*}
+      \frac{\delta QoI}{\delta Z}
+      =\boxed{QXY+YL(e^{X/L}-1)+XL(e^{Y/L}-1)+XYe^{Z/L}}
+    \end{equation*}
+    \begin{equation*}
+      \frac{\delta QoI}{\delta L}
+      =\boxed{YZe^{X/L}(1-e^{-X/L}-\frac{X}{L})
+        +XZe^{Y/L}(1-e^{-Y/L}-\frac{Y}{L})
+        +XYe^{Z/L}(1-e^{-Z/L}-\frac{Z}{L})}
+    \end{equation*}
+    \begin{equation*}
+      \frac{\delta QoI}{\delta D}=
+      \boxed{0}
+    \end{equation*}
+    \begin{equation*}
+      \frac{\delta QoI}{\delta Q}=
+      \boxed{XYZ}
+    \end{equation*}
+    }
 \end{homeworkProblem}
 
 \clearpage
@@ -842,7 +892,7 @@
   }
   \problemAnswer{
     \begin{align*}
-      \phi^+(x)&=2\pi \int_0^1\psi(x,\mu<0)d\mu\\
+      \phi^+(x)&=2\pi \int_0^1\psi(x,\mu>0)d\mu\\
       &=2\pi \int_0^1e^{-\frac{\sigma x}{\mu}}d\mu\\
       &=2\pi \int_\infty^1-\frac{e^{-\sigma xz}}{z^2}\\
       &=2\pi \int_1^\infty\frac{e^{-\sigma xz}}{z^2}\\
