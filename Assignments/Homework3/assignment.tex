@@ -775,6 +775,86 @@
 
 
 
+%--------------------------------------------------------------------------
+%	PROBLEM 5
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  Consider the exponential integral function, $E_n(x)$,
+
+  \begin{equation*}
+    E_n(x)=\int_1^\infty \frac{e^{-xt}}{t^n}dt
+  \end{equation*}
+
+  This function is involved in the solution to many
+  pure-absorbing transport problems. Use this function
+  to solve the transport problem,
+
+  \begin{equation*}
+    \mu\frac{\delta\psi}{\delta x}+\sigma\psi=0,
+  \end{equation*}
+
+  \begin{equation*}
+    \psi(0,\mu>0)=1, \psi(10,\mu<0)=0,
+  \end{equation*}
+
+  for the scaler flux $\phi(x)=\int_{-1}^1 \psi(x,\mu)d\mu$.
+  Assume that $\sigma \sim\ GAM(10,0.1)$. Use a PCE
+  expansion to estimate the distribution, mean, and
+  variance of $\phi(x)$ at $x=1,1.5,3,5$. Also, plot
+  the mean value of $\phi$ as a function of $x$.
+  \\~\\
+  \problemAnswer{
+
+    Using the integrating factor approach we proceed as follows:
+
+    \begin{align*}
+      \frac{\delta\psi}{\delta x}+\frac{\sigma\psi}{\mu}&=0\\
+      \frac{\delta}{\delta x}\left[
+        e^{\frac{\sigma x}{\mu}}\psi
+        \right]&=0\\
+    \end{align*}
+    Integrating from 0 to x for $\mu>0$, we obtain (yes I am copying
+    some old notes)
+
+    \begin{align*}
+      \psi(x,\mu>0)e^{\frac{\sigma x}{\mu>0}}-\psi(0,\mu>0)
+      e^{\frac{\sigma\cdot0}{\mu>0}}&=0\\
+      \psi(x,\mu>0)e^{\frac{\sigma x}{\mu>0}}-1&=0\\
+      \psi(x,\mu>0)e^{\frac{\sigma x}{\mu>0}}&=1\\
+      \psi(x,\mu>0)&=e^{\frac{-\sigma x}{\mu>0}}
+    \end{align*}
+
+    Integrating from x to 10 for $\mu<0$, we obtain
+
+    \begin{align*}
+      \psi(10,\mu<0)e^{\frac{\sigma 10}{\mu<0}}-\psi(x,\mu<0)
+      e^{\frac{\sigma\cdot x}{\mu<0}}&=0\\
+      -\psi(x,\mu<0)
+      e^{\frac{\sigma\cdot x}{\mu<0}}&=0\\
+      \psi(x,\mu<0)&=0
+    \end{align*}
+
+    Here we can note that there is no flux traveling to the left,
+    and will focus on the flux traveling to the right. Integrating
+    over all $\mu>0$, and using a substitution of $z=1/\mu$ and
+    $d\mu=-z^{-2}$:
+  }
+  \problemAnswer{
+    \begin{align*}
+      \phi^+(x)&=2\pi \int_0^1\psi(x,\mu<0)d\mu\\
+      &=2\pi \int_0^1e^{-\frac{\sigma x}{\mu}}d\mu\\
+      &=2\pi \int_\infty^1-\frac{e^{-\sigma xz}}{z^2}\\
+      &=2\pi \int_1^\infty\frac{e^{-\sigma xz}}{z^2}\\
+      &=2\pi E_2(\sigma x)
+    \end{align*}
+    
+  }
+
+  
+\end{homeworkProblem}
+
+  
 %\pythonscript{Problem1/Calculations}{Script for Problem}
 %% \begin{figure}[H]
 %%   \begin{center}
