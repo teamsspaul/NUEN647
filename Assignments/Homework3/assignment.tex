@@ -848,8 +848,109 @@
       &=2\pi \int_1^\infty\frac{e^{-\sigma xz}}{z^2}\\
       &=2\pi E_2(\sigma x)
     \end{align*}
-    
+    I think this might help later on, if we define $\phi$ like:
+    \begin{equation*}
+      \phi^+(x')=2\pi E_2(x')
+    \end{equation*}
+    where $x'=\sigma x$.
   }
+
+  Now to use PCE expansion to estimate the distribution,
+  mean, and variance of $\phi(x)$. First off, I want to say
+  that I have no idea whats going on. Next, because we have a
+  gamma distribution, I suppose we should use Laguerre Polynomials.
+  Where:
+  \begin{equation*}
+    \phi(x')=\sum_{n=0}^{\infty}c_nL_n^{(\alpha)}(\beta x')
+  \end{equation*}
+  and
+  \begin{equation*}
+    c_n=\frac{n!}{\Gamma(n+\alpha+1)}\int_0^{\infty}
+    \phi\left(\frac{z}{\beta}\right)
+    z^\alpha e^{-z}L_n^{(\alpha)}(z)dz
+  \end{equation*}
+
+  In order to estimate the coefficients in the expansion we have to
+  evaluate 
+  a wonderful integral. In order to estimate the integral, will
+  use Gauss-Laguerre quadrature (like I have any idea what
+  that is) to have as few evaluations of the integrand as possible.
+
+  The quadrature rule has the form
+  \begin{equation*}
+    \int_0^\infty f(z)z^\alpha e^{-z}dz\approx
+    \sum_{i=1}^{n}w_if(z_i)
+  \end{equation*}
+
+  Where $z_i$ are the n roots of $L_n^{(\alpha)}(z)$, and
+  the weights are given by:
+
+  \begin{equation*}
+    w_i=\frac{\Gamma(n+\alpha)z_i}
+    {n!(n+\alpha)(L_{n-1}^{\alpha}(z_i))^2}
+  \end{equation*}
+
+  Looking at the quadrature rule, I think $f(z)$, in our
+  instance would have to be
+
+  \begin{equation*}
+    f(z)=\phi\left(\frac{z}{\beta}\right)L_n^{(\alpha)}(z)
+  \end{equation*}
+
+  I hope this is correct, if not then the only person I can
+  blame is myself. The notes aren't very clear on what $f(z)$ is.
+  If I am correct, then the $c_n$ constants are:
+
+  \begin{equation*}
+    c_n\approx\frac{n!}{\Gamma(n+\alpha+1)}
+    \sum_{i=1}^{n}w_if(z_i)
+  \end{equation*}
+
+
+  According to the notes, the variance is:
+
+  \begin{equation*}
+    \text{Var}(G)=\sum_{n=1}^{\infty}
+    \frac{\Gamma(n+\alpha+1)}
+    {\Gamma(\alpha+1)n!}c_n^2
+  \end{equation*}
+
+  And $c_0$ is:
+
+  \begin{equation*}
+    c_0=\int_0^\infty
+    \phi\left(\frac{z}{\beta}\right)
+    \frac{z^\alpha e^{-z}}{\Gamma(\alpha+1)}dz
+    =E[g(X)]
+  \end{equation*}
+
+  I am not sure how to get this other than sampling.
+  
+  \pythonscript{Problem5/Calculations}{Script for problem}
+
+  \begin{table}[H]
+    \begin{center}
+      \caption{Different Sampling Techniques}
+      \begin{tabular}{l l l l}
+        \toprule
+        Location & Distribution & Mean & Variance\\
+        \hline
+        1   & Dist & mean & Variance\\
+        1.5 & Dist & mean & Variance\\
+        3   & Dist & mean & Variance\\
+        5   & Dist & mean & Variance\\
+        \bottomrule
+      \end{tabular}
+    \end{center}
+  \end{table}
+
+  
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem5/mean.pdf}
+    \end{center}
+  \end{figure}
+
 
   
 \end{homeworkProblem}
