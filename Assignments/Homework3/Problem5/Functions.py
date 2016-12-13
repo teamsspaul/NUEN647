@@ -24,12 +24,13 @@ __status__     =  "Production"
 import numpy as np
 import matplotlib.pyplot as plt
 import lhsmdu
-from scipy.stats import gamma as gammad #Distribution
+
 from scipy import interpolate
 from scipy import integrate
 from scipy.integrate import trapz
 from scipy.special import genlaguerre
 from scipy.special import gamma  as gammaf #Gamma Function
+from scipy.stats import gamma as gammad #Gamma distribution
 from math import factorial as fact
 import copy
 from statistics import mean
