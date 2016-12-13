@@ -8,7 +8,8 @@ import time
 start_time = time.time()
 import Functions as fun
 
-x=0.5;alpha=10;beta=0.1;NumofC=10
+
+x=1;alpha=10;beta=0.1;NumofC=10
 print("For x = "+str(x))
 ################################################################
 ############### Deterministic Calculations #####################
@@ -21,7 +22,8 @@ for n in range(0,NumofC):
 Dphi=0 #Deterministic phi
 for n in range(0,NumofC):
     Dphi=Dphi+cn[n]*fun.LagEval(n,alpha,beta*x)
-print("Deterministic Calc mean is "+str(Dphi))
+    print(cn[n]*fun.LagEval(n,alpha,beta*x))
+print("Deterministic Calc mean is "+str(cn[0]))
     
 ################################################################
 #################### Monte Calculations ########################
@@ -38,9 +40,8 @@ filename="mean2.pdf"
 #RandomNumbers=l[0].A1
 #RandomNumbers=fun.Rvdc(N,7)    #Halton sequence
 #SamplesSigma=fun.gamma.ppf(RandomNumbers,0.1,10)
-SamplesSigma=fun.np.random.gamma(shape=10,scale=0.1,size=N)
+SamplesSigma=fun.np.random.gamma(shape=alpha,scale=beta,size=N)
 
-x=1
 Mphi=[] #Monte Phi
 for i in range(0,len(SamplesSigma)):
     Mphi.append(fun.PhiEval(x*SamplesSigma[i]))

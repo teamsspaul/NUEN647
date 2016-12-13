@@ -20,7 +20,7 @@ def Determine_cn(n=0,alpha=1,beta=2,x=0):
     to your function
     """
     diff=5;tol=0.000001;nprime=1;Sum=1000
-    Cprefix=fun.fact(n)/(fun.gamma(n+alpha+1))
+    Cprefix=fun.fact(n)/(fun.gammaf(n+alpha+1))
     while diff>tol:
         roots=fun.Lroots(nprime,alpha)
         weights=fun.weight(nprime,alpha,roots)
@@ -38,16 +38,62 @@ def Determine_cn(n=0,alpha=1,beta=2,x=0):
             quit()
     return(cn)
 
+x=1;alpha=1;beta=2;NumofC=10
 ################################################################
-###################### Calculations ############################
+#################### Monte Calculations ########################
 ################################################################
 
+N=1000  #Samples
+Nbins=60 #Hist Plot
+#Nstrata=10
+filename="test.pdf"
 
-for i in range(0,6):
-    cn=Determine_cn(n=i)
-    print(i,cn)
+#RandomNumbers=fun.np.random.uniform(0,1,N)
+#RandomNumbers=fun.Rstrat(N,Nstrata)  #strat sampling
+#l=lhsmdu.sample(1,N)  #Hyper cube sampling
+#RandomNumbers=l[0].A1
+RandomNumbers=fun.Rvdc(N,2)    #Halton sequence
+SamplesSigma=fun.gammad.ppf(RandomNumbers,beta,alpha)
+#SamplesSigma=fun.np.random.gamma(shape=beta,scale=alpha,size=N)
+
+Mphi=[] #Monte Phi
+for i in range(0,len(SamplesSigma)):
+    Mphi.append(fun.np.cos(SamplesSigma[i])) #Change me)
+
+print("Monte Calc mean is "+str(fun.mean(Mphi)))
+print("Monte Calc Variance is "+str(fun.variance(Mphi)))
+print("")
+#Plot the data, and plot fitted PDF
+Xlabel="Cos(X)"
+(n,bins,ax,fig)=fun.HIST(Xlabel,Mphi,Nbins,N)
+#(ax,fig)=fun.HISTDataToPDF(n,bins,ax,fig)
+fun.plt.savefig(filename)
+
+################################################################
+############### Deterministic Calculations #####################
+################################################################
+
+cn=[]
+for n in range(0,NumofC):
+    cn.append(Determine_cn(n,alpha,beta,x))
+
+Var=0
+for n in range(1,NumofC):
+    Coef=fun.gammaf(n+alpha+1)/(fun.gammaf(alpha+1)*fun.fact(n))
+    Var=Var+Coef*(cn[n]**2)
+
+Dphi=[]
+for i in range(0,len(SamplesSigma)):
+    Dphi.append(fun.PolyChaos(cn,alpha,SamplesSigma[i])) #Change me)
 
 
+print("The mean from C_0 is given by "+str(cn[0]))
+print("The variance from the same method is given by "+str(Var))
+print("")
+print("The mean from sampling with chaos "+str(fun.mean(Dphi)))
+print("The variance from the same method "+str(fun.variance(Dphi)))
+
+print("")
 
 ###################### Time To execute #################
 

@@ -24,15 +24,16 @@ __status__     =  "Production"
 import numpy as np
 import matplotlib.pyplot as plt
 import lhsmdu
-from scipy.stats import gamma
+from scipy.stats import gamma as gammad #Distribution
 from scipy import interpolate
 from scipy import integrate
 from scipy.integrate import trapz
 from scipy.special import genlaguerre
-from scipy.special import gamma
+from scipy.special import gamma  as gammaf #Gamma Function
 from math import factorial as fact
 import copy
 from statistics import mean
+from statistics import variance
 from mpmath import expint
 
 ################################################################
@@ -142,7 +143,7 @@ def LagEval(n,alpha,z):
     return(Evaluation)
 
 def weight(n,alpha,z):
-    w=(gamma(n+alpha)*z)/(fact(n)*(n+alpha)*(LagEval(n-1,alpha,z)**2))
+    w=(gammaf(n+alpha)*z)/(fact(n)*(n+alpha)*(LagEval(n-1,alpha,z)**2))
     return(w)
 
 def Lroots(n,alpha):
@@ -181,7 +182,7 @@ def Determine_cn(n=0,alpha=10,beta=0.1,x=0.):
     to your function
     """
     diff=5;tol=0.000001;nprime=1;Sum=1000
-    Cprefix=fact(n)/(gamma(n+alpha+1))
+    Cprefix=fact(n)/(gammaf(n+alpha+1))
     while diff>tol:
         roots=Lroots(nprime,alpha)
         weights=weight(nprime,alpha,roots)
@@ -198,3 +199,12 @@ def Determine_cn(n=0,alpha=10,beta=0.1,x=0.):
             print("Did not converge on quadrature")
             quit()
     return(cn)
+
+def PolyChaos(cn,alpha,x):
+    """
+    The name...chaos, I like it
+    """
+    Sum=0
+    for n in range(0,len(cn)):
+        Sum=Sum+cn[n]*LagEval(n,alpha,x)
+    return(Sum)
