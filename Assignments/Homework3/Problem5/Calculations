@@ -33,6 +33,8 @@ filename="mean2.pdf"
 
 
 
+quit()
+
 
 #SamplesSigma=fun.gamma.ppf(RandomNumbers,0.1,10)
 SamplesSigma=fun.np.random.gamma(shape=10,scale=0.1,size=N)
