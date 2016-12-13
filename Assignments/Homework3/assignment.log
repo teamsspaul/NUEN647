@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  12 DEC 2016 16:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  12 DEC 2016 16:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1149,41 +1149,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 673--780
 [21
 
 ] [22] (./Problem4/Calculations [23]) [24]
-<Problem4/Histf.pdf, id=555, 578.16pt x 433.62pt>
+<Problem4/Histf.pdf, id=553, 578.16pt x 433.62pt>
 File: Problem4/Histf.pdf Graphic file (type pdf)
  <use Problem4/Histf.pdf>
-Package pdftex.def Info: Problem4/Histf.pdf used on input line 810.
+Package pdftex.def Info: Problem4/Histf.pdf used on input line 812.
 (pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
 
-<Problem4/HistLatin.pdf, id=556, 578.16pt x 433.62pt>
+<Problem4/HistLatin.pdf, id=554, 578.16pt x 433.62pt>
 File: Problem4/HistLatin.pdf Graphic file (type pdf)
 
 <use Problem4/HistLatin.pdf>
-Package pdftex.def Info: Problem4/HistLatin.pdf used on input line 817.
+Package pdftex.def Info: Problem4/HistLatin.pdf used on input line 819.
 (pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
  [25pdfTeX warning (ext4): destination with the same identifier (name{table.2})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.820 
+l.822 
        <./Problem4/Histf.pdf>] [26 <./Problem4/HistLatin.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 851--907
+Underfull \hbox (badness 10000) in paragraph at lines 853--909
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--907
+Underfull \hbox (badness 10000) in paragraph at lines 853--909
 
  []
 
 [27
 
 ] [28] (./Problem5/Calculations [29])
-<Problem5/mean.pdf, id=708, 578.16pt x 433.62pt>
+<Problem5/mean.pdf, id=706, 578.16pt x 433.62pt>
 File: Problem5/mean.pdf Graphic file (type pdf)
  <use Problem5/mean.pdf>
-Package pdftex.def Info: Problem5/mean.pdf used on input line 1000.
+Package pdftex.def Info: Problem5/mean.pdf used on input line 1002.
 (pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
 
 
@@ -1193,23 +1193,23 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1022 \end{document}
+l.1024 \end{document}
                       <./Problem5/mean.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1022.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1022.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1024.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1024.
  (./assignment.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1022.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1022.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1024.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1024.
 
 Package rerunfilecheck Info: File `assignment.out' has not changed.
 (rerunfilecheck)             Checksum: B0A91638CECC0FF089CDE10F9A72DF4C;225.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1022.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1024.
  ) 
 Here is how much of TeX's memory you used:
- 10470 strings out of 494953
- 146492 string characters out of 6180977
+ 10469 strings out of 494953
+ 146473 string characters out of 6180977
  290891 words of memory out of 5000000
- 13314 multiletter control sequences out of 15000+600000
+ 13315 multiletter control sequences out of 15000+600000
  17782 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  40i,18n,46p,250b,2147s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1235,10 +1235,10 @@ public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/sh
 are/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on assignment.pdf (30 pages, 560167 bytes).
+Output written on assignment.pdf (30 pages, 560182 bytes).
 PDF statistics:
- 882 PDF objects out of 1000 (max. 8388607)
- 570 compressed objects within 6 object streams
- 241 named destinations out of 1000 (max. 500000)
+ 879 PDF objects out of 1000 (max. 8388607)
+ 567 compressed objects within 6 object streams
+ 239 named destinations out of 1000 (max. 500000)
  141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

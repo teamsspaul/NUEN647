@@ -14,21 +14,21 @@ from random import shuffle
 ###################### Calculations ############################
 ################################################################
 
-N=100000  #Samples
+N=100  #Samples
 Nbins=30 #Hist Plot
 Nstrata=10
-filename="NormalStrat.pdf"
+filename="HaltonStrat.pdf"
 
-Xlabel="Normal Sampling"
-RandomNumbersX=fun.np.random.uniform(0,1,N)
-RandomNumbersY=fun.np.random.uniform(0,1,N)
+Xlabel="Halton Sampling"
+#RandomNumbersX=fun.np.random.uniform(0,1,N)
+#RandomNumbersY=fun.np.random.uniform(0,1,N)
 #RandomNumbersX=fun.Rstrat(N,Nstrata)  #strat sampling
 #RandomNumbersY=fun.Rstrat(N,Nstrata)
 #l=lhsmdu.sample(2,N)  #Hyper cube sampling
 #RandomNumbersX=l[0].A1
 #RandomNumbersY=l[1].A1
-#RandomNumbersX=fun.Rvdc(N,7)    #Halton sequence
-#RandomNumbersY=fun.Rvdc(N,7)    #shuffled the list
+RandomNumbersX=fun.Rvdc(N,2)    #Halton sequence
+RandomNumbersY=fun.Rvdc(N,3)    #shuffled the list (tried notto)
 #shuffle(RandomNumbersX)
 #shuffle(RandomNumbersY)
 
@@ -50,8 +50,6 @@ fun.plt.savefig(filename)
 PGreater=sum(i<10 for i in f)/N
 
 print("The probability of being less than 10 is: "+str(PGreater))
-
-
 
 
 ###################### Time To execute #################
