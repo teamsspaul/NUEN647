@@ -503,28 +503,28 @@
       &=\int_0^Xdx\int_0^Ydy\int_0^Zdz\ Q\left(
       1+e^{\frac{x}{L}}+e^{\frac{y}{L}}+e^{\frac{z}{L}}
       \right)\\
-      &=QXYZ+YZL(e^{X/L}-1)+XZL(e^{Y/L}-1)+XYL(e^{Z/L}-1)
+      &=QXYZ+QYZL(e^{X/L}-1)+QXZL(e^{Y/L}-1)+QXYL(e^{Z/L}-1)
     \end{align*}
   
     The sensitivity to the QoI will be determined with a simple
     derivative of the QoI with respect to particular variables.
     \begin{equation*}
       \frac{\delta QoI}{\delta X}
-      =\boxed{QYZ+YZe^{X/L}+ZL(e^{Y/L}-1)+YL(e^{Z/L}-1)}
+      =\boxed{QYZ+QYZe^{X/L}+QZL(e^{Y/L}-1)+QYL(e^{Z/L}-1)}
     \end{equation*}
     \begin{equation*}
       \frac{\delta QoI}{\delta Y}
-      =\boxed{QXZ+ZL(e^{X/L}-1)+XZe^{Y/L}+XL(e^{Z/L}-1)}
+      =\boxed{QXZ+QZL(e^{X/L}-1)+QXZe^{Y/L}+QXL(e^{Z/L}-1)}
     \end{equation*}
     \begin{equation*}
       \frac{\delta QoI}{\delta Z}
-      =\boxed{QXY+YL(e^{X/L}-1)+XL(e^{Y/L}-1)+XYe^{Z/L}}
+      =\boxed{QXY+QYL(e^{X/L}-1)+QXL(e^{Y/L}-1)+QXYe^{Z/L}}
     \end{equation*}
     \begin{equation*}
       \frac{\delta QoI}{\delta L}
-      =\boxed{YZe^{X/L}(1-e^{-X/L}-\frac{X}{L})
+      =\boxed{Q(YZe^{X/L}(1-e^{-X/L}-\frac{X}{L})
         +XZe^{Y/L}(1-e^{-Y/L}-\frac{Y}{L})
-        +XYe^{Z/L}(1-e^{-Z/L}-\frac{Z}{L})}
+        +XYe^{Z/L}(1-e^{-Z/L}-\frac{Z}{L}))}
     \end{equation*}
     \begin{equation*}
       \frac{\delta QoI}{\delta D}=
@@ -532,7 +532,7 @@
     \end{equation*}
     \begin{equation*}
       \frac{\delta QoI}{\delta Q}=
-      \boxed{XYZ}
+      \boxed{XYZ+YZL(e^{X/L}-1)+XZL(e^{Y/L}-1)+XYL(e^{Z/L}-1)}
     \end{equation*}
     }
 \end{homeworkProblem}
@@ -633,7 +633,7 @@
     is:
     
     \begin{align*}
-      Z&=10-f(x,y)\\&=10-(1-x)^2+100(y-x^2)^2
+      Z&=10-f(x,y)\\&=10-(1-x)^2-100(y-x^2)^2
     \end{align*}
 
     Next, the probability of failure is defined as:
@@ -896,8 +896,8 @@
     \begin{align*}
       \phi^+(x)&=2\pi \int_0^1\psi(x,\mu>0)d\mu\\
       &=2\pi \int_0^1e^{-\frac{\sigma x}{\mu}}d\mu\\
-      &=2\pi \int_\infty^1-\frac{e^{-\sigma xz}}{z^2}\\
-      &=2\pi \int_1^\infty\frac{e^{-\sigma xz}}{z^2}\\
+      &=2\pi \int_\infty^1-\frac{e^{-\sigma xz}}{z^2}dz\\
+      &=2\pi \int_1^\infty\frac{e^{-\sigma xz}}{z^2}dz\\
       &=2\pi E_2(\sigma x)
     \end{align*}
     I think this might help later on, if we define $\phi$ like:
@@ -918,10 +918,13 @@
   and
   \begin{equation*}
     c_n=\frac{n!}{\Gamma(n+\alpha+1)}\int_0^{\infty}
-    \phi\left(\frac{z}{\beta}\right)
+    \phi\left(\frac{x\cdot z}{\beta}\right)
     z^\alpha e^{-z}L_n^{(\alpha)}(z)dz
   \end{equation*}
 
+  It should be noted that z is the standardized gamma distribution,
+  with $z=\beta\sigma$, $\sigma$ being our original gamma distribution.
+  
   In order to estimate the coefficients in the expansion we have to
   evaluate 
   a wonderful integral. In order to estimate the integral, will
@@ -946,18 +949,25 @@
   instance would have to be
 
   \begin{equation*}
-    f(z)=\phi\left(\frac{z}{\beta}\right)L_n^{(\alpha)}(z)
+    f(z)=\phi\left(\frac{x\cdot z}{\beta}\right)L_n^{(\alpha)}(z)
   \end{equation*}
 
-  I hope this is correct, if not then the only person I can
+  This is potentially confusing about the two n indice, so I'll
+  put it all on one line, and hope its correct,
+  if not then the only person I can
   blame is myself. The notes aren't very clear on what $f(z)$ is.
-  If I am correct, then the $c_n$ constants are:
 
-  \begin{equation*}
-    c_n\approx\frac{n!}{\Gamma(n+\alpha+1)}
-    \sum_{i=1}^{n}w_if(z_i)
-  \end{equation*}
-
+  \begin{align*}
+    c_n&\approx\frac{n!}{\Gamma(n+\alpha+1)}
+    \sum_{i=1}^{n'}w_if(z_i)\\
+    c_n&\approx\frac{n!}{\Gamma(n+\alpha+1)}
+    \sum_{i=1}^{n'}\frac{\Gamma(n'+\alpha)z_i}
+        {n'!(n'+\alpha)(L_{n'-1}^{\alpha}(z_i))^2}
+        \phi\left(\frac{x\cdot z_i}{\beta}\right)L_n^{(\alpha)}(z_i)\\
+  \end{align*}
+  Where $n'$ will increase until the summation is not changing,
+  and $n$ is the constant solving for. This way, the $L_n^\alpha(z_i)$
+  term on the right side will only be zero for when $n'=n$.
 
   According to the notes, the variance is:
 
@@ -969,14 +979,20 @@
 
   And $c_0$ is:
 
-  \begin{equation*}
-    c_0=\int_0^\infty
-    \phi\left(\frac{z}{\beta}\right)
+  \begin{align*}
+    c_0&=\int_0^\infty
+    \phi\left(\frac{x\cdot z}{\beta}\right)
     \frac{z^\alpha e^{-z}}{\Gamma(\alpha+1)}dz
-    =E[g(X)]
-  \end{equation*}
+    =E[g(X)]\\
+    &\approx\sum_{i=1}^{n'}\frac{\Gamma(n'+\alpha)z_i}
+        {n'!(n'+\alpha)(L_{n'-1}^{\alpha}(z_i))^2}
+        \phi\left(\frac{x\cdot z_i}{\beta}\right)\\
+  \end{align*}
 
-  I am not sure how to get this other than sampling.
+  To check if this is correct, we can change the $\phi$
+  term for $cos(z/\beta)$ with Z $\sim$ G(1,2) and check to
+  see if $c_0$ converges to 0.48. This is what Dr. McClarren
+  has in his notes...which I'm hoping are correct. 
   
   \pythonscript{Problem5/Calculations}{Script for problem}
 
