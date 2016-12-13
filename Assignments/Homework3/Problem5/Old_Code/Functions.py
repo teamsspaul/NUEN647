@@ -35,7 +35,10 @@ from math import factorial as fact
 import copy
 from statistics import mean
 from statistics import variance
-from mpmath import expint
+from scipy.special import expn 
+from scipy.special import la_roots
+from scipy.special import assoc_laguerre
+
 
 ################################################################
 ######################### Functions ############################
@@ -139,67 +142,10 @@ def LagEval(n,alpha,z):
     """
     Evaluate the laguerre polynomials
     """
-    polyLag=genlaguerre(n,alpha)
-    Evaluation=np.polyval(polyLag,z)
+    #polyLag=genlaguerre(n,alpha)
+    #Evaluation=np.polyval(polyLag,z)
+    Evaluation=assoc_laguerre(z,n,alpha)
     return(Evaluation)
-
-def weight(n,alpha,z):
-    w=(gammaf(n+alpha)*z)/(fact(n)*(n+alpha)*(LagEval(n-1,alpha,z)**2))
-    return(w)
-
-def Lroots(n,alpha):
-    """
-    Find roots of laguerre polynomials
-    """
-    polyLag=genlaguerre(n,alpha)
-    roots=np.roots(polyLag)
-    return(roots)
-
-def PhiEval(x):
-    """
-    Evaluate phi whether x is a list or not
-    kind of janky, but it works
-    """
-    try:
-        if len(x)==1:
-            E2=expint(2,x[0])
-            phi=float(2*np.pi*E2)
-            return(phi)
-        else:
-            phi=[]
-            for i in range(0,len(x)):
-                E2=expint(2,x[i])
-                phi.append(float(2*np.pi*E2))
-            return(phi)
-    except TypeError:
-        E2=expint(2,x)
-        phi=float(2*np.pi*E2)
-        return(phi)
-
-def Determine_cn(n=0,alpha=10,beta=0.1,x=0.):
-    """
-    This function will determin the cn constant
-    dont forget to change the first function dude
-    to your function
-    """
-    diff=5;tol=0.000001;nprime=1;Sum=1000
-    Cprefix=fact(n)/(gammaf(n+alpha+1))
-    while diff>tol:
-        roots=Lroots(nprime,alpha)
-        weights=weight(nprime,alpha,roots)
-        function=PhiEval((roots*x)/beta)
-        function=function*LagEval(n,alpha,roots)
-        WF=weights*function
-        Sumhold=sum(WF)
-        cn=Cprefix*Sumhold
-        diff=abs(Sum-Sumhold)
-        Sum=copy.copy(Sumhold)
-        #print(np,cn)
-        nprime=nprime+1
-        if nprime==100:
-            print("Did not converge on quadrature")
-            quit()
-    return(cn)
 
 def PolyChaos(cn,alpha,x):
     """
@@ -209,3 +155,87 @@ def PolyChaos(cn,alpha,x):
     for n in range(0,len(cn)):
         Sum=Sum+cn[n]*LagEval(n,alpha,x)
     return(Sum)
+
+def weight(n,alpha,z):
+    w=(gammaf(n+alpha)*z)/(fact(n)*(n+alpha)*(LagEval(n-1,alpha,z)**2))
+    return(w)
+
+def Lroots(n,alpha):
+    """
+    Find roots of laguerre polynomials
+    """
+    #polyLag=genlaguerre(n,alpha)
+    #roots=np.roots(polyLag)
+    roots=la_roots(n,alpha)
+    roots2=[]
+    for i in range(0,len(roots)):
+        roots2.append(roots[0][i])
+    print(roots2)
+    quit()
+    return(roots)
+
+def PhiEval(X):
+    """
+    Evaluate phi whether x is a list or not
+    kind of janky, but it works
+    """
+    try:
+        if len(X)==1:
+            E2=expn(2,X[0])
+            phi=float(2*np.pi*E2)
+            return(phi)
+        elif len(X)>1:
+            phi=[]
+            for i in range(0,len(X)):
+                E2=expn(2,X[i])
+                phi.append(float(2*np.pi*E2))
+            return(phi)
+    except TypeError:
+        E2=expn(2,X)
+        phi=float(2*np.pi*E2)
+        return(phi)
+
+def Determine_cn(n,alpha,beta,x):
+    """
+    This function will determin the cn constant
+    dont forget to change the first function dude
+    to your function
+    """
+    diff=5;tol=0.01;nprime=1;Sum=1000
+    Cprefix=fact(n)/(gammaf(n+alpha+1))
+    while diff>tol:
+        if not n==0:
+            roots=Lroots(nprime,alpha)
+        roots=[1]
+        #Some roots, as we get really far out there, are imaginary
+        #roots= np.real(roots)
+        for i in range(0,nprime):
+            if nprime>1:
+                if isinstance(roots[i], complex):
+                    print("at "+str(nprime)+
+                          'roots complex, they are '+str(roots))
+                    quit()
+            elif isinstance(roots,complex):
+                print('roots complex, they are '+str(roots))
+                quit()
+
+                    
+        weights=weight(nprime,alpha,roots)
+        function=PhiEval((roots*x)/beta)
+        if n==0:
+            print("n' = "+str(nprime)+" has function = "+ str(function))
+            nevergonnause=1
+        function=function*LagEval(n,alpha,roots)
+        WF=weights*function
+        Sumhold=sum(WF)
+        cn=Cprefix*Sumhold
+        #diff=abs(Sum-Sumhold)/Sumhold
+        diff=abs(Sum-Sumhold)
+        Sum=copy.copy(Sumhold)
+        #print(np,cn)
+        nprime=nprime+1
+        if nprime==100:
+            print("Did not converge on quadrature")
+            quit()
+    return(cn)
+
