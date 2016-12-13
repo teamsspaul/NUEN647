@@ -913,23 +913,25 @@
   gamma distribution, I suppose we should use Laguerre Polynomials.
   Where:
   \begin{equation*}
-    \phi(x')=2\pi\sum_{n=0}^{\infty}c_nL_n^{(\alpha)}(\beta x')
+    \phi(x')=\sum_{n=0}^{\infty}c_nL_n^{(\alpha)}(\beta x')
   \end{equation*}
   and
   \begin{equation*}
     c_n=\frac{n!}{\Gamma(n+\alpha+1)}\int_0^{\infty}
-    \phi\left(\frac{x\cdot z}{\beta}\right)
+    2\pi\ \phi\left(\frac{x\cdot z}{\beta}\right)
     z^\alpha e^{-z}L_n^{(\alpha)}(z)dz
   \end{equation*}
 
   It should be noted that z is the standardized gamma distribution,
   with $z=\beta\sigma$, $\sigma$ being our original gamma distribution.
+  Also, I am grouping $2\pi$ with the flux for all the calculations,
+  not the fastest, but I am not trying to break any records
+  (except the one of taking the longest to do homeworks).\\
   
   In order to estimate the coefficients in the expansion we have to
-  evaluate 
-  a wonderful integral. In order to estimate the integral, will
+  evaluate a wonderful integral. In order to estimate the integral, will
   use Gauss-Laguerre quadrature (like I have any idea what
-  that is) to have as few evaluations of the integrand as possible.
+  that is) to have as few evaluations of the integrand as possible.\\
 
   The quadrature rule has the form
   \begin{equation*}
@@ -949,7 +951,7 @@
   instance would have to be
 
   \begin{equation*}
-    f(z)=\phi\left(\frac{x\cdot z}{\beta}\right)L_n^{(\alpha)}(z)
+    f(z)=2\pi\ \phi\left(\frac{x\cdot z}{\beta}\right)L_n^{(\alpha)}(z)
   \end{equation*}
 
   This is potentially confusing about the two n indice, so I'll
@@ -963,11 +965,25 @@
     c_n&\approx\frac{n!}{\Gamma(n+\alpha+1)}
     \sum_{i=1}^{n'}\frac{\Gamma(n'+\alpha)z_i}
         {n'!(n'+\alpha)(L_{n'-1}^{\alpha}(z_i))^2}
+        2\pi\
         \phi\left(\frac{x\cdot z_i}{\beta}\right)L_n^{(\alpha)}(z_i)\\
   \end{align*}
   Where $n'$ will increase until the summation is not changing,
-  and $n$ is the constant solving for. This way, the $L_n^\alpha(z_i)$
-  term on the right side will only be zero for when $n'=n$.
+  this is potentially confusing (for me). $n'$ will start at 1. At which
+  point the Laguerre polynomial $L_1^\alpha(x)$ will have a single root.
+  The 'summation' will be a single term. Then $n'$ will increase to 2,
+  where there are two roots. The 'summation' will sum results from
+  those two roots, \textbf{and not use the previous summation}
+  (except to compare - not to add onto). The summation
+  from $n'=1$ and $n'=2$ will be compared, if there is no difference
+  (note there could be some zero terms)
+  then the $n'$ stops increasing, and the most recent summation is what
+  we use moving forward.\\
+
+  Also $n$ is the constant we are solving for.
+  This way, the $L_n^\alpha(z_i)$
+  term on the right side will only be zero for when $n'=n$ (I hope
+  this is correct).\\
 
   According to the notes, the variance is:
 
@@ -981,21 +997,45 @@
 
   \begin{align*}
     c_0&=\int_0^\infty
-    \phi\left(\frac{x\cdot z}{\beta}\right)
+    2\pi\ \phi\left(\frac{x\cdot z}{\beta}\right)
     \frac{z^\alpha e^{-z}}{\Gamma(\alpha+1)}dz
     =E[g(X)]\\
     &\approx\sum_{i=1}^{n'}\frac{\Gamma(n'+\alpha)z_i}
         {n'!(n'+\alpha)(L_{n'-1}^{\alpha}(z_i))^2}
-        \phi\left(\frac{x\cdot z_i}{\beta}\right)\\
+        2\pi\ \phi\left(\frac{x\cdot z_i}{\beta}\right)\\
   \end{align*}
 
   To check if this is correct, we can change the $\phi$
   term for $cos(z/\beta)$ with Z $\sim$ G(1,2) and check to
-  see if $c_0$ converges to 0.48. This is what Dr. McClarren
+  see if $c_n$ converge to what Dr. McClarren
   has in his notes...which I'm hoping are correct. 
   
-  \pythonscript{Problem5/Calculations}{Script for problem}
+  \pythonscript{Problem5/Test}{Code for Comparison}
 
+  
+  \begin{table}[H]
+    \begin{center}
+      \caption{Compare to the Dr. MC}
+      \begin{tabular}{l l l}
+        \toprule
+        $C_n$ & MC notes & Code\\
+        \hline
+        0 & 0.48 & 0.48 \\
+        1 & 0.35 & 0.35 \\
+        2 & 0.04 & 0.04 \\
+        3 & -0.05 & -0.05 \\
+        4 & -0.03 & -0.03 \\
+        5 & -0.00 & -0.00 \\
+        \bottomrule
+      \end{tabular}
+    \end{center}
+  \end{table}
+
+  I am glad that works, now results
+  
+  \pythonscript{Problem5/Calculations}{Code for Problem}
+
+  
   \begin{table}[H]
     \begin{center}
       \caption{Different Sampling Techniques}

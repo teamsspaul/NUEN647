@@ -31,6 +31,9 @@ from scipy.integrate import trapz
 from scipy.special import genlaguerre
 from scipy.special import gamma
 from math import factorial as fact
+import copy
+from statistics import mean
+from mpmath import expint
 
 ################################################################
 ######################### Functions ############################
@@ -148,9 +151,50 @@ def Lroots(n,alpha):
     """
     polyLag=genlaguerre(n,alpha)
     roots=np.roots(polyLag)
-    return(Lroots)
+    return(roots)
 
 def PhiEval(x):
-    E2=expint(2,x)
-    phi=float(2*np.pi*E2)
-    return(phi)
+    """
+    Evaluate phi whether x is a list or not
+    kind of janky, but it works
+    """
+    try:
+        if len(x)==1:
+            E2=expint(2,x[0])
+            phi=float(2*np.pi*E2)
+            return(phi)
+        else:
+            phi=[]
+            for i in range(0,len(x)):
+                E2=expint(2,x[i])
+                phi.append(float(2*np.pi*E2))
+            return(phi)
+    except TypeError:
+        E2=expint(2,x)
+        phi=float(2*np.pi*E2)
+        return(phi)
+
+def Determine_cn(n=0,alpha=10,beta=0.1,x=0.):
+    """
+    This function will determin the cn constant
+    dont forget to change the first function dude
+    to your function
+    """
+    diff=5;tol=0.000001;nprime=1;Sum=1000
+    Cprefix=fact(n)/(gamma(n+alpha+1))
+    while diff>tol:
+        roots=Lroots(nprime,alpha)
+        weights=weight(nprime,alpha,roots)
+        function=PhiEval((roots*x)/beta)
+        function=function*LagEval(n,alpha,roots)
+        WF=weights*function
+        Sumhold=sum(WF)
+        cn=Cprefix*Sumhold
+        diff=abs(Sum-Sumhold)
+        Sum=copy.copy(Sumhold)
+        #print(np,cn)
+        nprime=nprime+1
+        if nprime==100:
+            print("Did not converge on quadrature")
+            quit()
+    return(cn)
