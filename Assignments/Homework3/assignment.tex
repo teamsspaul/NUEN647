@@ -1132,8 +1132,43 @@
     too fried to think about it. I am going to run the code from
     problem 5, vary the alpha and beta parameters, and see
     which gives me the smallest total error. I know its dumb,
-    but I never claimed to be smart. 
+    and its not actually correct, because I'm not finding
+    a posterior as Bayes would want (I am just changing the
+    gamma variable to fit the data and throwing out the
+    prior), but I'm just a guy. \\
   }
+
+  After looking for a parameter that would minimize the
+  error between measured values and calculated values,
+  I got $\alpha=$ and $\beta=$.
+  
+  \begin{table}[H]
+    \begin{center}
+      \caption{Measured and calculated flux}
+      \begin{tabular}{l l l l}
+        \toprule
+        Location & Measured & Calculated & Variance\\
+        \hline
+        1   & 0.201131 &  \\
+        1.5 & 0.110135 &  \\
+        3   & 0.0228748 & \\
+        5   & 0.0032849 & \\
+        \bottomrule
+      \end{tabular}
+    \end{center}
+  \end{table}
+
+  Scripts and plots for choosing the parameter are below.
+  
+  \pythonscript{Problem6/Calc}{Code for Calculation}
+  \pythonscript{Problem6/plot_reduce}{Code for plotting}
+  
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=1.1\columnwidth]{Problem6/alpha_vs_SumErr.pdf}
+    \end{center}
+  \end{figure}
+
   
 \end{homeworkProblem}
 

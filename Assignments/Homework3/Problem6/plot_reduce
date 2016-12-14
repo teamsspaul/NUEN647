@@ -34,7 +34,7 @@ Printing=["%.2f","%.2f"]
 XScale="linear"     # 'linear' or 'log'
 #'$\alpha$ Parameter'   For alpha
 #'$\beta$ Parameter'   For beta
-Xlabel='$\alpha$ Parameter'  # X label       
+Xlabel='-'  # X label       
 YScale="linear"  # 'linear' or 'log'
 Ylabel='Sum of Error for 4 Measurements'
 

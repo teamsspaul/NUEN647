@@ -183,16 +183,14 @@ def Determine_cn(n,alpha,beta,x):
     #Return the cn value (prefix * Integral)
     return(Cprefix*Int)
 
-def Print(Method,List):
+def Print(x,Method,List):
     if len(List)>2:
         print1=str(mean(List))
         print2=str(variance(List))
     else:
         print1=str(List[0])
         print2=str(List[1])
-    print(Method+" calculation mean is "+print1)
-    print(Method+" calculation variance is "+print2)
-    print("")
+    print("x = "+str(x)+": "+print1+" & "+print2)
 
 
 def Plot(x,y,Variance,filename,scale):
