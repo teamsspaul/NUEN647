@@ -1134,14 +1134,16 @@
     the error adjusted error,
     
     \begin{equation*}
-      E=\sum_{i=1}^{4}
-      \frac{\text{New Calculation}-\text{Original or Measured}}
-      {\text{Original or Measured}}\cdot\text{Propagated Error}
+      E=\sum_{j=1}^{2}
+      \sum_{i=1}^{4}
+      \frac{\text{New Calculation}_i-\text{Original or Measured}_{i,j}}
+      {\text{Original or Measured}_{i,j}}\cdot\text{Propagated Error}
     \end{equation*}
     and see which gives me the smallest value for $E$.
     The above equation was summed over the four measurement points.
     $\text{Original or Measured}$ refers to either the
-    original calculation from problem 5, for the measured data.
+    original calculation from problem 5, for the measured data
+    (why the first summation has an upper limit of 2).
     The error was included in this data so that measurements or
     calculations that have lower errors pull the distribution
     more. I am assuming both errors are of the same type.\\
