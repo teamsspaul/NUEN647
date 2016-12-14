@@ -1185,12 +1185,12 @@
     index are defined as
     \begin{equation*}
       \text{Scaled Sensitivity Coeff}|_i=
-      \left|\mu_i\frac{\delta\text{QoI}}
+      \left.\mu_i\frac{\delta\text{QoI}}
                {\delta\theta_i}\right|_{\bar{\theta}}
     \end{equation*}
     \begin{equation*}
       \text{Sensitivity Index}|_i=
-      \left|\sigma_i\frac{\delta\text{QoI}}
+      \left.\sigma_i\frac{\delta\text{QoI}}
                {\delta\theta_i}\right|_{\bar{\theta}}
     \end{equation*}
     Where the QoI is evaluated at mean values for parameters and
@@ -1214,15 +1214,73 @@
       \end{tabular}
     \end{center}
   \end{table}
-    
+
+  All these plots were produced by increasing the value of a single
+  parameter by one standard deviation. Other variables were held
+  at their mean. When $\Delta x$ was being varied, the time divisions
+  were held at 11, and when $\Delta t$ was being varied, the space
+  divisions were held at 401. Also I apologize for all the plots,
+  there is definately a smarter way to do this.
+  
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_wx.pdf}
     \end{center}
   \end{figure}
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/index.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_wx.pdf}
+    \end{center}
+  \end{figure}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_vx.pdf}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_vx.pdf}
+    \end{center}
+  \end{figure}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_Dx.pdf}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_Dx.pdf}
+    \end{center}
+  \end{figure}
+  
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_wt.pdf}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_wt.pdf}
+    \end{center}
+  \end{figure}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_vt.pdf}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_vt.pdf}
+    \end{center}
+  \end{figure}
+    \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_Dt.pdf}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_Dt.pdf}
     \end{center}
   \end{figure}
   
@@ -1268,6 +1326,12 @@
   \item{$\Delta x \sim [0.001,0.5]$}
   \item{$\Delta t \sim [0.001,0.5]$}
   \end{enumerate}
+  Using regression, estimate the sensitivities to each parameter.
+
+  \pythonscript{Problem3_long/Calc2}{Code for Problem}
+
+
+  
 \end{homeworkProblem}
 
 \clearpage
