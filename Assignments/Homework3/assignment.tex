@@ -1029,7 +1029,10 @@
   $\alpha$ and $\beta$ terms so that my code gets the same
   answers ($\alpha+1$ and $1/\beta$). When working with the
   homework problem, the terms don't need the modification, and
-  if we do modify, we get REALLY bad answers..
+  if we do modify, we get REALLY bad answers..Also it should
+  be noted that I don't include the $2\pi$ in the code, but
+  because these answers match up close with the next problem,
+  I leave the $2\pi$ out.
   
   \begin{table}[H]
     \begin{center}
@@ -1038,10 +1041,10 @@
         \toprule
         Location & Mean & Variance & Agree with MCNP\\
         \hline
-        1   & 0.0022 & 2.32e-5 & Yes\\
-        1.5 & 0.00034 & 1.78e-6 & Yes\\
-        3   & 5.3e-06 & 5.77e-09 & Yes\\
-        5   & 1.13e-07 & 1.91e-11 & Yes\\
+        1   & 0.166714961646 & 0.00541820218281 & Yes\\
+        1.5 & 0.090024688979 & 0.00303591212914 & Yes\\
+        3   & 0.0192062954143 & 0.000475125069726 & Yes\\
+        5   & 0.00362613412053 & 5.14761627202e-05 & Yes\\
         \bottomrule
       \end{tabular}
     \end{center}
@@ -1108,15 +1111,16 @@
         \toprule
         Location & Measured & Calculated & Variance\\
         \hline
-        1   & 0.201131 & 0.118690392736 & 0.0189858423462\\
-        1.5 & 110135 & 0.0695356185309 & 0.0116978422222\\
-        3   & 0.0228748 & 0.0234676697455 & 0.00367690231561\\
-        5   & 0.0032849 & 0.00938868980513 & 0.00117123205791\\
+        1   & 0.201131 & 0.166714961646 & 0.00541820218281\\
+        1.5 & 110135 &  0.090024688979 & 0.00303591212914\\
+        3   & 0.0228748 & 0.0192062954143 & 0.000475125069726\\
+        5   & 0.0032849 & 0.00362613412053 & 5.14761627202e-05\\
         \bottomrule
       \end{tabular}
     \end{center}
   \end{table}
 
+  
   Using the prior distribution for $\sigma$ from problem 5,
   and the experimental data just given, derive a posterior
   distribution for $\sigma$ (i.e calibrate $\sigma$). You

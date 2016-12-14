@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  13 DEC 2016 18:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  13 DEC 2016 20:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1206,38 +1206,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 975--979
 <Problem5/meanx_1.pdf, id=736, 578.16pt x 433.62pt>
 File: Problem5/meanx_1.pdf Graphic file (type pdf)
  <use Problem5/meanx_1.pdf>
-Package pdftex.def Info: Problem5/meanx_1.pdf used on input line 1052.
+Package pdftex.def Info: Problem5/meanx_1.pdf used on input line 1056.
 (pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
 
 <Problem5/meanx_15.pdf, id=737, 578.16pt x 433.62pt>
 File: Problem5/meanx_15.pdf Graphic file (type pdf)
 
 <use Problem5/meanx_15.pdf>
-Package pdftex.def Info: Problem5/meanx_15.pdf used on input line 1058.
+Package pdftex.def Info: Problem5/meanx_15.pdf used on input line 1062.
 (pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
  [31pdfTeX warning (ext4): destination with the same identifier (name{table.3})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1061 
+l.1065 
        pdfTeX warning (ext4): destination with the same identifier (name{table.
 4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1061 
+l.1065 
         <./Problem5/meanx_1.pdf>]
-<Problem5/meanx_3.pdf, id=783, 578.16pt x 433.62pt>
+<Problem5/meanx_3.pdf, id=763, 578.16pt x 433.62pt>
 File: Problem5/meanx_3.pdf Graphic file (type pdf)
  <use Problem5/meanx_3.pdf>
-Package pdftex.def Info: Problem5/meanx_3.pdf used on input line 1064.
+Package pdftex.def Info: Problem5/meanx_3.pdf used on input line 1068.
 (pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
 
-<Problem5/meanx_5.pdf, id=784, 578.16pt x 433.62pt>
+<Problem5/meanx_5.pdf, id=764, 578.16pt x 433.62pt>
 File: Problem5/meanx_5.pdf Graphic file (type pdf)
  <use Problem5/meanx_5.pdf>
-Package pdftex.def Info: Problem5/meanx_5.pdf used on input line 1070.
+Package pdftex.def Info: Problem5/meanx_5.pdf used on input line 1074.
 (pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
 
 [32 <./Problem5/meanx_15.pdf> <./Problem5/meanx_3.pdf
@@ -1245,16 +1245,16 @@ Package pdftex.def Info: Problem5/meanx_5.pdf used on input line 1070.
 pdfTeX warning: pdflatex (file ./Problem5/meanx_3.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >] (./Problem5/Calc [33 <./Problem5/meanx_5.pdf>])
-<Problem5/mean.pdf, id=919, 578.16pt x 433.62pt>
+<Problem5/mean.pdf, id=845, 578.16pt x 433.62pt>
 File: Problem5/mean.pdf Graphic file (type pdf)
  <use Problem5/mean.pdf>
-Package pdftex.def Info: Problem5/mean.pdf used on input line 1080.
+Package pdftex.def Info: Problem5/mean.pdf used on input line 1084.
 (pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
 
-<Problem5/meanlog.pdf, id=920, 578.16pt x 433.62pt>
+<Problem5/meanlog.pdf, id=846, 578.16pt x 433.62pt>
 File: Problem5/meanlog.pdf Graphic file (type pdf)
  <use Problem5/meanlog.pdf>
-Package pdftex.def Info: Problem5/meanlog.pdf used on input line 1085.
+Package pdftex.def Info: Problem5/meanlog.pdf used on input line 1089.
 (pdftex.def)             Requested size: 361.71335pt x 271.28311pt.
 
 [34] [35 <./Problem5/mean.pdf> <./Problem5/meanlog.pdf
@@ -1262,17 +1262,17 @@ Package pdftex.def Info: Problem5/meanlog.pdf used on input line 1085.
 pdfTeX warning: pdflatex (file ./Problem5/meanlog.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >]
-Underfull \hbox (badness 10000) in paragraph at lines 1119--1124
+Underfull \hbox (badness 10000) in paragraph at lines 1124--1129
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1119--1124
+Underfull \hbox (badness 10000) in paragraph at lines 1124--1129
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1131
+Underfull \hbox (badness 10000) in paragraph at lines 1135--1136
 
  []
 
@@ -1281,14 +1281,14 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1134 \clearpage
+l.1139 \clearpage
                  ] 
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1152.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1152.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1157.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1157.
 (./assignment.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1152.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1152.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1157.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1157.
 
 Package rerunfilecheck Info: File `assignment.out' has not changed.
 (rerunfilecheck)             Checksum: B869CCAC9DA1B0663CA4FAD4AB7B8689;270.
@@ -1296,7 +1296,7 @@ Package rerunfilecheck Info: File `assignment.out' has not changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1152.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1157.
  ) 
 Here is how much of TeX's memory you used:
  10593 strings out of 494953
@@ -1331,10 +1331,10 @@ ts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb>
 1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on assignment.pdf (36 pages, 762132 bytes).
+Output written on assignment.pdf (36 pages, 743882 bytes).
 PDF statistics:
- 1141 PDF objects out of 1200 (max. 8388607)
- 753 compressed objects within 8 object streams
+ 1067 PDF objects out of 1200 (max. 8388607)
+ 771 compressed objects within 8 object streams
  326 named destinations out of 1000 (max. 500000)
  174 words of extra memory for PDF output out of 10000 (max. 10000000)
 
