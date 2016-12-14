@@ -22,7 +22,6 @@ __status__     =  "Production"
 ################################################################
 
 import numpy as np
-import matplotlib.pyplot as plt
 from math import factorial as fact 
 import copy
 from statistics import mean
@@ -35,6 +34,16 @@ from scipy import interpolate
 from scipy import integrate
 from scipy.integrate import trapz
 from scipy.stats import gamma as gammad #Gamma distribution
+
+import matplotlib.pyplot as plt
+plt.rcParams["font.family"] = "monospace"
+import matplotlib
+matplotlib.rc('text',usetex=True)
+matplotlib.rcParams['text.latex.preamble']=[r"\usepackage{amsmath}"]
+
+
+
+
 
 ################################################################
 ######################### Functions ############################
@@ -146,7 +155,7 @@ def PolyChaos(cn,alpha,x):
     return(Sum)
 
 def Fnear(x):
-    return(np.cos(x))
+    #return(np.cos(x))
     return(ExpIntEval(x))
 
 def Determine_cn(n,alpha,beta,x):
@@ -159,7 +168,7 @@ def Determine_cn(n,alpha,beta,x):
     while diff>tol:
         Vals=la_roots(nprime,alpha) #Roots in [0], weights[1]
         # f(z) as defined in quad rule
-        fRoots=Fnear(Vals[0]/beta)*PSolve(Vals[0],n,k=alpha)
+        fRoots=Fnear((Vals[0]*x)/beta)*PSolve(Vals[0],n,k=alpha)
         # Evaluate integral for the quad rule
         Int=sum(Vals[1]*fRoots)
         # See how different the integral is with one less n
@@ -167,7 +176,7 @@ def Determine_cn(n,alpha,beta,x):
         IntOld=copy.copy(Int)
 
         nprime=nprime+1
-        if nprime==100:
+        if nprime==1000:
             print("Did not converge on quadrature")
             quit()
 
@@ -184,3 +193,26 @@ def Print(Method,List):
     print(Method+" calculation mean is "+print1)
     print(Method+" calculation variance is "+print2)
     print("")
+
+
+def Plot(x,y,Variance,filename,scale):
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+
+    ax.plot(x,y,'k--',linewidth=2.0)
+    
+    ax.set_xlabel('x',fontsize=18)
+    ax.set_ylabel('Mean Flux',fontsize=18)
+    #ax.yaxis.labelpad=55
+    ax.set_yscale(scale)
+    
+    ax.xaxis.set_tick_params(labelsize=14)
+    ax.yaxis.set_tick_params(labelsize=14)
+    
+    ax.grid(alpha=0.8,color='black',linestyle='dotted')
+    ax.grid(alpha=0.8,color='black',linestyle='dotted')
+
+
+    plt.savefig(filename)
+    #return(fig,ax)

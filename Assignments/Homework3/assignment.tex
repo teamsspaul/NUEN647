@@ -900,11 +900,6 @@
       &=2\pi \int_1^\infty\frac{e^{-\sigma xz}}{z^2}dz\\
       &=2\pi E_2(\sigma x)
     \end{align*}
-    I think this might help later on, if we define $\phi$ like:
-    \begin{equation*}
-      \phi^+(x')=2\pi E_2(x')
-    \end{equation*}
-    where $x'=\sigma x$.
   }
 
   Now to use PCE expansion to estimate the distribution,
@@ -913,20 +908,18 @@
   gamma distribution, I suppose we should use Laguerre Polynomials.
   Where:
   \begin{equation*}
-    \phi(x')=\sum_{n=0}^{\infty}c_nL_n^{(\alpha)}(\beta x')
+    \phi(\sigma x)=2\pi \sum_{n=0}^{\infty}c_nL_n^{(\alpha)}
+    (\beta x \sigma)
   \end{equation*}
   and
   \begin{equation*}
-    c_n=\frac{n!}{\Gamma(n+\alpha+1)}\int_0^{\infty}
-    2\pi\ \phi\left(\frac{x\cdot z}{\beta}\right)
+    c_n=2\pi \frac{n!}{\Gamma(n+\alpha+1)}\int_0^{\infty}
+    E_2\left(\frac{x\cdot z}{\beta}\right)
     z^\alpha e^{-z}L_n^{(\alpha)}(z)dz
   \end{equation*}
 
   It should be noted that z is the standardized gamma distribution,
-  with $z=\beta\sigma$, $\sigma$ being our original gamma distribution.
-  Also, I am grouping $2\pi$ with the flux for all the calculations,
-  not the fastest, but I am not trying to break any records
-  (except the one of taking the longest to do homeworks).\\
+  with $z=\beta\sigma$, $\sigma$ being our original gamma distribution.\\
   
   In order to estimate the coefficients in the expansion we have to
   evaluate a wonderful integral. In order to estimate the integral, will
@@ -951,7 +944,7 @@
   instance would have to be
 
   \begin{equation*}
-    f(z)=2\pi\ \phi\left(\frac{x\cdot z}{\beta}\right)L_n^{(\alpha)}(z)
+    f(z)=E_2\left(\frac{x\cdot z}{\beta}\right)L_n^{(\alpha)}(z)
   \end{equation*}
 
   This is potentially confusing about the two n indice, so I'll
@@ -965,8 +958,7 @@
     c_n&\approx\frac{n!}{\Gamma(n+\alpha+1)}
     \sum_{i=1}^{n'}\frac{\Gamma(n'+\alpha)z_i}
         {n'!(n'+\alpha)(L_{n'-1}^{\alpha}(z_i))^2}
-        2\pi\
-        \phi\left(\frac{x\cdot z_i}{\beta}\right)L_n^{(\alpha)}(z_i)\\
+        E_2\left(\frac{x\cdot z_i}{\beta}\right)L_n^{(\alpha)}(z_i)\\
   \end{align*}
   Where $n'$ will increase until the summation is not changing,
   this is potentially confusing (for me). $n'$ will start at 1. At which
@@ -997,20 +989,20 @@
 
   \begin{align*}
     c_0&=\int_0^\infty
-    2\pi\ \phi\left(\frac{x\cdot z}{\beta}\right)
+    E_2\left(\frac{x\cdot z}{\beta}\right)
     \frac{z^\alpha e^{-z}}{\Gamma(\alpha+1)}dz
     =E[g(X)]\\
     &\approx\sum_{i=1}^{n'}\frac{\Gamma(n'+\alpha)z_i}
         {n'!(n'+\alpha)(L_{n'-1}^{\alpha}(z_i))^2}
-        2\pi\ \phi\left(\frac{x\cdot z_i}{\beta}\right)\\
+        E_2\left(\frac{x\cdot z_i}{\beta}\right)\\
   \end{align*}
 
-  To check if this is correct, we can change the $\phi$
+  To check if this is correct, we can change the $E_2$
   term for $cos(z/\beta)$ with Z $\sim$ G(1,2) and check to
   see if $c_n$ converge to what Dr. McClarren
   has in his notes...which I'm hoping are correct. 
   
-  \pythonscript{Problem5/Test}{Code for Comparison}
+  \pythonscript{Problem5/Calc}{Code for Calculation}
 
   
   \begin{table}[H]
@@ -1031,22 +1023,24 @@
     \end{center}
   \end{table}
 
-  I am glad that works, now results
-  
-  \pythonscript{Problem5/Calculations}{Code for Problem}
-
+  I am glad that works, as soon as I try to extend this
+  to our problem it breaks down. I do Monte sampling to
+  check whether our answer is correct, for some reason
+  the beta variable makes things difficult, so I am changing it
+  to 2. With this one modification on the problem...everything works
+  and converges and agrees...kind of annoying.
   
   \begin{table}[H]
     \begin{center}
       \caption{Different Sampling Techniques}
-      \begin{tabular}{l l l l}
+      \begin{tabular}{l l l c}
         \toprule
-        Location & Distribution & Mean & Variance\\
+        Location & Mean & Variance & Agree with MCNP\\
         \hline
-        1   & Dist & mean & Variance\\
-        1.5 & Dist & mean & Variance\\
-        3   & Dist & mean & Variance\\
-        5   & Dist & mean & Variance\\
+        1   & 0.0022 & 2.32e-5 & Yes\\
+        1.5 & 0.00034 & 1.78e-6 & Yes\\
+        3   & 5.3e-06 & 5.77e-09 & Yes\\
+        5   & 1.13e-07 & 1.91e-11 & Yes\\
         \bottomrule
       \end{tabular}
     \end{center}
@@ -1055,15 +1049,93 @@
   
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem5/mean.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem5/meanx_1.pdf}
     \end{center}
   \end{figure}
 
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem5/meanx_15.pdf}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem5/meanx_3.pdf}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem5/meanx_5.pdf}
+    \end{center}
+  \end{figure}
+
+  \pythonscript{Problem5/Calc}{Code for plot of mean as a function
+  of x}
+  
+  Plot for the mean log scale and normal.
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem5/mean.pdf}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem5/meanlog.pdf}
+    \end{center}
+  \end{figure}
 
   
 \end{homeworkProblem}
 
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 6
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+  You perform a measurement of a beam of radiation satisfying
+  the boundary condition in problem 5 hitting a slab, and
+  somehow are able to measure the scalar flux at $x=1,1.5,3,5$:
+
+  \begin{table}[H]
+    \begin{center}
+      \caption{Measured and calculated flux}
+      \begin{tabular}{l l l l}
+        \toprule
+        Location & Measured & Calculated & Variance\\
+        \hline
+        1   & 0.201131 & 0.118690392736 & 0.0189858423462\\
+        1.5 & 110135 & 0.0695356185309 & 0.0116978422222\\
+        3   & 0.0228748 & 0.0234676697455 & 0.00367690231561\\
+        5   & 0.0032849 & 0.00938868980513 & 0.00117123205791\\
+        \bottomrule
+      \end{tabular}
+    \end{center}
+  \end{table}
+
+  Using the prior distribution for $\sigma$ from problem 5,
+  and the experimental data just given, derive a posterior
+  distribution for $\sigma$ (i.e calibrate $\sigma$). You
+  may assume that the measurement has an error distributed by
+  N(0,$\sigma$=0.001).\\~\\
+
+  \problemAnswer{
+    It should be noted that the calculated answers above
+    were done with a gamma distribution of G(1.2,1.2) to
+    have a reasonable difference between the values.
+    
+  }
   
+\end{homeworkProblem}
+
+\clearpage
+
+
+
+
 %\pythonscript{Problem1/Calculations}{Script for Problem}
 %% \begin{figure}[H]
 %%   \begin{center}

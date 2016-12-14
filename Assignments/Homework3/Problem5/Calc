@@ -9,12 +9,13 @@ start_time = time.time()
 import FUN as fun
 
 
-x=1;alpha=1;beta=2;NumofC=10
+x=5;alpha=1;beta=2;NumofC=10
+alpha=1.2;beta=1.2
 ################################################################
 #################### Monte Calculations ########################
 ################################################################
 
-N=1000  #Samples
+N=10000  #Samples
 
 RandomNumbers=fun.Rvdc(N,2)    #Halton sequence
 Samples=fun.gammad.ppf(q=RandomNumbers,a=alpha+1,
@@ -23,7 +24,7 @@ Samples=fun.gammad.ppf(q=RandomNumbers,a=alpha+1,
 
 MSolution=[] #Monte Solution
 for i in range(0,len(Samples)):
-    MSolution.append(fun.Fnear(Samples[i]))
+    MSolution.append(fun.Fnear(Samples[i]*x))
 
 
 ################################################################
@@ -53,12 +54,12 @@ fun.Print("Chaos",[cn[0],Var])
 fun.Print("Monte+Chaos",DSolution)
 
 #Plot the data, and plot fitted PDF
-Nbins=60 #Hist Plot
-filename="mean.pdf"
-Xlabel="Cos(X)"
-(n,bins,ax,fig)=fun.HIST(Xlabel,MSolution,Nbins,N)
+#Nbins=60 #Hist Plot
+#filename="meanx_"+str(x)+".pdf"
+#Xlabel="Distribution at x = "+str(x)
+#(n,bins,ax,fig)=fun.HIST(Xlabel,DSolution,Nbins,N)
 #(ax,fig)=fun.HISTDataToPDF(n,bins,ax,fig)
-fun.plt.savefig(filename)
+#fun.plt.savefig(filename)
 
 ###################### Time To execute #################
 
