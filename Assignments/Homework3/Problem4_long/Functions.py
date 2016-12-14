@@ -115,9 +115,9 @@ def Plot(x,y,Label,fig,ax,ColorStyle,Varied,Scaled):
             markersize=8)
 
     if Scaled:
-        yLabel=r'$\text{Scaled Sensitivity Coeff}|_i=\left.\mu_i\frac{\delta\text{QoI}}{\delta\theta_i}\right|_{\bar{\theta}}$'
+        yLabel=r'Probability > 0.035 : Halton'
     else:
-        yLabel=r'$\text{Sensitivity Index}|_i=\left.\sigma_i\frac{\delta\text{QoI}}{\delta\theta_i}\right|_{\bar{\theta}}$'
+        yLabel=r'Probability > 0.035 : LHS'
         
     ax.set_xlabel(r'$\Delta$'+Varied,fontsize=18)
     ax.set_ylabel(yLabel,fontsize=16)
@@ -130,3 +130,26 @@ def Plot(x,y,Label,fig,ax,ColorStyle,Varied,Scaled):
     ax.grid(alpha=0.8,color='black',linestyle='dotted')
     
     return(fig,ax)
+
+def vdc(n, base=2):
+    """
+    Generates van der Corput sequence function
+    """
+    vdc, denom = 0,1
+    while n:
+        denom *= base
+        n, remainder = divmod(n, base)
+        vdc += remainder / denom
+    return vdc
+
+#Van Sampling
+def Rvdc(N,base=2):
+    """
+    Will generate a vector N long of the van
+    der Corput sequence with a chosen base
+    """
+    RN=[]
+    for i in range(0,N):
+        RN.append(vdc(i+1,base))
+    return(RN)
+
