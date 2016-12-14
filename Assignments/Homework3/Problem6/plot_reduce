@@ -22,29 +22,27 @@ import copy
 df=pd.read_csv('All_Calcs.csv',sep=',',index_col=False)
 ColumnNames=df.columns.values #Probably wont use
 
-#Set X and Y values for plotting ['Error' 'Emt' 'Eme' 'E0']
-X='E0'    #Should be one of the variables
+#Set X and Y values for plotting ['alpha','beta']
+X='alpha'    #Should be one of the variables
 #ALSO IF YOU CHANGE CHANGE Xlabel!!!!!!!!!!!!!!!!!!!
 Y='SumErr'  #Should be an error term
 
 #Three variables that I am...well varying
-Variables=["Emt","E0","Eme"]
-Printing=["%.2f","%.2f","%.1e"]
+Variables=["alpha","beta"]
+Printing=["%.2f","%.2f"]
 
 XScale="linear"     # 'linear' or 'log'
-#'E$_{max,th}$ (eV)'   For Emt
-#'E$_{avg,th}$ (eV)'   For E0
-#'E$_{max,epi}$ (eV)'  For Eme  (log scale)
-Xlabel='E$_{avg,th}$ (eV)'  # X label       
+#'$\alpha$ Parameter'   For alpha
+#'$\beta$ Parameter'   For beta
+Xlabel='$\alpha$ Parameter'  # X label       
 YScale="linear"  # 'linear' or 'log'
-Ylabel='Sum of Error for 10 X-Sections'    
+Ylabel='Sum of Error for 4 Measurements'
 
 #Remove the one variable I am looking at, group by others
 del Printing[Variables.index(X)]
 Variables.remove(X)
 
 UniqueOther1=pd.unique(df[Variables[0]])
-UniqueOther2=pd.unique(df[Variables[1]])
 
 #Set up plot
 fig=f.plt.figure(figsize=f.FigureSize)
@@ -52,18 +50,15 @@ ax=fig.add_subplot(111)
 
 Check=0
 for U1 in UniqueOther1:
-    for U2 in UniqueOther2:
-        Label=Variables[0]+" "+Printing[0] % U1 +\
-              " "+Variables[1]+" "+Printing[1] % U2
-        #Take all rows with U1 (filter)
-        dfHold=df[df[Variables[0]] == U1]
-        #Take all rows with U2 (filter again)
-        dfHold=dfHold[dfHold[Variables[1]] == U2]
-        Error=dfHold[Y].values
-        Xplot=dfHold[X].values
-        (fit,ax)=f.plot(Xplot,Error,ax,Check,Label,
-                        fig,Ylabel,Xlabel,XScale,YScale)
-        Check=Check+1
+    Label=Variables[0]+" "+Printing[0] % U1
+    #Take all rows with U1 (filter)
+    dfHold=df[df[Variables[0]] == U1]
+    #Take all rows with U2 (filter again)
+    Error=dfHold[Y].values
+    Xplot=dfHold[X].values
+    (fit,ax)=f.plot(Xplot,Error,ax,Check,Label,
+                    fig,Ylabel,Xlabel,XScale,YScale)
+    Check=Check+1
 
 ax=f.Legend(ax)
 f.plt.savefig(X+"_vs_"+Y+'.pdf')
