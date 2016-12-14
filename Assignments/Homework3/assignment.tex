@@ -1150,24 +1150,28 @@
 
   After looking for a parameter that would minimize the
   error between measured values and calculated values,
-  I got $\alpha=$ and $\beta=$.
+  are $\alpha=9.918$
+  and $\beta=11.082$.
   
+
   \begin{table}[H]
     \begin{center}
       \caption{Measured and calculated flux}
       \begin{tabular}{l l l l}
         \toprule
-        Location & Measured & Calculated & Variance\\
+        Location & Measured & Old Calculated & New Calculated\\
         \hline
-        1   & 0.201131 &  \\
-        1.5 & 0.110135 &  \\
-        3   & 0.0228748 & \\
-        5   & 0.0032849 & \\
+        1   & 0.201131 & 0.166714961646 & 0.1684611374\\
+        1.5 & 0.110135 &  0.090024688979 & 0.0909336643072\\
+        3   & 0.0228748 & 0.0192062954143 & 0.0191950696606\\
+        5   & 0.0032849 & 0.00362613412053 & 0.00352671933932\\
         \bottomrule
       \end{tabular}
     \end{center}
   \end{table}
 
+
+  
   Scripts and plots for choosing the parameter are below.
   
   \pythonscript{Problem6/Calc}{Code for Calculation}
