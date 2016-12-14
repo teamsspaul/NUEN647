@@ -22,118 +22,105 @@ __status__     =  "Production"
 ################################################################
 
 import numpy as np
-import matplotlib.pyplot as plt
 import lhsmdu
 from scipy.stats import beta
 from scipy import interpolate
 from scipy import integrate
 from scipy.integrate import trapz
 
+import matplotlib.pyplot as plt
+plt.rcParams["font.family"] = "monospace"
+import matplotlib
+matplotlib.rc('text',usetex=True)
+matplotlib.rcParams['text.latex.preamble']=[r"\usepackage{amsmath}"]
+
+
 ################################################################
 ######################### Functions ############################
 ################################################################
 
-def Rosen(x,y):
-    return((1-x)**2+100*(y-x**2)**2)
 
-def X(t):
-    return(2*t-1)
-
-def Y(s):
-    return(2*s-1)
-
-def vdc(n, base=2):
-    """
-    Generates van der Corput sequence function
-    """
-    vdc, denom = 0,1
-    while n:
-        denom *= base
-        n, remainder = divmod(n, base)
-        vdc += remainder / denom
-    return vdc
-
-def Rstrat(N,Nstrata):
-    """
-    Generate a vector N long with stratified
-    random variables, with Nstrata bins
-    """
-    RN=[]
-    Nloop=int(N/Nstrata)*Nstrata
-    for i in range(0,int(N/Nstrata)):
-        for j in range(0,Nstrata):
-            RN.append(np.random.uniform(low=j/Nstrata,
-                                high=(j+1)/Nstrata,size=1))
-    #If N/Nstrata doesn't divide evenly
-    if Nloop<N:
-        for j in range(0,N-Nloop):
-            RN.append(np.random.uniform(low=j/Nstrata,
-                            high=(j+1)/Nstrata,size=1))
-    return(RN)
-
-
-
-
-#Van Sampling
-def Rvdc(N,base=2):
-    """
-    Will generate a vector N long of the van
-    der Corput sequence with a chosen base
-    """
-    RN=[]
-    for i in range(0,N):
-        RN.append(vdc(i+1,base))
-    return(RN)
-
-def HIST(Xlabel,Samples,Nbins,N):
-    """
-    Plot histogram
-    """
-    #Plot histogram
-    fig=plt.figure()
-    ax=fig.add_subplot(111)
-    ax.set_xlabel(Xlabel,fontsize=16)
-    #For normalization of histogram
-    weights=np.ones_like(Samples)/(len(Samples))
-    ax.set_ylabel('Normalized counts with tot N = '+str(N),fontsize=18)
-    #Get data from histogram and plot
-    n,bins,patches=ax.hist(Samples,Nbins,
-            weights=weights,color='green',alpha=0.7,edgecolor='black')
-    return(n,bins,ax,fig)
-
-def HISTDataToPDF(n,bins,ax,fig):
+def BuildA(v,D,w,dt,dx,NX):
+    #i-1
+    a=(-v/dx-D/pow(dx,2))
+    #i
+    b=(1/dt)+(v/dx)+2*D/pow(dx,2)+w
+    #i+1
+    c=(-D/pow(dx,2))
     
-    Probability=n #Probability of being in a particular bin
-                  #Make sure to have used the weights when getting n
-    XValues=[]
-    PDF=[]   #Probability density function (different than Prob)
-             #Divide probability by bin width
-    for i in range(0,len(n)):
-        XValues.append((bins[i]+bins[i+1])/2)
-        PDF.append(Probability[i]/(bins[i+1]-bins[i]))
-        
-    #Fit the data to a function
-    
-    #First set a zero value (this is assuming the PDF is non negative
-    #and is increasing towards zero)
-    m=(PDF[1]-PDF[0])/(XValues[1]-XValues[0]) #slope at start
-    b=PDF[0]-m*XValues[0]  #y intercept
-    #print(b,PDF[0],PDF[1])
-    
-    #Append the zero value, assuming first two bins slope are constant
-    XValues.insert(0,0)
-    PDF.insert(0,b)
+    A = np.zeros([NX,NX])
+  
+    for i in range(0,NX):
+        if (i == 0):
+            A[i,i] = b
+            A[i,1] = c
+        elif(i==(NX-1)):
+            A[i,i-1] = a
+            A[i,i] = b
+        else:  
+            A[i,i-1] = a
+            A[i,i] = b
+            A[i,i+1] = c
 
-    #Create a PDF function
-    I=interpolate.interp1d(XValues,PDF,
-                           fill_value=max(Probability),bounds_error=False)
+    #Boundary conditions
+    A[0,NX-1] = A[0,0]
+    A[NX-1,0] = A[NX-1,NX-1]
+    return(A)
+
+def FindIndex(list,item):
+    idx = (np.abs(arr - v)).argmin()
+
+
+def Integrate(u,xmin,xmax,x,t):
+
+    x_low=np.abs(x-xmin).argmin()
+    x_high=np.abs(x-xmax).argmin()
+
     
-    #Evaluate the function and see how well it
-    #fits the data by plotting it
-    x=np.linspace(min(XValues),max(XValues),10000)
-    y=I(x)
-    ax.plot(x,y,'r',linewidth=2.0)
+    r=u[x_low:x_high+1,:]
+
+    IntegratedOverTime=np.zeros([x_high+1-x_low])
+
     
-    #does the pdf integrate to 1?
-    print("Your PDF integrates to: "+str(integrate.trapz(I(x),x)))
-    return(ax,fig)
+    for i in range(0,len(t)):
+        IntegratedOverTime[i]=np.trapz(r[i,:],x[x_low:x_high+1])
+
+    IntTimeSpace=np.trapz(IntegratedOverTime,t)
+    return(IntTimeSpace)
+
+def SolveQoI(NX,Nt,x,t,A,dt,w):
+    #Build Matrix with solutions
+    u=np.zeros([NX,Nt])
+ 
+    for i in range(0,NX):
+        if x[i]<=2.5:
+            u[i,0]=1
+ 
+    #Solve the system
+    for i in range(1,len(t)):
+        u[:,i] = np.linalg.solve(A,u[:,i-1]*(1/dt))
+
+    
+    #Integrate the system
+    Integral=Integrate(u,5,6,x,t)
+    RXNRate=Integral*w
+    return(RXNRate)
+
+    
+def Plot(x,y,Label,fig,ax,ColorStyle,Varied):
+    
+
+    ax.plot(x,y,ColorStyle,linewidth=2.0,label=Label,
+            markersize=8)
+    
+    #ax.set_xlabel(r'$\Delta$'+Varied,fontsize=18)
+    #ax.set_ylabel(r'$\frac{\delta \text{QoI}}{\delta \theta}$',fontsize=18)
+    #ax.yaxis.labelpad=55
+    
+    ax.xaxis.set_tick_params(labelsize=14)
+    ax.yaxis.set_tick_params(labelsize=14)
+    
+    ax.grid(alpha=0.8,color='black',linestyle='dotted')
+    ax.grid(alpha=0.8,color='black',linestyle='dotted')
+
+    return(fig,ax)

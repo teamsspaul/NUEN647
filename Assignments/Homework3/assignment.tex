@@ -1158,7 +1158,7 @@
       0, & \text{otherwise}
     \end{cases}
   \end{equation*}
-  Use the solution to compute the total reactions
+  Use the solution to compute the total reactions. 
   \begin{equation*}
     \int_5^6dx\int_0^5 dt\ \omega u(x,t).
   \end{equation*}
@@ -1169,7 +1169,62 @@
   \item{$\mu_D=0.125,\ \sigma_D=0.03$}
   \item{$\mu_\omega=0.1,\ \sigma_\omega=0.05$}
   \end{enumerate}
-  How do these results change with changes in $\Delta x$ and $\Delta t$?
+  How do these results change with changes in $\Delta x$ and $\Delta t$?\\~\\
+  There are scanned notes attached to this document as supplementary
+  work. The code for calculating the reaction rate is shown below and
+  is used for problems 3, and 4, but is only shown here.
+  Specific code for other calculations will be shown.
+  
+  \pythonscript{Problem1_long/Calculations}{Code for RXNs}
+
+  \problemAnswer{
+    \vspace{3mm}
+    Scanned Notes at the end of document.\\~\\
+
+    The scaled sensitivity coefficient, and sensitivity
+    index are defined as
+    \begin{equation*}
+      \text{Scaled Sensitivity Coeff}|_i=
+      \left|\mu_i\frac{\delta\text{QoI}}
+               {\delta\theta_i}\right|_{\bar{\theta}}
+    \end{equation*}
+    \begin{equation*}
+      \text{Sensitivity Index}|_i=
+      \left|\sigma_i\frac{\delta\text{QoI}}
+               {\delta\theta_i}\right|_{\bar{\theta}}
+    \end{equation*}
+    Where the QoI is evaluated at mean values for parameters and
+    a single parameter is varied off the mean.
+
+    The code for calculating these values is shown below
+    }
+    \pythonscript{Problem1_long/Calc2}{Code for Sensitivities}
+
+  \begin{table}[H]
+    \begin{center}
+      \caption{Sensitivity Parameters dx = 0.1 dt = 0.5}
+      \begin{tabular}{l l l}
+        \toprule
+        Parameter & Scaled Sensitivity Coeff & Sensitivity Index\\
+        \hline
+        $v$       &  0.0668156428348 & 0.013363128567 \\
+        $D$       &  0.00872948872873 & 0.0020950772949 \\
+        $\omega$  &  0.0114146347046 & 0.00570731735231 \\
+        \bottomrule
+      \end{tabular}
+    \end{center}
+  \end{table}
+    
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled.pdf}
+    \end{center}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.77\columnwidth]{Problem1_long/index.pdf}
+    \end{center}
+  \end{figure}
   
 \end{homeworkProblem}
 

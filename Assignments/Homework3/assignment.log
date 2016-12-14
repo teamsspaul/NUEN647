@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  13 DEC 2016 23:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  14 DEC 2016 01:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1282,19 +1282,45 @@ has been already used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1138 \clearpage
-                 ] [37
+                 ]
+Underfull \hbox (badness 10000) in paragraph at lines 1172--1177
 
-] [38
+ []
 
-] [39
+(./Problem1_long/Calculations [37
+
+])
+Underfull \hbox (badness 10000) in paragraph at lines 1200--1200
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1200--1200
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1200--1201
+
+ []
+
+(./Problem1_long/Calc2 [38]) [39pdfTeX warning (ext4): destination with the sam
+e identifier (name{table.6}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1221 \clearpage
+                 ] [40
+
+] [41
 
 ] 
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1277.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1277.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1322.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1322.
 (./assignment.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1277.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1277.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1322.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1322.
 
 Package rerunfilecheck Info: File `assignment.out' has not changed.
 (rerunfilecheck)             Checksum: 1A187CEE05B1E20CEE90FBB22A30BB82;421.
@@ -1302,13 +1328,13 @@ Package rerunfilecheck Info: File `assignment.out' has not changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1277.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1322.
  ) 
 Here is how much of TeX's memory you used:
- 10613 strings out of 494953
- 148445 string characters out of 6180977
+ 10739 strings out of 494953
+ 150112 string characters out of 6180977
  290891 words of memory out of 5000000
- 13347 multiletter control sequences out of 15000+600000
+ 13370 multiletter control sequences out of 15000+600000
  17782 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  40i,18n,46p,250b,2147s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1337,10 +1363,10 @@ ts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb>
 1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on assignment.pdf (39 pages, 753634 bytes).
+Output written on assignment.pdf (41 pages, 762978 bytes).
 PDF statistics:
- 1115 PDF objects out of 1200 (max. 8388607)
- 815 compressed objects within 9 object streams
- 343 named destinations out of 1000 (max. 500000)
+ 1241 PDF objects out of 1440 (max. 8388607)
+ 938 compressed objects within 10 object streams
+ 440 named destinations out of 1000 (max. 500000)
  198 words of extra memory for PDF output out of 10000 (max. 10000000)
 
