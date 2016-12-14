@@ -1328,9 +1328,37 @@
   \end{enumerate}
   Using regression, estimate the sensitivities to each parameter.
 
+  This python script was used to generate the data:
   \pythonscript{Problem3_long/Calc2}{Code for Problem}
 
+  Th script below was used to fit a regression model
+  \begin{equation*}
+    RXNs=v+D+w+dt+dx
+  \end{equation*}
+  the coefficients of which are an estimate on
+  \begin{equation*}
+    \frac{\delta \text{QoI}}{\delta \theta_i}
+  \end{equation*}
+  where i is a particular parameter.
 
+  \pythonscript{Problem3_long/Regression}{Regression with Pandas}
+
+  \begin{table}[H]
+    \begin{center}
+      \caption{Sensitivity Parameters dx = 0.1 dt = 0.5}
+      \begin{tabular}{l c}
+        \toprule
+        Parameter & Coeff\\
+        \hline
+        $v$        & \\
+        $D$        & \\
+        $\omega$   & \\
+        $\Delta x$ & \\
+        $\Delta t$ & \\
+        \bottomrule
+      \end{tabular}
+    \end{center}
+  \end{table}
   
 \end{homeworkProblem}
 

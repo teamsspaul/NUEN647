@@ -22,7 +22,6 @@ __status__     =  "Production"
 ################################################################
 
 import numpy as np
-import lhsmdu
 from scipy.stats import beta
 from scipy import interpolate
 from scipy import integrate
