@@ -16,9 +16,9 @@ import numpy as np
 ################################################################
 
 N=50
-RandN=fun.Rvdc(N,2);Name='Halton';Halton=True #Halton Sequence
-#l=lhsmdu.sample(1,N)  #Hyper cube sampling
-#RandN=l[0].A1;Name='LHS';Halton=False
+#RandN=fun.Rvdc(N,2);Name='Halton';Halton=True #Halton Sequence
+l=lhsmdu.sample(1,N)  #Hyper cube sampling
+RandN=l[0].A1;Name='LHS';Halton=False
 
 #Generate Samples;        loc = mean; scale=STD
 v=np.ones(N)*0.5
@@ -29,7 +29,7 @@ w=np.ones(N)*0.1
 #mu=0.1;sigma=0.05;Param='w';w=norm.ppf(RandN,mu,sigma)
 
 NX=[51,101,201,251,301,351,401,451];Vary='x';Nt=[11];l=0
-#Nt=[11,21,31,41,51,61,71,81,91,101];Vary='t';NX=[401];j=0
+#Nt=[11,21,31,41,51,61];Vary='t';NX=[401];j=0
 
 AllProbs=[];dxs=[]
 

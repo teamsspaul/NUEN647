@@ -298,7 +298,7 @@
           17 & 1.19 & 1.18 & 3.97 \\
           18 & 1.24 & 1.23 & 6.38 \\
           19 & -0.52 & -0.52 & 3.29 \\
-          20 & -1.41 & -1.41 & -1.49 \\
+          20 & -1.41 & -1.44 & -1.49 \\
           \bottomrule
       \end{tabular}
     \end{center}
@@ -1169,9 +1169,46 @@
   \item{$\mu_D=0.125,\ \sigma_D=0.03$}
   \item{$\mu_\omega=0.1,\ \sigma_\omega=0.05$}
   \end{enumerate}
-  How do these results change with changes in $\Delta x$ and $\Delta t$?\\~\\
-  There are scanned notes attached to this document as supplementary
-  work. The code for calculating the reaction rate is shown below and
+  How do these results change with changes in
+  $\Delta x$ and $\Delta t$?\\~\\
+
+  \problemAnswer{
+    $n$ for time, $i$ for x
+    \begin{equation*}
+      \frac{u_i^{n+1}-u_i^n}{\Delta t}+
+      v\frac{u_i^{n+1}-u_{i-1}^{n+1}}{\Delta x}=
+      D\frac{u_{i+1}^{n+1}-2u_{i}^{n+1}+u_{i-1}^{n+1}}
+        {\Delta x^2}-
+        wu_i^{n+1}
+    \end{equation*}
+    Grouping $i$ on LHS:
+    \begin{equation*}
+      U_{i}^{n+1}\left[
+        \frac{1}{\Delta t}+\frac{v}{\Delta x}+\frac{2D}{\Delta x^2}+w
+        \right]
+    \end{equation*}
+    Grouping $i+1$ on LHS:
+    \begin{equation*}
+      U_{i+1}^{n+1}\left[
+        \frac{-D}{\Delta x^2}
+        \right]
+    \end{equation*}
+    Grouping $i-1$ on LHS:
+    \begin{equation*}
+      U_{i-1}^{n+1}\left[
+        -\frac{v}{\Delta x}-\frac{D}{\Delta x^2}
+        \right]
+    \end{equation*}
+    RHS:
+    \begin{equation*}
+      \frac{u_i^n}{\Delta t}
+    \end{equation*}
+
+    Boundary conditions set A(1,I)=A(1,1) and A(I,1)=A(I,I).
+    
+
+  }
+  The code for calculating the reaction rate is shown below and
   is used for problems 3, and 4, but is only shown here.
   Specific code for other calculations will be shown.
   
@@ -1179,7 +1216,6 @@
 
   \problemAnswer{
     \vspace{3mm}
-    Scanned Notes at the end of document.\\~\\
 
     The scaled sensitivity coefficient, and sensitivity
     index are defined as
@@ -1417,69 +1453,81 @@
   \end{enumerate}
   How do these results change with changes in $\Delta x$ and $\Delta t$?\\~\\
 
+  \problemAnswer{
   Will assume a normal distribution and filter out any negative results.
   Also I do not know how to do a first-order second moment method
-  in this context.
+  in this context. These plots were produced by holding two parameters
+  at the mean value, and sampling the third with one of the two methods
+  asked for in the problem.\\
 
+  Varying the $D$ parameter with $\Delta x$ produced two different
+  plots for the two different sampling methods. After rerunning both
+  those cases I concluded that there is either a bug in my code,
+  or one of the Halton sampling scheme didn't sample in the
+  failure area as well as the LHS. 
+  }
+
+  \pythonscript{Problem4_long/Calc2}{Code for Problem - run many times}
+  
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_wx.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/Halton_wx.pdf}
     \end{center}
   \end{figure}
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_wx.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/LHS_wx.pdf}
     \end{center}
   \end{figure}
     \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_vx.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/Halton_vx.pdf}
     \end{center}
   \end{figure}
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_vx.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/LHS_vx.pdf}
     \end{center}
   \end{figure}
     \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_Dx.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/Halton_Dx.pdf}
     \end{center}
   \end{figure}
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_Dx.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/LHS_Dx.pdf}
     \end{center}
   \end{figure}
   
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_wt.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/Halton_wt.pdf}
     \end{center}
   \end{figure}
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_wt.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/LHS_wt.pdf}
     \end{center}
   \end{figure}
     \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_vt.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/Halton_vt.pdf}
     \end{center}
   \end{figure}
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_vt.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/LHS_vt.pdf}
     \end{center}
   \end{figure}
     \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/scaled_Dt.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/Halton_Dt.pdf}
     \end{center}
   \end{figure}
   \begin{figure}[H]
     \begin{center}
-      \includegraphics[width=0.77\columnwidth]{Problem1_long/index_Dt.pdf}
+      \includegraphics[width=0.77\columnwidth]{Problem4_long/LHS_Dt.pdf}
     \end{center}
   \end{figure}
 
