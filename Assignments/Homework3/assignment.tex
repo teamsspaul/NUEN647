@@ -1128,15 +1128,135 @@
   N(0,$\sigma$=0.001).\\~\\
 
   \problemAnswer{
-    It should be noted that the calculated answers above
-    were done with a gamma distribution of G(1.2,1.2) to
-    have a reasonable difference between the values.
+    It should be noted that I might not have time to get to
+    this problem, although it looks like it might be simple.
     
   }
   
 \end{homeworkProblem}
 
 \clearpage
+
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 1 Long
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}[Long Problem 1]
+  Using a discretization of your choice, solve the equation
+  \begin{equation*}
+    \frac{\delta u}{\delta t}+v\frac{\delta u}{\delta x}=
+    D\frac{\delta^2u}{\delta x^2}-\omega u
+  \end{equation*}
+  for $u(x,t)$ on the spatial domain $x\in[0,10]$ with periodic
+  boundary conditions $u(0^-)=u(10^+)$ , and initial conditions
+  \begin{equation*}
+    u(x,0)=
+    \begin{cases}
+      1, & x\in[0,2.5]\\
+      0, & \text{otherwise}
+    \end{cases}
+  \end{equation*}
+  Use the solution to compute the total reactions
+  \begin{equation*}
+    \int_5^6dx\int_0^5 dt\ \omega u(x,t).
+  \end{equation*}
+  Compute scaled sensitivity coefficients and sensitivity indices
+  for normal random variables:
+  \begin{enumerate}[label=(\alph*)]
+  \item{$\mu_v=0.5,\ \sigma_c=0.1$}
+  \item{$\mu_D=0.125,\ \sigma_D=0.03$}
+  \item{$\mu_\omega=0.1,\ \sigma_\omega=0.05$}
+  \end{enumerate}
+  How do these results change with changes in $\Delta x$ and $\Delta t$?
+  
+\end{homeworkProblem}
+
+\clearpage
+
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 3 Long
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}[Long Problem 3]
+  Using a discretization of your choice, solve the equation
+  \begin{equation*}
+    \frac{\delta u}{\delta t}+v\frac{\delta u}{\delta x}=
+    D\frac{\delta^2u}{\delta x^2}-\omega u
+  \end{equation*}
+  for $u(x,t)$ on the spatial domain $x\in[0,10]$ with periodic
+  boundary conditions $u(0^-)=u(10^+)$ , and initial conditions
+  \begin{equation*}
+    u(x,0)=
+    \begin{cases}
+      1, & x\in[0,2.5]\\
+      0, & \text{otherwise}
+    \end{cases}
+  \end{equation*}
+  Use the solution to compute the total reactions
+  \begin{equation*}
+    \int_5^6dx\int_0^5 dt\ \omega u(x,t).
+  \end{equation*}
+  Sample values of parameters using a uniform distribution
+  centered at the mean with upper and lower bounds $\pm10\%$
+  for the following variables:
+  \begin{enumerate}[label=(\alph*)]
+  \item{$\mu_v=0.5$}
+  \item{$\mu_D=0.125$}
+  \item{$\mu_\omega=0.1$}
+  \end{enumerate}
+  and sample values of the following parameters in their given ranges:
+  \begin{enumerate}[label=(\alph*)]
+  \item{$\Delta x \sim [0.001,0.5]$}
+  \item{$\Delta t \sim [0.001,0.5]$}
+  \end{enumerate}
+\end{homeworkProblem}
+
+\clearpage
+
+
+%--------------------------------------------------------------------------
+%	PROBLEM 4 Long
+%--------------------------------------------------------------------------
+
+\begin{homeworkProblem}[Long Problem 4]
+  Using a discretization of your choice, solve the equation
+  \begin{equation*}
+    \frac{\delta u}{\delta t}+v\frac{\delta u}{\delta x}=
+    D\frac{\delta^2u}{\delta x^2}-\omega u
+  \end{equation*}
+  for $u(x,t)$ on the spatial domain $x\in[0,10]$ with periodic
+  boundary conditions $u(0^-)=u(10^+)$ , and initial conditions
+  \begin{equation*}
+    u(x,0)=
+    \begin{cases}
+      1, & x\in[0,2.5]\\
+      0, & \text{otherwise}
+    \end{cases}
+  \end{equation*}
+  Use the solution to compute the total reactions
+  \begin{equation*}
+    \int_5^6dx\int_0^5 dt\ \omega u(x,t).
+  \end{equation*}
+  Compute the probability that this quantity of interest is greater
+  than 0.035 using LHS sampling of 50 points, 50 points of a
+  Halton sequence, and a first-order second moment method using the
+  following distributions
+  \begin{enumerate}[label=(\alph*)]
+  \item{$\mu_v=0.5,\ \sigma_c=0.1$}
+  \item{$\mu_D=0.125,\ \sigma_D=0.03$}
+  \item{$\mu_\omega=0.1,\ \sigma_\omega=0.05$}
+  \end{enumerate}
+  How do these results change with changes in $\Delta x$ and $\Delta t$?
+
+\end{homeworkProblem}
+
+\clearpage
+
+
 
 
 
