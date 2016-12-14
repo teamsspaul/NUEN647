@@ -19,7 +19,7 @@ Vars=['v','D','w','dt','dx']
 Df2=Df[Vars]
 model=pd.ols(y=Df['RXNRate'],x=Df2)
 
-print(model)
+print(model.summary().as_latex())
 
 ###################### Time To execute #################
 

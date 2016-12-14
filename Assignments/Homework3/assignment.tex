@@ -1333,7 +1333,7 @@
 
   Th script below was used to fit a regression model
   \begin{equation*}
-    RXNs=v+D+w+dt+dx
+    RXNs=v+D+w+dt+dx+\text{Intercept}
   \end{equation*}
   the coefficients of which are an estimate on
   \begin{equation*}
@@ -1346,19 +1346,37 @@
   \begin{table}[H]
     \begin{center}
       \caption{Sensitivity Parameters dx = 0.1 dt = 0.5}
-      \begin{tabular}{l c}
+      \begin{tabular}{l l l l l}
         \toprule
-        Parameter & Coeff\\
+        Variable & Coef & Std Err & t-stat & p-value\\
         \hline
-        $v$        & \\
-        $D$        & \\
-        $\omega$   & \\
-        $\Delta x$ & \\
-        $\Delta t$ & \\
+        $v$        &  0.1945  & 8.5335  &  0.02 & 0.9818\\
+        $D$        & -25.2844 & 33.3347 & -0.76 & 0.4483\\
+        $w$        &  76.5716 & 42.3267 & 1.81  & 0.0707\\
+        $\Delta t$ & -7.2201  & 1.8227  & -3.96 & 0.0001\\
+        $\Delta x$ &  30.8771 & 2.6986  & 11.44 & 0.0000\\
+        \hline
+        intercept & -5.1421 & 7.2558 & -0.71 & 0.4787\\
         \bottomrule
       \end{tabular}
     \end{center}
   \end{table}
+
+  The $R^2$ value for this fit is 0.12, which isn't very good.
+  Also these fitted values are fairly large, much larger
+  than estimated in the previous problem. The reason behind this
+  is probably due to least squares fitting, which in problem 1,
+  was shown to give large values for coefficients.\\
+
+  Another issue
+  is the 'sneaky weeding' out of the data I did in my code.
+  Sometimes the QoI was either negative, or very large...or both.
+  There was also cases where there was an overflow error, which
+  may not depend on the total number of divisions in the problem
+  (failed in this manner with smaller total bin numbers - but maybe
+  there were few spatial divisions and a ton of time divisions,
+  anyway it seemed random). Both these instances, weird results and
+  overflow errors, were filtered out and not used in the regression model.
   
 \end{homeworkProblem}
 
