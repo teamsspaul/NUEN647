@@ -7,9 +7,9 @@
 import time
 start_time = time.time()
 import FUN as fun
-from uncertainties import ufloat
-from uncertainties.umath import *
-from uncertainties import unumpy as unp
+#from uncertainties import ufloat
+#from uncertainties.umath import *
+#from uncertainties import unumpy as unp
 
 ################################################################
 ######################## Set up ################################
@@ -21,7 +21,7 @@ print("alpha,beta,SumErr",file=output)
 
 #Loop through all possibilities
 alphaL=fun.np.linspace(1,20,50);
-betaL=fun.np.linspace(1,20,50);
+betaL=fun.np.linspace(1,20,20);
 xL=[1,1.5,3,5];
 Measured=[0.201131,0.110135,0.0228748,0.0032849]
 MeasuredVar=[0.001,0.001,0.001,0.001]
