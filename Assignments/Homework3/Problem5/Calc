@@ -9,13 +9,13 @@ start_time = time.time()
 import FUN as fun
 
 
-x=5;alpha=1;beta=2;NumofC=10
-alpha=1.2;beta=1.2
+x=1;alpha=1;beta=2;NumofC=10
+alpha=10-1;beta=1/0.1
 ################################################################
 #################### Monte Calculations ########################
 ################################################################
 
-N=10000  #Samples
+N=100000  #Samples
 
 RandomNumbers=fun.Rvdc(N,2)    #Halton sequence
 Samples=fun.gammad.ppf(q=RandomNumbers,a=alpha+1,
@@ -54,12 +54,12 @@ fun.Print("Chaos",[cn[0],Var])
 fun.Print("Monte+Chaos",DSolution)
 
 #Plot the data, and plot fitted PDF
-#Nbins=60 #Hist Plot
-#filename="meanx_"+str(x)+".pdf"
-#Xlabel="Distribution at x = "+str(x)
-#(n,bins,ax,fig)=fun.HIST(Xlabel,DSolution,Nbins,N)
+Nbins=100 #Hist Plot
+filename="meanx_"+str(x)+".pdf"
+Xlabel="Distribution at x = "+str(x)
+(n,bins,ax,fig)=fun.HIST(Xlabel,DSolution,Nbins,N)
 #(ax,fig)=fun.HISTDataToPDF(n,bins,ax,fig)
-#fun.plt.savefig(filename)
+fun.plt.savefig(filename)
 
 ###################### Time To execute #################
 
