@@ -20,8 +20,8 @@ output=open("All_Calcs.csv","w")
 print("alpha,beta,SumErr",file=output)
 
 #Loop through all possibilities
-alphaL=fun.np.linspace(1,20,3);
-betaL=fun.np.linspace(1,20,3);
+alphaL=fun.np.linspace(1,20,50);
+betaL=fun.np.linspace(1,20,50);
 xL=[1,1.5,3,5];
 Measured=[0.201131,0.110135,0.0228748,0.0032849]
 MeasuredVar=[0.001,0.001,0.001,0.001]
@@ -35,29 +35,43 @@ PriorVar=[0.00541820218281,0.00303591212914,0.000475125069726,5.14761627202e-05]
 SumErrs=[]
 for alpha in alphaL:
     for beta in betaL:
-        Error=0
+        ErrorS=0
         for i in range(0,len(xL)):
             x=xL[i]
 
-            cn=[]
-            for n in range(0,NumofC):
-                cn.append(fun.Determine_cn(n,alpha,beta,x))
+            #cn=[]
+            #for n in range(0,NumofC):
+            #    cn.append(fun.Determine_cn(n,alpha,beta,x))
+            c0=fun.Determine_cn(0,alpha,beta,x)
+            #Var=0
+            #for n in range(1,NumofC):
+            #    Coef=fun.gammaf(n+alpha+1)/
+            #(fun.gammaf(alpha+1)*fun.fact(n))
+            #    Var=Var+Coef*(cn[n]**2)
 
-            Var=0
-            for n in range(1,NumofC):
-                Coef=fun.gammaf(n+alpha+1)/(fun.gammaf(alpha+1)*fun.fact(n))
-                Var=Var+Coef*(cn[n]**2)
-
+            #Calculate err
+            #M=ufloat(Measured[i],MeasuredVar[i])
+            #C=ufloat(Prior[i],PriorVar[i])
+            #C2=ufloat(cn[0],Var)
+            M=Measured[i]
+            C=Prior[i]
+            C2=c0
+            #if C.std_dev<1e-6:
+            #    C.std_dev=1e-3
+            #if C2.std_dev<1e-6:
+            #    C2.std_dev=1e-3
+            Error=abs(C2-M)/M+abs(C2-C)/C
+            #Error=Error.nominal_value/Error.std_dev
+            ErrorS=ErrorS+Error
             
-            Error=Error+abs(c0-Measured[i])/Measured[i]
-        SumErrs.append(Error)
+        SumErrs.append(ErrorS)
         print(str(alpha)+","+str(beta)+','+str(Error),file=output)
 
 
 ################################################################
 #################### Find Minimum ##############################
 ################################################################
-
+print("")
         
 #Find minimium Summed Error
 Min=min(SumErrs)
@@ -76,6 +90,8 @@ for alpha in alphaL:
 ################################################################
 ################### Print Minimum ##############################
 ################################################################
+
+print("")
 
 for i in range(0,len(xL)):
     x=xL[i]
