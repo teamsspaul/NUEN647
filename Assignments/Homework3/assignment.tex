@@ -1130,12 +1130,21 @@
   \problemAnswer{
     There has to be a better way to do this, but my brain is
     too fried to think about it. I am going to run the code from
-    problem 5, vary the alpha and beta parameters, and see
-    which gives me the smallest total error. I know its dumb,
-    and its not actually correct, because I'm not finding
-    a posterior as Bayes would want (I am just changing the
-    gamma variable to fit the data and throwing out the
-    prior), but I'm just a guy. \\
+    problem 5, vary the alpha and beta parameters, and calculate
+    the error adjusted error,
+    
+    \begin{equation*}
+      E=\sum_{i=1}^{4}
+      \frac{\text{New Calculation}-\text{Original or Measured}}
+      {\text{Original or Measured}}\cdot\text{Propagated Error}
+    \end{equation*}
+    and see which gives me the smallest value for $E$.
+    The above equation was summed over the four measurement points.
+    $\text{Original or Measured}$ refers to either the
+    original calculation from problem 5, for the measured data.
+    The error was included in this data so that measurements or
+    calculations that have lower errors pull the distribution
+    more. I am assuming both errors are of the same type.\\
   }
 
   After looking for a parameter that would minimize the

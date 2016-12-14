@@ -5,6 +5,6 @@
 \contentsline {section}{Problem 4}{21}{section*.5}
 \contentsline {section}{Problem 5}{27}{section*.6}
 \contentsline {section}{Problem 6}{36}{section*.7}
-\contentsline {section}{Long Problem 1}{40}{section*.8}
-\contentsline {section}{Long Problem 3}{50}{section*.9}
-\contentsline {section}{Long Problem 4}{53}{section*.10}
+\contentsline {section}{Long Problem 1}{41}{section*.8}
+\contentsline {section}{Long Problem 3}{51}{section*.9}
+\contentsline {section}{Long Problem 4}{54}{section*.10}
