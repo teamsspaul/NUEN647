@@ -21,12 +21,13 @@ print("alpha,beta,SumErr",file=output)
 
 #Loop through all possibilities
 alphaL=fun.np.linspace(1,20,50);
-betaL=fun.np.linspace(1,20,20);
+betaL=fun.np.linspace(1,20,50);
 xL=[1,1.5,3,5];
 Measured=[0.201131,0.110135,0.0228748,0.0032849]
 MeasuredVar=[0.001,0.001,0.001,0.001]
 Prior=[0.166714961646,0.090024688979,0.0192062954143,0.00362613412053]
 PriorVar=[0.00541820218281,0.00303591212914,0.000475125069726,5.14761627202e-05]
+weight=4
                                     
 ################################################################
 ##################### Brute Force ##############################
@@ -60,7 +61,7 @@ for alpha in alphaL:
             #    C.std_dev=1e-3
             #if C2.std_dev<1e-6:
             #    C2.std_dev=1e-3
-            Error=abs(C2-M)/M+abs(C2-C)/C
+            Error=abs(C2-M)/M+(abs(C2-C)/C)/weight
             #Error=Error.nominal_value/Error.std_dev
             ErrorS=ErrorS+Error
             
