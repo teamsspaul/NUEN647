@@ -31,7 +31,7 @@ while NCount<=N:
     NX=int(xend/dx)
     Nt=int(tend/dt)
 
-    print("#_space_divs x #_time_divisionts = "+str(NX*Nt))
+    print("space_divs time_divisionts = "+str(NX*Nt)+" NCount = "+str(NCount))
     
     #Problem boundaries
     x=fun.np.linspace(0,xend,NX)
