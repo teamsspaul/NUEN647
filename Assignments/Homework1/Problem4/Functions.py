@@ -47,35 +47,35 @@ def GammaPDF(alpha,beta,theta):
 def Plot(theta,f_x):
     fig="3";ax=2
     fig = plt.figure()
-    # ax = [fig.add_subplot(111)]
-    # ax[0].spines['top'].set_color('none')
-    # ax[0].spines['bottom'].set_color('none')
-    # ax[0].spines['left'].set_color('none')
-    # ax[0].spines['right'].set_color('none')
-    # ax[0].tick_params(labelcolor='w', top='off', bottom='off', left='off',
-    #                   labelleft='off',labelright='off',labeltop='off',
-    #                   labelbottom='off',right='off')
+    ax = [fig.add_subplot(111)]
+    ax[0].spines['top'].set_color('none')
+    ax[0].spines['bottom'].set_color('none')
+    ax[0].spines['left'].set_color('none')
+    ax[0].spines['right'].set_color('none')
+    ax[0].tick_params(labelcolor='w', top='off', bottom='off', left='off',
+                      labelleft='off',labelright='off',labeltop='off',
+                      labelbottom='off',right='off')
                     
-    # ax = np.append(ax,fig.add_subplot(211))
-    # ax = np.append(ax,fig.add_subplot(212))
+    ax = np.append(ax,fig.add_subplot(211))
+    ax = np.append(ax,fig.add_subplot(212))
     
-    # ax[1].plot(theta,f_x,'r',linewidth=2.0)
-    # ax[2].plot(theta,f_x,'r',linewidth=2.0)
+    ax[1].plot(theta,f_x,'r',linewidth=2.0)
+    ax[2].plot(theta,f_x,'r',linewidth=2.0)
     
-    # ax[2].set_xlabel(r'$\boldsymbol{\theta}$',fontsize=18)
-    # ax[0].set_ylabel(r'\textbf{Probability}',fontsize=18)
-    # ax[0].yaxis.labelpad=55
+    ax[2].set_xlabel(r'$\boldsymbol{\theta}$',fontsize=18)
+    ax[0].set_ylabel(r'\textbf{Probability}',fontsize=18)
+    ax[0].yaxis.labelpad=55
 
-    # ax[1].set_ylabel(r'Square $N=10^3$',fontsize=14)
-    # ax[2].set_ylabel(r'Triangular $N=10^3/2$',fontsize=14)
+    ax[1].set_ylabel(r'Square $N=10^3$',fontsize=14)
+    ax[2].set_ylabel(r'Triangular $N=10^3/2$',fontsize=14)
     
-    # ax[1].xaxis.set_tick_params(labelsize=14)
-    # ax[1].yaxis.set_tick_params(labelsize=14)
-    # ax[2].xaxis.set_tick_params(labelsize=14)
-    # ax[2].yaxis.set_tick_params(labelsize=14)
+    ax[1].xaxis.set_tick_params(labelsize=14)
+    ax[1].yaxis.set_tick_params(labelsize=14)
+    ax[2].xaxis.set_tick_params(labelsize=14)
+    ax[2].yaxis.set_tick_params(labelsize=14)
     
-    # ax[1].grid(alpha=0.8,color='black',linestyle='dotted')
-    # ax[2].grid(alpha=0.8,color='black',linestyle='dotted')
+    ax[1].grid(alpha=0.8,color='black',linestyle='dotted')
+    ax[2].grid(alpha=0.8,color='black',linestyle='dotted')
     return(fig,ax)
 
 def PlotaxIn(X,Y,i,ax,j):
