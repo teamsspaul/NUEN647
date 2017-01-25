@@ -1,0 +1,31 @@
+-1
+-1
+-1
+  RDA  Irradiation of Depleted Uranium in PWR (lybia HW problem)
+  RDA  Fuel enrichment is 0.3 w/o U-235
+  RDA
+  LIB  0  1 2 3  204 205 206  9  50 0 1 1
+  PHO     101 102 103  10
+  INP  1   1  -1  -1   1   1
+  BUP
+  IRF 100 1.0E14 1 2 4 2
+  IRF 200 1.0E14 2 2 4 0
+  IRF 300 1.0E14 2 2 4 0
+  IRF 400 1.0E14 2 2 4 0
+  IRF 500 1.0E14 2 2 4 0
+  IRF 600 1.0E14 2 2 4 0
+  IRF 700 1.0E14 2 2 4 0
+  IRF 800 1.0E14 2 2 4 0
+  IRF 900 1.0E14 2 2 4 0
+  IRF 1000 1.0E14 2 2 4 0
+  IRF 1100 1.0E14 2 2 4 0
+  IRF 1200 1.0E14 2 2 4 0
+  IRF 1250 1.0E14 2 2 4 0
+  BUP
+  OPTL 8 8 8 8 6 8 7 8 6 8 8 7*8 6*8 8
+  OPTA 8 8 8 8 6 8 7 8 6 8 8 7*8 6*8 8
+  OPTF 8 8 8 8 6 8 7 8 6 8 8 7*8 6*8 8
+  OUT     2   1  -1   0
+  END
+2 922340 0. 922350 3000. 922380 997000. 0 0.0
+0
