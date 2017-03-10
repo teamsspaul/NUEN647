@@ -1,0 +1,110 @@
+\usepackage{listings} % Required for insertion of code
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{courier} % Required for the courier font
+
+
+%--------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%--------------------------------------------------------------------------
+% This is the color used for comments
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} 
+\lstloadlanguages{Perl,Python} % Load Perl syntax for listings,
+% for a list of other languages supported see:
+%ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=Perl, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        % Custom functions underlined and blue
+        keywordstyle=[3]\color{Blue}\underbar, 
+        identifierstyle=, % Nothing special about identifiers
+        % Comments small dark green courier font
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, 
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included
+        % in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        % Line continuation (...) like blue comment
+        morecomment=[l][\color{Blue}]{...}, 
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+
+\lstset{language=Python, % Use Python in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Python functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Python function arguments purple
+        % Custom functions underlined and blue
+        keywordstyle=[3]\color{Blue}\underbar, 
+        identifierstyle=, % Nothing special about identifiers
+        % Comments small dark green courier font
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, 
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=3, % 5 spaces per tab
+        %
+        % Put standard Python functions not included in the
+        % default language here
+        morekeywords={rand},
+        %
+        % Put Python function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        % Line continuation (...) like blue comment
+        morecomment=[l][\color{Blue}]{...}, 
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+
+% Creates a new command to include a perl script, the first
+% parameter is the filename of the script (without .pl), the
+% second parameter is the caption
+\newcommand{\perlscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.pl}
+\end{itemize}
+}
+
+%New command for a python script
+\newcommand{\pythonscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1}
+\end{itemize}
+}
+
+% Creates a new command to include a script, the first parameter is the filename of the script (without .m), the second parameter is the caption
+\newcommand{\script}[5]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1,firstline=#3,lastline=#4,firstnumber=#5]{#1.py}
+\end{itemize}
+}
+
+
+
+
+%%%% Use where you want the code inseted
+\pythonscript{Problem4/Calculations}{Python Script for problem}
+
+
+
